@@ -1,0 +1,13 @@
+﻿@namespace Common.Web
+@inherits StringInput
+
+@using Syncfusion.Blazor.Inputs
+@using Microsoft.AspNetCore.Components.Forms
+
+<p style=@($"width: {Width}")>
+    <SfTextBox Value=@Value ValueChanged=@ValueChanged FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) Type=@Type Input=@OnValueEntered ValueExpression=@ValidationExpression />
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>

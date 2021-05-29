@@ -1,0 +1,21 @@
+﻿@namespace Common.Web
+
+<Button OnClick=@OnClick Color="transparent" Class="logo-button" Style=@($"width: 120px; height: 80px;")>
+    <Vertical>
+        <Icon Style="font-size: 40px;" Width="auto" Height="auto" IconType=@IconType />
+        <div>@Text</div>
+    </Vertical>
+</Button>
+
+@code
+{
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    [Parameter]
+    public string IconType { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+}

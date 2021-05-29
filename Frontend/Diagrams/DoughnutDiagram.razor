@@ -1,0 +1,21 @@
+﻿@namespace Common.Web
+@inherits AppDiagram
+
+@using Syncfusion.Blazor.Charts;
+
+<div class="large-chart" style=@($"height: {Height}; width: {Width}; margin: {Margin.ToString()}")>
+    <SfAccumulationChart Height="1400px" Background=@Colors.Transparent EnableAnimation="false">
+        <AccumulationChartCenter X="50%" Y="25%" />
+        <AccumulationChartLegendSettings Visible="false" />
+        <AccumulationChartSeriesCollection>
+            <AccumulationChartSeries DataSource=@Data XName="Id" YName="Data" PointColorMapping="Color" StartAngle="270" EndAngle="90" InnerRadius="50%" Radius="100%">
+                <AccumulationDataLabelSettings Visible="true" Name="Label" />
+            </AccumulationChartSeries>
+        </AccumulationChartSeriesCollection>
+    </SfAccumulationChart>
+</div>
+
+@if (ShowLegend)
+{
+    <DiagramLegend Data=@Data />
+}

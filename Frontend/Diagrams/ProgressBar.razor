@@ -1,0 +1,28 @@
+﻿@namespace Common.Web
+
+@using Syncfusion.Blazor.ProgressBar
+
+<SfProgressBar Value=@Data ProgressColor=@Color Minimum=@Min Maximum=@Max CornerRadius=@CornerType.Round Width=@Width Height="20px" />
+<Heading>@Data %</Heading>
+
+@code {
+
+    [Parameter]
+    public int Data { get; set; }
+
+    [Parameter]
+    public int Min { get; set; } = 0;
+
+    [Parameter]
+    public int Max { get; set; } = 100;
+
+    [Parameter]
+    public string Width { get; set; } = "300px";
+
+    [Parameter]
+    public bool ShowLabel { get; set; } = true;
+
+    [Parameter]
+    public string Color { get; set; } = Colors.Get(0);
+
+}

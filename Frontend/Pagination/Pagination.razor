@@ -1,0 +1,32 @@
+﻿@namespace Common.Web
+@inherits AppContainer
+
+<Horizontal Height=@Height Width=@Width MaxWidth="1720px" HorizontalAlign=@HorizontalAlignment.SpaceBetween>
+    <Horizontal Width="auto" HorizontalAlign=@HorizontalAlignment.Left>
+        <IconButton IconType="first_page" OnClick=@( async _ => { await PageChanged.InvokeAsync(1); } ) />
+        <IconButton IconType="chevron_left" OnClick=@( async _ => { if(CurrentPage > 1) await PageChanged.InvokeAsync(CurrentPage - 1 ); } ) />
+        @for (int i = Start; i <= End; i++)
+        {
+            <PageIcon Number=@i Active=@(i == CurrentPage) OnClick=@PageChanged />
+        }
+        <IconButton IconType="chevron_right" OnClick=@( async _ => { if(CurrentPage < PageCount) await PageChanged.InvokeAsync(CurrentPage + 1); } ) />
+        <IconButton IconType="last_page" OnClick=@( async _ => { await PageChanged.InvokeAsync(PageCount); } ) />
+    </Horizontal>
+    <Subtitle Margin=@(new Border("10px"))>@CurrentPage / @PageCount</Subtitle>
+</Horizontal>
+
+@code
+{
+    [Parameter]
+    public int CurrentPage { get; set; }
+
+    [Parameter]
+    public EventCallback<int> PageChanged { get; set; }
+
+    [Parameter]
+    public int PageCount { get; set; }
+
+    private int Start { get { return Math.Max(Math.Min(CurrentPage - 2, PageCount - 4), 1); } }
+
+    private int End { get { return Math.Min(Math.Max(CurrentPage + 2, Start + 4), PageCount); } }
+}

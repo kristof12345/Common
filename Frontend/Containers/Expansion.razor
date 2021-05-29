@@ -1,0 +1,27 @@
+﻿@namespace Common.Web
+@inherits AppContainer
+
+@using Syncfusion.Blazor.Navigations
+
+<SfAccordion>
+    <AccordionItems>
+        <AccordionItem>
+            <HeaderTemplate>
+                <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Padding=@(new Border("0px","78px", "0px", "104px"))><Subtitle>@Title</Subtitle><Subtitle Color=@Colors.Primary>@Subtitle</Subtitle>
+            </Horizontal>
+            </HeaderTemplate>
+            <ContentTemplate>
+                @ChildContent
+            </ContentTemplate>
+        </AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+
+@code
+{
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Subtitle { get; set; }
+}

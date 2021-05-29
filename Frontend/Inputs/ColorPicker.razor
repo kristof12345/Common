@@ -1,0 +1,9 @@
+﻿@namespace Common.Web
+@inherits AppInput<string>
+
+@using Syncfusion.Blazor.Inputs
+
+<Horizontal Height="56px" HorizontalAlign=@HorizontalAlignment.SpaceBetween Width="auto" Margin=@(new Border("0px", "10px")) Padding=@(new Border("0px", "0px", "0px", "10px")) Class="framed">
+    <Paragraph Class="subtitle" Style="margin-top: auto; margin-bottom: auto;"> Color: </Paragraph>
+    <SfColorPicker Value=@Value ValueChanged=@ValueChanged Mode=@ColorPickerMode.Palette NoColor="true" ShowButtons="false" />
+</Horizontal>

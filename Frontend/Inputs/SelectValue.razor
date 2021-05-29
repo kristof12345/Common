@@ -1,0 +1,16 @@
+﻿@namespace Common.Web
+@inherits ListInput
+
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.DropDowns
+@using Microsoft.AspNetCore.Components.Forms
+
+<p style=@($"width: {Width}")>
+    <SfDropDownList Value=@Value ValueChanged=@ValueChanged DataSource=@Items FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) OnValueSelect=@OnInput ValueExpression=@ValidationExpression TValue=string TItem=string>
+        <DropDownListEvents TItem="string" TValue="string" OnValueSelect=@OnValueSelected />
+    </SfDropDownList>
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>

@@ -1,0 +1,30 @@
+﻿@namespace Common.Web
+
+@using Common.Application.Models
+
+@if (Value == OrderDirection.Default)
+{
+    <IconButton IconType="unfold_more" OnClick=@( async _ => {  await ValueChanged.InvokeAsync(OrderDirection.Ascending); await OnChange.InvokeAsync(); } ) />
+}
+
+@if (Value == OrderDirection.Ascending)
+{
+    <IconButton IconType="arrow_upward" OnClick=@( async _ => {  await ValueChanged.InvokeAsync(OrderDirection.Descending); await OnChange.InvokeAsync(); } ) />
+}
+
+@if (Value == OrderDirection.Descending)
+{
+    <IconButton IconType="arrow_downward" OnClick=@( async _ => {  await ValueChanged.InvokeAsync(OrderDirection.Default); await OnChange.InvokeAsync(); } ) />
+}
+
+@code
+{
+    [Parameter]
+    public OrderDirection Value { get; set; }
+
+    [Parameter]
+    public EventCallback<OrderDirection> ValueChanged { get; set; }
+
+    [Parameter]
+    public EventCallback OnChange { get; set; }
+}

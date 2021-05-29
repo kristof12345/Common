@@ -1,0 +1,24 @@
+﻿@namespace Common.Web
+
+<i class="material-icons" style=@($"padding: 0px; width: {Width}; height: {Height}; color: {Color}; margin: {Margin.ToString()}; {Style}")>@IconType</i>
+
+@code
+{
+    [Parameter]
+    public string IconType { get; set; }
+
+    [Parameter]
+    public string Color { get; set; } = "inherit !important";
+
+    [Parameter]
+    public string Width { get; set; } = "24px";
+
+    [Parameter]
+    public string Height { get; set; } = "24px";
+
+    [Parameter]
+    public Border Margin { get; set; } = new Border("0px");
+
+    [Parameter]
+    public string Style { get; set; }
+}

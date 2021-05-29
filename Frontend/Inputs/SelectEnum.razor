@@ -1,0 +1,40 @@
+﻿@namespace Common.Web
+@inherits AppInput<TEnum?>
+
+@using Syncfusion.Blazor.Inputs
+@using Common.Application.Extensions
+@using Syncfusion.Blazor.DropDowns
+@using Microsoft.AspNetCore.Components.Forms
+
+@typeparam TEnum
+
+<p style=@($"width: {Width}")>
+    <SfDropDownList Value=@(EnumExtensions.GetAttributeValue(Value)) ValueChanged=@HandleValueChange DataSource=@(EnumExtensions.GetAttributeList<TEnum>().Except("Server")) FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue=string TItem=string />
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>
+
+@code
+{
+    private List<string> Items;
+
+    protected override void OnParametersSet()
+    {
+        Items = EnumExtensions.GetAttributeList<TEnum>().Except("Server");
+    }
+
+    private async Task HandleValueChange(string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            var EnumValue = EnumExtensions.GetValueFromAttribute<TEnum>(value);
+            if (Value.ToString() != EnumValue.ToString())
+            {
+                await ValueChanged.InvokeAsync(EnumValue);
+                await OnInput.InvokeAsync();
+            }
+        }
+    }
+}

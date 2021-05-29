@@ -1,0 +1,50 @@
+﻿@namespace Common.Web
+
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+
+<Paragraph Class="center-text" Style=@($"color: {Colors.Primary}; margin-bottom: 0; margin-top:10px;")>Select theme</Paragraph>
+
+<div class="toggle-wrapper">
+    <div class="toggleContainer">
+        <div @onclick="@(async () => await ChangeThemeClicked("auto"))" class="@CssAuto" style="width: 31%;">Auto</div>
+        <div @onclick="@(async () => await ChangeThemeClicked("light"))" class="@CssLight" style="width: 36%;">Light</div>
+        <div @onclick="@(async () => await ChangeThemeClicked("dark"))" class="@CssDark" style="width: 30%;">Dark</div>
+        <div class="toggle" style="@CssBackground"></div>
+    </div>
+</div>
+
+@code {
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    [Inject]
+    private ThemeService ThemeService { get; set; }
+
+    async Task ChangeThemeClicked(string theme)
+    {
+        ThemeService.Theme = theme;
+        await JSRuntime.InvokeVoidAsync("changeTheme", theme);
+    }
+
+    string CssActive = "toggleOption selected";
+    string CssInActive = "toggleOption";
+
+    string CssAuto { get { return ThemeService.Theme == "auto" ? CssActive : CssInActive; } }
+    string CssLight { get { return ThemeService.Theme == "light" ? CssActive : CssInActive; } }
+    string CssDark { get { return ThemeService.Theme == "dark" ? CssActive : CssInActive; } }
+
+    string CssBackground
+    {
+        get
+        {
+            if (ThemeService.Theme == "auto")
+                return "width: 33.3333%; transform: translateX(0%);";
+            else if (ThemeService.Theme == "light")
+                return "width: 33.3333%; transform: translateX(100%);";
+            else
+                return "width: 33.3333%; transform: translateX(200%);";
+        }
+    }
+}

@@ -1,0 +1,27 @@
+﻿@namespace Common.Web
+
+<img src=@Path() style=@($"width: {Width}; height: {Height}; margin: {Margin.ToString()}; object-fit: contain;")>
+
+@code {
+
+    [Parameter]
+    public string Src { get; set; }
+
+    [Parameter]
+    public string Width { get; set; } = "auto";
+
+    [Parameter]
+    public string Height { get; set; } = "auto";
+
+    [Parameter]
+    public Border Margin { get; set; } = new Border("20px");
+
+    [Parameter]
+    public bool DisableCache { get; set; }
+
+    private string Path()
+    {
+        if(DisableCache) return Src + "?" + DateTime.Now.Millisecond;
+        return Src;
+    }
+}

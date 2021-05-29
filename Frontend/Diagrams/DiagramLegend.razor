@@ -1,0 +1,17 @@
+﻿@namespace Common.Web
+
+<Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@(new Border{Top="10px"}) Wrap=@FlexWrap.Wrap>
+    @foreach (var item in Data)
+    {
+        <Horizontal Width="auto" Margin=@(new Border("10px", "0px"))>
+            <Icon IconType="pie_chart" Color=@item.Color Margin=@Border.FromRight("10px") />
+            <Paragraph Style="text-align: center">@item.Id</Paragraph>
+        </Horizontal>
+    }
+</Horizontal>
+
+@code
+{
+    [Parameter]
+    public IEnumerable<ChartData> Data { get; set; }
+}

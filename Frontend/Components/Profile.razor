@@ -1,0 +1,12 @@
+﻿@namespace Common.Web
+
+@using Common.Application.Models;
+
+<Heading Margin=@Border.FromTop("10px") Class="center-text">@User.Name</Heading>
+
+@code
+{
+    [Parameter]
+    public AppUser User { get; set; }
+
+}

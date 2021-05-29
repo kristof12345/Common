@@ -1,0 +1,34 @@
+﻿@namespace Common.Web
+@inherits AppContainer
+
+@using Syncfusion.Blazor.Popups
+
+<SfDialog Visible=@IsOpen VisibleChanged=@IsOpenChanged Width=@Width IsModal="true">
+    <DialogEvents OnOverlayClick=@OnOverlayclick />
+    <DialogAnimationSettings Effect=@DialogEffect.Zoom Duration=400 Delay=0/>
+    <DialogTemplates>
+        <Header>
+            <Heading Class="center-text">@Title</Heading>
+        </Header>
+        <Content>
+            @ChildContent
+        </Content>
+    </DialogTemplates>
+</SfDialog>
+
+@code
+{
+    [Parameter]
+    public bool IsOpen { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<bool> IsOpenChanged { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    private async Task OnOverlayclick()
+    {
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

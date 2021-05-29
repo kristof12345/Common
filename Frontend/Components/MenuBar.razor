@@ -1,0 +1,22 @@
+﻿@namespace Common.Web
+
+@using Microsoft.AspNetCore.Components.Web;
+
+<div class="menu-background">
+    <p @onclick=@Navigate class="menu-logo">Investment App</p>
+    <img @onclick=@OnMenuClick class="menu-dropdown" src="./images/menu-button.png" alt="menu" />
+</div>
+
+@code {
+
+    [Parameter]
+    public EventCallback OnMenuClick { get; set; }
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    private void Navigate()
+    {
+        NavigationManager.NavigateTo("./");
+    }
+}

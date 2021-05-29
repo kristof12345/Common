@@ -1,0 +1,6 @@
+﻿@namespace Common.Web
+@inherits AppContainer
+
+<div class=@($"container {Class}") id =@Id style=@($"width: {Width}; max-width: {MaxWidth}; height: {Height}; padding: {Padding.ToString()}; margin: {Margin.ToString()}; justify-content: {VerticalAlign}; {Style}") onclick=@OnClick>
+    @ChildContent
+</div>

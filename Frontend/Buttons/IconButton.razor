@@ -1,0 +1,27 @@
+﻿@namespace Common.Web
+
+<i onclick=@OnClick class=@($"material-icons clickable {Class}") style=@($"padding: 0px; font-size: {Size}; color: {Color}; margin: {Margin.ToString()}; {Style}")>@IconType</i>
+
+@code
+{
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    [Parameter]
+    public string IconType { get; set; }
+
+    [Parameter]
+    public string Color { get; set; } = "inherit !important";
+
+    [Parameter]
+    public string Size { get; set; } = "24px";
+
+    [Parameter]
+    public Border Margin { get; set; } = new Border("0px");
+
+    [Parameter]
+    public string Class { get; set; }
+
+    [Parameter]
+    public string Style { get; set; }
+}

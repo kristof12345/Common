@@ -1,0 +1,28 @@
+﻿@namespace Common.Web
+
+<div class="circle-image" style=@($"background-image: url({Path()}); width: {Size}px; height: {Size}px; margin: {Margin.ToString()}; border: {BorderWidth.ToString()}px solid #eee;") />
+
+@code {
+
+    [Parameter]
+    public string Src { get; set; }
+
+    [Parameter]
+    public int Size { get; set; } = 150;
+
+    [Parameter]
+    public Border Margin { get; set; } = new Border("auto", "1em");
+
+    [Parameter]
+    public int BorderWidth { get; set; } = 5;
+
+    [Parameter]
+    public bool DisableCache { get; set; }
+
+    private string Path()
+    {
+        if (DisableCache) return Src + "?" + DateTime.Now.Millisecond;
+        return Src;
+    }
+
+}

@@ -1,0 +1,23 @@
+﻿@namespace Common.Web
+@inherits AppInput<DateTime?>
+
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Calendars
+@using Microsoft.AspNetCore.Components.Forms
+
+<p style=@($"width: {Width}")>
+    <SfDatePicker Value=@Value ValueChanged=@ValueChanged Min=@Minimum Max=@Maximum Format="yyyy. MM. dd." FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) ValueExpression=@ValidationExpression />
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>
+
+@code
+{
+    [Parameter]
+    public DateTime Minimum { get; set; } = DateTime.MinValue;
+
+    [Parameter]
+    public DateTime Maximum { get; set; } = DateTime.MaxValue;
+}

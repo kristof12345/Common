@@ -1,0 +1,32 @@
+﻿@namespace Common.Web
+@inherits ListInput
+
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.DropDowns
+@using Microsoft.AspNetCore.Components.Forms
+
+<p style=@($"width: {Width}")>
+    <SfAutoComplete Value=@Value ValueChanged=@HandleValueChange DataSource=@Items FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) ValueExpression=@ValidationExpression TValue="string" TItem="string">
+        <AutoCompleteEvents TItem="string" TValue="string" OnValueSelect=@OnValueSelected />
+    </SfAutoComplete>
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>
+
+@code
+{
+    private async Task HandleValueChange(string value)
+    {
+        if (Value != value)
+        {
+            await ValueChanged.InvokeAsync(value);
+
+            if (string.IsNullOrEmpty(value))
+            {
+                await OnInput.InvokeAsync();
+            }
+        }
+    }
+}

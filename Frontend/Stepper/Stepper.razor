@@ -1,0 +1,60 @@
+﻿@namespace Common.Web
+@inherits AppContainer
+
+<Vertical Height=@Height Width=@Width>
+    <div class="stepper">
+        @foreach (var item in Steps.Select((title, index) => new { index, title }))
+        {
+            <Step Title=@item.title Number=@item.index Active=@(item.index == Index) Completed=@(item.index < Index) />
+        }
+    </div>
+
+    @ChildContent
+    @if(!HideButtons)
+    {
+    <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>
+        <Button OnClick=@Back Disabled=@(Index == 0)>Back </Button>
+        @if (Index < Steps.Count() - 1)
+        {
+            <Button OnClick=@Next>Next </Button>
+        }
+        else
+        {
+            <Button OnClick=@Finish>Finish </Button>
+        }
+    </Horizontal>
+    }
+</Vertical>
+
+@code
+{
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public EventCallback<int> IndexChanged { get; set; }
+
+    [Parameter]
+    public IEnumerable<string> Steps { get; set; }
+
+    [Parameter]
+    public EventCallback OnFinish { get; set; }
+
+    [Parameter]
+    public bool HideButtons { get; set; }
+
+    private async Task Finish()
+    {
+        await OnFinish.InvokeAsync();
+    }
+
+    private async Task Next()
+    {
+        await IndexChanged.InvokeAsync(Index +1);
+    }
+
+    private async Task Back()
+    {
+        await IndexChanged.InvokeAsync(Index - 1);
+    }
+}

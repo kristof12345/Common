@@ -1,0 +1,6 @@
+﻿@namespace Common.Web
+@inherits AppContainer
+
+<div class=@($"vertical {Class}") style=@($"align-items: {HorizontalAlign}; justify-content: {VerticalAlign}; flex-wrap: {Wrap}; width: {Width}; height: {Height}; min-width: {MinWidth}; max-width: {MaxWidth}; padding: {Padding.ToString()}; margin: {Margin.ToString()}; {Style}")>
+    @ChildContent
+</div>

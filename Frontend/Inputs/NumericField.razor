@@ -1,0 +1,29 @@
+﻿@namespace Common.Web
+@inherits AppInput<T>
+@typeparam T
+
+@using Syncfusion.Blazor.Inputs
+@using Microsoft.AspNetCore.Components.Forms
+
+<p style=@($"width: {Width}")>
+    <SfNumericTextBox Value=@Value ValueChanged=@ValueChanged Min=@Min Max=@Max Step=@Step FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue="T" Format=@Format ValueExpression=@ValidationExpression autofocus />
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>
+
+@code
+{
+    [Parameter]
+    public T Min { get; set; }
+
+    [Parameter]
+    public T Max { get; set; }
+
+    [Parameter]
+    public T Step { get; set; }
+
+    [Parameter]
+    public string Format { get; set; }
+}

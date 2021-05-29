@@ -1,0 +1,53 @@
+﻿@namespace Common.Web
+
+@using Syncfusion.Blazor.Buttons
+
+<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{GetButtonStyle()} {Class}") style=@($"width: {Width}; height: {Height}; margin: {Margin.ToString()}; {GetColorStyle()} {Style}")>@ChildContent</SfButton>
+
+@code
+{
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Link { get; set; }
+
+    [Parameter]
+    public string Color { get; set; } = Colors.Primary;
+
+    [Parameter]
+    public string Type { get; set; } = "button";
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    public bool Outlined { get; set; }
+
+    [Parameter]
+    public string Width { get; set; } = "auto";
+
+    [Parameter]
+    public string Height { get; set; } = "36px";
+
+    [Parameter]
+    public Border Margin { get; set; } = new Border("0px");
+
+    [Parameter]
+    public string Class { get; set; }
+
+    [Parameter]
+    public string Style { get; set; }
+
+    private string GetColorStyle() { return Outlined ? $"color: {Color}; border-color: {Color} !important;" : $"background-color: {Color};"; }
+
+    private string GetButtonStyle() { return Outlined ? "e-outline" : ""; }
+
+    private void OnClick()
+    {
+        NavigationManager.NavigateTo(Link);
+    }
+}
