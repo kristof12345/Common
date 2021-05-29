@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Application.Models;
 
 namespace Common.Application.Extensions
 {
@@ -40,6 +41,16 @@ namespace Common.Application.Extensions
         public static List<T> From<T>(T item)
         {
             return Enumerable.Repeat(item, 1).ToList();
+        }
+
+        public static T GetById<T>(this IEnumerable<T> list, string id) where T : IEntity<string>
+        {
+            return list.FirstOrDefault(item => item.Id == id);
+        }
+
+        public static T GetByContent<T>(this IEnumerable<T> list, string content) where T : IUnique
+        {
+            return list.FirstOrDefault(item => item.Content == content);
         }
     }
 }

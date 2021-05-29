@@ -3,13 +3,15 @@
         <TargetFramework>net5.0</TargetFramework>
         <PackOnBuild>true</PackOnBuild>
         <PackageId>Waikiki.Common.Application</PackageId>
-        <PackageVersion>1.0</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
         <Authors>Papp Kristóf</Authors>
         <Copyright>All rights reserved.</Copyright>
         <Owners>Papp Kristof</Owners>
         <Summary>Common components for building client-server applications.</Summary>
         <Title>Waikiki.Common.Application</Title>
         <Description>Common components for building client-server applications.</Description>
+        <PackageLicenseUrl>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Models\" />

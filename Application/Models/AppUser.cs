@@ -10,6 +10,8 @@
 
         public string Token { get; set; }
 
+        public string District { get; set; }
+
         public UserType Type { get; set; }
     }
 
