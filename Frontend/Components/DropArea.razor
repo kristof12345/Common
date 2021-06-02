@@ -1,0 +1,28 @@
+@namespace Common.Web
+
+@using Plk.Blazor.DragDrop
+@using Common.Application.Models;
+@using Microsoft.AspNetCore.Components.Web;
+
+<Dropzone Items=@Items OnItemDrop=@OnChange InstantReplace="true">
+    <Paragraph @onclick=@(async() => await HandleClick(context)) Class="option-text">@context.Content</Paragraph>
+</Dropzone>
+
+
+@code {
+
+    [Parameter]
+    public List<IUnique> Items { get; set; }
+
+    [Parameter]
+    public EventCallback<IUnique> OnChange { get; set; }
+
+    [Parameter]
+    public EventCallback<IUnique> OnClick { get; set; }
+
+    private async Task HandleClick(IUnique item)
+    {
+        await OnClick.InvokeAsync(item);
+        await OnChange.InvokeAsync(null);
+    }
+}

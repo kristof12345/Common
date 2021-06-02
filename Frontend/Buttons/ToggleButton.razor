@@ -1,0 +1,45 @@
+@namespace Common.Web
+
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="toggle-body">
+    <div class="toggle-container">
+        <form class="toggle">
+            <input type="radio" id="choice1" name="choice" value="creative">
+            <label for="choice1" @onclick=@HandleLeftClick>@LeftLabel</label>
+            <input type="radio" id="choice2" name="choice" value="productive">
+            <label for="choice2" @onclick=@HandleRightClick>@RightLabel</label>
+            <div id="flap">
+                <span class="content">@Tab</span>
+            </div>
+        </form>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string LeftLabel { get; set; } = "Local";
+
+    [Parameter]
+    public string RightLabel { get; set; } = "National";
+
+    [Parameter]
+    public string Tab { get; set; }
+
+    [Parameter]
+    public EventCallback<string> TabChanged { get; set; }
+
+    private async Task HandleLeftClick()
+    {
+        Tab = LeftLabel;
+        await TabChanged.InvokeAsync(Tab);
+    }
+
+    private async Task HandleRightClick()
+    {
+        Tab = RightLabel;
+        await TabChanged.InvokeAsync(Tab);
+    }
+
+}

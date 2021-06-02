@@ -1,0 +1,26 @@
+@namespace Common.Web
+
+<Vertical Width=@Width MinWidth="160px">
+    <CircleImage Src=@Image Size=@Size BorderWidth=3 />
+    <Subtitle Class="center-text">@Name</Subtitle>
+    <Subtitle Class="center-text" Style=@($"color: {Colors.Primary};")>@Position</Subtitle>
+</Vertical>
+
+@code {
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Image { get; set; }
+
+    [Parameter]
+    public string Position { get; set; }
+
+    [Parameter]
+    public int Size { get; set; } = 150;
+
+    [Parameter]
+    public string Width { get; set; } = "20%";
+
+}

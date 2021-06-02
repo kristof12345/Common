@@ -1,0 +1,97 @@
+@namespace Common.Web
+
+@using System.Net.Http;
+@using System.IO;
+@using BlazorInputFile;
+
+
+<div class="upload-drag-drop-zone" style=@($"border-color: {Border}")>
+    <InputFile OnChange=@HandleChange />
+    <div class="vertical" style="align-items: center; padding: 10px;">
+        @if (ImageUri != null)
+        {
+            <img src=@ImageUri style="border-radius: 100%; width: 50px; height: 50px; object-fit: cover;" />
+        }
+        <p style="font-size: large; margin: auto;">
+            @Status
+        </p>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public MultipartFormDataContent File { get; set; }
+
+    [Parameter]
+    public EventCallback<MultipartFormDataContent> FileChanged { get; set; }
+
+    [Parameter]
+    public int MaxFileSize { get; set; } = 10 * 1024 * 1024; // 10MB
+
+    [Parameter]
+    public string Format { get; set; } = "image/png";
+
+    [Parameter]
+    public string Default { get; set; }
+
+    private const string DefaultStatus = "Drop an image file here to upload it, or click to choose a file.";
+
+    private string Status = DefaultStatus;
+
+    private string ImageUri;
+
+    private string Border = Colors.Primary;
+
+    protected override void OnParametersSet()
+    {
+        if (Default != null && File == null)
+        {
+            ImageUri = Default + "?" + DateTime.Now.Millisecond;
+            Status = "Original image.";
+        }
+    }
+
+    private async Task HandleChange(IFileListEntry[] files)
+    {
+        var file = files.FirstOrDefault();
+        if (file != null)
+        {
+            if (file.Size > MaxFileSize)
+            {
+                Status = $"That's too big. Max size: {MaxFileSize} bytes.";
+                Clear();
+            }
+            else if (file.Type != Format)
+            {
+                Status = "Invalid file. Only png images are allowed.";
+                Clear();
+            }
+            else
+            {
+                Border = Colors.Warning;
+                Status = "Loading image...";
+
+                var imageFile = await file.ToImageFileAsync(Format, 640, 480);
+                var imageStream = new MemoryStream();
+                await imageFile.Data.CopyToAsync(imageStream);
+                ImageUri = $"data:{Format};base64,{Convert.ToBase64String(imageStream.ToArray())}";
+
+                Border = Colors.Success;
+                Status = $"File selected: {file.Name}.";
+
+                var ms = new MemoryStream();
+                await file.Data.CopyToAsync(ms);
+                File = new MultipartFormDataContent { { new ByteArrayContent(ms.GetBuffer()), "\"upload\"", file.Name } };
+            }
+        }
+        await FileChanged.InvokeAsync(File);
+    }
+
+    private void Clear()
+    {
+        ImageUri = null;
+        Border = Colors.Error;
+        File = null;
+    }
+}
