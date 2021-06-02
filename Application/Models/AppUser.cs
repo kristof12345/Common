@@ -18,6 +18,10 @@
     public enum UserType
     {
         User,
+        Citizen,
+        Municipal,
+        Government,
         Admin,
+        Server
     }
 }
