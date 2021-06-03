@@ -3,7 +3,7 @@
         <TargetFramework>net5.0</TargetFramework>
         <PackOnBuild>true</PackOnBuild>
         <PackageId>Waikiki.Common.Application</PackageId>
-        <PackageVersion>1.0.4</PackageVersion>
+        <PackageVersion>1.0.12</PackageVersion>
         <Authors>Papp Kristóf</Authors>
         <Copyright>All rights reserved.</Copyright>
         <Owners>Papp Kristof</Owners>
@@ -16,5 +16,8 @@
     <ItemGroup>
         <Folder Include="Models\" />
         <Folder Include="Extensions\" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 </Project>

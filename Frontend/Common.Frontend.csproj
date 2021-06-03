@@ -8,7 +8,8 @@
 		<PackageLicenseUrl>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicenseUrl>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>1.0.4</PackageVersion>
+		<PackageVersion>1.0.12</PackageVersion>
+		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Common\Application\Common.Application.csproj" />

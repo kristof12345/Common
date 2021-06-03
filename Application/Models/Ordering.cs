@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Common.Application.Models
+namespace Common.Application
 {
     public enum OrderDirection
     {

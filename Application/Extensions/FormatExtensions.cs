@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace Common.Application.Extensions
+namespace Common.Application
 {
     public static class FormatExtensions
     {

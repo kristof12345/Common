@@ -3,17 +3,20 @@
 @using Microsoft.AspNetCore.Components.Web;
 
 <div class="menu-background">
-    <p @onclick=@Navigate class="menu-logo">Investment App</p>
+    <p @onclick=@Navigate class="menu-logo">@Title</p>
     <img @onclick=@OnMenuClick class="menu-dropdown" src="./images/menu-button.png" alt="menu" />
 </div>
 
-@code {
+@code
+{
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
 
     [Parameter]
     public EventCallback OnMenuClick { get; set; }
-
-    [Inject]
-    public NavigationManager NavigationManager { get; set; }
 
     private void Navigate()
     {

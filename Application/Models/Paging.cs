@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Common.Application.Models
+namespace Common.Application
 {
     public class PagedResult<T>
     {

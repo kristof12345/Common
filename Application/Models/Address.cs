@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Common.Application.Models
+namespace Common.Application
 {
     public class Address
     {

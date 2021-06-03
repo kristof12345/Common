@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Application.Models;
 
-namespace Common.Application.Extensions
+namespace Common.Application
 {
     public static class ListExtensions
     {

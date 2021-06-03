@@ -1,8 +1,8 @@
 @namespace Common.Web
 
 @using Plk.Blazor.DragDrop
-@using Common.Application.Models;
-@using Microsoft.AspNetCore.Components.Web;
+@using Common.Application
+@using Microsoft.AspNetCore.Components.Web
 
 <Dropzone Items=@Items OnItemDrop=@OnChange InstantReplace="true">
     <Paragraph @onclick=@(async() => await HandleClick(context)) Class="option-text">@context.Content</Paragraph>

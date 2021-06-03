@@ -1,6 +1,8 @@
-﻿namespace Common.Web
+﻿using Common.Application;
+
+namespace Common.Web
 {
-    public class ChartData
+    public class ChartData : IEntity<string>
     {
         public string Id { get; set; }
 

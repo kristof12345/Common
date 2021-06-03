@@ -1,4 +1,4 @@
-﻿namespace Common.Application.Models
+﻿namespace Common.Application
 {
     public interface IUnique : IEntity<string>
     {
