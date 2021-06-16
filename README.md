@@ -1,6 +1,8 @@
 # Common
 
 [![Test](https://github.com/kristof12345/Common/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kristof12345/Common/actions/workflows/dotnet.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f3a1b473e1b84f468a701394d368ceb6)](https://www.codacy.com/gh/kristof12345/Common/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristof12345/Common&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/kristof12345/Common/branch/master/graph/badge.svg?token=U8NGPP5kcl)](https://codecov.io/gh/kristof12345/Common)
 
 Common components and classes for ASP.NET client-server projects.
 
