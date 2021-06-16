@@ -13,17 +13,18 @@ namespace Common.Backend
             return GenerateToken(username, name, type, "National");
         }
 
-        public AppUser GenerateToken(string username, Name name, UserType type, string district)
+        public AppUser GenerateToken(string id, Name name, UserType type, string district)
         {
             var token = new JwtBuilder()
                 .WithAlgorithm(new HMACSHA256Algorithm())
                 .WithSecret(App.TokenSettings.Secret)
                 .AddClaim("exp", DateTimeOffset.UtcNow.AddMinutes(App.TokenSettings.ExpireMinutes).ToUnixTimeSeconds())
-                .AddClaim("username", username)
+                .AddClaim("id", id)
+                .AddClaim("name", name)
                 .AddClaim("type", type)
                 .AddClaim("district", district)
                 .Encode();
-            return new AppUser { Id = username, Name = name, Type = type, Token = token };
+            return new AppUser { Id = id, Name = name, Type = type, Token = token };
         }
 
         public AppUser DecodeToken(string token)

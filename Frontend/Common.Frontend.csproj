@@ -15,11 +15,11 @@
 		<ProjectReference Include="..\..\Common\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.7" />
 		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
 		<PackageReference Include="BlazorInputFile" Version="0.2.0" />
         <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
-		<PackageReference Include="Blazored.LocalStorage" Version="4.1.1" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.1.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.DataAnnotations.Validation" Version="3.2.0-rc1.20223.4" />
 		<PackageReference Include="Syncfusion.Blazor" Version="18.4.0.49" />
 	</ItemGroup>
