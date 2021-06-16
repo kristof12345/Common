@@ -1,0 +1,32 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
+
+      - name: Build with dotnet
+        run: dotnet build ./Waikiki.Common.sln
+
+      - name: Test with dotnet
+        run: dotnet test ./Waikiki.Common.sln /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover
+
+      - name: Upload code coverage
+        uses: codecov/codecov-action@v1
+        with:
+          token: 50b3d7d3-4e61-4caa-9489-5a6c2b3fc7fd
+          file: ./Tests/coverage.opencover.xml
