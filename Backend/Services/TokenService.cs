@@ -24,7 +24,7 @@ namespace Common.Backend
                 .AddClaim("type", type)
                 .AddClaim("district", district)
                 .Encode();
-            return new AppUser { Id = id, Name = name, Type = type, Token = token };
+            return new AppUser { Id = id, Name = name, Type = type, Token = token, District = district };
         }
 
         public AppUser DecodeToken(string token)
