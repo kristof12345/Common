@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Backend\Common.Backend.csproj" />
     <ProjectReference Include="..\Frontend\Common.Frontend.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>
