@@ -1,5 +1,7 @@
 # Common
 
+[![Test](https://github.com/kristof12345/Common/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kristof12345/Common/actions/workflows/dotnet.yml)
+
 Common components and classes for ASP.NET client-server projects.
 
 All Rights Reserved
