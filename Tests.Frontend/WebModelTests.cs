@@ -3,7 +3,7 @@ using Common.Application;
 using Common.Web;
 using Xunit;
 
-namespace Common.Tests.Models
+namespace Common.Tests.Frontend
 {
     public class WebModelTests
     {

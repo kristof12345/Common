@@ -11,70 +11,60 @@ namespace Common.Tests.Models
         {
             [EnumMember(Value = "Apple")]
             A,
-            [EnumMember(Value = "Banana")]
+
             B,
             [EnumMember(Value = "Coconut")]
             C
         }
 
         [Fact]
-        public void EnumConverterGetAttributeListTest()
+        public void GetAttributeListTest()
         {
             var list = EnumExtensions.GetAttributeList<TestEnum>();
             Assert.Equal(3, list.Count);
-            Assert.Equal("Apple", list.First());
-        }
-
-        public enum TestEnum2
-        {
-            A,
-            [EnumMember(Value = "Banana")]
-            B,
-            [EnumMember(Value = "Coconut")]
-            C
+            Assert.Equal("Apple", list[0]);
+            Assert.Null(list[1]);
+            Assert.Equal("Coconut", list[2]);
         }
 
         [Fact]
-        public void EnumConverterGetAttributeListTest2()
+        public void GetAttributeValueTest()
         {
-            var list = EnumExtensions.GetAttributeList<TestEnum2>();
-            Assert.Equal(3, list.Count);
-            Assert.Null(list.First());
-            Assert.Equal("Coconut", list.Last());
+            var enumval = TestEnum.A;
+            Assert.Equal("Apple", enumval.GetAttributeValue());
         }
 
         [Fact]
-        public void EnumConverterValueTest3()
+        public void GetAttributeValueEmptyTest()
         {
-            var type = TestEnum2.A;
+            var type = TestEnum.B;
             Assert.Equal("", type.GetAttributeValue());
         }
 
         [Fact]
-        public void EnumParserTest2()
+        public void GetAttributeValueNullTest()
         {
-            Assert.Throws<System.ArgumentException>(() => EnumExtensions.GetValueFromAttribute<TestEnum2>("Apple"));
+            TestEnum? enumVar = null;
+            Assert.Equal("", enumVar.GetAttributeValue());
         }
 
         [Fact]
-        public void EnumConverterValueTest()
+        public void ParseEnumTest()
         {
-            var enumval = UserType.Municipal;
-            Assert.Equal("Municipal employee", enumval.GetAttributeValue());
+            var value = EnumExtensions.GetValueFromAttribute<TestEnum>("Coconut");
+            Assert.Equal(TestEnum.C, value);
         }
 
         [Fact]
-        public void EnumConverterValueTest2()
+        public void ParseInvalidEnumTest()
         {
-            var type = UserType.Government;
-            Assert.Equal("Government employee", type.GetAttributeValue());
+            Assert.Throws<System.ArgumentException>(() => EnumExtensions.GetValueFromAttribute<TestEnum>("Banana"));
         }
 
         [Fact]
-        public void EnumParserTest()
+        public void ParseNotEnumTest()
         {
-            var value = EnumExtensions.GetValueFromAttribute<UserType>("Temporary worker");
-            Assert.Equal(UserType.Worker, value);
+            Assert.Throws<System.InvalidOperationException>(() => EnumExtensions.GetValueFromAttribute<string>("Banana"));
         }
     }
 }

@@ -33,7 +33,10 @@ namespace Common.Tests.Models
         public void ServerSettingsTest()
         {
             var settings = new ServerSettings { BaseUrl = "url" };
+            ServerSettings.Instance = settings;
+
             Assert.Equal("url", settings.BaseUrl);
+            Assert.Equal("url", ServerSettings.Instance.BaseUrl);
         }
     }
 }

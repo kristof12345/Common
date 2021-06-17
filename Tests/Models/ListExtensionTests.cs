@@ -115,5 +115,29 @@ namespace Common.Tests.Models
             Assert.Equal("apple", list.First());
             Assert.Equal("orange", list.Last());
         }
+
+        public class Unique : IUnique
+        {
+            public string Content { get; set; }
+
+            public string Id { get; set; }
+        }
+
+        [Fact]
+        public void GetByContentTest()
+        {
+            var list = new List<Unique>
+            {
+                new Unique { Id = "A", Content = "a" },
+                new Unique { Id = "B", Content = "b" }
+            };
+
+            Assert.Equal("a", list.GetById("A").Content);
+            Assert.Equal("b", list.GetById("B").Content);
+            Assert.Null(list.GetById("C"));
+            Assert.Equal("A", list.GetByContent("a").Id);
+            Assert.Equal("B", list.GetByContent("b").Id);
+            Assert.Null(list.GetByContent("c"));
+        }
     }
 }

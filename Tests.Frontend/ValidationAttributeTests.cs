@@ -2,7 +2,7 @@
 using System;
 using Common.Web;
 
-namespace Common.Tests.Attributes
+namespace Common.Tests.Frontend
 {
     public class ValidationAttributeTests
     {

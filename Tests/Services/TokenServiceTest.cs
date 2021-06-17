@@ -1,3 +1,4 @@
+using System;
 using Common.Application;
 using Common.Backend;
 using Xunit;
@@ -66,6 +67,29 @@ namespace Common.Tests.Services
             Assert.Equal("Sawyer", user.Name.Surname);
             Assert.Equal(UserType.User, user.Type);
             Assert.Equal("National", user.District);
+        }
+
+        [Fact]
+        public void InvalidTokenTest()
+        {
+            // Arrange
+            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
+            var tokenService = new TokenService();
+            string msg = "";
+
+            // Act
+            try
+            {
+                tokenService.DecodeToken("invalid");
+            }
+            catch (Exception e)
+            {
+                msg = e.Message;
+            }
+
+            // Assert
+            Assert.Throws<TokenException>(() => tokenService.DecodeToken("invalid"));
+            Assert.Equal("Invalid token.", msg);
         }
     }
 }
