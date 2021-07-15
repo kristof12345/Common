@@ -5,12 +5,12 @@
 @using Microsoft.AspNetCore.Components.Web
 
 <Dropzone Items=@Items OnItemDrop=@OnChange InstantReplace="true">
-    <Paragraph @onclick=@(async() => await HandleClick(context)) Class="option-text">@context.Content</Paragraph>
+    <Paragraph OnClick=@(async() => await HandleClick(context)) Class="option-text">@context.Content</Paragraph>
 </Dropzone>
 
 
-@code {
-
+@code
+{
     [Parameter]
     public List<IUnique> Items { get; set; }
 

@@ -1,0 +1,43 @@
+﻿@inherits LayoutComponentBase
+
+@namespace Common.Demo
+
+@using Syncfusion.Blazor.Notifications
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <div class="main">
+        <div class="top-row px-4">
+            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+        </div>
+
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>
+
+<SfToast @ref="ToastObj">
+    <ToastPosition X="Right" Y="Bottom"></ToastPosition>
+</SfToast>
+
+@code
+{
+    [Inject]
+    protected ToastService Toaster { get; set; }
+
+    private SfToast ToastObj;
+
+    private bool Opened { get; set; } = false;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Toaster.Toaster = ToastObj;
+        }
+    }
+}

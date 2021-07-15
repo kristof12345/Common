@@ -8,6 +8,12 @@ namespace Common.Web
         [Parameter]
         public IEnumerable<T> Data { get; set; }
 
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
+
+        [Parameter]
+        public long Max { get; set; }
+
         protected string Style { get { return Loaded ? "" : "visibility: hidden;"; } }
 
         protected bool Loaded { get; set; }

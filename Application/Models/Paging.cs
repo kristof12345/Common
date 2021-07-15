@@ -48,30 +48,4 @@ namespace Common.Application
             return "?Start=" + Start + "&Size=" + Size;
         }
     }
-
-    public class DateRange
-    {
-        public static readonly DateRange Default = new DateRange();
-
-        public DateTime From { get; }
-
-        public DateTime? To { get; }
-
-        public DateRange()
-        {
-            From = DateTime.MinValue;
-            To = DateTime.MaxValue;
-        }
-
-        public DateRange(DateTime? from, DateTime? to)
-        {
-            From = from ?? DateTime.MinValue;
-            To = to ?? DateTime.MaxValue;
-        }
-
-        public override string ToString()
-        {
-            return "?From=" + From + "&To=" + To;
-        }
-    }
 }

@@ -1,0 +1,38 @@
+﻿@namespace Common.Web
+@using Syncfusion.Blazor.Charts
+
+@inherits AppChart<object>
+
+<div class="e-stockchart" style="height:450px; width:100%; padding: 20px;">
+    @if (!Loaded)
+    {
+        <div class="loadingindicator" />
+    }
+
+    @if (Data != null)
+    {
+        <div style=@Style>
+            <SfStockChart Theme=@ChartTheme.MaterialDark>
+                <StockChartEvents Loaded=@OnLoad />
+                <StockChartPrimaryXAxis IntervalType="IntervalType.Days" DesiredIntervals="16" LabelFormat="yyyy.MM.dd" EnableAutoIntervalOnZooming="false" />
+                <StockChartChartBorder Width="0" />
+                <StockChartAxes>
+                    <StockChartAxis RowIndex=0 OpposedPosition="false" Name="VolumeAxis" Visible="false" Maximum=@Max />
+                </StockChartAxes>
+                <StockChartRows>
+                    <StockChartRow Height="100%" />
+                    <StockChartRow Height="10%" />
+                </StockChartRows>
+                <StockChartSeriesCollection>
+                    @ChildContent
+                </StockChartSeriesCollection>
+                <StockChartPeriods>
+                    <StockChartPeriod Text="Last week" IntervalType=RangeIntervalType.Weeks Interval="1" />
+                    <StockChartPeriod Text="Last month" IntervalType=RangeIntervalType.Months Interval="1" />
+                    <StockChartPeriod Text="Last year" IntervalType=RangeIntervalType.Years Interval="1" Selected="true" />
+                    <StockChartPeriod Text="All" />
+                </StockChartPeriods>
+            </SfStockChart>
+        </div>
+    }
+</div>

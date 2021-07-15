@@ -8,7 +8,7 @@
     <Copyright>All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicenseUrl>
-    <PackageVersion>1.0.14</PackageVersion>
+    <PackageVersion>1.1.1</PackageVersion>
     <Description>Common components for building ASP.NET backend applications.</Description>
   </PropertyGroup>
 
@@ -22,8 +22,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="JWT" Version="8.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
+    <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+    <PackageReference Include="Hangfire" Version="1.7.24" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="System.IO.FileSystem.Primitives" />
+    <None Remove="Hangfire" />
   </ItemGroup>
 </Project>

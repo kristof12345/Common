@@ -21,5 +21,8 @@ namespace Common.Web
 
         [Parameter]
         public string Style { get; set; }
+
+        [Parameter]
+        public EventCallback OnClick { get; set; }
     }
 }
