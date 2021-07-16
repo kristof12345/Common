@@ -11,8 +11,8 @@ namespace Common.Application
         public string Street { get; set; }
 
         [Required]
-        [Range(1, 1000)]
-        public int Number { get; set; }
+        [Range(1, 10000)]
+        public int? Number { get; set; }
 
         public override string ToString()
         {

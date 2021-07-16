@@ -56,9 +56,9 @@ namespace Common.Web
         protected async Task OnValueSelected(SelectEventArgs<string> args)
         {
             Value = args.ItemData;
+            await ValueChanged.InvokeAsync(args.ItemData);
             if (OnInput.HasDelegate)
             {
-                await ValueChanged.InvokeAsync(args.ItemData);
                 await OnInput.InvokeAsync();
             }
         }

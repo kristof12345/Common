@@ -18,7 +18,7 @@ namespace Common.Web
 
         protected bool Loaded { get; set; }
 
-        protected void OnLoad()
+        protected void OnLoad(object args)
         {
             Loaded = true;
             StateHasChanged();

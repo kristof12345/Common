@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Common.Application
 {
@@ -6,11 +7,13 @@ namespace Common.Application
     {
         public static readonly DateRange Default = new DateRange();
 
-        public DateTime Start { get; set; }
+        [Required]
+        public DateTime? Start { get; set; }
 
-        public DateTime End { get; set; }
+        [Required]
+        public DateTime? End { get; set; }
 
-        public TimeSpan Length { get { return End - Start; } }
+        public TimeSpan Length { get { return End.Value - Start.Value; } }
 
         public DateRange()
         {

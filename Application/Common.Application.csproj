@@ -3,7 +3,7 @@
         <TargetFramework>net5.0</TargetFramework>
         <PackOnBuild>true</PackOnBuild>
         <PackageId>Waikiki.Common.Application</PackageId>
-        <PackageVersion>1.1.2</PackageVersion>
+        <PackageVersion>1.1.5</PackageVersion>
         <Authors>Papp Kristóf</Authors>
         <Copyright>All rights reserved.</Copyright>
         <Owners>Papp Kristof</Owners>

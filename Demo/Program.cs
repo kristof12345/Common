@@ -8,8 +8,6 @@ using Common.Web;
 using Syncfusion.Blazor;
 using Blazored.LocalStorage;
 using Plk.Blazor.DragDrop;
-using MatBlazor;
-using MudBlazor.Services;
 
 namespace Common.Demo
 {
@@ -27,21 +25,9 @@ namespace Common.Demo
             services.AddBlazorDragDrop();
             services.AddBlazoredLocalStorage();
             services.AddSyncfusionBlazor();
-            services.AddMatBlazor();
-            builder.Services.AddMudServices();
 
             services.AddScoped<ToastService>();
             services.AddScoped<ThemeService>();
-
-            services.AddMatToaster(config =>
-            {
-                config.Position = MatToastPosition.BottomRight;
-                config.PreventDuplicates = true;
-                config.NewestOnTop = true;
-                config.ShowCloseButton = true;
-                config.MaximumOpacity = 95;
-                config.VisibleStateDuration = 3000;
-            });
 
             await builder.Build().RunAsync();
         }

@@ -36,6 +36,11 @@
             Left = left;
         }
 
+        public static Border From(string top, string right, string bottom, string left)
+        {
+            return new Border(top, right, bottom, left);
+        }
+
         public static Border FromTop(string border)
         {
             return new Border(border, "0px", "0px", "0px");
