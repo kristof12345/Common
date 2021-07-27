@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Common.Tests.Services
 {
-    public class UnitTest1
+    public class TokenServiceTest
     {
         [Fact]
         public void GenerateTokenTest()

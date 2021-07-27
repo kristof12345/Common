@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Common.Application;
 using Xunit;
 
@@ -39,6 +40,13 @@ namespace Common.Tests.Models
         {
             var range = new DateRange(System.DateTime.Today, System.DateTime.Today.AddDays(5));
             Assert.Equal("?From=" + System.DateTime.Today + "&To=" + System.DateTime.Today.AddDays(5), range.ToString());
+        }
+
+        [Fact]
+        public void DateRangeLengthTest()
+        {
+            var range = new DateRange(System.DateTime.Today, System.DateTime.Today.AddDays(5));
+            Assert.Equal(TimeSpan.FromDays(5), range.Length);
         }
 
         [Fact]

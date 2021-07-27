@@ -1,4 +1,5 @@
 ﻿using Common.Application;
+using Common.Backend;
 using Xunit;
 
 namespace Common.Tests.Models
@@ -37,6 +38,19 @@ namespace Common.Tests.Models
 
             Assert.Equal("url", settings.BaseUrl);
             Assert.Equal("url", ServerSettings.Instance.BaseUrl);
+        }
+
+        [Fact]
+        public void AppTest()
+        {
+            App.Environment = "UnitTest";
+            App.Url = "localhost";
+            App.TokenSettings = new TokenSettings { Secret = "secret", ExpireMinutes = 120 };
+
+            Assert.Equal("UnitTest", App.Environment);
+            Assert.Equal("localhost", App.Url);
+            Assert.Equal("secret", App.TokenSettings.Secret);
+            Assert.Equal(120, App.TokenSettings.ExpireMinutes);
         }
     }
 }
