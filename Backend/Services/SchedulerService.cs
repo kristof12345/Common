@@ -27,7 +27,7 @@ namespace Common.Backend
             RecurringJob.AddOrUpdate(() => SendApiCall(url + "externalData", method), interval);
         }
 
-        public async Task SendApiCall(string url, HttpMethod method)
+        public async Task<bool> SendApiCall(string url, HttpMethod method)
         {
             try
             {
@@ -37,7 +37,10 @@ namespace Common.Backend
             {
                 System.Diagnostics.Debug.WriteLine("Error while executing scheduler call.");
                 System.Diagnostics.Debug.WriteLine(e.Message);
+                return false;
             }
+
+            return true;
         }
     }
 }
