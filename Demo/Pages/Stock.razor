@@ -1,0 +1,31 @@
+﻿@page "/stock"
+
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" )) VerticalAlign=@VerticalAlignment.Start>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.Center>
+            <Heading>@Model.Name</Heading>
+        </Horizontal>
+        <FinanceChart Data=@Model.Prices Max=1000>
+            <StockChartSeries DataSource=@Model.Prices Type=@ChartSeriesType.Candle XName="Date" YName="Close" High="High" Low="Low" Open="Open" Close="Close" />
+            <StockChartSeries DataSource=@Model.Prices Type="ChartSeriesType.Column" XName="Date" YName="Volume" YAxisName="VolumeAxis" Fill=@Colors.Warning />
+        </FinanceChart>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap>
+
+        </Horizontal>
+        <Paragraph> Company description </Paragraph>
+        <Paragraph Align="justify"> @Model.Description</Paragraph>
+    </Paper>
+</Container>
+
+@code
+{
+    [Inject]
+    private DataService<DemoStock> StockService { get; set; }
+
+    private DemoStock Model { get; set; } = new DemoStock();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = await StockService.LoadFromJson("aapl.json");
+    }
+}

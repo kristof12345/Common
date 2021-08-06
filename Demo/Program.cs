@@ -28,6 +28,7 @@ namespace Common.Demo
 
             services.AddScoped<ToastService>();
             services.AddScoped<ThemeService>();
+            services.AddScoped<DataService<DemoStock>>();
 
             await builder.Build().RunAsync();
         }
