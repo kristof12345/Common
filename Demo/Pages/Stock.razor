@@ -5,13 +5,10 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.Center>
             <Heading>@Model.Name</Heading>
         </Horizontal>
-        <FinanceChart Data=@Model.Prices Max=1000>
+        <FinanceChart Data=@Model.Prices Max=@Max>
             <StockChartSeries DataSource=@Model.Prices Type=@ChartSeriesType.Candle XName="Date" YName="Close" High="High" Low="Low" Open="Open" Close="Close" />
             <StockChartSeries DataSource=@Model.Prices Type="ChartSeriesType.Column" XName="Date" YName="Volume" YAxisName="VolumeAxis" Fill=@Colors.Warning />
         </FinanceChart>
-        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap>
-
-        </Horizontal>
         <Paragraph> Company description </Paragraph>
         <Paragraph Align="justify"> @Model.Description</Paragraph>
     </Paper>
@@ -23,6 +20,8 @@
     private DataService<DemoStock> StockService { get; set; }
 
     private DemoStock Model { get; set; } = new DemoStock();
+
+    private long Max { get { return Model.Prices != null ? Model.Prices.Max(s => s.Volume) * 5 : 0; } }
 
     protected override async Task OnInitializedAsync()
     {
