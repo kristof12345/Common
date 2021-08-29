@@ -47,6 +47,11 @@ namespace Common.Application
             return list.FirstOrDefault(item => item.Id == id);
         }
 
+        public static T GetById<T>(this IEnumerable<T> list, int id) where T : IEntity<int>
+        {
+            return list.FirstOrDefault(item => item.Id == id);
+        }
+
         public static T GetByContent<T>(this IEnumerable<T> list, string content) where T : IUnique
         {
             return list.FirstOrDefault(item => item.Content == content);

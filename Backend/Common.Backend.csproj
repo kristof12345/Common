@@ -1,33 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <PackageId>Waikiki.Common.Backend</PackageId>
-    <Authors>Papp Kristóf</Authors>
-    <Owners>Papp Kristóf</Owners>
-    <Copyright>All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicenseUrl>
-    <PackageVersion>1.1.5</PackageVersion>
-    <Description>Common components for building ASP.NET backend applications.</Description>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Application\Common.Application.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Attributes\" />
-    <Folder Include="Services\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="JWT" Version="8.2.3" />
-    <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
-    <PackageReference Include="Hangfire" Version="1.7.24" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="System.IO.FileSystem.Primitives" />
-    <None Remove="Hangfire" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<PackageId>Waikiki.Common.Backend</PackageId>
+		<Authors>Papp Kristóf</Authors>
+		<Owners>Papp Kristóf</Owners>
+		<Copyright>All rights reserved.</Copyright>
+		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicenseUrl>
+		<PackageVersion>1.1.9</PackageVersion>
+		<Description>Common components for building ASP.NET backend applications.</Description>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Application\Common.Application.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Attributes\" />
+		<Folder Include="Services\" />
+		<Folder Include="Interfaces\" />
+		<Folder Include="Extensions\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="JWT" Version="8.2.3" />
+		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+		<PackageReference Include="Hangfire" Version="1.7.24" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="System.IO.FileSystem.Primitives" />
+		<None Remove="Hangfire" />
+		<None Remove="Extensions\" />
+	</ItemGroup>
 </Project>

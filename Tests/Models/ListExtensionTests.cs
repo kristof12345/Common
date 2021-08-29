@@ -118,9 +118,9 @@ namespace Common.Tests.Models
 
         public class Unique : IUnique
         {
-            public string Content { get; set; }
+            public int Id { get; set; }
 
-            public string Id { get; set; }
+            public string Content { get; set; }
         }
 
         [Fact]
@@ -128,15 +128,15 @@ namespace Common.Tests.Models
         {
             var list = new List<Unique>
             {
-                new Unique { Id = "A", Content = "a" },
-                new Unique { Id = "B", Content = "b" }
+                new Unique { Id = 1, Content = "a" },
+                new Unique { Id = 2, Content = "b" }
             };
 
-            Assert.Equal("a", list.GetById("A").Content);
-            Assert.Equal("b", list.GetById("B").Content);
-            Assert.Null(list.GetById("C"));
-            Assert.Equal("A", list.GetByContent("a").Id);
-            Assert.Equal("B", list.GetByContent("b").Id);
+            Assert.Equal("a", list.GetById(1).Content);
+            Assert.Equal("b", list.GetById(2).Content);
+            Assert.Null(list.GetById(3));
+            Assert.Equal(1, list.GetByContent("a").Id);
+            Assert.Equal(2, list.GetByContent("b").Id);
             Assert.Null(list.GetByContent("c"));
         }
     }
