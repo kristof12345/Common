@@ -3,7 +3,7 @@
 
 @using Syncfusion.Blazor.Popups
 
-<SfDialog Visible=@IsOpen VisibleChanged=@IsOpenChanged Width=@Width IsModal="true">
+<SfDialog Visible=@IsOpen VisibleChanged=@IsOpenChanged Width=@Width IsModal="true" >
     <DialogEvents OnOverlayClick=@OnOverlayclick />
     <DialogAnimationSettings Effect=@DialogEffect.Zoom Duration=400 Delay=0/>
     <DialogTemplates>
@@ -11,7 +11,10 @@
             <Heading Class="center-text">@Title</Heading>
         </Header>
         <Content>
-            @ChildContent
+            @if(IsOpen)
+            {
+                @ChildContent
+            }
         </Content>
     </DialogTemplates>
 </SfDialog>

@@ -25,7 +25,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 		<PackageReference Include="JWT" Version="8.2.3" />
 		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
-		<PackageReference Include="Hangfire" Version="1.7.24" />
+		<PackageReference Include="Hangfire" Version="1.7.25" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="System.IO.FileSystem.Primitives" />
