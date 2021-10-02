@@ -566,12 +566,12 @@ text {
 
 /* Inputs */
 
-.e-outline.e-error .e-label-bottom{
+.e-outline.e-error .e-label-bottom {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
 }
 
-.e-multi-line-input .e-label-bottom{
+.e-multi-line-input .e-label-bottom {
     margin-top: 20px !important;
     margin-bottom: 20px !important;
 }
@@ -855,3 +855,24 @@ text {
             transition: transform 0s linear 0.25s;
             transform-style: preserve-3d;
         }
+
+.loadingindicator {
+    margin: auto;
+    margin-top: 180px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid var(--primary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: loader 2s linear infinite;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
