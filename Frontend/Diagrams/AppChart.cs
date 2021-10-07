@@ -12,7 +12,10 @@ namespace Common.Web
         public RenderFragment ChildContent { get; set; }
 
         [Parameter]
-        public long Max { get; set; }
+        public decimal Max { get; set; }
+
+        [Parameter]
+        public decimal Min { get; set; } = 0;
 
         protected string Style { get { return Loaded ? "" : "visibility: hidden;"; } }
 
