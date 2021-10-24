@@ -567,18 +567,15 @@ text {
 /* Inputs */
 
 .e-outline.e-error .e-label-bottom {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
+    margin-top: 10px;
 }
 
-.e-multi-line-input .e-label-bottom {
-    margin-top: 20px !important;
-    margin-bottom: 20px !important;
+.e-dropdownlist ~ .e-label-bottom {
+    margin-top: 0px !important;
 }
 
-.e-float-input {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
+.e-multi-line-input.e-outline.e-error .e-label-bottom {
+    margin-top: 24px !important;
 }
 
     .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) {
