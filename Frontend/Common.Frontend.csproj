@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>Waikiki.Common.Frontend</PackageId>
 		<Authors>Papp Kristóf</Authors>
 		<Copyright>All rights reserved.</Copyright>
 		<PackageLicenseUrl>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicenseUrl>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>1.2.0</PackageVersion>
+		<PackageVersion>1.3.0</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Common\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
 		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
 		<PackageReference Include="BlazorInputFile" Version="0.2.0" />
         <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
