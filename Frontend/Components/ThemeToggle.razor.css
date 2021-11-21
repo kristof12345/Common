@@ -1,0 +1,43 @@
+﻿.toggle-wrapper {
+    margin: 10px;
+    border: solid 3px var(--primary-color);
+    border-radius: 55px;
+}
+
+    .toggle-wrapper label {
+        font-size: 17px;
+        display: block;
+    }
+
+.toggleContainer {
+    width: 100%;
+    position: relative;
+}
+
+    .toggleContainer .toggleOption {
+        font-family: "Helvetica", "Arial", sans-serif !important;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+        font-size: 16px;
+    }
+
+        .toggleContainer .toggleOption.selected {
+            color: #ffffff;
+            cursor: initial;
+        }
+
+    .toggleContainer .toggle {
+        position: absolute;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        transition: all 0.4s ease-in-out;
+        background: var(--secondary-color);
+        border-radius: 55px;
+    }

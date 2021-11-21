@@ -1,0 +1,20 @@
+﻿.paper {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
+}
+
+@media (max-width: 1024px) {
+    .paper {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+}
+
+.body-dark .paper {
+    background-color: #424242;
+}

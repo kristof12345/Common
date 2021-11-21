@@ -13,7 +13,7 @@
     @if(!HideButtons)
     {
     <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>
-        <Button OnClick=@Back Disabled=@(Index == 0)>Back </Button>
+        <Button OnClick=@Back Disabled=@(Index == 0)>Back</Button>
         @if (Index < Steps.Count() - 1)
         {
             <Button OnClick=@Next>Next </Button>

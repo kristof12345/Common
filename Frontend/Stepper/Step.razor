@@ -7,13 +7,12 @@
     }
     <Vertical>
         <StepIcon Active=@Active Completed=@Completed Number=@Number />
-        <span class=@labelStyle>@Title</span>
+        <span class=@("step-label" + (Active || Completed ? "active" : "inactive"))>@Title</span>
     </Vertical>
 </div>
 
-@code {
-    private string labelStyle { get { return (Active || Completed) ? "step-label-text-active" : "step-label-text-inactive"; } }
-
+@code
+{
     [Parameter]
     public bool Active { get; set; } = false;
 
@@ -25,5 +24,4 @@
 
     [Parameter]
     public string Title { get; set; }
-
 }

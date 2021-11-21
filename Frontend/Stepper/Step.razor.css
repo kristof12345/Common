@@ -1,0 +1,33 @@
+﻿.step {
+    padding-left: 8px;
+    padding-right: 8px;
+    flex: 1;
+    position: relative;
+}
+
+.step-label {
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.01071em;
+    margin-top: 16px;
+}
+
+.inactive {
+    color: #bdbdbd;
+}
+
+.step-line {
+    top: 12px;
+    left: calc(-50% + 20px);
+    right: calc(50% + 20px);
+    position: absolute;
+    color: rgba(0, 0, 0, 0.87);
+    display: block;
+    border-color: #bdbdbd;
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+
+.body-dark .active {
+    color: #fff;
+}

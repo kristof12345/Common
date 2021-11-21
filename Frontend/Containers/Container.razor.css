@@ -1,0 +1,16 @@
+﻿.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1920px) {
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}

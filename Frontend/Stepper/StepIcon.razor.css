@@ -1,0 +1,38 @@
+﻿.step-icon-active {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.step-icon-completed {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    font-size: 1.5rem;
+    color: transparent;
+}
+
+    .step-icon-completed path {
+        color: var(--primary-color);
+    }
+
+.step-icon-inactive {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.step-icon-text {
+    fill: #fff;
+    font-size: 0.75rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+
+.body-dark .step-icon-inactive {
+    color: rgba(255, 255, 255, 0.5);
+}

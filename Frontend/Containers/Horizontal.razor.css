@@ -1,0 +1,5 @@
+﻿.horizontal {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
