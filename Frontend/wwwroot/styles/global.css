@@ -79,8 +79,6 @@ form, button, img {
     }
 }
 
-
-
 .accordion-container {
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 4px;
@@ -307,9 +305,7 @@ text {
 }
 
 .container.e-content-animation {
-    min-height: 100vh !important;
     margin-top: 70px !important;
-    justify-content: start !important;
 }
 
 /* Button */
@@ -336,16 +332,19 @@ text {
 
 /* Inputs */
 
-.e-outline.e-error .e-label-bottom {
-    margin-top: 10px;
+.e-outline.e-error .e-label-bottom{
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }
 
-.e-dropdownlist ~ .e-label-bottom {
-    margin-top: 0px !important;
+.e-multi-line-input .e-label-bottom{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
 }
 
-.e-multi-line-input.e-outline.e-error .e-label-bottom {
-    margin-top: 24px !important;
+.e-float-input {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }
 
     .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) {
@@ -402,15 +401,15 @@ text {
 
 /* Date picker */
 
-.body-dark .e-datepicker .e-calendar, .body-dark .e-datepicker .e-calendar .e-footer-container {
-    background-color: #424242 !important;
+    .body-dark .e-datepicker .e-calendar, .body-dark .e-datepicker .e-calendar .e-footer-container{
+        background-color: #424242 !important;
 }
 
-.body-dark .e-datepicker .e-title, .body-dark .e-datepicker .e-week-header th {
+.body-dark .e-datepicker .e-title, .body-dark .e-datepicker .e-week-header th{
     color: white !important;
 }
 
-.body-dark .e-datepicker .e-focused-date span, .body-dark .e-datepicker span:hover {
+.body-dark .e-datepicker .e-focused-date span, .body-dark .e-datepicker span:hover{
     color: black !important;
 }
 
@@ -460,81 +459,6 @@ text {
 
 .mdc-tab-indicator .mdc-tab-indicator__content--underline {
     border-color: var(--primary-color) !important;
-}
-
-/* Drag and Drop */
-
-.plk-dd-dropzone {
-    min-height: 100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
-    padding-top: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.body-dark .plk-dd-dropzone {
-    background-color: #424242;
-}
-
-[draggable] {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
-    width: 600px;
-    height: 80px;
-    max-width: 95%;
-}
-
-.body-dark [draggable] {
-    background-color: #424242;
-}
-
-.plk-dd-intransit {
-    opacity: 0.2;
-}
-
-[draggable] div {
-    width: inherit;
-}
-
-.plk-dd-spacing {
-    height: 20px;
-}
-
-/* File upload */
-
-.upload-drag-drop-zone {
-    border-style: dashed;
-    border-radius: 4px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-    .upload-drag-drop-zone input[type=file] {
-        position: absolute;
-        width: 1594px;
-        height: 100px;
-        opacity: 0;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-@media (max-width: 1860px) {
-    .upload-drag-drop-zone input[type=file] {
-        width: 80%;
-    }
 }
 
 /* Toggle switch */
@@ -623,23 +547,49 @@ text {
             transform-style: preserve-3d;
         }
 
-.loadingindicator {
-    margin: auto;
-    margin-top: 180px;
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid var(--primary-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    animation: loader 2s linear infinite;
+/* Drag and Drop */
+
+.plk-dd-dropzone {
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-@keyframes loader {
-    0% {
-        transform: rotate(0deg);
-    }
+.body-dark .plk-dd-dropzone {
+    background-color: #424242;
+}
 
-    100% {
-        transform: rotate(360deg);
-    }
+[draggable] {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
+    width: 600px;
+    height: 80px;
+    max-width: 95%;
+}
+
+.body-dark [draggable] {
+    background-color: #424242;
+}
+
+.plk-dd-intransit {
+    opacity: 0.2;
+}
+
+[draggable] div {
+    width: inherit;
+}
+
+.plk-dd-spacing {
+    height: 20px;
 }

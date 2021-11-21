@@ -1,6 +1,6 @@
 ﻿@namespace Common.Web
 
-<img src=@Path() style=@($"width: {Width}; height: {Height}; margin: {Margin.ToString()}; object-fit: contain;")>
+<img src=@Path style=@($"width: {Width}; height: {Height}; margin: {Margin}; object-fit: contain;")>
 
 @code {
 
@@ -19,9 +19,8 @@
     [Parameter]
     public bool DisableCache { get; set; }
 
-    private string Path()
+    private string Path
     {
-        if(DisableCache) return Src + "?" + DateTime.Now.Millisecond;
-        return Src;
+        get => DisableCache ? Src + "?" + DateTime.Now.Millisecond : Src;
     }
 }

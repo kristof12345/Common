@@ -1,0 +1,25 @@
+﻿.upload-drag-drop-zone {
+    border-style: dashed;
+    border-radius: 4px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+    .upload-drag-drop-zone input[type=file] {
+        position: absolute;
+        width: 1594px;
+        height: 100px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+@media (max-width: 1860px) {
+    .upload-drag-drop-zone input[type=file] {
+        width: 80%;
+    }
+}

@@ -1,9 +1,9 @@
 ﻿@namespace Common.Web
 
-<div class="circle-image" style=@($"background-image: url({Path()}); width: {Size}px; height: {Size}px; margin: {Margin.ToString()}; border: {BorderWidth.ToString()}px solid #eee;") />
+<div class="circle-image" style=@($"background-image: url({Path}); width: {Size}px; height: {Size}px; margin: {Margin}; border: {BorderWidth}px solid #eee;") />
 
-@code {
-
+@code
+{
     [Parameter]
     public string Src { get; set; }
 
@@ -19,10 +19,8 @@
     [Parameter]
     public bool DisableCache { get; set; }
 
-    private string Path()
+    private string Path
     {
-        if (DisableCache) return Src + "?" + DateTime.Now.Millisecond;
-        return Src;
+        get => DisableCache ? Src + "?" + DateTime.Now.Millisecond : Src;
     }
-
 }

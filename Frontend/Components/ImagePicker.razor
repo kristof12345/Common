@@ -7,7 +7,7 @@
 
 <div class="upload-drag-drop-zone" style=@($"border-color: {Border}")>
     <InputFile OnChange=@HandleChange />
-    <div class="vertical" style="align-items: center; padding: 10px;">
+    <Vertical style="align-items: center; padding: 10px;">
         @if (ImageUri != null)
         {
             <img src=@ImageUri style="border-radius: 100%; width: 50px; height: 50px; object-fit: cover;" />
@@ -15,11 +15,11 @@
         <p style="font-size: large; margin: auto;">
             @Status
         </p>
-    </div>
+    </Vertical>
 </div>
 
-@code {
-
+@code
+{
     [Parameter]
     public MultipartFormDataContent File { get; set; }
 

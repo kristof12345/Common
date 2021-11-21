@@ -11,19 +11,19 @@ else if (Active)
 {
     <svg class="step-icon-active" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="12"></circle>
-        <text class="step-icon-text" x="12" y="16" text-anchor="middle">@(Number + 1)</text>
+        <text x="12" y="16" text-anchor="middle">@(Number + 1)</text>
     </svg>
 }
 else
 {
     <svg class="step-icon-inactive" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="12"></circle>
-        <text class="step-icon-text" x="12" y="16" text-anchor="middle">@(Number + 1)</text>
+        <text x="12" y="16" text-anchor="middle">@(Number + 1)</text>
     </svg>
 }
 
-@code {
-
+@code
+{
     [Parameter]
     public bool Active { get; set; } = false;
 
@@ -32,5 +32,4 @@ else
 
     [Parameter]
     public int Number { get; set; }
-
 }
