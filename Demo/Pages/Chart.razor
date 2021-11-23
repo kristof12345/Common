@@ -1,0 +1,35 @@
+﻿@page "/chart"
+@using Common.Application
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <DoughnutDiagram Data=@List Height="700px" />
+</Paper>
+
+
+@code
+{
+
+    private List<ChartData> List;
+
+
+    protected override void OnInitialized()
+    {
+        List = new List<ChartData>
+        {
+            new ChartData
+            {
+                Id="1",
+                Data= 5,
+                Label="Label1",
+                Color="red"
+            },
+            new ChartData
+            {
+                Id="2",
+                Data= 10,
+                Label="Label2",
+                Color="blue"
+            }
+        };
+    }
+}

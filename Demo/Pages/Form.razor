@@ -4,7 +4,7 @@
     <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" ))>
         <Heading Style="padding-bottom: 20px;">Form</Heading>
         <EditForm Model=@Model OnValidSubmit=@ValidSubmit OnInvalidSubmit=@InvalidSubmit>
-            <ObjectGraphDataAnnotationsValidator />
+            <DataAnnotationsValidator />
             <TextField @bind-Value=@Model.String Label="TextField" ValidationExpression=@(() => Model.String) />
             <TextArea @bind-Value=@Model.Text Label="TextArea" ValidationExpression=@(() => Model.Text) />
             <Autocomplete @bind-Value=@Model.Autocomplete Items=@List Label="Autocomplete" ValidationExpression=@(() => Model.Autocomplete) />

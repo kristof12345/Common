@@ -24,6 +24,12 @@
         color: var(--secondary-color);
     }
 
+@media (max-width: 420px) {
+    .menu-logo {
+        left: 20px;
+    }
+}
+
 .menu-dropdown {
     position: fixed;
     right: 0;

@@ -14,6 +14,10 @@
     color: rgba(0, 0, 0, 0.38);
 }
 
+svg {
+    margin: 5px;
+}
+
 text {
     fill: #fff;
     font-size: 0.75rem;

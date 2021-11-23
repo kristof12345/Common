@@ -21,22 +21,6 @@ a.link {
     cursor: pointer;
 }
 
-a.nav-link {
-    text-decoration: none;
-    cursor: pointer;
-    font-family: Roboto, sans-serif !important;
-    display: flex;
-    align-items: center;
-    font-size: 0.875rem;
-    letter-spacing: 0.0071428571em;
-    margin: 2px;
-    width: 90%;
-    height: 40px;
-    font-weight: 500;
-    line-height: 22px;
-    color: black;
-}
-
 a.nav-link-active {
     color: var(--primary-color) !important;
 }

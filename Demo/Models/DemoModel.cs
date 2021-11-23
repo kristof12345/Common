@@ -28,7 +28,6 @@ namespace Demo
         public DateTime? NullableDateTime { get; set; }
 
         [Required]
-        [ValidateComplexType]
         public DateRange DateRange { get; set; } = new DateRange { Start = null, End = null };
 
         [Required]
