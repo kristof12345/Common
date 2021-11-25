@@ -11,7 +11,7 @@ namespace Common.Web
         public string Align { get; set; } = TextAlignment.Center;
 
         [Parameter]
-        public string Color { get; set; }
+        public string Color { get; set; } = "";
 
         [Parameter]
         public Border Margin { get; set; } = new Border("0px");

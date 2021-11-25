@@ -42,6 +42,11 @@
             this.left = left;
         }
 
+        public static Border From(string border)
+        {
+            return new Border(border);
+        }
+
         public static Border From(string top, string right, string bottom, string left)
         {
             return new Border(top, right, bottom, left);

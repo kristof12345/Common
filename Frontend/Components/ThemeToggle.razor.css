@@ -1,4 +1,5 @@
 ﻿.toggle-wrapper {
+    width: 353px;
     margin: 10px;
     border: solid 3px var(--primary-color);
     border-radius: 55px;

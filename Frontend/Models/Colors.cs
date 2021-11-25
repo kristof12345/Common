@@ -16,6 +16,7 @@ namespace Common.Web
         public static readonly string LightGrey = "#424242";
         public static readonly string DarkGrey = "#212121";
         public static readonly string Transparent = "transparent";
+        public static readonly string Frame = "#888888";
 
         public static string Get(int key) { return palettes[key % 10]; }
         private static readonly List<string> palettes = new List<string> { "#0d47a1", "#00838f", "#00b0ff", "#4caf50", "#ff9800", "#dd2c00", "#c51162", "#4527a0", "#880e4f", "#3e2723" };
