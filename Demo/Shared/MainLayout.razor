@@ -12,11 +12,11 @@
     }
 </style>
 
-<MenuBar Title="Voting App" OnMenuClick=@(() => {Opened = !Opened;}) />
 
+<MenuBar Title="Demo App" OnMenuClick=@(() => {Opened = !Opened;}) />
 @if (Opened)
 {
-    <SfSidebar IsOpen=Opened Changed=@(() => {Opened = false;}) Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Auto Animate="true">
+    <SfSidebar IsOpen=Opened Changed=@(() => {Opened = false;}) Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Push Animate="true">
         <ThemeToggle />
     </SfSidebar>
 }
@@ -77,6 +77,25 @@
         if (firstRender)
         {
             Toaster.Toaster = ToastObj;
+        }
+    }
+
+    bool isRestrict { get; set; } = false;
+
+    private void Check()
+    {
+        isRestrict = Opened;
+    }
+
+    public void Toggle()
+    {
+        if (!Opened && !isRestrict)
+        {
+            Opened = true;
+        }
+        else
+        {
+            isRestrict = false;
         }
     }
 }
