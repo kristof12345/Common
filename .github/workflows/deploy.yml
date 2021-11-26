@@ -1,0 +1,32 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+    
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+
+      - name: Publish .NET Core Project
+        run: dotnet publish ./Waikiki.Common.sln -c Release -o release --nologo /nowarn:CS1591
+    
+      - name: Change base-tag in index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/Common\/" \/>/g' release/wwwroot/index.html
+
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
+      
+      - name: Push to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: release/wwwroot

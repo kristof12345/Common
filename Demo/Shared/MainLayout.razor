@@ -2,9 +2,24 @@
 
 @namespace Common.Demo
 
+@using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Notifications
 
 <style>:root {--primary-color: @Colors.Primary;--secondary-color: @Colors.Secondary; --frame-color: @Colors.Frame; } </style>
+<style>
+    .sf-license-warning {
+        display: none;
+    }
+</style>
+
+<MenuBar Title="Voting App" OnMenuClick=@(() => {Opened = !Opened;}) />
+
+@if (Opened)
+{
+    <SfSidebar IsOpen=Opened Changed=@(() => {Opened = false;}) Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Auto Animate="true">
+        <ThemeToggle />
+    </SfSidebar>
+}
 
 <div class="page">
     <div class="sidebar">
