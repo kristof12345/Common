@@ -4,7 +4,7 @@
 
 <div class="menu-background">
     <p @onclick=@Navigate class="menu-logo">@Title</p>
-    <img @onclick=@OnMenuClick @onmousedown=@Check class="menu-dropdown" src="./images/menu-button.png" alt="menu" />
+    <img @onclick=@OnMenuClick class="menu-dropdown" src="./images/menu-button.png" alt="menu" />
 </div>
 
 @code
@@ -17,9 +17,6 @@
 
     [Parameter]
     public EventCallback OnMenuClick { get; set; }
-
-    [Parameter]
-    public EventCallback Check { get; set; }
 
     private void Navigate()
     {

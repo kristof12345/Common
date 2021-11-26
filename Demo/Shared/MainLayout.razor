@@ -79,23 +79,4 @@
             Toaster.Toaster = ToastObj;
         }
     }
-
-    bool isRestrict { get; set; } = false;
-
-    private void Check()
-    {
-        isRestrict = Opened;
-    }
-
-    public void Toggle()
-    {
-        if (!Opened && !isRestrict)
-        {
-            Opened = true;
-        }
-        else
-        {
-            isRestrict = false;
-        }
-    }
 }

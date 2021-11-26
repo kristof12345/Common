@@ -254,7 +254,7 @@ text {
     border-radius: 4px;
 }
 
-    .e-btn.e-fill {
+    .e-btn.e-fill:not(.logo-button) {
         color: white;
     }
 
