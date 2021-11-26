@@ -235,6 +235,40 @@ a[b-7bk747ardv] {
     flex-direction: row;
     box-sizing: border-box;
 }
+/* _content/Waikiki.Common.Frontend/Containers/Layout.razor.rz.scp.css */
+div[b-nnhta3we9u] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .mobile[b-nnhta3we9u] {
+        display: contents;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    .tablet[b-nnhta3we9u] {
+        display: contents;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1900px) {
+    .laptop[b-nnhta3we9u] {
+        display: contents;
+    }
+}
+
+@media (min-width: 1901px) and (max-width: 2540px) {
+    .desktop[b-nnhta3we9u] {
+        display: contents;
+    }
+}
+
+@media (min-width: 2541px) {
+    .ultrawide[b-nnhta3we9u] {
+        display: contents;
+    }
+}
 /* _content/Waikiki.Common.Frontend/Containers/Paper.razor.rz.scp.css */
 .paper[b-mxvdn23y9z] {
     display: flex;
