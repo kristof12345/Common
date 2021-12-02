@@ -96,6 +96,13 @@
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 }
+/* _content/Waikiki.Common.Frontend/Components/DropArea.razor.rz.scp.css */
+p[b-q8xkub9rs8] {
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 /* _content/Waikiki.Common.Frontend/Components/ImagePicker.razor.rz.scp.css */
 .upload-drag-drop-zone[b-3wy8walhzr] {
     border-style: dashed;
@@ -336,7 +343,7 @@ text[b-5c6y4bo8ri] {
     position: relative;
 }
 
-.step-label[b-q5igamu8cf] {
+span[b-q5igamu8cf] {
     font-size: 0.875rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     letter-spacing: 0.01071em;
@@ -347,7 +354,7 @@ text[b-5c6y4bo8ri] {
     color: #bdbdbd;
 }
 
-.step-line[b-q5igamu8cf] {
+.line[b-q5igamu8cf] {
     top: 12px;
     left: calc(-50% + 20px);
     right: calc(50% + 20px);
