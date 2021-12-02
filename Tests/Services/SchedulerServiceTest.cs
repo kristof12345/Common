@@ -17,7 +17,7 @@ namespace Common.Tests.Services
             var scheduler = new SchedulerService(new TokenService());
 
             // Act
-            Assert.Throws<InvalidOperationException>(() => scheduler.AddSingleApiCall("url", HttpMethod.Get, TimeSpan.FromSeconds(5)));
+            scheduler.AddSingleApiCall("url", HttpMethod.Get, TimeSpan.FromSeconds(5));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace Common.Tests.Services
             var scheduler = new SchedulerService(new TokenService());
 
             // Act
-            Assert.Throws<InvalidOperationException>(() => scheduler.AddRecurringApiCall("url", HttpMethod.Get, Cron.Daily()));
+            scheduler.AddRecurringApiCall("url", HttpMethod.Get, Cron.Daily());
         }
 
         [Fact]
