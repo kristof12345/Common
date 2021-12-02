@@ -3,11 +3,11 @@
 <div class="step">
     @if (Number != 0)
     {
-        <span class="step-line"></span>
+        <div class="line"></div>
     }
     <Vertical>
         <StepIcon Active=@Active Completed=@Completed Number=@Number />
-        <span class=@("step-label" + (Active || Completed ? "active" : "inactive"))>@Title</span>
+        <span class=@(Active || Completed ? "active" : "inactive")>@Title</span>
     </Vertical>
 </div>
 

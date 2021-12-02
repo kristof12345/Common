@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using Newtonsoft.Json.Converters;
 
 namespace Common.Application
 {
@@ -18,7 +17,6 @@ namespace Common.Application
         public string Token { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum UserType
     {
         [Display(Name = "User")]

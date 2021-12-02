@@ -5,7 +5,7 @@
     position: relative;
 }
 
-.step-label {
+span {
     font-size: 0.875rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     letter-spacing: 0.01071em;
@@ -16,7 +16,7 @@
     color: #bdbdbd;
 }
 
-.step-line {
+.line {
     top: 12px;
     left: calc(-50% + 20px);
     right: calc(50% + 20px);

@@ -1,3 +1,9 @@
+window.resized = () => {
+    window.dispatchEvent(new Event('resize'));
+};
+
+var appTheme = "auto";
+
 const setTheme = type => {
     switch (type) {
         case "auto":
@@ -24,8 +30,6 @@ const setDefaultTheme = () => {
     }
 };
 
-var appTheme = "auto";
-
 // Call if OS theme setting changes
 const query = window.matchMedia("(prefers-color-scheme: dark)");
 query.addListener(() => {
@@ -39,9 +43,5 @@ window.changeTheme = theme => {
     appTheme = theme;
     setTheme(theme);
 };
-
-window.BlurActiveElement = () => {
-    document.activeElement.blur();
-}
 
 setDefaultTheme();

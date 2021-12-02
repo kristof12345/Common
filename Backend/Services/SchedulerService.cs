@@ -19,12 +19,28 @@ namespace Common.Backend
 
         public void AddSingleApiCall(string url, HttpMethod method, TimeSpan interval)
         {
-            BackgroundJob.Schedule(() => SendApiCall(url + "externalData", method), interval);
+            try
+            {
+                BackgroundJob.Schedule(() => SendApiCall(url + "externalData", method), interval);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Error while scheduling single api call.");
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
         }
 
         public void AddRecurringApiCall(string url, HttpMethod method, string interval)
         {
-            RecurringJob.AddOrUpdate(() => SendApiCall(url + "externalData", method), interval);
+            try
+            {
+                RecurringJob.AddOrUpdate(() => SendApiCall(url + "externalData", method), interval);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Error while scheduling recurring api call.");
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
         }
 
         public async Task<bool> SendApiCall(string url, HttpMethod method)

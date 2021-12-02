@@ -13,10 +13,10 @@
 </style>
 
 
-<MenuBar Title="Demo App" OnMenuClick=@(() => {Opened = !Opened;}) />
+<MenuBar Title="Demo App" OnMenuClick=@ToggleMenu />
 @if (Opened)
 {
-    <SfSidebar IsOpen=Opened Changed=@(() => {Opened = false;}) Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Push Animate="true">
+    <SfSidebar IsOpen=Opened Changed=@CloseMenu Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Push Animate="true">
         <ThemeToggle />
     </SfSidebar>
 }
@@ -66,6 +66,9 @@
 @code
 {
     [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    [Inject]
     protected ToastService Toaster { get; set; }
 
     private SfToast ToastObj;
@@ -78,5 +81,17 @@
         {
             Toaster.Toaster = ToastObj;
         }
+    }
+
+    private async Task ToggleMenu()
+    {
+        Opened = !Opened;
+        await JSRuntime.InvokeVoidAsync("resized");
+    }
+
+    private async Task CloseMenu()
+    {
+        Opened = !Opened;
+        await JSRuntime.InvokeVoidAsync("resized");
     }
 }

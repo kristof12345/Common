@@ -3,7 +3,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <PackOnBuild>true</PackOnBuild>
         <PackageId>Waikiki.Common.Application</PackageId>
-        <PackageVersion>1.4.1</PackageVersion>
+        <PackageVersion>1.5.1</PackageVersion>
         <Authors>Papp Kristóf</Authors>
         <Copyright>All rights reserved.</Copyright>
         <Owners>Papp Kristof</Owners>
@@ -13,7 +13,4 @@
         <PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
         <PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    </ItemGroup>
 </Project>
