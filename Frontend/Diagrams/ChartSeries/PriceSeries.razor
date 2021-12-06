@@ -1,0 +1,20 @@
+﻿@namespace Common.Web
+
+@using Common.Application
+@using Syncfusion.Blazor.Charts
+@using Syncfusion.Blazor
+
+<StockChartSeries DataSource=@Data Type=@ChartSeriesType.Line XName="Date" YName="Value" Fill=@Color Width="3">
+    <StockChartSeriesAnimation Enable="false"></StockChartSeriesAnimation>
+</StockChartSeries>
+
+@code
+{
+    [Parameter]
+    [EditorRequired]
+    public IEnumerable<IPrice> Data { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public string Color { get; set; }
+}

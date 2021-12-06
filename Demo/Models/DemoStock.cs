@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.Application;
 
 namespace Demo
 {
@@ -46,7 +47,7 @@ namespace Demo
         public List<StockPrice> Prices { get; set; }
     }
 
-    public class StockPrice
+    public class StockPrice : IStockPrice, IVolume
     {
         public DateTime Date { get; set; }
 

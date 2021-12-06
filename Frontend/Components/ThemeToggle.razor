@@ -24,24 +24,25 @@
 
     async Task ChangeThemeClicked(string theme)
     {
-        ThemeService.Theme = theme;
-        await JSRuntime.InvokeVoidAsync("changeTheme", theme);
+        ThemeService.SelectedTheme = theme;
+        var selected = await JSRuntime.InvokeAsync<string>("changeTheme", theme);
+        ThemeService.Change(selected);
     }
 
     string CssActive = "toggleOption selected";
     string CssInActive = "toggleOption";
 
-    string CssAuto { get { return ThemeService.Theme == "auto" ? CssActive : CssInActive; } }
-    string CssLight { get { return ThemeService.Theme == "light" ? CssActive : CssInActive; } }
-    string CssDark { get { return ThemeService.Theme == "dark" ? CssActive : CssInActive; } }
+    string CssAuto { get { return ThemeService.SelectedTheme == "auto" ? CssActive : CssInActive; } }
+    string CssLight { get { return ThemeService.SelectedTheme == "light" ? CssActive : CssInActive; } }
+    string CssDark { get { return ThemeService.SelectedTheme == "dark" ? CssActive : CssInActive; } }
 
     string CssBackground
     {
         get
         {
-            if (ThemeService.Theme == "auto")
+            if (ThemeService.SelectedTheme == "auto")
                 return "width: 33.3333%; transform: translateX(0%);";
-            else if (ThemeService.Theme == "light")
+            else if (ThemeService.SelectedTheme == "light")
                 return "width: 33.3333%; transform: translateX(100%);";
             else
                 return "width: 33.3333%; transform: translateX(200%);";

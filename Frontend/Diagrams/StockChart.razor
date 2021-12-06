@@ -1,7 +1,10 @@
 ﻿@namespace Common.Web
-@using Syncfusion.Blazor.Charts
 
-@inherits AppChart<object>
+@using Common.Application
+@using Syncfusion.Blazor.Charts
+@using Syncfusion.Blazor
+
+@inherits AppChart<ITemporal>
 
 <div class="e-stockchart">
     @if (!Loaded)
@@ -12,8 +15,9 @@
     @if (Data != null)
     {
         <div style=@Style>
-            <SfStockChart Theme=@ChartTheme.MaterialDark>
-                <StockChartEvents Loaded=@OnLoad />
+            <SfStockChart Theme=@Theme.MaterialDark>
+                <StockChartEvents OnLoaded=@OnLoad />
+                
                 <StockChartPrimaryXAxis IntervalType="IntervalType.Days" DesiredIntervals="16" LabelFormat="yyyy.MM.dd" EnableAutoIntervalOnZooming="false" />
                 <StockChartChartBorder Width="0" />
                 <StockChartAxes>

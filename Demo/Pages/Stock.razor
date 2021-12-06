@@ -5,14 +5,16 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.Center>
             <Heading>@Model.Name</Heading>
         </Horizontal>
-        <FinanceChart Data=@Model.Prices Max=@Max>
-            <StockChartSeries DataSource=@Model.Prices Type=@ChartSeriesType.Candle XName="Date" YName="Close" High="High" Low="Low" Open="Open" Close="Close" />
-            <StockChartSeries DataSource=@Model.Prices Type="ChartSeriesType.Column" XName="Date" YName="Volume" YAxisName="VolumeAxis" Fill=@Colors.Warning />
+        <FinanceChart Data=@Model.Prices Min="0" Max=@Max>
+            <StockSeries Data=@Model.Prices />
+            <VolumeSeries Data=@Model.Prices Color=@Colors.Warning />
         </FinanceChart>
         <Paragraph> Company description </Paragraph>
         <Paragraph Align="justify"> @Model.Description</Paragraph>
     </Paper>
 </Container>
+
+<ThemeToggle />
 
 @code
 {

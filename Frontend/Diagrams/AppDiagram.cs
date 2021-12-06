@@ -6,6 +6,7 @@ namespace Common.Web
     public class AppDiagram : ComponentBase
     {
         [Parameter]
+        [EditorRequired]
         public IEnumerable<ChartData> Data { get; set; }
 
         [Parameter]

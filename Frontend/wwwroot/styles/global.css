@@ -143,57 +143,6 @@ text {
     }
 }
 
-/* Stock chart */
-
-.e-stockchart div div {
-    background-color: transparent !important;
-    max-width: 100%;
-}
-
-.e-stockchart svg {
-    max-width: 100% !important;
-}
-
-@media (max-width: 1140px) {
-    .e-toolbar-items.e-tbar-pos {
-        visibility: hidden !important;
-    }
-}
-
-.e-stockchart text, .e-stockchart span:not(.e-icons), .e-stockchart button:not(.e-active) {
-    font-family: "Helvetica", "Arial", sans-serif !important;
-    -webkit-font-smoothing: auto !important;
-    background-color: transparent !important;
-}
-
-.body-light .e-stockchart text, .body-light .e-stockchart span, .body-light .e-stockchart button, .body-light .e-chart text, .body-light .e-chart span, .body-light .e-chart button {
-    fill: black !important;
-}
-
-.body-dark .e-stockchart span, .body-dark .e-stockchart button {
-    color: white !important;
-}
-
-.body-dark .e-dropdown-popup {
-    background-color: #212121 !important;
-}
-
-.e-dropdown-btn:not(.e-control) {
-    display: none !important;
-}
-
-.body-light .e-stockchart .e-chart rect {
-    fill: transparent !important;
-}
-
-.body-light .e-stockchart .e-rangenavigator rect {
-    fill: transparent !important;
-}
-
-.body-light [id*='Major'] {
-    stroke: lightgray !important;
-}
-
 /* Dialog */
 
 .e-dlg-header {
