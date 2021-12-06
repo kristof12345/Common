@@ -71,9 +71,6 @@
     [Inject]
     protected ToastService Toaster { get; set; }
 
-    [Inject]
-    protected ThemeService ThemeService { get; set; }
-
     private SfToast ToastObj;
 
     private bool Opened { get; set; } = false;
@@ -83,8 +80,6 @@
         if (firstRender)
         {
             Toaster.Toaster = ToastObj;
-            //TODO
-            ThemeService.Change("light");
         }
     }
 
@@ -98,19 +93,5 @@
     {
         Opened = !Opened;
         await JSRuntime.InvokeVoidAsync("resized");
-    }
-
-    private Theme RenderedTheme { get; set; }
-
-    protected override void OnInitialized()
-    {
-        RenderedTheme = ThemeService.RenderedTheme == "light" ? Theme.Material : Theme.MaterialDark;
-        ThemeService.ChangeEvent += OnThemeChange;
-    }
-
-    private async Task OnThemeChange()
-    {
-        RenderedTheme = ThemeService.RenderedTheme == "light" ? Theme.Material : Theme.MaterialDark;
-        await InvokeAsync(() => { StateHasChanged(); });
     }
 }

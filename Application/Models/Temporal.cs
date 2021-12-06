@@ -21,10 +21,7 @@ namespace Common.Application
         public decimal Low { get; }
 
         public decimal Close { get; }
-    }
 
-    public interface IVolume : ITemporal
-    {
         public long Volume { get; }
     }
 }

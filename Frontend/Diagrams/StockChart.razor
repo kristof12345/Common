@@ -4,39 +4,75 @@
 @using Syncfusion.Blazor.Charts
 @using Syncfusion.Blazor
 
-@inherits AppChart<ITemporal>
-
-<div class="e-stockchart">
-    @if (!Loaded)
+<div class="stockchart">
+    @if (Data == null)
     {
         <div class="loadingindicator" />
     }
-
-    @if (Data != null)
+    else
     {
-        <div style=@Style>
-            <SfStockChart Theme=@Theme.MaterialDark>
-                <StockChartEvents OnLoaded=@OnLoad />
-                
-                <StockChartPrimaryXAxis IntervalType="IntervalType.Days" DesiredIntervals="16" LabelFormat="yyyy.MM.dd" EnableAutoIntervalOnZooming="false" />
-                <StockChartChartBorder Width="0" />
-                <StockChartAxes>
-                    <StockChartAxis RowIndex=0 OpposedPosition="false" Name="VolumeAxis" Visible="false" Maximum=@Max Minimum=@Min />
-                </StockChartAxes>
-                <StockChartRows>
-                    <StockChartRow Height="100%" />
-                    <StockChartRow Height="10%" />
-                </StockChartRows>
-                <StockChartSeriesCollection>
-                    @ChildContent
-                </StockChartSeriesCollection>
-                <StockChartPeriods>
-                    <StockChartPeriod Text="Last week" IntervalType=RangeIntervalType.Weeks Interval="1" />
-                    <StockChartPeriod Text="Last month" IntervalType=RangeIntervalType.Months Interval="1" />
-                    <StockChartPeriod Text="Last year" IntervalType=RangeIntervalType.Years Interval="1" Selected="true" />
-                    <StockChartPeriod Text="All" />
-                </StockChartPeriods>
-            </SfStockChart>
+        <div class="chart">
+            <SfChart Theme=@Theme.Material Height="350">
+
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                </ChartPrimaryXAxis>
+
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelFormat="n0" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" Maximum=@PriceMax Minimum=@PriceMin>
+                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                </ChartPrimaryYAxis>
+
+                <ChartAxes>
+                    <ChartAxis Name="Volume" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
+                        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                    </ChartAxis>
+                </ChartAxes>
+
+                <ChartRows>
+                    <ChartRow Height="0%"></ChartRow>
+                    <ChartRow Height="100%"></ChartRow>
+                </ChartRows>
+
+                <ChartSeriesCollection>
+                    <ChartSeries DataSource=@RangedData XName="Date" Open="Open" Close="Close" High="High" Low="Low" Type=@ChartSeriesType.Candle />
+                    <ChartSeries DataSource=@RangedData XName="Date" YName="Volume" Type=@ChartSeriesType.Column Fill=@Colors.Warning YAxisName="Volume" />
+                </ChartSeriesCollection>
+
+            </SfChart>
+        </div>
+
+        <div class="range">
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
+
+                <RangeNavigatorSeriesCollection>
+                    <RangeNavigatorSeries DataSource=@Data Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
+                </RangeNavigatorSeriesCollection>
+
+            </SfRangeNavigator>
         </div>
     }
 </div>
+
+@code
+{
+    [Parameter]
+    [EditorRequired]
+    public IEnumerable<IStockPrice> Data { get; set; }
+
+    public IEnumerable<IStockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
+
+    private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
+
+    private decimal VolumeMin { get => Data != null ? RangedData.Min(s => s.Volume) * 1 : 0; }
+
+    private decimal VolumeMax { get => Data != null ? RangedData.Max(s => s.Volume) * 4 : 0; }
+
+    private decimal PriceMin { get => Data != null ? RangedData.Min(s => s.Low) * 0.8m : 0; }
+
+    private decimal PriceMax { get => Data != null ? RangedData.Max(s => s.High) * 1.2m : 0; }
+
+    private void RangeChanged(object args)
+    {
+        Range = (DateTime[])args;
+    }
+}

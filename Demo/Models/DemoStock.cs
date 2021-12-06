@@ -47,7 +47,7 @@ namespace Demo
         public List<StockPrice> Prices { get; set; }
     }
 
-    public class StockPrice : IStockPrice, IVolume
+    public class StockPrice : IStockPrice
     {
         public DateTime Date { get; set; }
 

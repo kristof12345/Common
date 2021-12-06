@@ -5,10 +5,7 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.Center>
             <Heading>@Model.Name</Heading>
         </Horizontal>
-        <FinanceChart Data=@Model.Prices Min="0" Max=@Max>
-            <StockSeries Data=@Model.Prices />
-            <VolumeSeries Data=@Model.Prices Color=@Colors.Warning />
-        </FinanceChart>
+        <StockChart Data=@Model.Prices />
         <Paragraph> Company description </Paragraph>
         <Paragraph Align="justify"> @Model.Description</Paragraph>
     </Paper>
@@ -22,8 +19,6 @@
     private DataService<DemoStock> StockService { get; set; }
 
     private DemoStock Model { get; set; } = new DemoStock();
-
-    private long Max { get { return Model.Prices != null ? Model.Prices.Max(s => s.Volume) * 5 : 0; } }
 
     protected override async Task OnInitializedAsync()
     {

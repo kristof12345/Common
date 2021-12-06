@@ -14,8 +14,8 @@
     </div>
 </div>
 
-@code {
-
+@code
+{
     [Inject]
     private IJSRuntime JSRuntime { get; set; }
 
@@ -25,8 +25,7 @@
     async Task ChangeThemeClicked(string theme)
     {
         ThemeService.SelectedTheme = theme;
-        var selected = await JSRuntime.InvokeAsync<string>("changeTheme", theme);
-        ThemeService.Change(selected);
+        await JSRuntime.InvokeVoidAsync("changeTheme", theme);
     }
 
     string CssActive = "toggleOption selected";

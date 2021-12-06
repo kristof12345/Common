@@ -3,7 +3,7 @@
 
 @using Syncfusion.Blazor.Charts;
 
-<div style=@($"height: {Height}; width: {Width}")>
+<div class="diagram" style=@($"height: {Height}; width: {Width}")>
     <SfChart Height=@Height Background=@Colors.Transparent>
         <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Visible="false" />
         <ChartPrimaryYAxis LabelFormat=@("{value}%") />

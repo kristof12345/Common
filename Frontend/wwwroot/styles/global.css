@@ -119,9 +119,9 @@ text {
     width: inherit !important;
 }
 
-    .e-chart text {
-        fill: white !important;
-    }
+.diagram .e-chart text {
+    fill: white !important;
+}
 
 .e-accumulationchart {
     height: inherit !important;
@@ -141,6 +141,10 @@ text {
         margin-top: calc(20vw - 300px);
         margin-bottom: calc(20vw - 300px);
     }
+}
+
+.body-dark .stockchart rect {
+    fill: transparent !important;
 }
 
 /* Dialog */
