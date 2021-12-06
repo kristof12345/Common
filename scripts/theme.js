@@ -41,7 +41,8 @@ query.addListener(() => {
 // Call if the user selected theme changes
 window.changeTheme = theme => {
     appTheme = theme;
-    setTheme(theme);
+    let selected = setTheme(theme);
+    return selected;
 };
 
 setDefaultTheme();

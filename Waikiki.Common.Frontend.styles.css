@@ -303,11 +303,43 @@ div[b-nnhta3we9u] {
     flex-direction: column;
     box-sizing: border-box;
 }
-/* _content/Waikiki.Common.Frontend/Diagrams/FinanceChart.razor.rz.scp.css */
-.e-stockchart[b-kv9n3xz8cb] {
+/* _content/Waikiki.Common.Frontend/Diagrams/StockChart.razor.rz.scp.css */
+.stockchart[b-17u3j6vuk8] {
     height: 450px;
     width: 100%;
     padding: 20px;
+}
+
+.chart[b-17u3j6vuk8] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range[b-17u3j6vuk8] {
+    height: 100px;
+    width: 100%;
+}
+
+.loadingindicator[b-17u3j6vuk8] {
+    margin: auto;
+    margin-top: 180px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid var(--primary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: loader-b-17u3j6vuk8 2s linear infinite;
+}
+
+@keyframes loader-b-17u3j6vuk8 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 /* _content/Waikiki.Common.Frontend/Pagination/PageIcon.razor.rz.scp.css */
 .active[b-5c6y4bo8ri] {
