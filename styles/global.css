@@ -143,7 +143,7 @@ text {
     }
 }
 
-.body-dark .stockchart rect {
+.range rect {
     fill: transparent !important;
 }
 

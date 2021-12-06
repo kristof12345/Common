@@ -86,6 +86,54 @@
             transition: transform 0s linear 0.25s;
             transform-style: preserve-3d;
         }
+/* _content/Waikiki.Common.Frontend/Charts/MultiSeriesChart.razor.rz.scp.css */
+.series-chart[b-2cb5s6gie6] {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .series-chart[b-2cb5s6gie6] {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart[b-2cb5s6gie6] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range[b-2cb5s6gie6] {
+    height: 100px;
+    width: 100%;
+}
+/* _content/Waikiki.Common.Frontend/Charts/StockChart.razor.rz.scp.css */
+.stock-chart[b-0em9yueq9m] {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .stock-chart[b-0em9yueq9m] {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart[b-0em9yueq9m] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range[b-0em9yueq9m] {
+    height: 100px;
+    width: 100%;
+}
 /* _content/Waikiki.Common.Frontend/Components/CircleImage.razor.rz.scp.css */
 .circle-image[b-0xzi9lkdda] {
     display: block;
@@ -132,6 +180,27 @@ p[b-q8xkub9rs8] {
 /* _content/Waikiki.Common.Frontend/Components/Link.razor.rz.scp.css */
 a[b-7bk747ardv] {
     text-decoration: none;
+}
+/* _content/Waikiki.Common.Frontend/Components/LoadingIndicator.razor.rz.scp.css */
+.loadingindicator[b-r7u3um7lkw] {
+    margin: auto;
+    margin-top: 180px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid var(--primary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: loader-b-r7u3um7lkw 2s linear infinite;
+}
+
+@keyframes loader-b-r7u3um7lkw {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 /* _content/Waikiki.Common.Frontend/Components/MenuBar.razor.rz.scp.css */
 
@@ -302,44 +371,6 @@ div[b-nnhta3we9u] {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-}
-/* _content/Waikiki.Common.Frontend/Diagrams/StockChart.razor.rz.scp.css */
-.stockchart[b-17u3j6vuk8] {
-    height: 450px;
-    width: 100%;
-    padding: 20px;
-}
-
-.chart[b-17u3j6vuk8] {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-}
-
-.range[b-17u3j6vuk8] {
-    height: 100px;
-    width: 100%;
-}
-
-.loadingindicator[b-17u3j6vuk8] {
-    margin: auto;
-    margin-top: 180px;
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid var(--primary-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    animation: loader-b-17u3j6vuk8 2s linear infinite;
-}
-
-@keyframes loader-b-17u3j6vuk8 {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }
 /* _content/Waikiki.Common.Frontend/Pagination/PageIcon.razor.rz.scp.css */
 .active[b-5c6y4bo8ri] {
