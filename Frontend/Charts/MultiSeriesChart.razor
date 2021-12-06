@@ -1,0 +1,77 @@
+﻿@namespace Common.Web
+
+@using Common.Application
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Charts
+
+<div class="series-chart">
+    @if (Data == null)
+    {
+        <LoadingIndicator />
+    }
+    else
+    {
+        <div class="chart">
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
+
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                </ChartPrimaryXAxis>
+
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelFormat="n0" LabelIntersectAction=@LabelIntersectAction.Hide>
+                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                </ChartPrimaryYAxis>
+
+                <ChartSeriesCollection>
+                    @foreach (var serie in RangedData)
+                    {
+                        <ChartSeries DataSource=@serie.Data Fill=@serie.Color XName="Date" YName="Value" Type=@ChartSeriesType.Line Width="3" />
+                    }
+                </ChartSeriesCollection>
+
+            </SfChart>
+        </div>
+
+        <div class="range">
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
+
+                <RangeNavigatorSeriesCollection>
+                    @foreach (var serie in Data)
+                    {
+                        <RangeNavigatorSeries DataSource=@serie.Data Fill=@serie.Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
+                    }
+                </RangeNavigatorSeriesCollection>
+
+            </SfRangeNavigator>
+        </div>
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    [EditorRequired]
+    public IEnumerable<ChartDataSeries> Data { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public DateTime StartDate { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public DateTime EndDate { get; set; }
+
+    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select( series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]) }); }
+
+    private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
+
+    protected override void OnParametersSet()
+    {
+        Range = new DateTime[] { StartDate, EndDate };
+    }
+
+    private void RangeChanged(object args)
+    {
+        Range = (DateTime[])args;
+    }
+}

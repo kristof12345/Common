@@ -1,21 +1,4 @@
-﻿.stockchart {
-    height: 450px;
-    width: 100%;
-    padding: 20px;
-}
-
-.chart {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-}
-
-.range {
-    height: 100px;
-    width: 100%;
-}
-
-.loadingindicator {
+﻿.loadingindicator {
     margin: auto;
     margin-top: 180px;
     border: 6px solid #f3f3f3;

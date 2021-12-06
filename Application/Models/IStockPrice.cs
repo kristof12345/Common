@@ -2,16 +2,6 @@
 
 namespace Common.Application
 {
-    public interface ITemporal
-    {
-        public DateTime Date { get; }
-    }
-
-    public interface IPrice : ITemporal
-    {
-        public decimal Value { get; }
-    }
-
     public interface IStockPrice : ITemporal
     {
         public decimal Open { get; }

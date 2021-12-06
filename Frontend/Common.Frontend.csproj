@@ -7,7 +7,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>1.6.1</PackageVersion>
+		<PackageVersion>1.6.2</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
@@ -22,16 +22,27 @@
 		<PackageReference Include="BlazorInputFile" Version="0.2.0" />
 		<PackageReference Include="blazor-dragdrop" Version="2.3.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
-		<PackageReference Include="Syncfusion.Blazor" Version="19.3.0.56" />
+
+		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Charts" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Maps" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Popups" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="19.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="19.3.0.56" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Remove="wwwroot\.DS_Store" />
 	  <Content Remove="wwwroot\styles\.DS_Store" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="Diagrams\ChartSeries\" />
+	  <None Remove="Charts\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Diagrams\ChartSeries\" />
+	  <Folder Include="Charts\" />
 	</ItemGroup>
 </Project>

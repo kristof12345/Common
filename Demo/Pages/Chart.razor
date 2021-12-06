@@ -5,17 +5,22 @@
     <DoughnutDiagram Data=@List Height="700px" />
 </Paper>
 
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <MultiSeriesChart Data=@MultiList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) />
+</Paper>
+
 
 @code
 {
-
     private List<ChartData> List;
+
+    private List<ChartDataSeries> MultiList;
 
 
     protected override void OnInitialized()
     {
         List = new List<ChartData>
-        {
+    {
             new ChartData
             {
                 Id="1",
@@ -31,5 +36,85 @@
                 Color="blue"
             }
         };
+
+        MultiList = new List<ChartDataSeries>
+    {
+            new ChartDataSeries
+            {
+                Id = "Series 1",
+                Color = Colors.Get(1),
+                Data = new List<Price>
+            {
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,1),
+                        Value=1
+                    },
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,2),
+                        Value=2
+                    },
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,3),
+                        Value=3
+                    }
+                }
+            },
+            new ChartDataSeries
+            {
+                Id = "Series 2",
+                Color = Colors.Get(2),
+                Data = new List<Price>
+            {
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,1),
+                        Value=11
+                    },
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,2),
+                        Value=12
+                    },
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,3),
+                        Value=13
+                    }
+                }
+            },
+            new ChartDataSeries
+            {
+                Id = "Series 3",
+                Color = Colors.Get(3),
+                Data = new List<Price>
+            {
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,1),
+                        Value=10
+                    },
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,2),
+                        Value=20
+                    },
+                    new Price
+                    {
+                        Date= new DateTime(2020,1,3),
+                        Value=30
+                    }
+                }
+            }
+        };
+    }
+
+    public class Price : IPrice
+    {
+        public DateTime Date { get; set; }
+
+        public decimal Value { get; set; }
     }
 }

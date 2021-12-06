@@ -5,7 +5,7 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.Center>
             <Heading>@Model.Name</Heading>
         </Horizontal>
-        <StockChart Data=@Model.Prices />
+        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) />
         <Paragraph> Company description </Paragraph>
         <Paragraph Align="justify"> @Model.Description</Paragraph>
     </Paper>

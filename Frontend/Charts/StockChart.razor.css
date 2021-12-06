@@ -1,0 +1,23 @@
+﻿.stock-chart {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .stock-chart {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range {
+    height: 100px;
+    width: 100%;
+}

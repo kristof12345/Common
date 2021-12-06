@@ -1,18 +1,18 @@
 ﻿@namespace Common.Web
 
 @using Common.Application
-@using Syncfusion.Blazor.Charts
 @using Syncfusion.Blazor
+@using Syncfusion.Blazor.Charts
 
-<div class="stockchart">
+<div class="stock-chart">
     @if (Data == null)
     {
-        <div class="loadingindicator" />
+        <LoadingIndicator />
     }
     else
     {
         <div class="chart">
-            <SfChart Theme=@Theme.Material Height="350">
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -59,9 +59,17 @@
     [EditorRequired]
     public IEnumerable<IStockPrice> Data { get; set; }
 
+    [Parameter]
+    [EditorRequired]
+    public DateTime StartDate { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public DateTime EndDate { get; set; }
+
     public IEnumerable<IStockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
-    private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
+    private DateTime[] Range { get; set; }
 
     private decimal VolumeMin { get => Data != null ? RangedData.Min(s => s.Volume) * 1 : 0; }
 
@@ -70,6 +78,11 @@
     private decimal PriceMin { get => Data != null ? RangedData.Min(s => s.Low) * 0.8m : 0; }
 
     private decimal PriceMax { get => Data != null ? RangedData.Max(s => s.High) * 1.2m : 0; }
+
+    protected override void OnParametersSet()
+    {
+        Range = new DateTime[] { StartDate, EndDate };
+    }
 
     private void RangeChanged(object args)
     {

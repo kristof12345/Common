@@ -7,7 +7,7 @@
 		<Copyright>All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
-		<PackageVersion>1.6.1</PackageVersion>
+		<PackageVersion>1.6.2</PackageVersion>
 		<Description>Common components for building ASP.NET backend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
