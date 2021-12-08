@@ -2,7 +2,7 @@
 
 namespace Common.Application
 {
-    public interface IPrice : ITemporal
+    public interface ITemporalValue : ITemporal
     {
         public decimal Value { get; }
     }

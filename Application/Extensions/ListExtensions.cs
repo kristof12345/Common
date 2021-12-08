@@ -30,6 +30,11 @@ namespace Common.Application
             return self.Select((item, index) => (item, index));
         }
 
+        public static List<T> Sparse<T>(this IEnumerable<T> self, int step)
+        {
+            return self.Where((item, index) => index % step == 0).ToList();
+        }
+
         public static void Swap<T>(this List<T> list, int index1, int index2)
         {
             var temp = list[index1];
@@ -55,6 +60,11 @@ namespace Common.Application
         public static T GetByContent<T>(this IEnumerable<T> list, string content) where T : IUnique
         {
             return list.FirstOrDefault(item => item.Content == content);
+        }
+
+        public static IEnumerable<T> DateFilter<T>(this IEnumerable<T> list, DateRange range) where T : ITemporal
+        {
+            return list.Where(item => item.Date >= range.Start && item.Date <= range.End);
         }
     }
 }

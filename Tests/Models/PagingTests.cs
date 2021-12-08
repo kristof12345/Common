@@ -25,21 +25,21 @@ namespace Common.Tests.Models
         public void DefaultDateRangeToStringTest()
         {
             var range = DateRange.Default;
-            Assert.Equal("?From=" + System.DateTime.MinValue + "&To=" + System.DateTime.MaxValue, range.ToString());
+            Assert.Equal("?From=0001.01.01&To=9999.12.31", range.ToString());
         }
 
         [Fact]
         public void NullableDateRangeToStringTest()
         {
             var range = new DateRange(null, null);
-            Assert.Equal("?From=" + System.DateTime.MinValue + "&To=" + System.DateTime.MaxValue, range.ToString());
+            Assert.Equal("?From=0001.01.01&To=9999.12.31", range.ToString());
         }
 
         [Fact]
         public void DateRangeToStringTest()
         {
-            var range = new DateRange(System.DateTime.Today, System.DateTime.Today.AddDays(5));
-            Assert.Equal("?From=" + System.DateTime.Today + "&To=" + System.DateTime.Today.AddDays(5), range.ToString());
+            var range = new DateRange(new DateTime(2021,12,7), new DateTime(2021, 12, 13));
+            Assert.Equal("?From=2021.12.07&To=2021.12.13", range.ToString());
         }
 
         [Fact]

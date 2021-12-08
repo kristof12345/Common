@@ -28,7 +28,7 @@ namespace Demo
         public DateTime? NullableDateTime { get; set; }
 
         [Required]
-        public DateRange DateRange { get; set; } = new DateRange { Start = null, End = null };
+        public DateRange DateRange { get; set; } = new DateRange();
 
         [Required]
         public int Integer { get; set; }

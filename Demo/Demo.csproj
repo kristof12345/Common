@@ -18,10 +18,4 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
 		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Content Remove="wwwroot\images\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="wwwroot\images\" />
-	</ItemGroup>
 </Project>

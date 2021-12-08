@@ -8,12 +8,12 @@ namespace Common.Application
         public static readonly DateRange Default = new DateRange();
 
         [Required]
-        public DateTime? Start { get; set; }
+        public DateTime Start { get; set; }
 
         [Required]
-        public DateTime? End { get; set; }
+        public DateTime End { get; set; }
 
-        public TimeSpan Length { get { return End.Value - Start.Value; } }
+        public TimeSpan Length { get { return End - Start; } }
 
         public DateRange()
         {
@@ -23,13 +23,13 @@ namespace Common.Application
 
         public DateRange(DateTime? from, DateTime? to)
         {
-            Start = from ?? DateTime.MinValue;
-            End = to ?? DateTime.MaxValue;
+            Start = from.HasValue ? DateTime.SpecifyKind(from.Value, DateTimeKind.Utc) : DateTime.MinValue;
+            End = to.HasValue ? DateTime.SpecifyKind(to.Value, DateTimeKind.Utc) : DateTime.MaxValue;
         }
 
         public override string ToString()
         {
-            return "?From=" + Start + "&To=" + End;
+            return "?From=" + Start.ToString("yyyy.MM.dd") + "&To=" + End.ToString("yyyy.MM.dd");
         }
     }
 }

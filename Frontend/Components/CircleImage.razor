@@ -5,6 +5,7 @@
 @code
 {
     [Parameter]
+    [EditorRequired]
     public string Src { get; set; }
 
     [Parameter]
@@ -17,7 +18,7 @@
     public int BorderWidth { get; set; } = 5;
 
     [Parameter]
-    public bool DisableCache { get; set; }
+    public bool DisableCache { get; set; } = false;
 
     private string Path
     {

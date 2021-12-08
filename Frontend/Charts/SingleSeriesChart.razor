@@ -23,10 +23,7 @@
                 </ChartPrimaryYAxis>
 
                 <ChartSeriesCollection>
-                    @foreach (var serie in RangedData)
-                    {
-                        <ChartSeries DataSource=@serie.Data Fill=@serie.Color XName="Date" YName="Value" Type=@ChartSeriesType.Line Width="3" />
-                    }
+                        <ChartSeries DataSource=@Data Fill=@Color XName="Date" YName="Value" Type=@Type Width=@LineWidth Opacity=@Opacity />
                 </ChartSeriesCollection>
 
             </SfChart>
@@ -36,10 +33,7 @@
             <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
 
                 <RangeNavigatorSeriesCollection>
-                    @foreach (var serie in Data)
-                    {
-                        <RangeNavigatorSeries DataSource=@serie.Data Fill=@serie.Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
-                    }
+                        <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
                 </RangeNavigatorSeriesCollection>
 
             </SfRangeNavigator>
@@ -51,7 +45,7 @@
 {
     [Parameter]
     [EditorRequired]
-    public IEnumerable<ChartDataSeries> Data { get; set; }
+    public IEnumerable<ITemporalValue> Data { get; set; }
 
     [Parameter]
     [EditorRequired]
@@ -61,7 +55,20 @@
     [EditorRequired]
     public DateTime EndDate { get; set; }
 
-    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select( series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
+    [Parameter]
+    [EditorRequired]
+    public string Color { get; set; }
+
+    [Parameter]
+    public int LineWidth { get; set; } = 3;
+
+    [Parameter]
+    public double Opacity { get; set; } = 3;
+
+    [Parameter]
+    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    public IEnumerable<ITemporalValue> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
 

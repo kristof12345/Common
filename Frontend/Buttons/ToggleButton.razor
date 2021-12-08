@@ -19,10 +19,12 @@
 @code {
 
     [Parameter]
-    public string LeftLabel { get; set; } = "Local";
+    [EditorRequired]
+    public string LeftLabel { get; set; }
 
     [Parameter]
-    public string RightLabel { get; set; } = "National";
+    [EditorRequired]
+    public string RightLabel { get; set; }
 
     [Parameter]
     public string Tab { get; set; }

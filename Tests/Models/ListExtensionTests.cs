@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common.Application;
 using Xunit;
@@ -139,5 +140,66 @@ namespace Common.Tests.Models
             Assert.Equal(2, list.GetByContent("b").Id);
             Assert.Null(list.GetByContent("c"));
         }
+
+        [Fact]
+        public void DateRangeFilterTest()
+        {
+            var list = new List<StockPrice>
+            {
+                new StockPrice { Date = new DateTime(2020,1,1), Volume=10 },
+                new StockPrice { Date = new DateTime(2020,1,2), Volume=20 },
+                new StockPrice { Date = new DateTime(2020,1,3), Volume=30 },
+                new StockPrice { Date = new DateTime(2020,1,4), Volume=40 },
+                new StockPrice { Date = new DateTime(2020,1,5), Volume=50 },
+                new StockPrice { Date = new DateTime(2020,2,1), Volume=60 },
+                new StockPrice { Date = new DateTime(2020,2,2), Volume=70 },
+                new StockPrice { Date = new DateTime(2021,1,1), Volume=80 },
+                new StockPrice { Date = new DateTime(2025,12,17), Volume=90 },
+            };
+
+            var filtered = list.DateFilter(new DateRange(new DateTime(2020, 1, 2), new DateTime(2020, 1, 4)));
+
+            Assert.Equal(3, filtered.Count());
+            Assert.Equal(20, filtered.First().Volume);
+            Assert.Equal(40, filtered.Last().Volume);
+        }
+
+        [Fact]
+        public void SparseListTest()
+        {
+            var list = new List<StockPrice>
+            {
+                new StockPrice { Date = new DateTime(2020,1,1), Volume=10 },
+                new StockPrice { Date = new DateTime(2020,1,2), Volume=20 },
+                new StockPrice { Date = new DateTime(2020,1,3), Volume=30 },
+                new StockPrice { Date = new DateTime(2020,1,4), Volume=40 },
+                new StockPrice { Date = new DateTime(2020,1,5), Volume=50 },
+                new StockPrice { Date = new DateTime(2020,2,1), Volume=60 },
+                new StockPrice { Date = new DateTime(2020,2,2), Volume=70 },
+                new StockPrice { Date = new DateTime(2021,1,1), Volume=80 },
+                new StockPrice { Date = new DateTime(2025,12,17), Volume=90 },
+            };
+
+            var filtered = list.Sparse(3);
+
+            Assert.Equal(3, filtered.Count);
+            Assert.Equal(10, filtered.First().Volume);
+            Assert.Equal(70, filtered.Last().Volume);
+        }
+    }
+
+    public class StockPrice : IStockPrice
+    {
+        public DateTime Date { get; set; }
+
+        public decimal Open { get; set; }
+
+        public decimal High { get; set; }
+
+        public decimal Low { get; set; }
+
+        public decimal Close { get; set; }
+
+        public long Volume { get; set; }
     }
 }

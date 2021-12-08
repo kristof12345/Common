@@ -8,7 +8,7 @@ namespace Common.Web
     {
         public string Id { get; set; }
 
-        public IEnumerable<IPrice> Data { get; set; }
+        public IEnumerable<ITemporalValue> Data { get; set; }
 
         public string Color { get; set; }
     }
