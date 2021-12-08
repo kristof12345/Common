@@ -110,6 +110,30 @@
     height: 100px;
     width: 100%;
 }
+/* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
+.series-chart[b-iwlyhgztz0] {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .series-chart[b-iwlyhgztz0] {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart[b-iwlyhgztz0] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range[b-iwlyhgztz0] {
+    height: 100px;
+    width: 100%;
+}
 /* _content/Waikiki.Common.Frontend/Charts/StockChart.razor.rz.scp.css */
 .stock-chart[b-0em9yueq9m] {
     height: 450px;
