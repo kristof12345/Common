@@ -3,7 +3,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <PackOnBuild>true</PackOnBuild>
         <PackageId>Waikiki.Common.Application</PackageId>
-        <PackageVersion>1.6.6</PackageVersion>
+        <PackageVersion>1.6.7</PackageVersion>
         <Authors>Papp Kristóf</Authors>
         <Copyright>All rights reserved.</Copyright>
         <Owners>Papp Kristof</Owners>

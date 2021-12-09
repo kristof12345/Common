@@ -16,9 +16,9 @@ namespace Common.Tests.Services
             var time = timeService.Now;
 
             // Assert
-            Assert.Equal(DateTime.Now.Date, time.Date);
-            Assert.Equal(DateTime.Now.Hour, time.Hour);
-            Assert.Equal(DateTime.Now.Minute, time.Minute);
+            Assert.Equal(DateTime.UtcNow.Date, time.Date);
+            Assert.Equal(DateTime.UtcNow.Hour, time.Hour);
+            Assert.Equal(DateTime.UtcNow.Minute, time.Minute);
         }
 
         [Fact]
@@ -73,9 +73,9 @@ namespace Common.Tests.Services
             var time = timeService.Future(TimeSpan.FromHours(2));
 
             // Assert
-            Assert.Equal(DateTime.Now.Date, time.Date);
-            Assert.Equal(DateTime.Now.Hour + 2, time.Hour);
-            Assert.Equal(DateTime.Now.Minute, time.Minute);
+            Assert.Equal(DateTime.UtcNow.Date, time.Date);
+            Assert.Equal(DateTime.UtcNow.Hour + 2, time.Hour);
+            Assert.Equal(DateTime.UtcNow.Minute, time.Minute);
         }
 
         [Fact]
@@ -88,9 +88,9 @@ namespace Common.Tests.Services
             var time = timeService.Past(TimeSpan.FromHours(2));
 
             // Assert
-            Assert.Equal(DateTime.Now.Date, time.Date);
-            Assert.Equal(DateTime.Now.Hour - 2, time.Hour);
-            Assert.Equal(DateTime.Now.Minute, time.Minute);
+            Assert.Equal(DateTime.UtcNow.Date, time.Date);
+            Assert.Equal(DateTime.UtcNow.Hour - 2, time.Hour);
+            Assert.Equal(DateTime.UtcNow.Minute, time.Minute);
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace Common.Tests.Services
             var timeService = new TimeService();
 
             // Act
-            var time = timeService.Until(DateTime.Now.AddHours(30));
+            var time = timeService.Until(DateTime.UtcNow.AddHours(30));
 
             // Assert
             Assert.InRange(time.TotalMinutes, 1750,1850);

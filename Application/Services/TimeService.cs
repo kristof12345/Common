@@ -4,7 +4,7 @@ namespace Common.Application
 {
     public class TimeService : ITimeService
     {
-        public DateTime Now { get { return DateTime.Now; } }
+        public DateTime Now { get { return DateTime.UtcNow; } }
 
         public DateTime Today { get { return Now.Date; } }
 
