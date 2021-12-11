@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Application
+namespace Common.Backend
 {
     public interface ITimeService
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace Common.Application
+namespace Common.Backend
 {
     public interface ISchedulerService
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.Application;
+using Common.Backend;
 using Xunit;
 
 namespace Common.Tests.Services
