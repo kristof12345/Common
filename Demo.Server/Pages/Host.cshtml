@@ -1,0 +1,34 @@
+﻿@page "/"
+@namespace Demo.Server
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Demo App</title>
+    <link rel="icon" href="./images/investment-icon-96.png" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="_content/Waikiki.Common.Frontend/Waikiki.Common.Frontend.bundle.scp.css" rel="stylesheet">
+    <link href="_content/Waikiki.Common.Frontend/styles/material.css" rel="stylesheet">
+    <link href="_content/Waikiki.Common.Frontend/styles/global.css" rel="stylesheet">
+</head>
+
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+    <script src="_content/BlazorInputFile/inputfile.js"></script>
+    <script src="_content/Waikiki.Common.Frontend/scripts/theme.js"></script>
+    <script src="_content/Waikiki.Common.Frontend/scripts/notification.js"></script>
+    <script src="_content/Waikiki.Common.Frontend/scripts/font-varela.js"></script>
+</body>
+</html>
