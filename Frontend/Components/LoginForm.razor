@@ -1,0 +1,88 @@
+﻿@namespace Common.Web
+
+@using Common.Application
+@using Blazored.LocalStorage
+@using Blazored.SessionStorage
+@using Microsoft.AspNetCore.Components.Forms
+@using Syncfusion.Blazor.Inputs
+
+<Container Height="calc(100vh - 70px)" Width="auto" Margin=@Border.Top("70px")>
+    <Paper Width="550px" Height="650px">
+        <Vertical Width="400px">
+            <Image Src=@Image Height="250px" Margin=@(new Border("0px")) />
+            <Heading>@Title</Heading>
+            <EditForm OnValidSubmit=@Submit Model=@Model class="form">
+                <DataAnnotationsValidator />
+                <TextField @bind-Value=@Model.Username Label="Username" ValidationExpression=@(() => Model.Username) />
+                <TextField @bind-Value=@Model.Password Label="Password" Type=@InputType.Password ValidationExpression=@(() => Model.Password) />
+                @if (Error != null)
+                {
+                    <p class="validation-message">@Error </p>
+                }
+                <CheckBox @bind-Value=@Remember Label="Remember me" />
+                <Button Type="submit" Width="400px" Height="56px" Margin=@Border.Bottom("20px")>Login</Button>
+            </EditForm>
+        </Vertical>
+    </Paper>
+</Container>
+
+@code
+{
+    [Parameter]
+    public string Title { get; set; } = "Login to Waikiki App";
+
+    [Parameter]
+    public string Image { get; set; } = "./images/waikiki-logo.png";
+
+    [Inject]
+    private LoginService LoginService { get; set; }
+
+    [Inject]
+    private ILocalStorageService LocalStorage { get; set; }
+
+    [Inject]
+    private ISessionStorageService SessionStorage { get; set; }
+
+    private LoginRequest Model { get; set; } = new LoginRequest();
+
+    private bool Remember { get; set; }
+
+    private string Error { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var user = await SessionStorage.GetItemAsync<AppUser>("user");
+            if (user != null)
+            {
+                await LoginService.SaveUser(user);
+                return;
+            }
+
+            var request = await LocalStorage.GetItemAsync<LoginRequest>("user");
+            if (request != null)
+            {
+                await LoginService.Login(request);
+                return;
+            }
+        }
+    }
+
+    private async Task Submit()
+    {
+        var response = await LoginService.Login(Model);
+
+        if (response.IsSuccess)
+        {
+            if (Remember)
+            {
+                await LocalStorage.SetItemAsync("user", Model);
+            }
+        }
+        else
+        {
+            Error = response.Content;
+        }
+    }
+}

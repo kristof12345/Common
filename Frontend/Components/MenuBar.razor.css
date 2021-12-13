@@ -18,6 +18,9 @@
     font-size: 50px;
     color: white;
     font-family: Arial, varela, sans-serif !important;
+    max-width: calc(100vw - 100px);
+    overflow: hidden;
+    text-overflow: clip;
 }
 
     .menu-logo::first-letter {

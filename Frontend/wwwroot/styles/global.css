@@ -29,6 +29,14 @@ form, button, img {
     max-width: 90vw;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
 .center-text {
     text-align: center;
     margin-left: auto;

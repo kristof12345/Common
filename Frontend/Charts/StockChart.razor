@@ -11,8 +11,8 @@
     }
     else
     {
-        <div class="chart">
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
+        <div class="chart" >
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -41,9 +41,9 @@
             </SfChart>
         </div>
 
-        <div class="range">
+        <div class="range" style=@Visibility>
             <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
-
+                <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     <RangeNavigatorSeries DataSource=@Data Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
                 </RangeNavigatorSeriesCollection>
@@ -79,6 +79,8 @@
 
     private decimal PriceMax { get => Data != null ? RangedData.Max(s => s.High) * 1.2m : 0; }
 
+    private string Visibility { get; set; } = "hidden";
+
     protected override void OnParametersSet()
     {
         Range = new DateTime[] { StartDate, EndDate };
@@ -87,5 +89,11 @@
     private void RangeChanged(object args)
     {
         Range = (DateTime[])args;
+    }
+
+    private void OnLoaded(object args)
+    {
+        Visibility = "visible";
+        this.StateHasChanged();
     }
 }
