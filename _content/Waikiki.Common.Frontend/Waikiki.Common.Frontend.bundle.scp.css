@@ -109,6 +109,7 @@
 .range[b-2cb5s6gie6] {
     height: 100px;
     width: 100%;
+    overflow: hidden;
 }
 /* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
 .series-chart[b-iwlyhgztz0] {
@@ -133,6 +134,7 @@
 .range[b-iwlyhgztz0] {
     height: 100px;
     width: 100%;
+    overflow: hidden;
 }
 /* _content/Waikiki.Common.Frontend/Charts/StockChart.razor.rz.scp.css */
 .stock-chart[b-0em9yueq9m] {
@@ -157,6 +159,7 @@
 .range[b-0em9yueq9m] {
     height: 100px;
     width: 100%;
+    overflow: hidden;
 }
 /* _content/Waikiki.Common.Frontend/Components/CircleImage.razor.rz.scp.css */
 .circle-image[b-0xzi9lkdda] {
@@ -246,7 +249,7 @@ a[b-7bk747ardv] {
     position: fixed;
     left: 53px;
     top: 6px;
-    height: 51px;
+    height: 60px;
     cursor: pointer;
     font-weight: bold;
     font-size: 50px;
