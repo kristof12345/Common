@@ -27,11 +27,30 @@ namespace Common.Tests.Models
         [Fact]
         public void ServerSettingsTest()
         {
-            var settings = new ServerSettings { BaseUrl = "url" };
+            var settings = new ServerSettings { BaseUrl = "url", Version="1.0", RenderMode="Server" };
             ServerSettings.Instance = settings;
 
             Assert.Equal("url", settings.BaseUrl);
             Assert.Equal("url", ServerSettings.Instance.BaseUrl);
+            Assert.Equal("1.0", ServerSettings.Instance.Version);
+            Assert.Equal("Server", ServerSettings.Instance.RenderMode);
+        }
+
+        [Fact]
+        public void LoginRequestTest()
+        {
+            var request = new LoginRequest { Username="username", Password="password" };
+
+            Assert.Equal("username@password", request.ToString());
+        }
+
+        [Fact]
+        public void PasswordRequestTest()
+        {
+            var request = new ChangePasswordRequest { OldPassword = "oldpassword", NewPassword="newpassword" };
+
+            Assert.Equal("oldpassword", request.OldPassword);
+            Assert.Equal("newpassword", request.NewPassword);
         }
 
         [Fact]

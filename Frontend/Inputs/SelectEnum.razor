@@ -6,7 +6,7 @@
 @using Syncfusion.Blazor.DropDowns
 @using Microsoft.AspNetCore.Components.Forms
 
-@typeparam TEnum
+@typeparam TEnum where TEnum : struct
 
 <p style=@($"width: {Width}")>
     <SfDropDownList Value=@(EnumExtensions.GetAttributeValue(Value)) ValueChanged=@HandleValueChange DataSource=@(EnumExtensions.GetAttributeList<TEnum>().Except("Server")) FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue=string TItem=string />

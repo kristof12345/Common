@@ -30,16 +30,9 @@ namespace Common.Application
             return self.Select((item, index) => (item, index));
         }
 
-        public static List<T> Sparse<T>(this IEnumerable<T> self, int step)
-        {
-            return self.Where((item, index) => index % step == 0).ToList();
-        }
-
         public static void Swap<T>(this List<T> list, int index1, int index2)
         {
-            var temp = list[index1];
-            list[index1] = list[index2];
-            list[index2] = temp;
+            (list[index2], list[index1]) = (list[index1], list[index2]);
         }
 
         public static List<T> From<T>(T item)

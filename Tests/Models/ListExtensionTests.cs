@@ -124,6 +124,27 @@ namespace Common.Tests.Models
             public string Content { get; set; }
         }
 
+        public class Entity : IEntity<string>
+        {
+            public string Id { get; set; }
+
+            public string Content { get; set; }
+        }
+
+        [Fact]
+        public void GetByIdTest()
+        {
+            var list = new List<Entity>
+            {
+                new Entity { Id = "1", Content = "a" },
+                new Entity { Id = "2", Content = "b" }
+            };
+
+            Assert.Equal("a", list.GetById("1").Content);
+            Assert.Equal("b", list.GetById("2").Content);
+            Assert.Null(list.GetById("3"));
+        }
+
         [Fact]
         public void GetByContentTest()
         {
@@ -162,29 +183,6 @@ namespace Common.Tests.Models
             Assert.Equal(3, filtered.Count());
             Assert.Equal(20, filtered.First().Volume);
             Assert.Equal(40, filtered.Last().Volume);
-        }
-
-        [Fact]
-        public void SparseListTest()
-        {
-            var list = new List<StockPrice>
-            {
-                new StockPrice { Date = new DateTime(2020,1,1), Volume=10 },
-                new StockPrice { Date = new DateTime(2020,1,2), Volume=20 },
-                new StockPrice { Date = new DateTime(2020,1,3), Volume=30 },
-                new StockPrice { Date = new DateTime(2020,1,4), Volume=40 },
-                new StockPrice { Date = new DateTime(2020,1,5), Volume=50 },
-                new StockPrice { Date = new DateTime(2020,2,1), Volume=60 },
-                new StockPrice { Date = new DateTime(2020,2,2), Volume=70 },
-                new StockPrice { Date = new DateTime(2021,1,1), Volume=80 },
-                new StockPrice { Date = new DateTime(2025,12,17), Volume=90 },
-            };
-
-            var filtered = list.Sparse(3);
-
-            Assert.Equal(3, filtered.Count);
-            Assert.Equal(10, filtered.First().Volume);
-            Assert.Equal(70, filtered.Last().Volume);
         }
     }
 

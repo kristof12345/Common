@@ -5,13 +5,14 @@
 @using Syncfusion.Blazor.Charts
 
 <div class="stock-chart">
-    @if (Data == null)
+    @if (Visibility == "hidden")
     {
         <LoadingIndicator />
     }
-    else
+
+    @if (Data != null)
     {
-        <div class="chart" >
+        <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
@@ -41,7 +42,7 @@
             </SfChart>
         </div>
 
-        <div class="range" style=@Visibility>
+        <div class=@("range " + Visibility)>
             <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
                 <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
@@ -94,6 +95,5 @@
     private void OnLoaded(object args)
     {
         Visibility = "visible";
-        this.StateHasChanged();
     }
 }

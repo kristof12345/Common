@@ -5,11 +5,12 @@
 @using Syncfusion.Blazor.Charts
 
 <div class="series-chart">
-    @if (Data == null)
+    @if (Visibility == "hidden")
     {
         <LoadingIndicator />
     }
-    else
+
+    @if (Data != null)
     {
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
@@ -32,9 +33,9 @@
             </SfChart>
         </div>
 
-        <div class="range" style=@Visibility>
+        <div class=@("range " + Visibility)>
             <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
-
+                <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     @foreach (var serie in Data)
                     {
@@ -80,6 +81,5 @@
     private void OnLoaded(object args)
     {
         Visibility = "visible";
-        this.StateHasChanged();
     }
 }

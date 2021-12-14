@@ -9,5 +9,10 @@ namespace Common.Application
 
         [Required]
         public string Password { get; set; }
+
+        public override string ToString()
+        {
+            return Username + "@" + Password;
+        }
     }
 }
