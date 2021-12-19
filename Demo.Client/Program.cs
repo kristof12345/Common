@@ -7,7 +7,6 @@ using Demo;
 using Common.Web;
 using Syncfusion.Blazor;
 using Blazored.LocalStorage;
-using Plk.Blazor.DragDrop;
 using Blazored.SessionStorage;
 
 namespace Demo.Client
@@ -23,13 +22,8 @@ namespace Demo.Client
 
             var services = builder.Services;
 
-            services.AddBlazorDragDrop();
-            services.AddBlazoredLocalStorage();
-            services.AddBlazoredSessionStorage();
-            services.AddSyncfusionBlazor();
+            services.AddCommonServices();
 
-            services.AddScoped<ToastService>();
-            services.AddScoped<ThemeService>();
             services.AddScoped<DataService<DemoStock>>();
 
             await builder.Build().RunAsync();

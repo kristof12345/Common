@@ -4,11 +4,11 @@
 <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween VerticalAlign=@VerticalAlignment.Start>
     <Vertical Width="45%">
         <Paragraph Class="center-text">Available options</Paragraph>
-        <DropArea Items=@Available OnChange=@HandleChange OnClick=@HandleClick />
+        <DropArea Items=@Available OnItemDrop=@HandleChange OnClick=@HandleClick />
     </Vertical>
     <Vertical Width="45%">
         <Paragraph Class="center-text">Your preferences</Paragraph>
-        <DropArea Items=@Preferences OnChange=@HandleChange />
+        <DropArea Items=@Preferences OnItemDrop=@HandleChange />
     </Vertical>
 </Horizontal>
 

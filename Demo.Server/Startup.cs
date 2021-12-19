@@ -10,7 +10,7 @@ using Common.Application;
 using System.Net.Http;
 using System;
 using Blazored.SessionStorage;
-using Plk.Blazor.DragDrop;
+
 
 namespace Demo.Server
 {
@@ -31,15 +31,10 @@ namespace Demo.Server
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddBlazorDragDrop();
-            services.AddBlazoredLocalStorage();
-            services.AddBlazoredSessionStorage();
-            services.AddSyncfusionBlazor();
-
             services.AddHttpClient();
 
-            services.AddScoped<ToastService>();
-            services.AddScoped<ThemeService>();
+            services.AddCommonServices();
+
             services.AddScoped<DataService<DemoStock>>();
         }
 

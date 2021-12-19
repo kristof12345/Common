@@ -9,7 +9,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>1.8.1</PackageVersion>
+		<PackageVersion>1.8.4</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
@@ -21,8 +21,6 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
-		<PackageReference Include="BlazorInputFile" Version="0.2.0" />
-		<PackageReference Include="blazor-dragdrop" Version="2.3.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
 		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="19.3.0.59" />
@@ -36,6 +34,7 @@
 		<PackageReference Include="Syncfusion.Blazor.Popups" Version="19.3.0.59" />
 		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="19.3.0.59" />
 		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="19.3.0.59" />
+		<PackageReference Include="Syncfusion.Blazor.Grid" Version="19.3.0.59" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Remove="wwwroot\.DS_Store" />

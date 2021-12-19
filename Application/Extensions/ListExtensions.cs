@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Common.Application
@@ -58,6 +59,16 @@ namespace Common.Application
         public static IEnumerable<T> DateFilter<T>(this IEnumerable<T> list, DateRange range) where T : ITemporal
         {
             return list.Where(item => item.Date >= range.Start && item.Date <= range.End);
+        }
+
+        public static T Latest<T>(this IEnumerable<T> list) where T : ITemporal
+        {
+            return list.OrderByDescending(item => item.Date).First();
+        }
+
+        public static T Latest<T>(this IEnumerable<T> list, DateTime date) where T : ITemporal
+        {
+            return list.OrderByDescending(item => item.Date).First(e => e.Date <= date);
         }
     }
 }

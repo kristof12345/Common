@@ -2,16 +2,8 @@
 
 namespace Common.Application
 {
-    public interface IStockPrice : ITemporal
+    public interface IStockPrice : IPrice
     {
-        public decimal Open { get; }
-
-        public decimal High { get; }
-
-        public decimal Low { get; }
-
-        public decimal Close { get; }
-
         public long Volume { get; }
     }
 }
