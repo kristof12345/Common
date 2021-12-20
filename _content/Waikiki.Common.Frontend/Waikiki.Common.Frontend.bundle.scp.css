@@ -178,8 +178,53 @@ p[b-q8xkub9rs8] {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+.dropzone[b-q8xkub9rs8] {
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.body-dark .dropzone[b-q8xkub9rs8] {
+    background-color: #424242;
+}
+
+[draggable][b-q8xkub9rs8] {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
+    width: 600px;
+    height: 80px;
+    max-width: 95%;
+}
+
+.body-dark [draggable][b-q8xkub9rs8] {
+    background-color: #424242;
+}
+
+.intransit[b-q8xkub9rs8] {
+    opacity: 0.2;
+}
+
+[draggable] div[b-q8xkub9rs8] {
+    width: inherit;
+}
+
+.spacing[b-q8xkub9rs8] {
+    height: 20px;
+}
 /* _content/Waikiki.Common.Frontend/Components/ImagePicker.razor.rz.scp.css */
-.upload-drag-drop-zone[b-3wy8walhzr] {
+.upload-zone[b-3wy8walhzr] {
     border-style: dashed;
     border-radius: 4px;
     height: 100px;
@@ -190,7 +235,7 @@ p[b-q8xkub9rs8] {
     margin-bottom: 10px;
 }
 
-    .upload-drag-drop-zone input[type=file][b-3wy8walhzr] {
+    .upload-zone input[type=file][b-3wy8walhzr] {
         position: absolute;
         width: 1594px;
         height: 100px;
@@ -200,7 +245,7 @@ p[b-q8xkub9rs8] {
     }
 
 @media (max-width: 1860px) {
-    .upload-drag-drop-zone input[type=file][b-3wy8walhzr] {
+    .upload-zone input[type=file][b-3wy8walhzr] {
         width: 80%;
     }
 }
