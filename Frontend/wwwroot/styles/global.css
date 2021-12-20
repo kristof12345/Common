@@ -298,53 +298,6 @@ text {
     color: black !important;
 }
 
-/* Drag and Drop */
-
-.plk-dd-dropzone {
-    min-height: 100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
-    padding-top: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.body-dark .plk-dd-dropzone {
-    background-color: #424242;
-}
-
-[draggable] {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 14px 0 rgba(0,0,0,0.12);
-    width: 600px;
-    height: 80px;
-    max-width: 95%;
-}
-
-.body-dark [draggable] {
-    background-color: #424242;
-}
-
-.plk-dd-intransit {
-    opacity: 0.2;
-}
-
-[draggable] div {
-    width: inherit;
-}
-
-.plk-dd-spacing {
-    height: 20px;
-}
-
 /* Navigation */
 
 .nav-link {

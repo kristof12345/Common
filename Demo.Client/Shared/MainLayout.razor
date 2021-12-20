@@ -18,41 +18,40 @@
 {
     <SfSidebar IsOpen=Opened Changed=@CloseMenu Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Push Animate="true">
         <NavLink class="nav-link" ActiveClass="nav-link-active"><Icon IconType="apps" />Main menu</NavLink>
+        <div class="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="form">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Form
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="stock">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Stock
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="drag">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Drag and drop
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="chart">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Chart
+                    </NavLink>
+                </li>
+            </ul>
+        </div>
         <ThemeToggle />
     </SfSidebar>
 }
 
 <div class="page">
-    <div class="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                    <span class="oi oi-home" aria-hidden="true"></span> Home
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="form">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Form
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="stock">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Stock
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="drag">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Drag and drop
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="chart">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Chart
-                </NavLink>
-            </li>
-        </ul>
-    </div>
-
     <div class="main">
         <div class="content px-4">
             @Body

@@ -9,8 +9,71 @@ using Common.Application;
 
 namespace Common.Web
 {
-    public partial class DropArea
+    public partial class DropArea : IDisposable
     {
+        [Inject]
+        private DragDropService DragDropService { get; set; }
+
+        /// <summary>
+        /// Allows to pass a delegate which executes if something is dropped and decides if the item is accepted
+        /// </summary>
+        [Parameter]
+        public Func<IUnique, IUnique, bool> Accepts { get; set; }
+
+        /// <summary>
+        /// Allows to pass a delegate which executes if something is dropped and decides if the item is accepted
+        /// </summary>
+        [Parameter]
+        public Func<IUnique, bool> AllowsDrag { get; set; }
+
+        /// <summary>
+        /// Allows to pass a delegate which executes if a drag operation ends
+        /// </summary>
+        [Parameter]
+        public Action<IUnique> DragEnd { get; set; }
+
+        /// <summary>
+        /// Raises a callback with the dropped item as parameter in case the item can not be dropped due to the given Accept Delegate
+        /// </summary>
+        [Parameter]
+        public EventCallback<IUnique> OnItemDropRejected { get; set; }
+
+        /// <summary>
+        /// Raises a callback with the replaced item as parameter
+        /// </summary>
+        [Parameter]
+        public EventCallback<IUnique> OnReplacedItemDrop { get; set; }
+
+        /// <summary>
+        /// Maximum Number of items which can be dropped in this dropzone. Defaults to null which means unlimited.
+        /// </summary>
+        [Parameter]
+        public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Raises a callback with the dropped item as parameter in case the item can not be dropped due to item limit.
+        /// </summary>
+        [Parameter]
+        public EventCallback<IUnique> OnItemDropRejectedByMaxItemLimit { get; set; }
+
+        /// <summary>
+        /// Specifies the id for the Dropzone element.
+        /// </summary>
+        [Parameter]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Allows to pass a delegate which specifies one or more classnames for the draggable div that wraps your elements.
+        /// </summary>
+        [Parameter]
+        public Func<IUnique, string> ItemWrapperClass { get; set; }
+
+        /// <summary>
+        /// If set items dropped are copied to this dropzone and are not removed from their source.
+        /// </summary>
+        [Parameter]
+        public Func<IUnique, IUnique> CopyItem { get; set; }
+
         private void OnDropItemOnSpacing(int newIndex)
         {
             if (!IsDropAllowed())
@@ -136,10 +199,8 @@ namespace Common.Web
             if (!IsItemAccepted(item))
                 return;
             DragDropService.DragTargetItem = item;
-            if (InstantReplace)
-            {
-                Swap(DragDropService.DragTargetItem, activeItem);
-            }
+
+            Swap(DragDropService.DragTargetItem, activeItem);
 
             DragDropService.ShouldRender = true;
             StateHasChanged();
@@ -165,7 +226,7 @@ namespace Common.Web
 
         public string CheckIfItemIsInTransit(IUnique item)
         {
-            return item.Equals(DragDropService.ActiveItem) ? "plk-dd-in-transit no-pointer-events" : "";
+            return item.Equals(DragDropService.ActiveItem) ? "intransit no-pointer-events" : "";
         }
 
         public string CheckIfItemIsDragTarget(IUnique item)
@@ -183,7 +244,7 @@ namespace Common.Web
         private string GetClassesForDraggable(IUnique item)
         {
             var builder = new StringBuilder();
-            builder.Append("plk-dd-draggable");
+            builder.Append("draggable");
             if (ItemWrapperClass != null)
             {
                 var itemWrapperClass = ItemWrapperClass(item);
@@ -193,112 +254,28 @@ namespace Common.Web
             return builder.ToString();
         }
 
-        private string GetClassesForDropzone()
-        {
-            var builder = new StringBuilder();
-            builder.Append("plk-dd-dropzone");
-            if (!String.IsNullOrEmpty(Class))
-            {
-                builder.AppendLine(" " + Class);
-            }
-
-            return builder.ToString();
-        }
-
         private string GetClassesForSpacing(int spacerId)
         {
             var builder = new StringBuilder();
-            builder.Append("plk-dd-spacing");
+            builder.Append("spacing");
             //if active space id and item is from another dropzone -> always create insert space
             if (DragDropService.ActiveSpacerId == spacerId && Items.IndexOf(DragDropService.ActiveItem) == -1)
             {
-                builder.Append(" plk-dd-spacing-dragged-over");
+                builder.Append(" spacing-dragged-over");
             } // else -> check if active space id and that it is an item that needs space
             else if (DragDropService.ActiveSpacerId == spacerId && (spacerId != Items.IndexOf(DragDropService.ActiveItem)) && (spacerId != Items.IndexOf(DragDropService.ActiveItem) + 1))
             {
-                builder.Append(" plk-dd-spacing-dragged-over");
+                builder.Append(" spacing-dragged-over");
             }
 
             return builder.ToString();
         }
 
-        /// <summary>
-        /// Allows to pass a delegate which executes if something is dropped and decides if the item is accepted
-        /// </summary>
-        [Parameter]
-        public Func<IUnique, IUnique, bool> Accepts { get; set; }
-
-        /// <summary>
-        /// Allows to pass a delegate which executes if something is dropped and decides if the item is accepted
-        /// </summary>
-        [Parameter]
-        public Func<IUnique, bool> AllowsDrag { get; set; }
-
-        /// <summary>
-        /// Allows to pass a delegate which executes if a drag operation ends
-        /// </summary>
-        [Parameter]
-        public Action<IUnique> DragEnd { get; set; }
-
-        /// <summary>
-        /// Raises a callback with the dropped item as parameter in case the item can not be dropped due to the given Accept Delegate
-        /// </summary>
-        [Parameter]
-        public EventCallback<IUnique> OnItemDropRejected { get; set; }
-
-        /// <summary>
-        /// Raises a callback with the dropped item as parameter
-        /// </summary>
-        [Parameter]
-        public EventCallback<IUnique> OnItemDrop { get; set; }
-
-        /// <summary>
-        /// Raises a callback with the replaced item as parameter
-        /// </summary>
-        [Parameter]
-        public EventCallback<IUnique> OnReplacedItemDrop { get; set; }
-
-        /// <summary>
-        /// If set to true, items will we be swapped/inserted instantly.
-        /// </summary>
-        [Parameter]
-        public bool InstantReplace { get; set; } = true;
-
-        /// <summary>
-        /// Maximum Number of items which can be dropped in this dropzone. Defaults to null which means unlimited.
-        /// </summary>
-        [Parameter]
-        public int? MaxItems { get; set; }
-
-        /// <summary>
-        /// Raises a callback with the dropped item as parameter in case the item can not be dropped due to item limit.
-        /// </summary>
-        [Parameter]
-        public EventCallback<IUnique> OnItemDropRejectedByMaxItemLimit { get; set; }
-
-        /// <summary>
-        /// Specifies one or more classnames for the Dropzone element.
-        /// </summary>
-        [Parameter]
-        public string Class { get; set; }
-
-        /// <summary>
-        /// Specifies the id for the Dropzone element.
-        /// </summary>
-        [Parameter]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Allows to pass a delegate which specifies one or more classnames for the draggable div that wraps your elements.
-        /// </summary>
-        [Parameter]
-        public Func<IUnique, string> ItemWrapperClass { get; set; }
-
-        /// <summary>
-        /// If set items dropped are copied to this dropzone and are not removed from their source.
-        /// </summary>
-        [Parameter]
-        public Func<IUnique, IUnique> CopyItem { get; set; }
+        private async Task HandleClick(IUnique item)
+        {
+            await OnClick.InvokeAsync(item);
+            await OnItemDrop.InvokeAsync(null);
+        }
 
         private bool IsDropAllowed()
         {
@@ -352,34 +329,6 @@ namespace Common.Web
                     //what to do here?
                 }
             }
-            else // we have a direct target
-            {
-                if (!Items.Contains(activeItem)) // if dragged to another dropzone
-                {
-                    if (CopyItem == null)
-                    {
-                        if (!InstantReplace)
-                        {
-                            Swap(DragDropService.DragTargetItem, activeItem); //swap target with active item
-                        }
-                    }
-                    else
-                    {
-                        if (!InstantReplace)
-                        {
-                            Swap(DragDropService.DragTargetItem, CopyItem(activeItem)); //swap target with a copy of active item
-                        }
-                    }
-                }
-                else
-                {
-                    // if dragged to the same dropzone
-                    if (!InstantReplace)
-                    {
-                        Swap(DragDropService.DragTargetItem, activeItem); //swap target with active item
-                    }
-                }
-            }
 
             DragDropService.Reset();
             StateHasChanged();
@@ -397,7 +346,7 @@ namespace Common.Web
                 //remove from old zone
                 DragDropService.Items.Remove(activeItem);
             }
-            else if (InstantReplace) //swap the items
+            else
             {
                 if (indexDraggedOverItem == indexActiveItem)
                     return;
@@ -405,14 +354,6 @@ namespace Common.Web
                 Items[indexDraggedOverItem] = Items[indexActiveItem];
                 Items[indexActiveItem] = tmp;
                 OnReplacedItemDrop.InvokeAsync(Items[indexActiveItem]);
-            }
-            else //no instant replace, just insert it after 
-            {
-                if (indexDraggedOverItem == indexActiveItem)
-                    return;
-                var tmp = Items[indexActiveItem];
-                Items.RemoveAt(indexActiveItem);
-                Items.Insert(indexDraggedOverItem, tmp);
             }
         }
 

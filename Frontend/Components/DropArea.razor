@@ -4,10 +4,7 @@
 @using Common.Application
 @using Microsoft.AspNetCore.Components.Web
 
-@inject DragDropService DragDropService
-@implements IDisposable
-
-<div class="@GetClassesForDropzone()" @ondragover:preventDefault @ondragover="()=> { }" @ondragenter:preventDefault @ondragenter="()=> { }" @ondrop="()=>OnDrop()" @ondrop:preventDefault ondragstart="event.dataTransfer.setData('text', event.target.id);"
+<div class="dropzone" @ondragover:preventDefault @ondragover="()=> { }" @ondragenter:preventDefault @ondragenter="()=> { }" @ondrop="()=>OnDrop()" @ondrop:preventDefault ondragstart="event.dataTransfer.setData('text', event.target.id);"
      @ondrop:stopPropagation
      @ondragenter:stopPropagation
      @ondragend:stopPropagation
@@ -50,11 +47,9 @@
     public List<IUnique> Items { get; set; }
 
     [Parameter]
-    public EventCallback<IUnique> OnClick { get; set; }
+    [EditorRequired]
+    public EventCallback<IUnique> OnItemDrop { get; set; }
 
-    private async Task HandleClick(IUnique item)
-    {
-        await OnClick.InvokeAsync(item);
-        await OnItemDrop.InvokeAsync(null);
-    }
+    [Parameter]
+    public EventCallback<IUnique> OnClick { get; set; }
 }

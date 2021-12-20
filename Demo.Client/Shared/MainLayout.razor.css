@@ -1,4 +1,5 @@
 ﻿.page {
+    margin-top: 80px;
     position: relative;
     display: flex;
     flex-direction: column;
