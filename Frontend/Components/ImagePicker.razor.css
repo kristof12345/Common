@@ -1,4 +1,4 @@
-﻿.upload-drag-drop-zone {
+﻿.upload-zone {
     border-style: dashed;
     border-radius: 4px;
     height: 100px;
@@ -9,7 +9,7 @@
     margin-bottom: 10px;
 }
 
-    .upload-drag-drop-zone input[type=file] {
+    .upload-zone input[type=file] {
         position: absolute;
         width: 1594px;
         height: 100px;
@@ -19,7 +19,7 @@
     }
 
 @media (max-width: 1860px) {
-    .upload-drag-drop-zone input[type=file] {
+    .upload-zone input[type=file] {
         width: 80%;
     }
 }

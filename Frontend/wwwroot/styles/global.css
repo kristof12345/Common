@@ -323,3 +323,8 @@ text {
 .nav-link:hover {
     color: var(--primary-color)
 }
+
+/* File upload */
+.e-upload {
+    display: none;
+}
