@@ -56,15 +56,23 @@
             var user = await SessionStorage.GetItemAsync<AppUser>("user");
             if (user != null)
             {
-                await LoginService.SaveUser(user);
-                return;
+                var response = LoginService.SaveUser(user);
+                if (response.IsSuccess)
+                {
+                    await SessionStorage.SetItemAsync("user", user);
+                    return;
+                }
             }
 
             var request = await LocalStorage.GetItemAsync<LoginRequest>("user");
             if (request != null)
             {
-                await LoginService.Login(request);
-                return;
+                var response = await LoginService.Login(request);
+                if (response.IsSuccess)
+                {
+                    await SessionStorage.SetItemAsync("user", user);
+                    return;
+                }
             }
         }
     }

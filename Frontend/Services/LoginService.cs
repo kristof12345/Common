@@ -35,7 +35,7 @@ namespace Common.Web
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return await SaveUser(await response.Content.ReadAsAsync<AppUser>());
+                    return SaveUser(await response.Content.ReadAsAsync<AppUser>());
                 }
 
                 return await response.Content.ReadAsAsync<Response>();
@@ -46,10 +46,9 @@ namespace Common.Web
             }
         }
 
-        public async Task<Response> SaveUser(AppUser user)
+        public Response SaveUser(AppUser user)
         {
             User = user;
-            await SessionStorage.SetItemAsync("user", User);
             Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", User.Token);
             LoginEvent?.Invoke();
             return Response.Success;

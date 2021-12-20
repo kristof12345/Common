@@ -34,7 +34,9 @@ namespace Demo.Server
             services.AddHttpClient();
 
             services.AddCommonServices();
+            var a = services.BuildServiceProvider();
 
+            services.AddSingleton<LoginService>(new LoginService(new HttpClient { BaseAddress = new Uri("https://localhost:10002/") }, a.GetRequiredService<ILocalStorageService>(), a.GetRequiredService<ISessionStorageService>()));
             services.AddScoped<DataService<DemoStock>>();
         }
 
