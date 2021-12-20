@@ -17,13 +17,13 @@ jobs:
 
       - name: Publish .NET Core Project
         run: dotnet publish ./Waikiki.Common.sln -c Release -o release --nologo /nowarn:CS1591
-    
+
       - name: Change base-tag in index.html
         run: sed -i 's/<base href="\/" \/>/<base href="\/Common\/" \/>/g' release/wwwroot/index.html
 
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
-      
+
       - name: Push to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:

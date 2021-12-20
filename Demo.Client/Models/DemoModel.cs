@@ -52,7 +52,6 @@ namespace Demo.Client
         public string Color { get; set; }
 
         public bool Checked { get; set; }
-
     }
 
     public enum DemoEnum
