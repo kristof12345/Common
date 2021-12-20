@@ -40,8 +40,9 @@ namespace Common.Web
 
                 return await response.Content.ReadAsAsync<Response>();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                var a = e;
                 return new Response("Unable to connect to server.");
             }
         }
@@ -63,4 +64,3 @@ namespace Common.Web
         }
     }
 }
-

@@ -9,7 +9,7 @@ using Common.Application;
 
 namespace Common.Web
 {
-    public partial class DropArea : IDisposable
+    public partial class DropArea
     {
         [Inject]
         private DragDropService DragDropService { get; set; }
@@ -184,7 +184,6 @@ namespace Common.Web
             }
 
             DragDropService.Reset();
-            //dragTargetItem = default;
         }
 
         public void OnDragEnter(IUnique item)

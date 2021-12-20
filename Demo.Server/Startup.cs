@@ -11,7 +11,6 @@ using System.Net.Http;
 using System;
 using Blazored.SessionStorage;
 
-
 namespace Demo.Server
 {
     public class Startup
@@ -36,7 +35,7 @@ namespace Demo.Server
             services.AddCommonServices();
             var a = services.BuildServiceProvider();
 
-            services.AddSingleton<LoginService>(new LoginService(new HttpClient { BaseAddress = new Uri("https://localhost:10002/") }, a.GetRequiredService<ILocalStorageService>(), a.GetRequiredService<ISessionStorageService>()));
+            services.AddSingleton<LoginService>(new LoginService(new HttpClient { BaseAddress = new Uri("https://localhost:10003/") }, a.GetRequiredService<ILocalStorageService>(), a.GetRequiredService<ISessionStorageService>()));
             services.AddScoped<DataService<DemoStock>>();
         }
 

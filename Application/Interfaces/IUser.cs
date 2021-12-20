@@ -19,4 +19,3 @@ namespace Common.Application
         public UserType Type { get; set; }
     }
 }
-

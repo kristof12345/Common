@@ -7,4 +7,3 @@ namespace Common.Application
         public DateTime Date { get; }
     }
 }
-

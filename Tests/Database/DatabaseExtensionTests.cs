@@ -84,7 +84,6 @@ namespace Common.Tests.Database
             Assert.Equal("1", list.Last().Id);
         }
 
-
         [Fact]
         public async Task UpdateTest()
         {

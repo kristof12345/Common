@@ -7,4 +7,3 @@ namespace Common.Application
         public long Volume { get; }
     }
 }
-

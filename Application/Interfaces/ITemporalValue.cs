@@ -7,4 +7,3 @@ namespace Common.Application
         public decimal Value { get; }
     }
 }
-
