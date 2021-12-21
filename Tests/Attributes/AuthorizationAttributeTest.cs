@@ -48,5 +48,23 @@ namespace Common.Tests.Attributes
             Assert.Equal(401, result.StatusCode);
             Assert.Equal("{ message = Unauthorized }", result.Value.ToString());
         }
+
+        [Fact]
+        public void EmptyAuthorizationTest()
+        {
+            // Arrange
+            var http = new Mock<HttpContext>(); http.Setup(a => a.Request.Headers["Authorization"]).Returns<string>(null);
+            var action = new ActionContext(http.Object, new Microsoft.AspNetCore.Routing.RouteData(), new Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor());
+            var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
+
+            // Act
+            new AuthorizeAttribute().OnAuthorization(context);
+
+            var result = context.Result as JsonResult;
+
+            // Assert
+            Assert.Equal(401, result.StatusCode);
+            Assert.Equal("{ message = Unauthorized }", result.Value.ToString());
+        }
     }
 }

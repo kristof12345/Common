@@ -116,5 +116,34 @@ namespace Common.Tests.Database
             // Assert
             Assert.Empty(context.Entities);
         }
+
+        [Fact]
+        public async Task ComplexDiscardChangesTest()
+        {
+            // Arrange
+            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB8").Options);
+            context.Entities.Add(new Entity { Id = "1", Content = "a" });
+            context.Entities.Add(new Entity { Id = "2", Content = "b" });
+            await context.SaveChangesAsync();
+
+            // Add
+            context.Entities.Add(new Entity { Id = "3", Content = "c" });
+
+            // Remove
+            var e1 = await context.Entities.FindAsync("1");
+            context.Entities.Remove(e1);
+
+            // Modify
+            var e2 = await context.Entities.FindAsync("2");
+            e2.Content = "d";
+
+            // Act
+            context.DiscardChanges();
+
+            // Assert
+            Assert.Equal(2, context.Entities.Count());
+            Assert.Equal("a", context.Entities.First().Content);
+            Assert.Equal("b", context.Entities.Last().Content);
+        }
     }
 }

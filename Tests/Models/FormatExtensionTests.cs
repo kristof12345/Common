@@ -47,6 +47,14 @@ namespace Common.Tests.Models
         }
 
         [Fact]
+        public void FormatWUDTest()
+        {
+            Assert.Equal("₩ 0,00", zero.FormatCurrency("WUD"));
+            Assert.Equal("₩ 3,14", pi.FormatCurrency("WUD"));
+            Assert.Equal("₩ 1 000 000,00", million.FormatCurrency("WUD"));
+        }
+
+        [Fact]
         public void FormatCurrencyIntegerTest()
         {
             Assert.Equal("$ 0", nulla.FormatCurrency("USD"));

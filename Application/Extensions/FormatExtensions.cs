@@ -35,6 +35,7 @@ namespace Common.Application
         {
             if (showSpecialValuesAsString && value == 0) return "Unknown";
             if (showSpecialValuesAsString && value == decimal.MaxValue) return "Infinity";
+            if (ISOCurrencySymbol == "WUD") return "₩" + string.Format(FormatProvider, " {0:N2}", value);
             return GetCurrencySymbol(ISOCurrencySymbol) + string.Format(FormatProvider, " {0:N2}", value);
         }
 

@@ -34,7 +34,7 @@
         </div>
 
         <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100">
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1">
                 <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     @foreach (var serie in Data)
@@ -61,6 +61,9 @@
     [Parameter]
     [EditorRequired]
     public DateTime EndDate { get; set; }
+
+    [Parameter]
+    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
 
     public IEnumerable<ChartDataSeries> RangedData { get => Data.Select( series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
 
