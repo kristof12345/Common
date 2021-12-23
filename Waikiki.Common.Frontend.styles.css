@@ -230,21 +230,6 @@ p[b-q8xkub9rs8] {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-    .upload-zone input[type=file][b-3wy8walhzr] {
-        position: absolute;
-        width: 1594px;
-        height: 100px;
-        opacity: 0;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-@media (max-width: 1860px) {
-    .upload-zone input[type=file][b-3wy8walhzr] {
-        width: 80%;
-    }
-}
 /* _content/Waikiki.Common.Frontend/Components/Link.razor.rz.scp.css */
 a[b-7bk747ardv] {
     text-decoration: none;
