@@ -1,8 +1,8 @@
 ﻿[
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-01-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -10,9 +10,9 @@
         "close": 0.49
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-02-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -20,9 +20,9 @@
         "close": 0.49
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-03-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -30,9 +30,9 @@
         "close": 0.49
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-04-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -40,9 +40,9 @@
         "close": 0.49
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-05-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -50,9 +50,9 @@
         "close": 0.49
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-06-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -60,9 +60,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-07-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -70,9 +70,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-08-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -80,9 +80,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-09-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -90,9 +90,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-10-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -100,9 +100,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-11-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -110,9 +110,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2016-12-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -120,9 +120,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-01-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -130,9 +130,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-02-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -140,9 +140,9 @@
         "close": 0.49
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-03-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -150,9 +150,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-04-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -160,9 +160,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-05-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -170,9 +170,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-06-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -180,9 +180,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-07-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -190,9 +190,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-08-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -200,9 +200,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-09-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -210,9 +210,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-10-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -220,9 +220,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-11-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -230,9 +230,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2017-12-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -240,9 +240,9 @@
         "close": 0.48
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-01-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -250,9 +250,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-02-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -260,9 +260,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-03-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -270,9 +270,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-04-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -280,9 +280,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-05-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -290,9 +290,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-06-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -300,9 +300,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-07-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -310,9 +310,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-08-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -320,9 +320,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-09-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -330,9 +330,9 @@
         "close": 0.47
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-10-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -340,9 +340,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-11-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -350,9 +350,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2018-12-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -360,9 +360,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-01-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -370,9 +370,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-02-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -380,9 +380,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-03-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -390,9 +390,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-04-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -400,9 +400,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-05-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -410,9 +410,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-06-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -420,9 +420,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-07-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -430,9 +430,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-08-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -440,9 +440,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-09-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -450,9 +450,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-10-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -460,9 +460,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-11-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -470,9 +470,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2019-12-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -480,9 +480,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-01-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -490,9 +490,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-02-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -500,9 +500,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-03-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -510,9 +510,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-04-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -520,9 +520,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-05-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -530,9 +530,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-06-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -540,9 +540,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-07-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -550,9 +550,9 @@
         "close": 0.43
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-08-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -560,9 +560,9 @@
         "close": 0.42
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-09-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -570,9 +570,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-10-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -580,9 +580,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-11-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -590,9 +590,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2020-12-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -600,9 +600,9 @@
         "close": 0.44
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-01-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -610,9 +610,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-02-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -620,9 +620,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-03-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -630,9 +630,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-04-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -640,9 +640,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-05-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -650,9 +650,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-06-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -660,9 +660,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-07-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -670,9 +670,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-08-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -680,9 +680,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-09-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -690,9 +690,9 @@
         "close": 0.45
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-10-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -700,9 +700,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-11-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
@@ -710,9 +710,9 @@
         "close": 0.46
     },
     {
-        "id": 0,
-        "currencyId": "USD",
-        "currency": null,
+
+
+
         "date": "2021-12-01T00:00:00Z",
         "open": 0.00,
         "high": 0.00,
