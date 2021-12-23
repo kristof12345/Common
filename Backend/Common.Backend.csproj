@@ -8,14 +8,14 @@
 		<Copyright>All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
-		<PackageVersion>1.9.2</PackageVersion>
+		<PackageVersion>1.10.0</PackageVersion>
 		<Description>Common components for building ASP.NET backend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 		<PackageReference Include="JWT" Version="8.7.0" />
 		<PackageReference Include="Hangfire" Version="1.7.28" />

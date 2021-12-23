@@ -8,18 +8,3 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-    .upload-zone input[type=file] {
-        position: absolute;
-        width: 1594px;
-        height: 100px;
-        opacity: 0;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-@media (max-width: 1860px) {
-    .upload-zone input[type=file] {
-        width: 80%;
-    }
-}

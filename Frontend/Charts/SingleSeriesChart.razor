@@ -19,12 +19,12 @@
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelFormat="n0" LabelIntersectAction=@LabelIntersectAction.Hide>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide Maximum=@Max Minimum=@Min>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
                 <ChartSeriesCollection>
-                    <ChartSeries DataSource=@Data Fill=@Color XName="Date" YName="Value" Type=@Type Width=@LineWidth Opacity=@Opacity />
+                    <ChartSeries DataSource=@RangedData Fill=@Color XName="Date" YName="Value" Type=@Type Width=@LineWidth Opacity=@Opacity />
                 </ChartSeriesCollection>
 
             </SfChart>
@@ -75,6 +75,10 @@
     public IEnumerable<ITemporalValue> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
+
+    private decimal Min { get => Data != null && RangedData.Any() ? RangedData.Min(s => s.Value) * 0.8m : 0; }
+
+    private decimal Max { get => Data != null && RangedData.Any() ? RangedData.Max(s => s.Value) * 1.2m : 0; }
 
     private string Visibility { get; set; } = "hidden";
 

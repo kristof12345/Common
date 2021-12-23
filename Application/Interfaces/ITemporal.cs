@@ -4,6 +4,6 @@ namespace Common.Application
 {
     public interface ITemporal
     {
-        public DateTime Date { get; }
+        public DateTime Date { get; set; }
     }
 }

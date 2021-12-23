@@ -10,6 +10,7 @@ using Common.Application;
 using System.Net.Http;
 using System;
 using Blazored.SessionStorage;
+using System.Collections.Generic;
 
 namespace Demo.Server
 {
@@ -33,10 +34,10 @@ namespace Demo.Server
             services.AddHttpClient();
 
             services.AddCommonServices();
-            var a = services.BuildServiceProvider();
 
-            services.AddSingleton<LoginService>(new LoginService(new HttpClient { BaseAddress = new Uri("https://localhost:10003/") }, a.GetRequiredService<ILocalStorageService>(), a.GetRequiredService<ISessionStorageService>()));
+            services.AddScoped<LoginService>();
             services.AddScoped<DataService<DemoStock>>();
+            services.AddScoped<DataService<List<StockPrice>>>();
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)

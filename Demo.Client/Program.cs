@@ -8,6 +8,7 @@ using Common.Web;
 using Syncfusion.Blazor;
 using Blazored.LocalStorage;
 using Blazored.SessionStorage;
+using System.Collections.Generic;
 
 namespace Demo.Client
 {
@@ -24,7 +25,9 @@ namespace Demo.Client
 
             services.AddCommonServices();
 
+            services.AddScoped<LoginService>();
             services.AddScoped<DataService<DemoStock>>();
+            services.AddScoped<DataService<List<StockPrice>>>();
 
             await builder.Build().RunAsync();
         }

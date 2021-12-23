@@ -19,7 +19,7 @@
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelFormat="n0" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" Maximum=@PriceMax Minimum=@PriceMin>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" Maximum=@PriceMax Minimum=@PriceMin>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -75,13 +75,13 @@
 
     private DateTime[] Range { get; set; }
 
-    private decimal VolumeMin { get => Data != null ? RangedData.Min(s => s.Volume) * 1 : 0; }
+    private decimal VolumeMin { get => Data != null && RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
 
-    private decimal VolumeMax { get => Data != null ? RangedData.Max(s => s.Volume) * 4 : 0; }
+    private decimal VolumeMax { get => Data != null && RangedData.Any() ? RangedData.Max(s => s.Volume) * 4 : 0; }
 
-    private decimal PriceMin { get => Data != null ? RangedData.Min(s => s.Low) * 0.8m : 0; }
+    private decimal PriceMin { get => Data != null && RangedData.Any() ? RangedData.Min(s => s.Low) * 0.8m : 0; }
 
-    private decimal PriceMax { get => Data != null ? RangedData.Max(s => s.High) * 1.2m : 0; }
+    private decimal PriceMax { get => Data != null && RangedData.Any() ? RangedData.Max(s => s.High) * 1.2m : 0; }
 
     private string Visibility { get; set; } = "hidden";
 

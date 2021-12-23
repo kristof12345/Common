@@ -10,6 +10,10 @@ h1, h2, h3, h4, h5, h6, p, table {
     -webkit-font-smoothing: auto !important;
 }
 
+h5 {
+    margin-bottom: 10px;
+}
+
 .clickable {
     cursor: pointer;
 }
@@ -325,6 +329,36 @@ text {
 }
 
 /* File upload */
-.e-upload {
-    display: none;
+
+.upload-zone input[type=file] {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+@media (max-width: 1860px) {
+    .upload-zone input[type=file] {
+        width: 80%;
+    }
+}
+
+/* Data grid */
+
+td {
+    background-color: transparent !important;
+}
+
+.sf-grid .e-rowcell {
+    color: unset !important;
+}
+
+.body-dark .sf-grid .e-table, .body-dark .sf-grid .e-headercell {
+    background-color: rgb(48,48,48) !important;
+}
+
+.body-dark .sf-grid .e-headercell {
+    border-color: rgb(219, 219, 219) !important;
 }

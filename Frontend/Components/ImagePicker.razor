@@ -2,14 +2,10 @@
 
 @using System.Net.Http;
 @using System.IO;
-@using Syncfusion.Blazor.Inputs;
+@using Microsoft.AspNetCore.Components.Forms;
 
-
-<SfUploader DropArea=".upload-zone" AllowedExtensions=".png" AllowMultiple="false" MaxFileSize=@MaxFileSize ShowFileList="false">
-    <UploaderEvents ValueChange=@FileUploaded FileSelected=@FileSelected></UploaderEvents>
-</SfUploader>
-
-<div class="upload-zone" style=@($"border-color: {Border}") aria-label="Uploader">
+<div class="upload-zone" style=@($"border-color: {Border}")>
+    <InputFile OnChange=@HandleChange />
     <Vertical style="align-items: center; padding: 10px;">
         @if (ImageUri != null)
         {
@@ -33,7 +29,7 @@
     public int MaxFileSize { get; set; } = 10 * 1024 * 1024; // 10MB
 
     [Parameter]
-    public string Format { get; set; } = "png";
+    public string Format { get; set; } = "image/png";
 
     [Parameter]
     public string Default { get; set; }
@@ -55,36 +51,34 @@
         }
     }
 
-    private async Task FileSelected(SelectedEventArgs args)
+    private async Task HandleChange(InputFileChangeEventArgs e)
     {
-        Border = Colors.Warning;
-        Status = "Loading image...";
-    }
-
-    private async Task FileUploaded(UploadChangeEventArgs args)
-    {
-        var file = args.Files.FirstOrDefault();
+        var file = e.File;
         if (file != null)
         {
-            if (file.FileInfo.Size > MaxFileSize)
+            if (file.Size > MaxFileSize)
             {
                 Status = $"That's too big. Max size: {MaxFileSize} bytes.";
                 Clear();
             }
-            else if (file.FileInfo.Type != Format)
+            else if (file.ContentType != Format)
             {
                 Status = "Invalid file. Only png images are allowed.";
                 Clear();
             }
             else
             {
-                var a = file.Stream.ToArray();
-                ImageUri = $"data:{Format};base64,{Convert.ToBase64String(a)}";
+                Border = Colors.Warning;
+                Status = "Loading image...";
+
+                var stream = new MemoryStream();
+                await file.OpenReadStream(MaxFileSize).CopyToAsync(stream);
+                ImageUri = $"data:{Format};base64,{Convert.ToBase64String(stream.ToArray())}";
 
                 Border = Colors.Success;
-                Status = $"File selected: {file.FileInfo.Name}.";
+                Status = $"File selected: {file.Name}";
 
-                File = new MultipartFormDataContent { { new ByteArrayContent(file.Stream.GetBuffer()), "\"upload\"", file.FileInfo.Name } };
+                File = new MultipartFormDataContent { { new ByteArrayContent(stream.GetBuffer()), "\"upload\"", file.Name } };
             }
         }
         await FileChanged.InvokeAsync(File);
