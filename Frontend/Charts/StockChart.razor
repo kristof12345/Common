@@ -43,7 +43,7 @@
         </div>
 
         <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1">
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@LabelFormat>
                 <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     <RangeNavigatorSeries DataSource=@Data Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
@@ -84,6 +84,8 @@
     private decimal PriceMax { get => Data != null && RangedData.Any() ? RangedData.Max(s => s.High) * 1.2m : 0; }
 
     private string Visibility { get; set; } = "hidden";
+
+    private string LabelFormat { get => IntervalType == RangeIntervalType.Months ? "MMMM" : null; }
 
     protected override void OnParametersSet()
     {

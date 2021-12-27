@@ -34,7 +34,7 @@
         </div>
 
         <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1">
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@LabelFormat>
                 <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     @foreach (var serie in Data)
@@ -70,6 +70,8 @@
     private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
 
     private string Visibility { get; set; } = "hidden";
+
+    private string LabelFormat { get => IntervalType == RangeIntervalType.Months ? "MMMM" : null; }
 
     protected override void OnParametersSet()
     {
