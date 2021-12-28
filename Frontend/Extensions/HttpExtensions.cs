@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Common.Web
 {
@@ -9,7 +9,7 @@ namespace Common.Web
     {
         public static Task<HttpResponseMessage> GetAsJsonAsync<T>(this HttpClient client, string requestUri, T value)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(value), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
             var request = new HttpRequestMessage(new HttpMethod("GET"), requestUri) { Content = content };
 
             return client.SendAsync(request);
@@ -17,7 +17,7 @@ namespace Common.Web
 
         public static Task<HttpResponseMessage> PatchAsJsonAsync<T>(this HttpClient client, string requestUri, T value)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(value), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
             var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) { Content = content };
 
             return client.SendAsync(request);

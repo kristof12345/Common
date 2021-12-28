@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json.Converters;
+﻿using System.Text.Json;
 
 namespace Common.Web
 {
-    public class JsonDateConverter : IsoDateTimeConverter
+    public class JsonDateConverter 
     {
         public static string DefaultFormat { get; } = "yyyy.MM.dd.HH:mm:ss";
 
@@ -10,7 +10,7 @@ namespace Common.Web
 
         public JsonDateConverter()
         {
-            DateTimeFormat = DefaultFormat;
+            
         }
     }
 }
