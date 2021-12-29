@@ -10,6 +10,12 @@ namespace Common.Application
 
         private static readonly IDictionary<string, string> CurrencySmbols;
 
+        public static string DateFormat { get; } = "yyyy.MM.dd.";
+
+        public static string TimeFormat { get; } = "HH:mm";
+
+        public static string DateTimeFormat { get; } = "yyyy.MM.dd. HH:mm:ss";
+
         static FormatExtensions()
         {
             FormatProvider.NumberDecimalSeparator = ",";
