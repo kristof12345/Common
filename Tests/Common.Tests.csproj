@@ -25,7 +25,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 		<ProjectReference Include="..\Backend\Common.Backend.csproj" />
-		<ProjectReference Include="..\Frontend\Common.Frontend.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Services\" />
