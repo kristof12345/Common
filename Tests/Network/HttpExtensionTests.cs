@@ -46,8 +46,5 @@ namespace Common.Tests.Network
             // Assert
             Assert.Equal("Firstname Surname", result.data.ToString());
         }
-
-
     }
 }
-
