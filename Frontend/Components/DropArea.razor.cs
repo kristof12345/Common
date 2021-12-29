@@ -9,7 +9,7 @@ using Common.Application;
 
 namespace Common.Web
 {
-    public partial class DropArea
+    public partial class DropArea : IDisposable
     {
         [Inject]
         private DragDropService DragDropService { get; set; }

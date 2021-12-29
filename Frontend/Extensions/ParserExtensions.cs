@@ -9,8 +9,6 @@ namespace Common.Web
     {
         protected string NoneValue = "None";
 
-        protected static readonly CultureInfo culture = new CultureInfo("en-US");
-
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
@@ -33,7 +31,7 @@ namespace Common.Web
         {
             var value = reader.GetString();
             if (value == NoneValue) return (decimal)0;
-            return decimal.Parse(value, culture);
+            return decimal.Parse(value, new CultureInfo("en-US"));
         }
     }
 }
