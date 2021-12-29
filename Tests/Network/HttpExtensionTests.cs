@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Common.Application;
@@ -30,6 +31,7 @@ namespace Common.Tests.Network
             var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
 
             // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Equal("Firstname Surname", result.args.ToString());
         }
 
@@ -44,6 +46,7 @@ namespace Common.Tests.Network
             var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
 
             // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Equal("Firstname Surname", result.data.ToString());
         }
 
@@ -58,6 +61,7 @@ namespace Common.Tests.Network
             var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
 
             // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Equal("Firstname Surname", result.data.ToString());
         }
 
@@ -72,7 +76,60 @@ namespace Common.Tests.Network
             var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
 
             // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Equal("Firstname Surname", result.data.ToString());
+        }
+
+        [Fact]
+        public async Task PostTest()
+        {
+            // Arrange
+            var client = new HttpClient { BaseAddress = new Uri(url) };
+
+            // Act
+            var response = await client.PostAsync("post");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task PutTest()
+        {
+            // Arrange
+            var client = new HttpClient { BaseAddress = new Uri(url) };
+
+            // Act
+            var response = await client.PutAsync("put");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task PatchTest()
+        {
+            // Arrange
+            var client = new HttpClient { BaseAddress = new Uri(url) };
+
+            // Act
+            var response = await client.PatchAsync("patch");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task HeadTest()
+        {
+            // Arrange
+            var client = new HttpClient { BaseAddress = new Uri(url) };
+
+            // Act
+            var response = await client.HeadAsync("head");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
     }
 }
