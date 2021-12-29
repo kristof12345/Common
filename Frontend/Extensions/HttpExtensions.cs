@@ -42,5 +42,10 @@ namespace Common.Web
         {
             return await client.SendAsync(new HttpRequestMessage(HttpMethod.Head, requestUri));
         }
+
+        public static async Task<T> ReadAsAsync<T>(this System.Net.Http.HttpContent content)
+        {
+            return JsonSerializer.Deserialize<T>(await content.ReadAsStringAsync());
+        }
     }
 }
