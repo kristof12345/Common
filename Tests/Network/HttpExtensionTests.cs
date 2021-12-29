@@ -46,5 +46,33 @@ namespace Common.Tests.Network
             // Assert
             Assert.Equal("Firstname Surname", result.data.ToString());
         }
+
+        [Fact]
+        public async Task PutAsJsonTest()
+        {
+            // Arrange
+            var client = new HttpClient { BaseAddress = new Uri(url) };
+
+            // Act
+            var response = await client.PutAsJsonAsync("put", new Name("Firstname", "Surname"));
+            var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
+
+            // Assert
+            Assert.Equal("Firstname Surname", result.data.ToString());
+        }
+
+        [Fact]
+        public async Task PatchAsJsonTest()
+        {
+            // Arrange
+            var client = new HttpClient { BaseAddress = new Uri(url) };
+
+            // Act
+            var response = await client.PatchAsJsonAsync("patch", new Name("Firstname", "Surname"));
+            var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
+
+            // Assert
+            Assert.Equal("Firstname Surname", result.data.ToString());
+        }
     }
 }
