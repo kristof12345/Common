@@ -2,15 +2,26 @@
 {
     public class Response
     {
-        public static readonly Response Success = new Response();
+        public static readonly Response Success = new Response(true);
 
-        public string Content { get; set; }
+        public string Content { get; init; }
 
-        public Response(string content = null)
+        public bool IsSuccess { get; init; }
+
+        public Response()
         {
-            Content = content;
+            IsSuccess = false;
         }
 
-        public bool IsSuccess { get { return Content == null; } }
+        public Response(string content)
+        {
+            Content = content;
+            IsSuccess = false;
+        }
+
+        public Response(bool isSuccess)
+        {
+            IsSuccess = isSuccess;
+        }
     }
 }

@@ -7,6 +7,8 @@ namespace Common.Application
 {
     public static class HttpExtensions
     {
+        private static readonly JsonSerializerOptions options = new JsonSerializerOptions {  PropertyNameCaseInsensitive = true };
+
         public static Task<HttpResponseMessage> GetAsJsonAsync<T>(this HttpClient client, string requestUri, T value)
         {
             var content = new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
@@ -62,7 +64,7 @@ namespace Common.Application
         public static async Task<T> ReadAsAsync<T>(this HttpContent content)
         {
             var a = await content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(a);
+            return JsonSerializer.Deserialize<T>(a, options);
         }
     }
 }

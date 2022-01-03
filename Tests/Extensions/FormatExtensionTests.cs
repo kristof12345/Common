@@ -1,7 +1,7 @@
 ﻿using Common.Application;
 using Xunit;
 
-namespace Common.Tests.Models
+namespace Common.Tests.Extensions
 {
     public class FormatExtensionTests
     {

@@ -32,10 +32,12 @@
 		<Folder Include="Attributes\" />
 		<Folder Include="Database\" />
 		<Folder Include="Network\" />
+		<Folder Include="Extensions\" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Database\" />
 		<None Remove="Microsoft.EntityFrameworkCore" />
 		<None Remove="Network\" />
+		<None Remove="Extensions\" />
 	</ItemGroup>
 </Project>

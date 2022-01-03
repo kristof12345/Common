@@ -88,7 +88,7 @@ namespace Common.Tests.Services
             }
 
             // Assert
-            Assert.Throws<TokenException>(() => tokenService.DecodeToken("invalid"));
+            Assert.Throws<AuthorizationException>(() => tokenService.DecodeToken("invalid"));
             Assert.Equal("Invalid token.", msg);
         }
     }

@@ -1,0 +1,62 @@
+﻿@namespace Common.Web
+
+@using Common.Application
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Charts
+@using System.Collections.ObjectModel;
+
+<div class="series-chart">
+    @if (Visibility == "hidden")
+    {
+        <LoadingIndicator />
+    }
+
+    @if (Data != null)
+    {
+        <div class="chart">
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
+                <ChartEvents Loaded=@OnLoaded />
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat="  hh.mm.ss  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                </ChartPrimaryXAxis>
+
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide >
+                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                </ChartPrimaryYAxis>
+
+                <ChartSeriesCollection>
+                    <ChartSeries DataSource=@Data Fill=@Color XName="Date" YName="Value" Type=@Type Width=@LineWidth Opacity=@Opacity />
+                </ChartSeriesCollection>
+
+            </SfChart>
+        </div>
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    [EditorRequired]
+    public ObservableCollection<ITemporalValue> Data { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public string Color { get; set; }
+
+    [Parameter]
+    public int LineWidth { get; set; } = 3;
+
+    [Parameter]
+    public double Opacity { get; set; } = 3;
+
+    [Parameter]
+    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    private string Visibility { get; set; } = "hidden";
+
+    private void OnLoaded(object args)
+    {
+        Visibility = "visible";
+        this.StateHasChanged();
+    }
+}

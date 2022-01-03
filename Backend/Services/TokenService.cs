@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Text.Json;
 using Common.Application;
-using Newtonsoft.Json;
+using Common.Backend;
 using JWT.Algorithms;
 using JWT.Builder;
 
@@ -8,6 +9,8 @@ namespace Common.Backend
 {
     public class TokenService : ITokenService
     {
+        private static readonly JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
         public AppUser GenerateToken(string username, Name name, UserType type)
         {
             return GenerateToken(username, name, type, "National");
@@ -32,11 +35,11 @@ namespace Common.Backend
             try
             {
                 string json = new JwtBuilder().WithAlgorithm(new HMACSHA256Algorithm()).WithSecret(App.TokenSettings.Secret).MustVerifySignature().Decode(token);
-                return JsonConvert.DeserializeObject<AppUser>(json);
+                return JsonSerializer.Deserialize<AppUser>(json, options);
             }
             catch (Exception)
             {
-                throw new TokenException();
+                throw new AuthorizationException("Invalid token.");
             }
         }
     }
@@ -46,10 +49,5 @@ namespace Common.Backend
         public string Secret { get; set; }
 
         public int ExpireMinutes { get; set; }
-    }
-
-    public class TokenException : Exception
-    {
-        public TokenException(string message = "Invalid token.") : base(message) { }
     }
 }
