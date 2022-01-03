@@ -19,10 +19,45 @@ namespace Common.Tests.Database
             var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB1").Options);
 
             // Act
-            await context.Entities.InsertAsync(new Entity { Id="1", Content="a" });
+            await context.Entities.InsertAsync(new Entity { Id = "1", Content = "a" });
 
             // Assert
             Assert.Equal(1, context.Entities.Count());
+        }
+
+        [Fact]
+        public async Task InsertDuplicateTest()
+        {
+            // Arrange
+            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB1").Options);
+            string msg = "";
+
+            // Act
+            try
+            {
+                await AddDuplicateEntity(context);
+            }
+            catch (Exception e)
+            {
+                msg = e.Message;
+            }
+
+            // Assert
+            await Assert.ThrowsAsync<DuplicateException>(async () => await AddDuplicateEntity(context));
+            Assert.Equal("An entity already exists with the given ID.", msg);
+        }
+
+        private static async Task AddDuplicateEntity(DatabaseContext context)
+        {
+            try
+            {
+                await context.Entities.InsertAsync(new Entity { Id = "1", Content = "a" });
+                await context.Entities.InsertAsync(new Entity { Id = "1", Content = "b" });
+            }
+            catch (Exception)
+            {
+                throw new DuplicateException();
+            }
         }
 
         [Fact]

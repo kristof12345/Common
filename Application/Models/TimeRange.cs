@@ -29,7 +29,7 @@ namespace Common.Application
 
         public override string ToString()
         {
-            return "?From=" + Start.ToString() + "&To=" + End.ToString();
+            return "?From=" + Start.ToString("yyyy.MM.ddTHH:mm:ss") + "&To=" + End.ToString("yyyy.MM.ddTHH:mm:ss");
         }
     }
 }

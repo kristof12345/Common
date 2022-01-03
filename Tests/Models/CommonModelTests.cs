@@ -54,26 +54,6 @@ namespace Common.Tests.Models
         }
 
         [Fact]
-        public void EmptyDateRangeTest()
-        {
-            var range = new DateRange();
-
-            Assert.Equal(DateTime.MinValue, range.Start);
-            Assert.Equal(DateTime.MaxValue, range.End);
-            Assert.Equal("?From=0001.01.01&To=9999.12.31", range.ToString());
-        }
-
-        [Fact]
-        public void DateRangeTest()
-        {
-            var range = new DateRange(new DateTime(2020,1,1), new DateTime(2021,8,7));
-
-            Assert.Equal(new DateTime(2020, 1, 1), range.Start);
-            Assert.Equal(new DateTime(2021, 8, 7), range.End);
-            Assert.Equal("?From=2020.01.01&To=2021.08.07", range.ToString());
-        }
-
-        [Fact]
         public void AppTest()
         {
             App.Environment = "UnitTest";
