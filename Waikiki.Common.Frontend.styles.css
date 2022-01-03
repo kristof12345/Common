@@ -107,6 +107,31 @@
     width: 100%;
     overflow: hidden;
 }
+/* _content/Waikiki.Common.Frontend/Charts/RealtimeSeriesChart.razor.rz.scp.css */
+.series-chart[b-bzm5uizeeq] {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .series-chart[b-bzm5uizeeq] {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart[b-bzm5uizeeq] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range[b-bzm5uizeeq] {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
 /* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
 .series-chart[b-iwlyhgztz0] {
     height: 450px;
