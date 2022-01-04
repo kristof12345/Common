@@ -52,7 +52,7 @@
         timer.Elapsed += AddData;
         timer.AutoReset = true;
 
-        Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
+        await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
 
         List = new List<ChartData>
 {

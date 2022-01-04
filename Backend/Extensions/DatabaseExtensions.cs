@@ -32,7 +32,7 @@ namespace Common.Backend
             await entities.SaveAsync();
         }
 
-        public static async Task<IEntity<R>> UpdateAsync<T, R>(this DbSet<T> entities, IEntity<R> entity) where T : class, IEntity<R>
+        public static async Task<T> UpdateAsync<T, R>(this DbSet<T> entities, IEntity<R> entity) where T : class, IEntity<R>
         {
             var original = await entities.AsTracking().FindAsync(entity.Id);
             if (original != null)
@@ -41,7 +41,19 @@ namespace Common.Backend
                 entities.Add((T)entity);
                 await entities.SaveAsync();
             }
-            return entity;
+            return (T)entity;
+        }
+
+        public static async Task<T> UpdateAsync<T, R>(this IQueryable<T> entities, IEntity<R> entity, DbContext context) where T : class, IEntity<R>
+        {
+            var original = await entities.AsTracking().FirstOrDefaultAsync(e => e.Id.Equals(entity.Id));
+            if (original != null)
+            {
+                context.Remove(original);
+                context.Add((T)entity);
+                await context.SaveChangesAsync();
+            }
+            return (T)entity;
         }
 
         public static async Task<T> DeleteAsync<T, R>(this DbSet<T> entities, R id) where T : class, IEntity<R>
@@ -51,6 +63,17 @@ namespace Common.Backend
             {
                 entities.Remove(entity);
                 await entities.SaveAsync();
+            }
+            return entity;
+        }
+
+        public static async Task<T> DeleteAsync<T, R>(this IQueryable<T> entities, R id, DbContext context) where T : class, IEntity<R>
+        {
+            var entity = await entities.AsTracking().FirstOrDefaultAsync(e => e.Id.Equals(id));
+            if (entity != null)
+            {
+                context.Remove(entity);
+                await context.SaveChangesAsync();
             }
             return entity;
         }
