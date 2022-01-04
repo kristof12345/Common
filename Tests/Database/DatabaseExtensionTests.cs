@@ -16,7 +16,7 @@ namespace Common.Tests.Database
         public async Task InsertEntityTest()
         {
             // Arrange
-            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB1").Options);
+            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB0").Options);
 
             // Act
             await context.Entities.InsertAsync(new Entity { Id = "1", Content = "a" });
@@ -179,6 +179,39 @@ namespace Common.Tests.Database
             Assert.Equal(2, context.Entities.Count());
             Assert.Equal("a", context.Entities.First().Content);
             Assert.Equal("b", context.Entities.Last().Content);
+        }
+
+        [Fact]
+        public async Task UpdateParentTest()
+        {
+            // Arrange
+            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB9").Options);
+            await context.Entities.InsertAsync(new List<Entity> { new Entity { Id = "1", Content = "a" }, new Entity { Id = "2", Content = "b" } });
+
+            // Act
+            await context.Entities.UpdateAsync(new Entity { Id = "1", Content = "c" }, context);
+            var list = await context.Entities.OrderBy(e => e.Id).ToListAsync();
+
+            // Assert
+            Assert.Equal(2, list.Count);
+            Assert.Equal("1", list.First().Id);
+            Assert.Equal("2", list.Last().Id);
+            Assert.Equal("c", list.First().Content);
+            Assert.Equal("b", list.Last().Content);
+        }
+
+        [Fact]
+        public async Task DeleteParentEntityTest()
+        {
+            // Arrange
+            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB10").Options);
+            await context.Entities.InsertAsync(new List<Entity> { new Entity { Id = "1", Content = "a" }, new Entity { Id = "2", Content = "b" } });
+
+            // Act
+            await context.Entities.DeleteAsync("2", context);
+
+            // Assert
+            Assert.Equal(1, context.Entities.Count());
         }
     }
 }
