@@ -1,6 +1,8 @@
 ﻿@page "/chart"
 
 @using Common.Application
+@using System.Timers
+@using System.Collections.ObjectModel
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
     <DoughnutDiagram Data=@List Height="700px" />
@@ -11,9 +13,12 @@
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary />
+    <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary IntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
 </Paper>
 
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <RealtimeSeriesChart Data=@RealTimeData Color=@Colors.Primary />
+</Paper>
 
 @code
 {
@@ -26,8 +31,29 @@
 
     private List<ChartDataSeries> MultiSeriesList;
 
+    private static Timer timer;
+    private Random randomNum = new Random();
+    public ObservableCollection<ITemporalValue> RealTimeData;
+
     protected override async Task OnInitializedAsync()
     {
+        RealTimeData = new ObservableCollection<ITemporalValue>();
+
+        for (int i = 0; i < 360; i++)
+        {
+            RealTimeData.Add(new Price
+            {
+                Date = DateTime.Now.AddSeconds(i - 360),
+                Value = randomNum.Next(30, 80)
+            });
+        }
+
+        timer = new Timer(1000);
+        timer.Elapsed += AddData;
+        timer.AutoReset = true;
+
+        await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
+
         List = new List<ChartData>
 {
             new ChartData
@@ -120,6 +146,16 @@
                 }
             }
         };
+    }
+
+    private void AddData(Object source, ElapsedEventArgs e)
+    {
+        RealTimeData.RemoveAt(0);
+        RealTimeData.Add(new Price
+        {
+            Date = DateTime.Now,
+            Value = randomNum.Next(30, 80)
+        });
     }
 
     public class Price : ITemporalValue

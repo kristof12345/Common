@@ -1,0 +1,22 @@
+﻿@page "/cache"
+
+@using Microsoft.Extensions.Caching.Memory
+
+<h3>@Text</h3>
+
+@code
+{
+    [Inject]
+    private DataService<List<StockPrice>> Service { get; set; }
+
+    private string Text { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Text = Service.Cache.GetOrCreate<string>("time", cache =>
+        {
+            cache.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+            return DateTime.Now.ToLongTimeString();
+        });
+    }
+}

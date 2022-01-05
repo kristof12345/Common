@@ -95,6 +95,10 @@ form, button, img {
         fill: white;
     }
 
+    .body-dark .logo-button {
+        background-color: #424242;
+    }
+
 /* Autocomplete */
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
