@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Common.Application;
 using Microsoft.EntityFrameworkCore;
@@ -14,39 +16,39 @@ namespace Common.Backend
             return ordering.Descending ? entities.OrderByDescending(ordering.Expression) : entities.OrderBy(ordering.Expression);
         }
 
-        public static async Task<T> FindAsync<T, R>(this IQueryable<T> entities, R id) where T : IEntity<R>
+        public static async Task<T> FindAsync<T, R>(this IQueryable<T> database, R id) where T : IEntity<R>
         {
-            return await entities.FirstOrDefaultAsync(e => e.Id.Equals(id));
+            return await database.FirstOrDefaultAsync(e => e.Id.Equals(id));
         }
 
-        public static async Task<T> InsertAsync<T>(this DbSet<T> entities, T entity) where T : class
+        public static async Task<T> InsertAsync<T>(this DbSet<T> database, T entity) where T : class
         {
-            entities.Add(entity);
-            await entities.SaveAsync();
+            database.Add(entity);
+            await database.SaveAsync();
             return entity;
         }
 
-        public static async Task InsertAsync<T>(this DbSet<T> entities, IEnumerable<T> entity) where T : class
+        public static async Task InsertAsync<T>(this DbSet<T> database, IEnumerable<T> entity) where T : class
         {
-            entities.AddRange(entity);
-            await entities.SaveAsync();
+            database.AddRange(entity);
+            await database.SaveAsync();
         }
 
-        public static async Task<T> UpdateAsync<T, R>(this DbSet<T> entities, IEntity<R> entity) where T : class, IEntity<R>
+        public static async Task<T> UpdateAsync<T, R>(this DbSet<T> database, IEntity<R> entity) where T : class, IEntity<R>
         {
-            var original = await entities.AsTracking().FindAsync(entity.Id);
+            var original = await database.AsTracking().FindAsync(entity.Id);
             if (original != null)
             {
-                entities.Remove(original);
-                entities.Add((T)entity);
-                await entities.SaveAsync();
+                database.Remove(original);
+                database.Add((T)entity);
+                await database.SaveAsync();
             }
             return (T)entity;
         }
 
-        public static async Task<T> UpdateAsync<T, R>(this IQueryable<T> entities, IEntity<R> entity, DbContext context) where T : class, IEntity<R>
+        public static async Task<T> UpdateAsync<T, R>(this IQueryable<T> database, IEntity<R> entity, DbContext context) where T : class, IEntity<R>
         {
-            var original = await entities.AsTracking().FirstOrDefaultAsync(e => e.Id.Equals(entity.Id));
+            var original = await database.AsTracking().FirstOrDefaultAsync(e => e.Id.Equals(entity.Id));
             if (original != null)
             {
                 context.Remove(original);
@@ -56,26 +58,22 @@ namespace Common.Backend
             return (T)entity;
         }
 
-        public static async Task<T> DeleteAsync<T, R>(this DbSet<T> entities, R id) where T : class, IEntity<R>
+        public static async Task<T> DeleteAsync<T, R>(this DbSet<T> database, R id) where T : class, IEntity<R>
         {
-            var entity = await entities.AsTracking().FindAsync(id);
+            var entity = await database.AsTracking().FindAsync(id);
             if (entity != null)
             {
-                entities.Remove(entity);
-                await entities.SaveAsync();
+                database.Remove(entity);
+                await database.SaveAsync();
             }
             return entity;
         }
 
-        public static async Task<T> DeleteAsync<T, R>(this IQueryable<T> entities, R id, DbContext context) where T : class, IEntity<R>
+        public static async Task DeleteAsync<T>(this DbSet<T> database, Expression<Func<T, bool>> expression) where T : class
         {
-            var entity = await entities.AsTracking().FirstOrDefaultAsync(e => e.Id.Equals(id));
-            if (entity != null)
-            {
-                context.Remove(entity);
-                await context.SaveChangesAsync();
-            }
-            return entity;
+            var entities = database.Where(expression);
+            database.RemoveRange(entities);
+            await database.SaveAsync();
         }
 
         public static void DiscardChanges(this DbContext context)

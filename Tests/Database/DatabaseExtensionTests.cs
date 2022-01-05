@@ -199,19 +199,5 @@ namespace Common.Tests.Database
             Assert.Equal("c", list.First().Content);
             Assert.Equal("b", list.Last().Content);
         }
-
-        [Fact]
-        public async Task DeleteParentEntityTest()
-        {
-            // Arrange
-            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB10").Options);
-            await context.Entities.InsertAsync(new List<Entity> { new Entity { Id = "1", Content = "a" }, new Entity { Id = "2", Content = "b" } });
-
-            // Act
-            await context.Entities.DeleteAsync("2", context);
-
-            // Assert
-            Assert.Equal(1, context.Entities.Count());
-        }
     }
 }
