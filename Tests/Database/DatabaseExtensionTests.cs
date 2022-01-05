@@ -199,5 +199,19 @@ namespace Common.Tests.Database
             Assert.Equal("c", list.First().Content);
             Assert.Equal("b", list.Last().Content);
         }
+
+        [Fact]
+        public async Task DeleteMultipleTest()
+        {
+            // Arrange
+            var context = new DatabaseContext(new DbContextOptionsBuilder<DatabaseContext>().UseInMemoryDatabase("DemoDB10").Options);
+            await context.Entities.InsertAsync(new List<Entity> { new Entity { Id = "1", Content = "a" }, new Entity { Id = "2", Content = "b" }, new Entity { Id = "3", Content = "a" }, new Entity { Id = "4", Content = "c" } });
+
+            // Act
+            await context.Entities.DeleteAsync(e => e.Content== "a");
+
+            // Assert
+            Assert.Equal(2, context.Entities.Count());
+        }
     }
 }
