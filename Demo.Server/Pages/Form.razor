@@ -65,6 +65,16 @@
             <LinkButton Link="./" Color="red">Red LinkButton</LinkButton>
             <LinkButton Link="./" Color="red" Outlined="true">RedOutlined LinkButton</LinkButton>
         </Horizontal>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Margin=@Border.Top("20px")>
+            <Button Color=@Colors.Success Outlined="true" Width="8%">Add</Button>
+            <Button Color=@Colors.Warning Outlined="true" Width="8%">Refresh</Button>
+            <Button Color=@Colors.Error Outlined="true" Width="8%">Delete</Button>
+        </Horizontal>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Margin=@Border.Top("20px")>
+            <Button Disabled="true" Color=@Colors.Success Outlined="true" Width="8%">Add</Button>
+            <Button Disabled="true" Color=@Colors.Warning Outlined="true" Width="8%">Refresh</Button>
+            <Button Disabled="true" Color=@Colors.Error Outlined="true" Width="8%">Delete</Button>
+        </Horizontal>
     </Paper>
 </Container>
 

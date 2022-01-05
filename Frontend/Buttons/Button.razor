@@ -2,7 +2,7 @@
 
 @using Syncfusion.Blazor.Buttons
 
-<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{ButtonClass} {Class}") style=@($"width: {Width}; height: {Height}; margin: {Margin.ToString()}; {ColorStyle} {Style}")>@ChildContent</SfButton>
+<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{ButtonClass} {Class}") style=@($"width: {Width}; height: {Height}; margin: {Margin.ToString()}; {GetColorStyle()} {Style}")>@ChildContent</SfButton>
 
 @code
 {
@@ -39,7 +39,11 @@
     [Parameter]
     public string Style { get; set; }
 
-    private string ColorStyle { get => Outlined ? $"color: {Color}; border-color: {Color}" : $"background-color: {Color};"; }
-
     private string ButtonClass { get => Outlined ? "e-outline" : "e-fill"; }
+
+    private string GetColorStyle()
+    {
+        var color = Disabled ? Colors.Grey : Color;
+        return Outlined ? $"color: {color}; border-color: {color}" : $"background-color: {color};";
+    }
 }
