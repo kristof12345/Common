@@ -2,7 +2,7 @@
 
 @using Syncfusion.Blazor.Buttons
 
-<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{ButtonClass} {Class}") style=@($"width: {Width}; height: {Height}; margin: {Margin.ToString()}; {GetColorStyle()} {Style}")>@ChildContent</SfButton>
+<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{ButtonClass} {Class}") style=@($"width: {Width}; min-width: {MinWidth}; height: {Height}; margin: {Margin.ToString()}; {GetColorStyle()} {Style}")>@ChildContent</SfButton>
 
 @code
 {
@@ -26,6 +26,9 @@
 
     [Parameter]
     public string Width { get; set; } = "auto";
+
+    [Parameter]
+    public string MinWidth { get; set; } = "unset";
 
     [Parameter]
     public string Height { get; set; } = "36px";
