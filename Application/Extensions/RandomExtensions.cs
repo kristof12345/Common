@@ -11,7 +11,7 @@ namespace Common.Application
 
         public static decimal Next(this Random random, decimal minimum, decimal maximum)
         {
-            return new decimal((random.NextDouble()) * (maximum - minimum)) + minimum;
+            return (new decimal(random.NextDouble()) * (maximum - minimum)) + minimum;
         }
     }
 }
