@@ -9,7 +9,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>2.0.13</PackageVersion>
+		<PackageVersion>2.1.0</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>

@@ -34,7 +34,7 @@
         </div>
 
         <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@LabelFormat>
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
                 <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     @foreach (var serie in Data)
@@ -45,6 +45,11 @@
 
             </SfRangeNavigator>
         </div>
+
+        @if (ShowLegend)
+        {
+            <DiagramLegend Data=@DiagramLegend />
+        }
     }
 </div>
 
@@ -63,15 +68,18 @@
     public DateTime EndDate { get; set; }
 
     [Parameter]
+    public bool ShowLegend { get; set; } = false;
+
+    [Parameter]
     public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
 
-    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select( series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
+    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select(series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
 
     private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
 
     private string Visibility { get; set; } = "hidden";
 
-    private string LabelFormat { get => IntervalType == RangeIntervalType.Months ? "MMMM" : null; }
+    private IEnumerable<ChartData> DiagramLegend { get => Data.Select(series => new ChartData { Id = series.Id, Color = series.Color }); }
 
     protected override void OnParametersSet()
     {

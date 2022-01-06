@@ -9,7 +9,7 @@
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) />
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true"/>
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
@@ -25,7 +25,7 @@
     [Inject]
     private DataService<List<StockPrice>> StockService { get; set; }
 
-    private List<ChartData> List;
+    private List<ChartData> List = new List<ChartData>();
 
     private List<StockPrice> Series;
 
