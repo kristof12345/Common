@@ -46,6 +46,11 @@
 
             </SfRangeNavigator>
         </div>
+
+        @if (ShowLegend)
+        {
+            <DiagramLegend Data=@DiagramLegend />
+        }
     }
 </div>
 
