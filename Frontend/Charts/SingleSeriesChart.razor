@@ -19,7 +19,7 @@
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide Maximum=@Max Minimum=@Min>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -32,7 +32,7 @@
 
         <div class=@("range " + Visibility)>
             <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
-                <RangeNavigatorEvents Loaded=@OnLoaded></RangeNavigatorEvents>
+                <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
                 </RangeNavigatorSeriesCollection>
@@ -76,10 +76,6 @@
 
     private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
 
-    private decimal Min { get => Data != null && RangedData.Any() ? RangedData.Min(s => s.Value) * 0.8m : 0; }
-
-    private decimal Max { get => Data != null && RangedData.Any() ? RangedData.Max(s => s.Value) * 1.2m : 0; }
-
     private string Visibility { get; set; } = "hidden";
 
     protected override void OnParametersSet()
@@ -92,7 +88,7 @@
         Range = (DateTime[])args;
     }
 
-    private void OnLoaded(object args)
+    private void OnRangeLoaded(object args)
     {
         Visibility = "visible";
     }

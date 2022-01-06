@@ -14,7 +14,6 @@
     {
         <div class=@("chart " + Visibility)>
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
-                <ChartEvents Loaded=@OnChartLoaded></ChartEvents>
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -43,14 +42,8 @@
                         <RangeNavigatorSeries DataSource=@serie.Data Fill=@serie.Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
                     }
                 </RangeNavigatorSeriesCollection>
-
             </SfRangeNavigator>
         </div>
-
-        @if (ShowLegend)
-        {
-            <DiagramLegend Data=@DiagramLegend />
-        }
     }
 </div>
 
@@ -100,11 +93,6 @@
     private void RangeChanged(object args)
     {
         Range = (DateTime[])args;
-    }
-
-    private void OnChartLoaded(object args)
-    {
-        Visibility = "visible";
     }
 
     private void OnRangeLoaded(object args)
