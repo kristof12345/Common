@@ -9,8 +9,8 @@
     "assembly": {
       "Blazored.LocalStorage.dll": "sha256-ItMv+HytRb8SgPKYiz75PK0k+DFgN1E247PZT\/8lODs=",
       "Blazored.SessionStorage.dll": "sha256-XkZNIC6OGMeHZDbBGnhfc9yXdLIvGa8LlKDd4ZPWkS8=",
-      "Common.Application.dll": "sha256-4HK1Jk6GXO3MPsQMobh+e2nSmgv\/LkYS1kaZ4mjcm6s=",
-      "Common.Frontend.dll": "sha256-GsIuIW0xMBeJPQnycsOaeOpktkMudkxMdscZYGK1UmA=",
+      "Common.Application.dll": "sha256-Vd1FeJ0UhhGNRyqqy2E0Bd10XcNo5ySLRZR192ZRTq0=",
+      "Common.Frontend.dll": "sha256-\/QniIls6dnwufOA+uQLHLyuGd\/T8SNx7hfhxkOC9vqU=",
       "Demo.Client.dll": "sha256-lbBaKIE1jDqFdo+zA9yZ+ptPRhWJDKTBjbyimaBaGYE=",
       "Microsoft.AspNetCore.Components.dll": "sha256-GW098u4x3RTSFYQklRmgEeDPzUbjSLqlYN7uN5UDitM=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-dAl\/ysV2oHyABuu5S2jEQ3RYIrkiroALJgtqO6anTRc=",
