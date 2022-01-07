@@ -12,8 +12,8 @@
 
     @if (Data != null)
     {
-        <div class=@("chart " + Visibility)>
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
+        <div class="chart">
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -77,11 +77,11 @@
     [Parameter]
     public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
 
-    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select(series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
-
-    private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
-
     private string Visibility { get; set; } = "hidden";
+
+    private DateTime[] Range { get; set; }
+
+    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select(series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
 
     private IEnumerable<ChartData> DiagramLegend { get => Data.Select(series => new ChartData { Id = series.Id, Color = series.Color }); }
 

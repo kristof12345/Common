@@ -228,6 +228,27 @@ namespace Common.Tests.Extensions
             Assert.Equal(new DateTime(2020, 2, 2), stock.Date);
             Assert.Equal(70, stock.Volume);
         }
+
+        [Fact]
+        public void AsNotNullOriginalTest()
+        {
+            var list = new List<StockPrice>
+            {
+                new StockPrice { Date = new DateTime(2020,1,1), Volume=10 }
+            };
+
+            Assert.NotNull(list.AsNotNull());
+            Assert.Single(list.AsNotNull());
+        }
+
+        [Fact]
+        public void AsNotNullTest()
+        {
+            List<StockPrice> list = null;
+
+            Assert.NotNull(list.AsNotNull());
+            Assert.Empty(list.AsNotNull());
+        }
     }
 
     public class StockPrice : IStockPrice

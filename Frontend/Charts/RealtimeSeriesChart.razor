@@ -14,13 +14,15 @@
     @if (Data != null)
     {
         <div class="chart">
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
-                <ChartEvents Loaded=@OnLoaded />
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
+
+                <ChartEvents Loaded=@OnChartLoaded />
+
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat="  hh.mm.ss  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide >
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -40,8 +42,10 @@
     public ObservableCollection<ITemporalValue> Data { get; set; }
 
     [Parameter]
-    [EditorRequired]
-    public string Color { get; set; }
+    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    [Parameter]
+    public string Color { get; set; } = Colors.Primary;
 
     [Parameter]
     public int LineWidth { get; set; } = 3;
@@ -49,12 +53,9 @@
     [Parameter]
     public double Opacity { get; set; } = 3;
 
-    [Parameter]
-    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
-
     private string Visibility { get; set; } = "hidden";
 
-    private void OnLoaded(object args)
+    private void OnChartLoaded(object args)
     {
         Visibility = "visible";
         this.StateHasChanged();

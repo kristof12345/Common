@@ -15,7 +15,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -36,7 +36,6 @@
                 <RangeNavigatorSeriesCollection>
                     <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
                 </RangeNavigatorSeriesCollection>
-
             </SfRangeNavigator>
         </div>
     }
@@ -57,8 +56,13 @@
     public DateTime EndDate { get; set; }
 
     [Parameter]
-    [EditorRequired]
-    public string Color { get; set; }
+    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
+
+    [Parameter]
+    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    [Parameter]
+    public string Color { get; set; } = Colors.Primary;
 
     [Parameter]
     public int LineWidth { get; set; } = 3;
@@ -66,17 +70,11 @@
     [Parameter]
     public double Opacity { get; set; } = 3;
 
-    [Parameter]
-    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
-
-    [Parameter]
-    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
-
-    public IEnumerable<ITemporalValue> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
-
-    private DateTime[] Range { get; set; } = new DateTime[] { new DateTime(2017, 1, 1), new DateTime(2018, 1, 1) };
-
     private string Visibility { get; set; } = "hidden";
+
+    private DateTime[] Range { get; set; }
+
+    private IEnumerable<ITemporalValue> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     protected override void OnParametersSet()
     {

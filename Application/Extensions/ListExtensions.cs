@@ -70,5 +70,10 @@ namespace Common.Application
         {
             return list.OrderByDescending(item => item.Date).First(e => e.Date <= date);
         }
+
+        public static IEnumerable<T> AsNotNull<T>(this IEnumerable<T> original)
+        {
+            return original ?? Enumerable.Empty<T>();
+        }
     }
 }

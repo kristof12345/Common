@@ -70,15 +70,15 @@
     [Parameter]
     public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
 
-    public IEnumerable<IStockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
-
     private DateTime[] Range { get; set; }
 
-    private decimal VolumeMin { get => Data != null && RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
-
-    private decimal VolumeMax { get => Data != null && RangedData.Any() ? RangedData.Max(s => s.Volume) * 4 : 0; }
+    private IEnumerable<IStockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     private string Visibility { get; set; } = "hidden";
+
+    private decimal VolumeMin { get => RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
+
+    private decimal VolumeMax { get => RangedData.Any() ? RangedData.Max(s => s.Volume) * 4 : 0; }
 
     protected override void OnParametersSet()
     {
