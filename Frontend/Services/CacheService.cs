@@ -17,7 +17,7 @@ namespace Common.Web
             cache[key] = value;
         }
 
-        public void Remove<T>(string key)
+        public void Remove(string key)
         {
             cache.Remove(key);
         }

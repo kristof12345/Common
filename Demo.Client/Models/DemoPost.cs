@@ -9,4 +9,3 @@ namespace Demo.Client
         public string Title { get; set; }
     }
 }
-

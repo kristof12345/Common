@@ -38,6 +38,33 @@ namespace Common.Tests.Frontend
         }
 
         [Fact]
+        public void RemoveFromCacheTest()
+        {
+            // Arrange
+            var cache = new CacheService();
+
+            // Act
+            cache.Set("Key", "Value");
+            cache.Remove("Key");
+
+            // Assert
+            Assert.Null(cache.Get<string>("Key"));
+        }
+
+        [Fact]
+        public void RemoveFromEmptyCacheTest()
+        {
+            // Arrange
+            var cache = new CacheService();
+
+            // Act
+            cache.Remove("Key");
+
+            // Assert
+            Assert.Null(cache.Get<string>("Key"));
+        }
+
+        [Fact]
         public void ClearCacheTest()
         {
             // Arrange
