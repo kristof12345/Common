@@ -23,6 +23,7 @@ namespace Common.Web
             var value = Cache.Get<T>(key);
             if (value != null)
             {
+                await Task.Delay(10);
                 return await Task.FromResult(value);
             }
             else

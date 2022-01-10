@@ -12,8 +12,7 @@ namespace Common.Application
             var enumType = typeof(TEnum);
             var memInfo = enumType.GetMember(enumVal.ToString());
             var attr = memInfo.First().GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
-            if (attr != null) return attr.Value;
-            return string.Empty;
+            return attr != null ? attr.Value : string.Empty;
         }
 
         public static string GetAttributeValue<TEnum>(this TEnum? enumVal) where TEnum : struct

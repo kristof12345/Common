@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Common.Application
+﻿namespace Common.Application
 {
     public interface IStockPrice : IPrice
     {

@@ -13,7 +13,7 @@ namespace Common.Application
         [Required]
         public DateTime End { get; set; }
 
-        public TimeSpan Length { get { return End - Start; } }
+        public TimeSpan Length { get => End - Start; }
 
         public DateRange()
         {

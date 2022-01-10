@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Common.Application
 {
@@ -7,7 +6,7 @@ namespace Common.Application
     {
         public static string Capitalize(this string original)
         {
-            return char.ToUpper(original.First()) + original.Substring(1).ToLower();
+            return char.ToUpper(original.First()) + original[1..].ToLower();
         }
     }
 }
