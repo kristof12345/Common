@@ -15,11 +15,11 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide >
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -54,6 +54,12 @@
     [Parameter]
     [EditorRequired]
     public DateTime EndDate { get; set; }
+
+    [Parameter]
+    public decimal? Minimum { get; set; } = null;
+
+    [Parameter]
+    public decimal? Maximum { get; set; } = null;
 
     [Parameter]
     public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;

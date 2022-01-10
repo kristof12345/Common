@@ -77,5 +77,14 @@ namespace Common.Tests.Extensions
             Assert.Equal("€ 314 159 265 359", large.FormatCurrency("EUR", true));
             Assert.Equal("Infinity", long.MaxValue.FormatCurrency("GBP", true));
         }
+
+        [Fact]
+        public void FormatCurrencyDecimalsTest()
+        {
+            Assert.Equal(" 0,0", zero.FormatCurrency(null, 1));
+            Assert.Equal("$ 0", zero.FormatCurrency("USD", 0));
+            Assert.Equal("€ 3,14", pi.FormatCurrency("EUR", 2));
+            Assert.Equal("£ 1 000 000,00", million.FormatCurrency("GBP", 2));
+        }
     }
 }

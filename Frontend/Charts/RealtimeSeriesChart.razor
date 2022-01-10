@@ -22,7 +22,7 @@
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -40,6 +40,12 @@
     [Parameter]
     [EditorRequired]
     public ObservableCollection<ITemporalValue> Data { get; set; }
+
+    [Parameter]
+    public decimal? Minimum { get; set; } = null;
+
+    [Parameter]
+    public decimal? Maximum { get; set; } = null;
 
     [Parameter]
     public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;

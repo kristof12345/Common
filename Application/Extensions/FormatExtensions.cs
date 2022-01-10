@@ -45,6 +45,11 @@ namespace Common.Application
             return GetCurrencySymbol(ISOCurrencySymbol) + string.Format(FormatProvider, " {0:N2}", value);
         }
 
+        public static string FormatCurrency(this decimal value, string ISOCurrencySymbol, int decimalPlaces)
+        {
+            return GetCurrencySymbol(ISOCurrencySymbol) + string.Format(FormatProvider, " {0:N" + decimalPlaces + "}", value);
+        }
+
         public static string FormatCurrency(this long value, string ISOCurrencySymbol, bool showSpecialValuesAsString = false)
         {
             if (showSpecialValuesAsString && value == 0) return "Unknown";

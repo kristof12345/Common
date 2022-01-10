@@ -19,7 +19,7 @@
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum >
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -73,6 +73,12 @@
 
     [Parameter]
     public bool ShowLegend { get; set; } = false;
+
+    [Parameter]
+    public decimal? Minimum { get; set; } = null;
+
+    [Parameter]
+    public decimal? Maximum { get; set; } = null;
 
     [Parameter]
     public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
