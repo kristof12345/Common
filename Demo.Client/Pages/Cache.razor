@@ -1,22 +1,30 @@
 ﻿@page "/cache"
 
-@using Microsoft.Extensions.Caching.Memory
-
-<h3>@Text</h3>
+<p>@Json?.Title</p>
 
 @code
 {
     [Inject]
-    private DataService<List<StockPrice>> Service { get; set; }
+    private CacheService CacheService { get; set; }
+
+    [Inject]
+    private DataService DataService { get; set; }
 
     private string Text { get; set; }
 
-    protected override void OnInitialized()
+    private DemoPost Json { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-        Text = Service.Cache.GetOrCreate<string>("time", cache =>
+        Text = CacheService.Get<string>("time");
+
+        if (Text == null)
         {
-            cache.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
-            return DateTime.Now.ToLongTimeString();
-        });
+            await Task.Delay(100);
+            Text = DateTime.Now.ToLongTimeString();
+            CacheService.Set("time", Text);
+        }
+
+        Json = await DataService.GetDemoJson<DemoPost>();
     }
 }

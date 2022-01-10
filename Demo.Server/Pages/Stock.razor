@@ -16,12 +16,23 @@
 @code
 {
     [Inject]
-    private DataService<DemoStock> StockService { get; set; }
+    private DataService StockService { get; set; }
+
+    [Inject]
+    private CacheService CacheService { get; set; }
 
     private DemoStock Model { get; set; } = new DemoStock();
 
     protected override async Task OnInitializedAsync()
     {
-        Model = await StockService.LoadFromJson("aapl.json");
+        var model = CacheService.Get<DemoStock>("AAPL");
+
+        if (model == null)
+        {
+            model = await StockService.LoadFromJson<DemoStock>("aapl.json");
+            CacheService.Set("AAPL", model);
+        }
+
+        Model = model;
     }
 }

@@ -21,10 +21,16 @@
 		</PackageReference>
 		<PackageReference Include="Moq" Version="4.16.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.1" />
-		<PackageReference Include="Syncfusion.Blazor" Version="19.4.0.41" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 		<ProjectReference Include="..\Backend\Common.Backend.csproj" />
+		<ProjectReference Include="..\Frontend\Common.Frontend.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Frontend\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Frontend\" />
 	</ItemGroup>
 </Project>

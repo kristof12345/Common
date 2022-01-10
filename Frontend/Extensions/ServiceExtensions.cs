@@ -1,7 +1,6 @@
 ﻿using System;
 using Blazored.LocalStorage;
 using Blazored.SessionStorage;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Syncfusion.Blazor;
 
@@ -17,7 +16,7 @@ namespace Common.Web
             services.AddBlazoredSessionStorage();
             services.AddSyncfusionBlazor();
 
-            services.AddScoped<MemoryCache>();
+            services.AddScoped<CacheService>();
             services.AddScoped<ToastService>();
             services.AddScoped<ThemeService>();
             services.AddScoped<DragDropService>();

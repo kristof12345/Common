@@ -36,8 +36,7 @@ namespace Demo.Server
             services.AddCommonServices();
 
             services.AddScoped<LoginService>();
-            services.AddScoped<DataService<DemoStock>>();
-            services.AddScoped<DataService<List<StockPrice>>>();
+            services.AddScoped<DataService>();
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)

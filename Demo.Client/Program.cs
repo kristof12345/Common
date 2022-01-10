@@ -26,8 +26,7 @@ namespace Demo.Client
             services.AddCommonServices();
 
             services.AddScoped<LoginService>();
-            services.AddScoped<DataService<DemoStock>>();
-            services.AddScoped<DataService<List<StockPrice>>>();
+            services.AddScoped<DataService>();
 
             await builder.Build().RunAsync();
         }

@@ -23,7 +23,7 @@
 @code
 {
     [Inject]
-    private DataService<List<StockPrice>> StockService { get; set; }
+    private DataService StockService { get; set; }
 
     private List<ChartData> List = new List<ChartData>();
 
@@ -72,7 +72,7 @@
             }
         };
 
-        Series = await StockService.LoadFromJson("exchange.json");
+        Series = await StockService.LoadFromJson<List<StockPrice>>("exchange.json");
 
         MultiSeriesList = new List<ChartDataSeries>
 {

@@ -16,12 +16,12 @@
 @code
 {
     [Inject]
-    private DataService<DemoStock> StockService { get; set; }
+    private DataService StockService { get; set; }
 
     private DemoStock Model { get; set; } = new DemoStock();
 
     protected override async Task OnInitializedAsync()
     {
-        Model = await StockService.LoadFromJson("aapl.json");
+        Model = await StockService.LoadFromJson<DemoStock>("aapl.json");
     }
 }

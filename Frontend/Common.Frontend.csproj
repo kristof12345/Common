@@ -9,7 +9,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>2.1.6</PackageVersion>
+		<PackageVersion>2.1.13</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
@@ -19,9 +19,11 @@
 		<ProjectReference Include="..\..\Common\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+		<AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
 		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="19.4.0.41" />
