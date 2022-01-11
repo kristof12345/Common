@@ -1,0 +1,37 @@
+﻿@namespace Common.Web
+@inherits AppInput<long>
+
+@using Syncfusion.Blazor.Inputs
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+
+<p style=@($"width: {Width}")>
+    <SfNumericTextBox @onkeypress=@KeyPressed Value=@Value ValueChanged=@ValueChanged Min=@Min Max=@Max Step=@Step FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue="long" Format=@Format ValueExpression=@ValidationExpression autofocus />
+    @if (ValidationExpression != null)
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</p>
+
+@code
+{
+    [Parameter]
+    public long Min { get; set; }
+
+    [Parameter]
+    public long Max { get; set; }
+
+    [Parameter]
+    public long Step { get; set; }
+
+    [Parameter]
+    public string Format { get; set; }
+
+    public string Text { get; set; } = "";
+
+    public void KeyPressed(KeyboardEventArgs args)
+    {
+        Text = Text += args.Key;
+        this.ValueChanged.InvokeAsync(long.Parse(Text));
+    }
+}
