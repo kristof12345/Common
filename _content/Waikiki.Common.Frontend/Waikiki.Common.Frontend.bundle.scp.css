@@ -114,6 +114,16 @@
     padding-right: 20px;
     padding-left: 20px;
     width: 100%;
+}
+
+.body-light .legend[b-2cb5s6gie6] {
+    background-color: white;
+    border-top: 1px solid lightgrey;
+    padding-right: 21px;
+    padding-left: 21px;
+}
+
+.body-dark .legend[b-2cb5s6gie6] {
     background-color: rgb(48,48,48);
 }
 /* _content/Waikiki.Common.Frontend/Charts/RealtimeSeriesChart.razor.rz.scp.css */
