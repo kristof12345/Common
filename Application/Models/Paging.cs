@@ -4,7 +4,7 @@ namespace Common.Application
 {
     public class PagedResult<T>
     {
-        public long PageCount { get; set; }
+        public int PageCount { get; set; }
 
         public List<T> Results { get; set; }
 
@@ -13,7 +13,7 @@ namespace Common.Application
             Results = new List<T>();
         }
 
-        public PagedResult(List<T> results, long count)
+        public PagedResult(List<T> results, int count)
         {
             PageCount = (count + Span.PageSize - 1) / Span.PageSize;
             Results = results;

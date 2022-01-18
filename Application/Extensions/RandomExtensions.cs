@@ -13,5 +13,10 @@ namespace Common.Application
         {
             return (new decimal(random.NextDouble()) * (maximum - minimum)) + minimum;
         }
+
+        public static decimal NextDecimal(this Random random)
+        {
+            return (new decimal(random.NextDouble()));
+        }
     }
 }

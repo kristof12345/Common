@@ -30,7 +30,7 @@
 
     public void HandleInput(ChangeEventArgs args)
     {
-        if (args.Value == string.Empty)
+        if ((string)args.Value == string.Empty)
         {
             this.ValueChanged.InvokeAsync((T)Convert.ChangeType(0, typeof(T)));
         }

@@ -2,19 +2,11 @@
 
 @using Syncfusion.Blazor.Popups
 
-@if (Enabled && Content != null)
-{
-    <SfTooltip Content=@Content style="width: fit-content;">
-        <div style=@Style>
-            @ChildContent
-        </div>
-    </SfTooltip>
-
-}
-else
-{
-    @ChildContent
-}
+<SfTooltip Content=@Content CssClass=@(Enabled ? "visible" : "hidden")>
+    <div style=@($"display: block; pointer-events: {(DisableClick ? "none" : "all")};")>
+        @ChildContent
+    </div>
+</SfTooltip>
 
 @code
 {
@@ -30,6 +22,4 @@ else
 
     [Parameter]
     public bool DisableClick { get; set; } = false;
-
-    private string Style { get => $"display: block; pointer-events: {(DisableClick ? "none" : "all")};"; }
 }

@@ -29,5 +29,15 @@
     padding-right: 20px;
     padding-left: 20px;
     width: 100%;
+}
+
+.body-light .legend {
+    background-color: white;
+    border-top: 1px solid lightgrey;
+    padding-right: 21px;
+    padding-left: 21px;
+}
+
+.body-dark .legend {
     background-color: rgb(48,48,48);
 }

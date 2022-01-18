@@ -2,6 +2,6 @@
 {
     public interface IStockPrice : IPrice
     {
-        public long Volume { get; }
+        public int Volume { get; }
     }
 }

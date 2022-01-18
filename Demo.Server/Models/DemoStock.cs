@@ -59,7 +59,7 @@ namespace Demo.Server
 
         public decimal Close { get; set; }
 
-        public long Volume { get; set; }
+        public int Volume { get; set; }
 
         public decimal Value { get => Close; }
     }
