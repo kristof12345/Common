@@ -15,7 +15,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide >
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -24,7 +24,12 @@
                 </ChartPrimaryYAxis>
 
                 <ChartSeriesCollection>
-                    <ChartSeries DataSource=@RangedData Fill=@Color XName="Date" YName="Value" Type=@Type Width=@LineWidth Opacity=@Opacity />
+                    <ChartSeries DataSource=@RangedData Fill=@Color XName="Date" YName="Value" Type=@Type Width=@LineWidth Opacity=@Opacity>
+                        @if (Type == ChartSeriesType.Area)
+                        {
+                            <ChartSeriesBorder Width=@LineWidth Color=@Color></ChartSeriesBorder>
+                        }
+                    </ChartSeries>
                 </ChartSeriesCollection>
 
             </SfChart>
