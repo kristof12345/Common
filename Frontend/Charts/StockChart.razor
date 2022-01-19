@@ -46,7 +46,7 @@
             <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
                 <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
-                    <RangeNavigatorSeries DataSource=@Data Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
+                    <RangeNavigatorSeries DataSource=@Data.Sparse(50) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
                 </RangeNavigatorSeriesCollection>
             </SfRangeNavigator>
         </div>

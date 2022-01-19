@@ -263,6 +263,6 @@ namespace Common.Tests.Extensions
 
         public decimal Close { get; set; }
 
-        public int Volume { get; set; }
+        public long Volume { get; set; }
     }
 }

@@ -1,0 +1,158 @@
+﻿@page "/performance5"
+
+@using Common.Application
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Charts
+
+<SfButton @onclick="LoadPoints">Load Points</SfButton>
+<div>Start: @Range[0]</div>
+<div>End: @Range[1]</div>
+<div>Deserialize: @time1</div>
+<div>Range load: @time2</div>
+<div>Chart load: @time3</div>
+<div>Page render: @time4</div>
+
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" )) VerticalAlign=@VerticalAlignment.Start>
+        <div class="stock-chart">
+            @if (Visibility == "hidden")
+            {
+                <LoadingIndicator />
+            }
+
+            @if (Data != null)
+            {
+                <div class="chart">
+                    <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
+                        <ChartEvents Loaded=@OnChartLoaded />
+
+                        <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                        </ChartPrimaryXAxis>
+
+                        <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                        </ChartPrimaryYAxis>
+
+                        <ChartAxes>
+                            <ChartAxis Name="Volume" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
+                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            </ChartAxis>
+                        </ChartAxes>
+
+                        <ChartRows>
+                            <ChartRow Height="0%"></ChartRow>
+                            <ChartRow Height="100%"></ChartRow>
+                        </ChartRows>
+
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource=@RangedData XName="Date" Open="Open" Close="Close" High="High" Low="Low" Type=@ChartSeriesType.Candle />
+                            <ChartSeries DataSource=@RangedData XName="Date" YName="Volume" Type=@ChartSeriesType.Column Fill=@Colors.Warning YAxisName="Volume" />
+                        </ChartSeriesCollection>
+
+                    </SfChart>
+                </div>
+
+                <div class=@("range " + Visibility)>
+                    <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
+                        <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
+                        <RangeNavigatorSeriesCollection>
+                            <RangeNavigatorSeries DataSource=@Data.Sparse(50) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
+                        </RangeNavigatorSeriesCollection>
+                    </SfRangeNavigator>
+                </div>
+            }
+        </div>
+    </Paper>
+</Container>
+
+@code
+{
+    public IEnumerable<StockPrice> Data { get; set; }
+
+    public DateTime StartDate { get; set; } = new DateTime(2016, 1, 1);
+
+    public DateTime EndDate { get; set; } = new DateTime(2017, 1, 1);
+
+    public decimal? Minimum { get; set; } = null;
+
+    public decimal? Maximum { get; set; } = null;
+
+    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
+
+    private DateTime[] Range { get; set; }
+
+    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
+
+    private string Visibility { get; set; } = "hidden";
+
+    private decimal VolumeMin { get => RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
+
+    private decimal VolumeMax { get => RangedData.Any() ? RangedData.Max(s => s.Volume) * 4 : 0; }
+
+    protected override void OnParametersSet()
+    {
+        Range = new DateTime[] { StartDate, EndDate };
+    }
+
+    private void RangeChanged(object args)
+    {
+        Range = (DateTime[])args;
+    }
+
+    private void OnRangeLoaded(object args)
+    {
+        Visibility = "visible";
+        time2 = Math.Round((DateTime.Now - start).TotalMilliseconds).ToString() + " ms";
+    }
+
+    private void OnChartLoaded(object args)
+    {
+        time3 = Math.Round((DateTime.Now - start).TotalMilliseconds).ToString() + " ms";
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        time4 = Math.Round((DateTime.Now - start).TotalMilliseconds).ToString() + " ms";
+    }
+
+    [Inject]
+    private DataService StockService { get; set; }
+
+    private DateTime start = DateTime.Now;
+
+    private string time1 = "0";
+    private string time2 = "0";
+    private string time3 = "0";
+    private string time4 = "0";
+
+    protected override void OnInitialized()
+    {
+        Range = new DateTime[] { StartDate, EndDate };
+    }
+
+    private async Task LoadPoints()
+    {
+        Data = null;
+        Visibility = "hidden";
+        start = DateTime.Now;
+        Data = await StockService.LoadFromJson<List<StockPrice>>("prices.json");
+        time1 = Math.Round((DateTime.Now - start).TotalMilliseconds).ToString() + " ms";
+        StateHasChanged();
+    }
+
+    public class StockPrice
+    {
+        public DateTime Date { get; set; }
+
+        public decimal Open { get; set; }
+
+        public decimal High { get; set; }
+
+        public decimal Low { get; set; }
+
+        public decimal Close { get; set; }
+
+        public long Volume { get; set; }
+    }
+}
