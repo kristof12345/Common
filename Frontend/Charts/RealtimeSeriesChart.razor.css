@@ -15,4 +15,5 @@
     height: 350px;
     width: 100%;
     margin-left: 12px;
+    pointer-events: none;
 }
