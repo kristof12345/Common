@@ -100,6 +100,7 @@
     height: 350px;
     width: 100%;
     margin-left: 12px;
+    pointer-events: none;
 }
 
 .range[b-2cb5s6gie6] {
@@ -144,6 +145,7 @@
     height: 350px;
     width: 100%;
     margin-left: 12px;
+    pointer-events: none;
 }
 /* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
 .series-chart[b-iwlyhgztz0] {
@@ -163,6 +165,7 @@
     height: 350px;
     width: 100%;
     margin-left: 12px;
+    pointer-events: none;
 }
 
 .range[b-iwlyhgztz0] {
@@ -188,6 +191,7 @@
     height: 350px;
     width: 100%;
     margin-left: 12px;
+    pointer-events: none;
 }
 
 .range[b-0em9yueq9m] {
