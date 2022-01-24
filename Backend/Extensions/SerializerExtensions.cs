@@ -25,7 +25,7 @@ namespace Common.Backend
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToString());
+            writer.WriteStringValue(value.ToString("yyyy.MM.dd"));
         }
     }
 }

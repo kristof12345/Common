@@ -249,6 +249,31 @@ namespace Common.Tests.Extensions
             Assert.NotNull(list.AsNotNull());
             Assert.Empty(list.AsNotNull());
         }
+
+        [Fact]
+        public void SparseTest()
+        {
+            var original = new List<StockPrice>
+            {
+                new StockPrice { Date = new DateTime(2020,1,1), Volume=10 },
+                new StockPrice { Date = new DateTime(2020,1,2), Volume=20 },
+                new StockPrice { Date = new DateTime(2020,1,3), Volume=30 },
+                new StockPrice { Date = new DateTime(2020,1,4), Volume=40 },
+                new StockPrice { Date = new DateTime(2020,1,5), Volume=50 },
+                new StockPrice { Date = new DateTime(2020,2,1), Volume=60 },
+                new StockPrice { Date = new DateTime(2020,2,2), Volume=70 },
+                new StockPrice { Date = new DateTime(2021,1,1), Volume=80 },
+                new StockPrice { Date = new DateTime(2025,12,17), Volume=90 },
+            };
+
+            var list = original.Sparse(4).ToList();
+
+            Assert.Equal(4, list.Count);
+            Assert.Equal(10, list[0].Volume);
+            Assert.Equal(40, list[1].Volume);
+            Assert.Equal(70, list[2].Volume);
+            Assert.Equal(90, list[3].Volume);
+        }
     }
 
     public class StockPrice : IStockPrice
