@@ -15,11 +15,12 @@ namespace Common.Backend
         }
     }
 
-    internal class DateTimeParser : JsonConverter<DateTime>
+    public class DateTimeParser : JsonConverter<DateTime>
     {
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return DateTime.Parse(reader.GetString());
+            var date = DateTime.Parse(reader.GetString());
+            return DateTime.SpecifyKind(date, DateTimeKind.Utc);
         }
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)

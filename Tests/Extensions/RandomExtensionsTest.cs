@@ -37,5 +37,21 @@ namespace Common.Tests.Extensions
             Assert.InRange(value1, 3.14, 15.37);
             Assert.InRange(value2, 3.14, 15.37);
         }
+
+        [Fact]
+        public void RandomNextDecimalTest()
+        {
+            // Arrange
+            var random = new Random();
+
+            // Act
+            var value1 = random.NextDecimal();
+            var value2 = random.NextDecimal();
+
+            // Assert
+            Assert.NotEqual(value1, value2);
+            Assert.InRange(value1, 0, 1);
+            Assert.InRange(value2, 0, 1);
+        }
     }
 }

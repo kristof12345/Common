@@ -79,7 +79,7 @@ namespace Common.Application
         public static IEnumerable<T> Sparse<T>(this IEnumerable<T> original, int slices)
         {
             var count = original.Count() - 1;
-            var n = count / slices + 1;
+            var n = (count / slices) + 1;
             return original.Where((x, i) => i % n == 0 || i == count).ToList();
         }
     }

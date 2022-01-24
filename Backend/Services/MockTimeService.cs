@@ -4,10 +4,7 @@ namespace Common.Backend
 {
     public class MockTimeService : ITimeService
     {
-        public MockTimeService(DateTime now)
-        {
-            Now = now;
-        }
+        public MockTimeService(DateTime now) { Now = now; }
 
         public DateTime Now { get; set; }
 
