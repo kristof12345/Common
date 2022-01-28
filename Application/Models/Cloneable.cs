@@ -4,7 +4,7 @@
     {
         public T ShallowCopy()
         {
-            return (T)(MemberwiseClone());
+            return (T)MemberwiseClone();
         }
     }
 }

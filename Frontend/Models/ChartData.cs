@@ -1,5 +1,4 @@
-﻿using System;
-using Common.Application;
+﻿using Common.Application;
 
 namespace Common.Web
 {

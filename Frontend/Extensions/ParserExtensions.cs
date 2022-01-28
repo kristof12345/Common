@@ -20,7 +20,7 @@ namespace Common.Web
         public override long Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var value = reader.GetString();
-            if (value == NoneValue) return (long)0;
+            if (value == NoneValue) return 0;
             return long.Parse(value);
         }
     }
@@ -30,7 +30,7 @@ namespace Common.Web
         public override decimal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var value = reader.GetString();
-            if (value == NoneValue) return (decimal)0;
+            if (value == NoneValue) return 0;
             return decimal.Parse(value, new CultureInfo("en-US"));
         }
     }

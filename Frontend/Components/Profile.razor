@@ -1,0 +1,14 @@
+﻿@namespace Common.Web
+
+@using Common.Application
+
+<CircleImage Src=@User.Image />
+<Heading Class="center-text">@User.Name</Heading>
+<Paragraph Class="center-text" Color=@Colors.Primary>@User.Type</Paragraph>
+<Subtitle Class="center-text">@User.District</Subtitle>
+
+@code
+{
+    [Parameter]
+    public AppUser User { get; set; }
+}

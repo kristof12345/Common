@@ -8,10 +8,10 @@
 
         public string Password { get; set; }
 
-        public byte[] Salt { get; set; }
-
         public string Email { get; set; }
 
         public UserType Type { get; set; }
+
+        public string Name { get; }
     }
 }

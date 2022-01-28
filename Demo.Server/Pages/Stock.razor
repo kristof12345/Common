@@ -30,7 +30,7 @@
         if (model == null)
         {
             model = await StockService.LoadFromJson<DemoStock>("aapl.json");
-            CacheService.Set("AAPL", model);
+            CacheService.Set("AAPL", model, 0);
         }
 
         Model = model;

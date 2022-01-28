@@ -24,7 +24,7 @@
         {
             await Task.Delay(100);
             Text = DateTime.Now.ToLongTimeString();
-            CacheService.Set("time", Text);
+            CacheService.Set("time", Text, 0);
         }
 
         Json = await DataService.GetDemoJson<DemoPost>();

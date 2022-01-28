@@ -189,7 +189,7 @@ namespace Common.Tests.Database
             await context.Entities.InsertAsync(new List<Entity> { new Entity { Id = "1", Content = "a" }, new Entity { Id = "2", Content = "b" } });
 
             // Act
-            await context.Entities.UpdateAsync(new Entity { Id = "1", Content = "c" }, context);
+            await context.Entities.UpdateAsync(new Entity { Id = "1", Content = "c" });
             var list = await context.Entities.OrderBy(e => e.Id).ToListAsync();
 
             // Assert

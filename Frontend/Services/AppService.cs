@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Common.Application;
 
@@ -18,7 +17,7 @@ namespace Common.Web
             Toast = toast;
         }
 
-        protected async Task<T> GetWithCache<T>(string url, string key) where T : new()
+        protected async Task<T> GetWithCache<T>(string url, string key, int category = 0) where T : new()
         {
             var value = Cache.Get<T>(key);
             if (value != null)
@@ -32,7 +31,7 @@ namespace Common.Web
                 if (response.IsSuccessStatusCode)
                 {
                     value = await response.Content.ReadAsAsync<T>();
-                    Cache.Set(key, value);
+                    Cache.Set(key, value, category);
                     return value;
                 }
                 else

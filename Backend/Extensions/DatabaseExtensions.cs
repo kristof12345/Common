@@ -46,18 +46,6 @@ namespace Common.Backend
             return (T)entity;
         }
 
-        public static async Task<T> UpdateAsync<T, R>(this IQueryable<T> database, IEntity<R> entity, DbContext context) where T : class, IEntity<R>
-        {
-            var original = await database.AsTracking().FirstOrDefaultAsync(e => e.Id.Equals(entity.Id));
-            if (original != null)
-            {
-                context.Remove(original);
-                context.Add((T)entity);
-                await context.SaveChangesAsync();
-            }
-            return (T)entity;
-        }
-
         public static async Task<T> DeleteAsync<T, R>(this DbSet<T> database, R id) where T : class, IEntity<R>
         {
             var entity = await database.AsTracking().FindAsync(id);

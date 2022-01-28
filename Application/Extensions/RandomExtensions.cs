@@ -16,7 +16,7 @@ namespace Common.Application
 
         public static decimal NextDecimal(this Random random)
         {
-            return (new decimal(random.NextDouble()));
+            return new decimal(random.NextDouble());
         }
     }
 }

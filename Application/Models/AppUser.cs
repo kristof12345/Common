@@ -14,6 +14,8 @@ namespace Common.Application
         public UserType Type { get; set; }
 
         public string Token { get; set; }
+
+        public string Image { get; set; }
     }
 
     public enum UserType

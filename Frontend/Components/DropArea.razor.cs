@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using System.Text;
 using Common.Application;
 
 namespace Common.Web
@@ -119,7 +116,7 @@ namespace Common.Web
         private bool IsMaxItemLimitReached()
         {
             var activeItem = DragDropService.ActiveItem;
-            return (!Items.Contains(activeItem) && MaxItems.HasValue && MaxItems == Items.Count());
+            return !Items.Contains(activeItem) && MaxItems.HasValue && MaxItems == Items.Count;
         }
 
         private string IsItemDragable(IUnique item)
@@ -178,10 +175,7 @@ namespace Common.Web
 
         public void OnDragEnd()
         {
-            if (DragEnd != null)
-            {
-                DragEnd(DragDropService.ActiveItem);
-            }
+            DragEnd?.Invoke(DragDropService.ActiveItem);
 
             DragDropService.Reset();
         }
@@ -242,32 +236,12 @@ namespace Common.Web
 
         private string GetClassesForDraggable(IUnique item)
         {
-            var builder = new StringBuilder();
-            builder.Append("draggable");
-            if (ItemWrapperClass != null)
-            {
-                var itemWrapperClass = ItemWrapperClass(item);
-                builder.AppendLine(" " + itemWrapperClass);
-            }
-
-            return builder.ToString();
+            return ItemWrapperClass != null ? "draggable " + ItemWrapperClass(item) : "draggable";
         }
 
         private string GetClassesForSpacing(int spacerId)
         {
-            var builder = new StringBuilder();
-            builder.Append("spacing");
-            //if active space id and item is from another dropzone -> always create insert space
-            if (DragDropService.ActiveSpacerId == spacerId && Items.IndexOf(DragDropService.ActiveItem) == -1)
-            {
-                builder.Append(" spacing-dragged-over");
-            } // else -> check if active space id and that it is an item that needs space
-            else if (DragDropService.ActiveSpacerId == spacerId && (spacerId != Items.IndexOf(DragDropService.ActiveItem)) && (spacerId != Items.IndexOf(DragDropService.ActiveItem) + 1))
-            {
-                builder.Append(" spacing-dragged-over");
-            }
-
-            return builder.ToString();
+            return DragDropService.ActiveSpacerId == spacerId && (Items.IndexOf(DragDropService.ActiveItem) == -1 || (spacerId != Items.IndexOf(DragDropService.ActiveItem) && spacerId != Items.IndexOf(DragDropService.ActiveItem) + 1)) ? "spacing spacing-dragged-over" : "spacing";
         }
 
         private async Task HandleClick(IUnique item)
@@ -349,9 +323,7 @@ namespace Common.Web
             {
                 if (indexDraggedOverItem == indexActiveItem)
                     return;
-                IUnique tmp = Items[indexDraggedOverItem];
-                Items[indexDraggedOverItem] = Items[indexActiveItem];
-                Items[indexActiveItem] = tmp;
+                (Items[indexActiveItem], Items[indexDraggedOverItem]) = (Items[indexDraggedOverItem], Items[indexActiveItem]);
                 OnReplacedItemDrop.InvokeAsync(Items[indexActiveItem]);
             }
         }

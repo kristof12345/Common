@@ -1,7 +1,6 @@
 ﻿using System;
 using Common.Application;
 using Common.Backend;
-using Common.Web;
 using Xunit;
 
 namespace Common.Tests.Frontend
@@ -15,7 +14,7 @@ namespace Common.Tests.Frontend
             var cache = new CacheService();
 
             // Act
-            cache.Set("Key", "Value");
+            cache.Set("Key", "Value", 0);
 
             // Assert
             Assert.NotNull(cache.Get<string>("Key"));
@@ -29,8 +28,8 @@ namespace Common.Tests.Frontend
             var cache = new CacheService();
 
             // Act
-            cache.Set("Key", "Value 1");
-            cache.Set("Key", "Value 2");
+            cache.Set("Key", "Value 1", 0);
+            cache.Set("Key", "Value 2", 0);
 
             // Assert
             Assert.NotNull(cache.Get<string>("Key"));
@@ -44,7 +43,7 @@ namespace Common.Tests.Frontend
             var cache = new CacheService();
 
             // Act
-            cache.Set("Key", "Value");
+            cache.Set("Key", "Value", 0);
             cache.Remove("Key");
 
             // Assert
@@ -71,8 +70,8 @@ namespace Common.Tests.Frontend
             var cache = new CacheService();
 
             // Act
-            cache.Set("Key", "Value");
-            cache.Clear();
+            cache.Set("Key", "Value", 0);
+            cache.ClearAll();
 
             // Assert
             Assert.Null(cache.Get<string>("Key"));
