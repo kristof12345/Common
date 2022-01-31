@@ -1,5 +1,28 @@
 ﻿/* Basic styles */
 
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v121/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
 body {
     margin: 0;
 }
@@ -130,27 +153,17 @@ text {
     fill: white !important;
 }
 
-.e-chart {
-    height: inherit !important;
-    width: inherit !important;
-}
-
 .diagram .e-chart text {
     fill: white !important;
 }
 
-.e-accumulationchart {
-    height: inherit !important;
-    width: inherit !important;
+.e-accumulationchart svg, .e-accumulationchart svg rect, .e-accumulationchart svg g {
+    max-height: 100% !important;
 }
 
-    .e-accumulationchart svg, .e-accumulationchart svg rect, .e-accumulationchart svg g {
-        max-height: 100% !important;
-    }
-
-    .e-accumulationchart text {
-        fill: white !important;
-    }
+.e-accumulationchart text {
+    fill: white !important;
+}
 
 @media (max-width: 1500px) {
     .large-chart {
@@ -250,19 +263,19 @@ text {
     margin-bottom: 10px !important;
 }
 
-.e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) {
-    border-bottom-color: var(--frame-color) !important;
-    border-left-color: var(--frame-color) !important;
-    border-right-color: var(--frame-color) !important;
-}
-
-    .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover):not(.e-valid-input) {
-        border-top-color: var(--frame-color) !important;
+    .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) {
+        border-bottom-color: var(--frame-color) !important;
+        border-left-color: var(--frame-color) !important;
+        border-right-color: var(--frame-color) !important;
     }
 
-    .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::before, .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::after {
-        border-top-color: var(--frame-color) !important;
-    }
+        .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover):not(.e-valid-input) {
+            border-top-color: var(--frame-color) !important;
+        }
+
+        .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::before, .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::after {
+            border-top-color: var(--frame-color) !important;
+        }
 
 .body-dark .e-label-bottom, .body-dark .e-label-top {
     color: rgba(255, 255, 255, 0.7) !important;
