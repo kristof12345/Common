@@ -63,12 +63,12 @@ namespace Common.Application
 
         public static T Latest<T>(this IEnumerable<T> list) where T : ITemporal
         {
-            return list.OrderByDescending(item => item.Date).First();
+            return list.OrderByDescending(item => item.Date).FirstOrDefault();
         }
 
         public static T Latest<T>(this IEnumerable<T> list, DateTime date) where T : ITemporal
         {
-            return list.OrderByDescending(item => item.Date).First(e => e.Date <= date);
+            return list.OrderByDescending(item => item.Date).FirstOrDefault(e => e.Date <= date);
         }
 
         public static IEnumerable<T> AsNotNull<T>(this IEnumerable<T> original)
