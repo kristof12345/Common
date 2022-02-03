@@ -46,7 +46,7 @@ namespace Demo.Client
         public string Select { get; set; }
 
         [Required]
-        public DemoEnum? Enum { get; set; }
+        public DemoEnum Enum { get; set; }
 
         [Required]
         public string Color { get; set; }

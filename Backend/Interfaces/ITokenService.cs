@@ -6,7 +6,9 @@ namespace Common.Backend
     {
         public AppUser GenerateToken(string username, Name name, UserType type);
 
-        public AppUser GenerateToken(string username, Name name, UserType type, string district);
+        public AppUser GenerateToken(string username, Name name, UserType type, string image);
+
+        public AppUser GenerateToken(string username, Name name, UserType type, string image, string district);
 
         public AppUser DecodeToken(string token);
     }

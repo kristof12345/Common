@@ -12,10 +12,15 @@ namespace Common.Backend
 
         public AppUser GenerateToken(string username, Name name, UserType type)
         {
-            return GenerateToken(username, name, type, "National");
+            return GenerateToken(username, name, type, "Image", "National");
         }
 
-        public AppUser GenerateToken(string username, Name name, UserType type, string district)
+        public AppUser GenerateToken(string username, Name name, UserType type, string image)
+        {
+            return GenerateToken(username, name, type, image, "National");
+        }
+
+        public AppUser GenerateToken(string username, Name name, UserType type, string image, string district)
         {
             var token = new JwtBuilder()
                 .WithAlgorithm(new HMACSHA256Algorithm())
@@ -26,7 +31,7 @@ namespace Common.Backend
                 .AddClaim("type", type)
                 .AddClaim("district", district)
                 .Encode();
-            return new AppUser { Id = username, Name = name, Type = type, Token = token, District = district };
+            return new AppUser { Id = username, Name = name, Type = type, Token = token, District = district, Image = image };
         }
 
         public AppUser DecodeToken(string token)

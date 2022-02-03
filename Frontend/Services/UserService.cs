@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Common.Application;
 
@@ -15,7 +16,7 @@ namespace Common.Web
             Client = client;
         }
 
-        public async Task<PagedResult<IUser>> SearchUsers(string username, int page)
+        public async Task<PagedResult<IUser>> Search(string username, int page)
         {
             var range = new Span((page - 1) * Span.PageSize, Span.PageSize);
             var response = await Client.GetAsync(url + range + "&username=" + username);
@@ -41,6 +42,18 @@ namespace Common.Web
             var response = await Client.DeleteAsync(url + username);
             if (response.IsSuccessStatusCode) return Response.Success;
             return await response.Content.ReadAsAsync<Response>();
+        }
+
+        public async Task<Response> UploadProfile(MultipartFormDataContent file, string username)
+        {
+            if (file == null) return new Response("File was empty.");
+            var response = await Client.PostAsync(url + username + "/profile", file);
+            return await response.Content.ReadAsAsync<Response>();
+        }
+
+        public Task<Name> GetNameForId(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
