@@ -1,0 +1,30 @@
+﻿@namespace Common.Web
+
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="segmented-control">
+    @foreach (var tab in Tabs)
+    {
+        <div class="segmented-control-btn">
+            <input @onclick="@(async () => await TabChanged.InvokeAsync(tab))" type="radio" id=@tab name=@Id value=@tab checked=@(tab == Tab)>
+            <label for=@tab>@tab</label>
+        </div>
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    public string Tab { get; set; }
+
+    [Parameter]
+    public EventCallback<string> TabChanged { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public List<string> Tabs { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public string Id { get; set; }
+}

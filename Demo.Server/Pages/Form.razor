@@ -20,6 +20,8 @@
             <SelectEnum @bind-Value=@Model.Enum Label="Enum" ValidationExpression=@(() => Model.Enum) TEnum="DemoEnum" />
             <ColorPicker @bind-Value=@Model.Color Label="ColorPicker" />
             <CheckBox @bind-Value=@Model.Checked Label="CheckBox" />
+            <SegmentedControl @bind-Tab=@SelectedTab Tabs=@(new List<string>{ "Apple", "Banana", "Orange" }) Id="fruits" />
+            @SelectedTab
             <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>
                 <Button Type="reset" OnClick=@Reset>Reset</Button>
                 <Button Outlined="true">Outlined</Button>
@@ -82,6 +84,8 @@
 {
     [Inject]
     protected ToastService Toaster { get; set; }
+
+    protected string SelectedTab { get; set; } = "Apple";
 
     private DemoModel Model = new DemoModel();
 

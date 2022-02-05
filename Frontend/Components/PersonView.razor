@@ -2,7 +2,7 @@
 @using Common.Application
 
 <Vertical Width=@Width MinWidth="160px">
-    <CircleImage Src=@(Settings.BaseUrl + Image) Size=@Size BorderWidth=3 />
+    <CircleImage Src=@Image Size=@Size BorderWidth=3 />
     <Subtitle Class="center-text">@Name</Subtitle>
     <Subtitle Class="center-text" Style=@($"color: {Colors.Primary};")>@Position</Subtitle>
 </Vertical>
@@ -16,9 +16,6 @@
     [Parameter]
     [EditorRequired]
     public string Image { get; set; }
-
-    [Inject]
-    public ServerSettings Settings { get; set; }
 
     [Parameter]
     public string Position { get; set; }
