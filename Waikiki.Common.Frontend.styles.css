@@ -346,6 +346,78 @@ a[b-7bk747ardv] {
     height: 22px;
     cursor: pointer;
 }
+/* _content/Waikiki.Common.Frontend/Components/SegmentedControl.razor.rz.scp.css */
+.segmented-control[b-7ah8jwj4zc] {
+    display: flex;
+}
+
+.segmented-control-btn[b-7ah8jwj4zc] {
+    flex: 1 0;
+    height: 100%;
+    background: #efefef;
+}
+
+.segmented-control input[b-7ah8jwj4zc] {
+    position: absolute;
+    opacity: 0;
+}
+
+    .segmented-control input + label[b-7ah8jwj4zc] {
+        font-family: "Helvetica", "Arial", sans-serif !important;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin: 2px;
+        color: #333;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+        .segmented-control input + label[b-7ah8jwj4zc]::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            content: "";
+            transition: 0.3s ease;
+            opacity: 0;
+        }
+
+    .segmented-control input[type=radio]:checked + label[b-7ah8jwj4zc] {
+        color: white;
+    }
+
+        .segmented-control input[type=radio]:checked + label[b-7ah8jwj4zc]::before {
+            background: var(--primary-color);
+            transition-delay: 0.1s;
+            opacity: 1;
+        }
+
+.segmented-control .segmented-control-btn:last-of-type[b-7ah8jwj4zc] {
+    border-radius: 0 5px 5px 0;
+}
+
+.segmented-control .segmented-control-btn:first-of-type[b-7ah8jwj4zc] {
+    border-radius: 5px 0 0 5px;
+}
+
+.segmented-control input[type=radio]:checked + label[b-7ah8jwj4zc]::before {
+    border-radius: 5px;
+}
+
+.body-dark .segmented-control-btn[b-7ah8jwj4zc] {
+    background: #323232;
+}
+
+.body-dark .segmented-control input + label[b-7ah8jwj4zc] {
+    color: white;
+}
 /* _content/Waikiki.Common.Frontend/Components/ThemeToggle.razor.rz.scp.css */
 .toggle-wrapper[b-62qe5717bo] {
     width: 353px;
