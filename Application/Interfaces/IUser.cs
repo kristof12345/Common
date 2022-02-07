@@ -10,8 +10,6 @@
 
         public string Email { get; set; }
 
-        public string District { get; }
-
         public UserType Type { get; set; }
 
         public string Image { get; }

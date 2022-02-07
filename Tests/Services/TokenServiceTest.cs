@@ -40,7 +40,7 @@ namespace Common.Tests.Services
             App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
 
             // Act
-            var token = new TokenService().GenerateToken("Username", new Name("Tom", "Sawyer"), UserType.User, "District").Token;
+            var token = new TokenService().GenerateToken("Username", new Name("Tom", "Sawyer"), UserType.User, "Image", "District").Token;
             var user = new TokenService().DecodeToken(token);
 
             // Assert
@@ -53,6 +53,24 @@ namespace Common.Tests.Services
 
         [Fact]
         public void DecodeTokenWithoutDistrictTest()
+        {
+            // Arrange
+            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
+
+            // Act
+            var token = new TokenService().GenerateToken("Username", new Name("Tom", "Sawyer"), UserType.User, "Image").Token;
+            var user = new TokenService().DecodeToken(token);
+
+            // Assert
+            Assert.Equal("Username", user.Id);
+            Assert.Equal("Tom", user.Name.Firstname);
+            Assert.Equal("Sawyer", user.Name.Surname);
+            Assert.Equal(UserType.User, user.Type);
+            Assert.Equal("National", user.District);
+        }
+
+        [Fact]
+        public void DecodeTokenWithoutImageTest()
         {
             // Arrange
             App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };

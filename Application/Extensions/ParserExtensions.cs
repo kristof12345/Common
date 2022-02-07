@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Common.Web
+namespace Common.Application
 {
     public abstract class ParserBase<T> : JsonConverter<T>
     {
@@ -32,6 +32,15 @@ namespace Common.Web
             var value = reader.GetString();
             if (value == NoneValue) return 0;
             return decimal.Parse(value, new CultureInfo("en-US"));
+        }
+    }
+
+    public sealed class CapitalizeParser : ParserBase<string>
+    {
+        public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = reader.GetString();
+            return value.Capitalize();
         }
     }
 }

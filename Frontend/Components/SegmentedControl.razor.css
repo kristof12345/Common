@@ -48,6 +48,7 @@
             background: var(--primary-color);
             transition-delay: 0.1s;
             opacity: 1;
+            border-radius: 5px;
         }
 
 .segmented-control .segmented-control-btn:last-of-type {
@@ -56,10 +57,6 @@
 
 .segmented-control .segmented-control-btn:first-of-type {
     border-radius: 5px 0 0 5px;
-}
-
-.segmented-control input[type=radio]:checked + label::before {
-    border-radius: 5px;
 }
 
 .body-dark .segmented-control-btn {
