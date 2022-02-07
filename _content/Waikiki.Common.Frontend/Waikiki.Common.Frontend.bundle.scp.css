@@ -397,6 +397,7 @@ a[b-7bk747ardv] {
             background: var(--primary-color);
             transition-delay: 0.1s;
             opacity: 1;
+            border-radius: 5px;
         }
 
 .segmented-control .segmented-control-btn:last-of-type[b-7ah8jwj4zc] {
@@ -405,10 +406,6 @@ a[b-7bk747ardv] {
 
 .segmented-control .segmented-control-btn:first-of-type[b-7ah8jwj4zc] {
     border-radius: 5px 0 0 5px;
-}
-
-.segmented-control input[type=radio]:checked + label[b-7ah8jwj4zc]::before {
-    border-radius: 5px;
 }
 
 .body-dark .segmented-control-btn[b-7ah8jwj4zc] {
