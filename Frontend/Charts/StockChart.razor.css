@@ -3,7 +3,8 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .body-dark .stock-chart {

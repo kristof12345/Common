@@ -1,11 +1,18 @@
 ﻿.segmented-control {
     display: flex;
+    overflow: scroll;
+    position: relative;
 }
+
+    .segmented-control::-webkit-scrollbar {
+        display: none;
+    }
 
 .segmented-control-btn {
     flex: 1 0;
     height: 100%;
     background: #efefef;
+    min-width: 120px;
 }
 
 .segmented-control input {

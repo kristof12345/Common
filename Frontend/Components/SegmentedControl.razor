@@ -2,7 +2,7 @@
 
 @using Microsoft.AspNetCore.Components.Web
 
-<div class="segmented-control">
+<div class="segmented-control" style=@($"width: {Width}; min-width: {MinWidth}; max-width: {MaxWidth}; margin: {Margin};")>
     @foreach (var tab in Tabs)
     {
         <div class="segmented-control-btn">
@@ -27,4 +27,16 @@
     [Parameter]
     [EditorRequired]
     public string Id { get; set; }
+
+    [Parameter]
+    public string Width { get; set; } = "100%";
+
+    [Parameter]
+    public string MaxWidth { get; set; } = "100%";
+
+    [Parameter]
+    public string MinWidth { get; set; } = "unset";
+
+    [Parameter]
+    public Border Margin { get; set; } = new Border("0px");
 }

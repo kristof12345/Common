@@ -20,16 +20,16 @@
             <SelectEnum @bind-Value=@Model.Enum Label="Enum" ValidationExpression=@(() => Model.Enum) TEnum="DemoEnum" />
             <ColorPicker @bind-Value=@Model.Color Label="ColorPicker" />
             <CheckBox @bind-Value=@Model.Checked Label="CheckBox" />
-            <SegmentedControl @bind-Tab=@SelectedTab Tabs=@(new List<string>{ "Apple", "Banana", "Orange" }) Id="fruits" />
+            <SegmentedControl @bind-Tab=@SelectedTab Tabs=@(new List<string>{ "Apple", "Banana", "Orange", "Blackberry", "Peach", "Cherry", "Melon", "Strawberry" }) Id="fruits" />
             @SelectedTab
-            <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>
+            <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap>
                 <Button Type="reset" OnClick=@Reset>Reset</Button>
                 <Button Outlined="true">Outlined</Button>
                 <Button Color="red">Red</Button>
                 <Button Color="red" Outlined="true">RedOutlined</Button>
                 <Button Type="submit">Submit</Button>
             </Horizontal>
-            <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>
+            <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap>
                 <LinkButton Link="./">LinkButton</LinkButton>
                 <LinkButton Link="./" Outlined="true">Outlined LinkButton</LinkButton>
                 <LinkButton Link="./" Color="red">Red LinkButton</LinkButton>
@@ -61,18 +61,18 @@
             <Button Color="red" Outlined="true">RedOutlined</Button>
             <Button Type="submit">Submit</Button>
         </Horizontal>
-        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap>
             <LinkButton Link="./">LinkButton</LinkButton>
             <LinkButton Link="./" Outlined="true">Outlined LinkButton</LinkButton>
             <LinkButton Link="./" Color="red">Red LinkButton</LinkButton>
             <LinkButton Link="./" Color="red" Outlined="true">RedOutlined LinkButton</LinkButton>
         </Horizontal>
-        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Margin=@Border.Top("20px")>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Margin=@Border.Top("20px") Wrap=@FlexWrap.Wrap>
             <Button Color=@Colors.Success Outlined="true" Width="8%">Add</Button>
             <Button Color=@Colors.Warning Outlined="true" Width="8%">Refresh</Button>
             <Button Color=@Colors.Error Outlined="true" Width="8%">Delete</Button>
         </Horizontal>
-        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Margin=@Border.Top("20px")>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Margin=@Border.Top("20px") Wrap=@FlexWrap.Wrap>
             <Button Disabled="true" Color=@Colors.Success Outlined="true" Width="8%">Add</Button>
             <Button Disabled="true" Color=@Colors.Warning Outlined="true" Width="8%">Refresh</Button>
             <Button Disabled="true" Color=@Colors.Error Outlined="true" Width="8%">Delete</Button>

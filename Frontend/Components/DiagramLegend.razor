@@ -1,6 +1,6 @@
 ﻿@namespace Common.Web
 
-<Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@Border.Top("10px") Wrap=@FlexWrap.Wrap>
+<Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@Margin Wrap=@FlexWrap.Wrap>
     @foreach (var item in Data)
     {
         <Horizontal Width="auto" Margin=@(new Border("10px", "0px"))>
@@ -15,4 +15,7 @@
     [Parameter]
     [EditorRequired]
     public IEnumerable<ChartData> Data { get; set; }
+
+    [Parameter]
+    public Border Margin { get; set; } = Border.Top("10px");
 }
