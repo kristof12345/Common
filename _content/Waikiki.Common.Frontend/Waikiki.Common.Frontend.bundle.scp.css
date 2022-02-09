@@ -88,7 +88,8 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .body-dark .series-chart[b-2cb5s6gie6] {
@@ -133,7 +134,8 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .body-dark .series-chart[b-bzm5uizeeq] {
@@ -153,7 +155,8 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .body-dark .series-chart[b-iwlyhgztz0] {
@@ -179,7 +182,8 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .body-dark .stock-chart[b-0em9yueq9m] {
@@ -349,12 +353,19 @@ a[b-7bk747ardv] {
 /* _content/Waikiki.Common.Frontend/Components/SegmentedControl.razor.rz.scp.css */
 .segmented-control[b-7ah8jwj4zc] {
     display: flex;
+    overflow: scroll;
+    position: relative;
 }
+
+    .segmented-control[b-7ah8jwj4zc]::-webkit-scrollbar {
+        display: none;
+    }
 
 .segmented-control-btn[b-7ah8jwj4zc] {
     flex: 1 0;
     height: 100%;
     background: #efefef;
+    min-width: 120px;
 }
 
 .segmented-control input[b-7ah8jwj4zc] {
