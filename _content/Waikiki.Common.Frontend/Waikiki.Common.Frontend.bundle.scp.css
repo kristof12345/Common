@@ -97,19 +97,6 @@
     border: 1px solid #424242;
 }
 
-.chart[b-2cb5s6gie6] {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-    pointer-events: none;
-}
-
-.range[b-2cb5s6gie6] {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
-}
-
 .legend[b-2cb5s6gie6] {
     min-height: 40px;
     margin-top: -40px;
@@ -142,13 +129,6 @@
     background-color: rgb(48,48,48);
     border: 1px solid #424242;
 }
-
-.chart[b-bzm5uizeeq] {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-    pointer-events: none;
-}
 /* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
 .series-chart[b-iwlyhgztz0] {
     height: 450px;
@@ -162,46 +142,6 @@
 .body-dark .series-chart[b-iwlyhgztz0] {
     background-color: rgb(48,48,48);
     border: 1px solid #424242;
-}
-
-.chart[b-iwlyhgztz0] {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-    pointer-events: none;
-}
-
-.range[b-iwlyhgztz0] {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
-}
-/* _content/Waikiki.Common.Frontend/Charts/StockChart.razor.rz.scp.css */
-.stock-chart[b-0em9yueq9m] {
-    height: 450px;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid lightgrey;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.body-dark .stock-chart[b-0em9yueq9m] {
-    background-color: rgb(48,48,48);
-    border: 1px solid #424242;
-}
-
-.chart[b-0em9yueq9m] {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-    pointer-events: none;
-}
-
-.range[b-0em9yueq9m] {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
 }
 /* _content/Waikiki.Common.Frontend/Components/CircleImage.razor.rz.scp.css */
 .circle-image[b-0xzi9lkdda] {
