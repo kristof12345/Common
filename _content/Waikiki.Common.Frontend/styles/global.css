@@ -23,13 +23,8 @@
     -webkit-font-smoothing: antialiased;
 }
 
-html {
-    overflow-x: hidden;
-}
-
 body {
     margin: 0;
-    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p, table {
@@ -51,10 +46,6 @@ a.link {
     color: var(--primary-color) !important;
     font-family: "Helvetica", "Arial", sans-serif !important;
     cursor: pointer;
-}
-
-.e-tooltip {
-    cursor: pointer !important;
 }
 
 form {
@@ -152,19 +143,6 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 
 /* Charts */
-
-.chart {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-    pointer-events: none;
-}
-
-.range {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
-}
 
 text {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -325,11 +303,6 @@ text {
     width: 100%;
 }
 
-.e-acrdn-content {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-}
-
 /* Date picker */
 
 .body-dark .e-datepicker .e-calendar, .body-dark .e-datepicker .e-calendar .e-footer-container {
@@ -403,4 +376,29 @@ td {
 
 .body-dark .sf-grid .e-headercell {
     border-color: rgb(219, 219, 219) !important;
+}
+
+.stock-chart {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .stock-chart {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.range {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }

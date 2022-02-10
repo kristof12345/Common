@@ -88,13 +88,25 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .body-dark .series-chart[b-2cb5s6gie6] {
     background-color: rgb(48,48,48);
     border: 1px solid #424242;
+}
+
+.chart[b-2cb5s6gie6] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+    pointer-events: none;
+}
+
+.range[b-2cb5s6gie6] {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .legend[b-2cb5s6gie6] {
@@ -121,13 +133,19 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .body-dark .series-chart[b-bzm5uizeeq] {
     background-color: rgb(48,48,48);
     border: 1px solid #424242;
+}
+
+.chart[b-bzm5uizeeq] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+    pointer-events: none;
 }
 /* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
 .series-chart[b-iwlyhgztz0] {
@@ -135,13 +153,51 @@
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .body-dark .series-chart[b-iwlyhgztz0] {
     background-color: rgb(48,48,48);
     border: 1px solid #424242;
+}
+
+.chart[b-iwlyhgztz0] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+    pointer-events: none;
+}
+
+.range[b-iwlyhgztz0] {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+/* _content/Waikiki.Common.Frontend/Charts/StockChart.razor.rz.scp.css */
+.stock-chart[b-0em9yueq9m] {
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    margin: 20px;
+}
+
+.body-dark .stock-chart[b-0em9yueq9m] {
+    background-color: rgb(48,48,48);
+    border: 1px solid #424242;
+}
+
+.chart[b-0em9yueq9m] {
+    height: 350px;
+    width: 100%;
+    margin-left: 12px;
+    pointer-events: none;
+}
+
+.range[b-0em9yueq9m] {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
 /* _content/Waikiki.Common.Frontend/Components/CircleImage.razor.rz.scp.css */
 .circle-image[b-0xzi9lkdda] {
@@ -289,82 +345,6 @@ a[b-7bk747ardv] {
     width: 71px;
     height: 22px;
     cursor: pointer;
-}
-/* _content/Waikiki.Common.Frontend/Components/SegmentedControl.razor.rz.scp.css */
-.segmented-control[b-7ah8jwj4zc] {
-    display: flex;
-    overflow: scroll;
-    position: relative;
-}
-
-    .segmented-control[b-7ah8jwj4zc]::-webkit-scrollbar {
-        display: none;
-    }
-
-.segmented-control-btn[b-7ah8jwj4zc] {
-    flex: 1 0;
-    height: 100%;
-    background: #efefef;
-    min-width: 120px;
-}
-
-.segmented-control input[b-7ah8jwj4zc] {
-    position: absolute;
-    opacity: 0;
-}
-
-    .segmented-control input + label[b-7ah8jwj4zc] {
-        font-family: "Helvetica", "Arial", sans-serif !important;
-        position: relative;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        margin: 2px;
-        color: #333;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
-
-        .segmented-control input + label[b-7ah8jwj4zc]::before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            content: "";
-            transition: 0.3s ease;
-            opacity: 0;
-        }
-
-    .segmented-control input[type=radio]:checked + label[b-7ah8jwj4zc] {
-        color: white;
-    }
-
-        .segmented-control input[type=radio]:checked + label[b-7ah8jwj4zc]::before {
-            background: var(--primary-color);
-            transition-delay: 0.1s;
-            opacity: 1;
-            border-radius: 5px;
-        }
-
-.segmented-control .segmented-control-btn:last-of-type[b-7ah8jwj4zc] {
-    border-radius: 0 5px 5px 0;
-}
-
-.segmented-control .segmented-control-btn:first-of-type[b-7ah8jwj4zc] {
-    border-radius: 5px 0 0 5px;
-}
-
-.body-dark .segmented-control-btn[b-7ah8jwj4zc] {
-    background: #323232;
-}
-
-.body-dark .segmented-control input + label[b-7ah8jwj4zc] {
-    color: white;
 }
 /* _content/Waikiki.Common.Frontend/Components/ThemeToggle.razor.rz.scp.css */
 .toggle-wrapper[b-62qe5717bo] {
