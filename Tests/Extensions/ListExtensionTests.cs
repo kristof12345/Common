@@ -276,7 +276,7 @@ namespace Common.Tests.Extensions
         }
     }
 
-    public class StockPrice : IStockPrice
+    public class StockPrice : ITemporal
     {
         public DateTime Date { get; set; }
 

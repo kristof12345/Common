@@ -1,10 +1,4 @@
-﻿@namespace Common.Web
-
-@using Common.Application
-@using Syncfusion.Blazor
-@using Syncfusion.Blazor.Charts
-
-<div class="stock-chart">
+﻿<div class="finance-chart" style="height: 450px;">
     @if (Visibility == "hidden")
     {
         <LoadingIndicator />
@@ -57,7 +51,7 @@
 {
     [Parameter]
     [EditorRequired]
-    public IEnumerable<IStockPrice> Data { get; set; }
+    public IEnumerable<StockPrice> Data { get; set; }
 
     [Parameter]
     [EditorRequired]
@@ -78,7 +72,7 @@
 
     private DateTime[] Range { get; set; }
 
-    private IEnumerable<IStockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
+    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     private string Visibility { get; set; } = "hidden";
 

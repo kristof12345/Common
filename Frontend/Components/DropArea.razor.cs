@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Common.Application;
 
 namespace Common.Web
@@ -130,9 +129,7 @@ namespace Common.Web
 
         private bool IsItemAccepted(IUnique dragTargetItem)
         {
-            if (Accepts == null)
-                return true;
-            return Accepts(DragDropService.ActiveItem, dragTargetItem);
+            return Accepts == null ? true : Accepts(DragDropService.ActiveItem, dragTargetItem);
         }
 
         private bool IsValidItem()
@@ -158,13 +155,7 @@ namespace Common.Web
 
         public string CheckIfDraggable(IUnique item)
         {
-            if (AllowsDrag == null)
-                return "";
-            if (item == null)
-                return "";
-            if (AllowsDrag(item))
-                return "";
-            return "plk-dd-noselect";
+            return AllowsDrag == null || item == null || AllowsDrag(item) ? "" : "plk-dd-noselect";
         }
 
         public string CheckIfDragOperationIsInProgess()

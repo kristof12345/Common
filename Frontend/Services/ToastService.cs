@@ -11,14 +11,14 @@ namespace Common.Web
         public async Task Add(string content, ToastType type)
         {
             var model = new ToastModel { Content = content };
-            switch (type)
+            model.CssClass = type switch
             {
-                case ToastType.Success: model.CssClass = "e-toast-success"; break;
-                case ToastType.Warning: model.CssClass = "e-toast-warning"; break;
-                case ToastType.Danger: model.CssClass = "e-toast-danger"; break;
-                case ToastType.Info: model.CssClass = "e-toast-info"; break;
-                default: throw new InvalidOperationException("Unexpected value: " + type);
-            }
+                ToastType.Success => "e-toast-success",
+                ToastType.Warning => "e-toast-warning",
+                ToastType.Danger => "e-toast-danger",
+                ToastType.Info => "e-toast-info",
+                _ => throw new InvalidOperationException("Unexpected value: " + type),
+            };
             await Toaster.Show(model);
         }
     }

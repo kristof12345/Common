@@ -20,8 +20,7 @@ namespace Common.Application
         public override long Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var value = reader.GetString();
-            if (value == NoneValue) return 0;
-            return long.Parse(value);
+            return value == NoneValue ? 0 : long.Parse(value);
         }
     }
 
@@ -30,8 +29,7 @@ namespace Common.Application
         public override decimal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var value = reader.GetString();
-            if (value == NoneValue) return 0;
-            return decimal.Parse(value, new CultureInfo("en-US"));
+            return value == NoneValue ? 0 : decimal.Parse(value, new CultureInfo("en-US"));
         }
     }
 

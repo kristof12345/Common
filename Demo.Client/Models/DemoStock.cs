@@ -47,7 +47,7 @@ namespace Demo.Client
         public List<StockPrice> Prices { get; set; }
     }
 
-    public class StockPrice : IStockPrice, ITemporalValue
+    public class StockPrice : ITemporalValue
     {
         public DateTime Date { get; set; }
 

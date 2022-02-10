@@ -25,7 +25,7 @@ namespace Demo.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5000/") });
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5101/") });
 
             services.AddSignalR(e => { e.MaximumReceiveMessageSize = 102400000; });
             services.AddRazorPages();

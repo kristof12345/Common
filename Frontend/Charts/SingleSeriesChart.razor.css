@@ -11,16 +11,3 @@
     background-color: rgb(48,48,48);
     border: 1px solid #424242;
 }
-
-.chart {
-    height: 350px;
-    width: 100%;
-    margin-left: 12px;
-    pointer-events: none;
-}
-
-.range {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
-}
