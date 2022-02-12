@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Common.Backend.Attributes
+namespace Common.Backend
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public sealed class AdministratorAttribute : Attribute, IAuthorizationFilter

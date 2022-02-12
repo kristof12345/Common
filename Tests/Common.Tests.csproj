@@ -26,4 +26,10 @@
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 		<ProjectReference Include="..\Backend\Common.Backend.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Parsers\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Parsers\" />
+	</ItemGroup>
 </Project>
