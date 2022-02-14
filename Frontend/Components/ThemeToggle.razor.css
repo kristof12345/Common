@@ -16,7 +16,6 @@
 }
 
     .toggleContainer .toggleOption {
-        font-family: "Helvetica", "Arial" !important;
         display: inline-block;
         position: relative;
         z-index: 1;

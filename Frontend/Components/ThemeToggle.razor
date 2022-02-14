@@ -7,9 +7,9 @@
 
 <div class="toggle-wrapper">
     <div class="toggleContainer">
-        <div @onclick="@(async () => await ChangeThemeClicked("auto"))" class="@CssAuto" style="width: 31%;">Auto</div>
-        <div @onclick="@(async () => await ChangeThemeClicked("light"))" class="@CssLight" style="width: 36%;">Light</div>
-        <div @onclick="@(async () => await ChangeThemeClicked("dark"))" class="@CssDark" style="width: 30%;">Dark</div>
+        <label @onclick="@(async () => await ChangeThemeClicked("auto"))" class="@CssAuto" style="width: 31%;">Auto</label>
+        <label @onclick="@(async () => await ChangeThemeClicked("light"))" class="@CssLight" style="width: 36%;">Light</label>
+        <label @onclick="@(async () => await ChangeThemeClicked("dark"))" class="@CssDark" style="width: 30%;">Dark</label>
         <div class="toggle" style="@CssBackground"></div>
     </div>
 </div>

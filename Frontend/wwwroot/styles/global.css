@@ -32,9 +32,9 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, p, table, span, text {
+h1, h2, h3, h4, h5, h6, p, a, table, span, text, label {
     margin: 0;
-    font-family: "Helvetica", "Arial" !important;
+    font-family: Arial !important;
     -webkit-font-smoothing: auto !important;
 }
 
@@ -49,7 +49,6 @@ h5 {
 a.link {
     text-decoration: none;
     color: var(--primary-color) !important;
-    font-family: "Helvetica", "Arial" !important;
     cursor: pointer;
 }
 
@@ -251,7 +250,7 @@ text {
 
 .e-btn {
     background-color: transparent;
-    font-family: "Helvetica", "Arial" !important;
+    font-family: Arial !important;
     -webkit-font-smoothing: antialiased;
     letter-spacing: 0.0892857143em;
     border-radius: 4px;
