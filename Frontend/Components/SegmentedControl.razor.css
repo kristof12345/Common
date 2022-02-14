@@ -21,7 +21,7 @@
 }
 
     .segmented-control input + label {
-        font-family: "Helvetica", "Arial", sans-serif !important;
+        font-family: "Helvetica", "Arial" !important;
         position: relative;
         z-index: 1;
         display: flex;

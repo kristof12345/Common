@@ -6,7 +6,7 @@
     @foreach (var tab in Tabs)
     {
         <div class="segmented-control-btn">
-            <input @onclick="@(async () => await TabChanged.InvokeAsync(tab))" type="radio" id=@tab name=@Id value=@tab checked=@(tab == Tab)>
+            <input @onclick="@(async () => await ChangeTab(tab))" type="radio" id=@tab name=@Id value=@tab checked=@(tab == Tab)>
             <label for=@tab>@tab</label>
         </div>
     }
@@ -39,4 +39,12 @@
 
     [Parameter]
     public Border Margin { get; set; } = new Border("0px");
+
+    private async Task ChangeTab(string tab)
+    {
+        Tab = tab;
+        StateHasChanged();
+        await Task.Delay(300);
+        await TabChanged.InvokeAsync(tab);
+    }
 }
