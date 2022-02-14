@@ -266,7 +266,6 @@ a[b-7bk747ardv] {
     font-weight: bold;
     font-size: 50px;
     color: white;
-    font-family: Arial, varela, sans-serif !important;
     max-width: calc(100vw - 100px);
     overflow: hidden;
     text-overflow: clip;
@@ -314,7 +313,7 @@ a[b-7bk747ardv] {
 }
 
     .segmented-control input + label[b-7ah8jwj4zc] {
-        font-family: "Helvetica", "Arial", sans-serif !important;
+        font-family: "Helvetica", "Arial" !important;
         position: relative;
         z-index: 1;
         display: flex;
@@ -385,7 +384,7 @@ a[b-7bk747ardv] {
 }
 
     .toggleContainer .toggleOption[b-62qe5717bo] {
-        font-family: "Helvetica", "Arial", sans-serif !important;
+        font-family: "Helvetica", "Arial" !important;
         display: inline-block;
         position: relative;
         z-index: 1;
@@ -519,7 +518,6 @@ svg[b-5c6y4bo8ri] {
 text[b-5c6y4bo8ri] {
     fill: #fff;
     font-size: 0.75rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 /* _content/Waikiki.Common.Frontend/Stepper/Step.razor.rz.scp.css */
 .step[b-q5igamu8cf] {
@@ -531,7 +529,6 @@ text[b-5c6y4bo8ri] {
 
 span[b-q5igamu8cf] {
     font-size: 0.875rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     letter-spacing: 0.01071em;
     margin-top: 16px;
 }
@@ -587,7 +584,6 @@ span[b-q5igamu8cf] {
 text[b-yj73pwvk9o] {
     fill: #fff;
     font-size: 0.75rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 
