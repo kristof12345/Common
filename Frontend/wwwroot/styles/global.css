@@ -28,7 +28,7 @@ html, body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, table, span, text, label {
+h1, h2, h3, h4, h5, h6, p, a, table, text, label {
     margin: 0;
     font-family: Arial !important;
     -webkit-font-smoothing: auto !important;

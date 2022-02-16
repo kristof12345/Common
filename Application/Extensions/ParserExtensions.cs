@@ -15,6 +15,15 @@ namespace Common.Application
         }
     }
 
+    public sealed class IntParser : ParserBase<int>
+    {
+        public override int Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var value = (int)reader.GetDecimal();
+            return value;
+        }
+    }
+
     public sealed class LongParser : ParserBase<long>
     {
         public override long Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -46,9 +55,9 @@ namespace Common.Application
     {
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var value = reader.GetString();
+            var value = reader.GetInt64();
             var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            return dateTime.AddSeconds(long.Parse(value));
+            return dateTime.AddSeconds(value);
         }
     }
 }

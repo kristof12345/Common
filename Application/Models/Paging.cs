@@ -18,6 +18,12 @@ namespace Common.Application
             PageCount = (count + Span.PageSize - 1) / Span.PageSize;
             Results = results;
         }
+
+        public PagedResult(List<T> results, int count, int pageSize)
+        {
+            PageCount = (count + pageSize - 1) / pageSize;
+            Results = results;
+        }
     }
 
     public class Span

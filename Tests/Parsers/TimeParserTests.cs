@@ -15,7 +15,7 @@ namespace Common.Tests.Parsers
         public void ParseTimeTests()
         {
             // Arrange
-            var reader = new Utf8JsonReader(Encoding.UTF8.GetBytes("\"1596584406\""));
+            var reader = new Utf8JsonReader(Encoding.UTF8.GetBytes("1596584406"));
             reader.Read();
 
             // Act
