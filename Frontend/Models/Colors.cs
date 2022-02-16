@@ -18,6 +18,12 @@ namespace Common.Web
         public static readonly string Transparent = "transparent";
         public static readonly string Frame = "#888888";
 
+        public static readonly string Worst = "#EA501A";
+        public static readonly string Bad = "#F79C02";
+        public static readonly string Normal = "#E5CE20";
+        public static readonly string Good = "#A1CB43";
+        public static readonly string Best = "#82B944";
+
         public static string Get(int key) { return palettes[key % 10]; }
         private static readonly List<string> palettes = new List<string> { "#0d47a1", "#00838f", "#00b0ff", "#4caf50", "#ff9800", "#dd2c00", "#c51162", "#4527a0", "#880e4f", "#3e2723" };
     }

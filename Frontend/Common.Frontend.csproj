@@ -9,7 +9,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>2.6.0</PackageVersion>
+		<PackageVersion>2.6.4</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
@@ -34,6 +34,7 @@
 		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="19.4.0.52" />
 		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="19.4.0.52" />
 		<PackageReference Include="Syncfusion.Blazor.Grid" Version="19.4.0.52" />
+		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="19.4.0.52" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Remove="wwwroot\.DS_Store" />
