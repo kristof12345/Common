@@ -36,6 +36,13 @@
                 <LinkButton Link="./" Color="red" Outlined="true">RedOutlined LinkButton</LinkButton>
             </Horizontal>
         </EditForm>
+
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
+            <SelectEnum @bind-Value=@Series Label="Series" TEnum="ChartSeriesType" />
+            <EnumField @bind-Value=@Trendline Label="Trendline" TEnum="TrendlineTypes" />
+            <EnumField @bind-Value=@Indicator Label="Indicator" TEnum="TechnicalIndicators" />
+        </Horizontal>
+
     </Paper>
     <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" ))>
         <Heading Style="padding-bottom: 20px;">Not validated form</Heading>
@@ -105,4 +112,10 @@
     {
         await Toaster.Add("Reset", ToastType.Danger);
     }
+
+    private ChartSeriesType Series { get; set; } = ChartSeriesType.Candle;
+
+    private TrendlineTypes? Trendline { get; set; }
+
+    private TechnicalIndicators? Indicator { get; set; }
 }

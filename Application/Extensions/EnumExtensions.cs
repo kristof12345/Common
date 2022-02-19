@@ -7,43 +7,35 @@ namespace Common.Application
 {
     public static class EnumExtensions
     {
-        public static string GetAttributeValue<TEnum>(this TEnum enumVal) where TEnum : struct
+        public static string GetAttributeValue<TEnum>(this TEnum enumVal) where TEnum : struct, Enum
         {
             var enumType = typeof(TEnum);
             var memInfo = enumType.GetMember(enumVal.ToString());
             var attr = memInfo.First().GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
-            return attr != null ? attr.Value : string.Empty;
+            return attr != null ? attr.Value : Enum.GetName(enumVal);
         }
 
-        public static string GetAttributeValue<TEnum>(this TEnum? enumVal) where TEnum : struct
+        public static string GetAttributeValue<TEnum>(this TEnum? enumVal) where TEnum : struct, Enum
         {
-            return enumVal.HasValue ? enumVal.Value.GetAttributeValue() : "";
+            return enumVal.HasValue ? enumVal.Value.GetAttributeValue() : string.Empty;
         }
 
-        public static T GetValueFromAttribute<T>(string description)
+        public static TEnum GetValueFromAttribute<TEnum>(string description) where TEnum : struct, Enum
         {
-            var type = typeof(T);
-            if (!type.IsEnum) throw new InvalidOperationException();
-            foreach (var field in type.GetFields())
+            foreach (var field in typeof(TEnum).GetFields())
             {
                 if (Attribute.GetCustomAttribute(field, typeof(EnumMemberAttribute)) is EnumMemberAttribute attribute)
                 {
-                    if (attribute.Value == description || field.Name == description) return (T)field.GetValue(null);
+                    if (attribute.Value == description || field.Name == description) return (TEnum)field.GetValue(null);
                 }
             }
-            throw new ArgumentException("Not found.", nameof(description));
+
+            return Enum.Parse<TEnum>(description);
         }
 
-        public static List<string> GetAttributeList<TEnum>() where TEnum : struct
+        public static List<string> GetAttributeList<TEnum>() where TEnum : struct, Enum
         {
-            return Enum.GetValues(typeof(TEnum)).Cast<Enum>().Select(val => val.GetAttribute<EnumMemberAttribute>()?.Value).ToList();
-        }
-
-        private static TAttribute GetAttribute<TAttribute>(this Enum value) where TAttribute : Attribute
-        {
-            var type = value.GetType();
-            var name = Enum.GetName(type, value);
-            return type.GetField(name).GetCustomAttributes(false).OfType<TAttribute>().SingleOrDefault();
+            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().Select(val => val.GetAttributeValue()).ToList();
         }
     }
 }

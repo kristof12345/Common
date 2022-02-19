@@ -1,12 +1,12 @@
 ﻿@namespace Common.Web
-@inherits AppInput<TEnum?>
+@inherits AppInput<TEnum>
 
 @using Syncfusion.Blazor.Inputs
 @using Common.Application
 @using Syncfusion.Blazor.DropDowns
 @using Microsoft.AspNetCore.Components.Forms
 
-@typeparam TEnum where TEnum : struct
+@typeparam TEnum where TEnum : struct, Enum
 
 <p style=@($"width: {Width}")>
     <SfDropDownList Value=@(EnumExtensions.GetAttributeValue(Value)) ValueChanged=@HandleValueChange DataSource=@(EnumExtensions.GetAttributeList<TEnum>().Except("Server")) FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue=string TItem=string />

@@ -1,7 +1,7 @@
 ﻿@namespace Common.Web
 @inherits AppTypography
 
-<h5 onclick=@OnClick style=@($"font-size: {Size}px; font-weight: {Weight}; letter-spacing: 0.25px; text-align: {Align}; color: {Color}; margin: {Margin.ToString()}; {Style}") class=@Class>@ChildContent</h5>
+<h5 onclick=@OnClick style=@($"font-size: {Size}px; font-weight: {Weight}; width: {Width}; letter-spacing: 0.25px; text-align: {Align}; color: {Color}; margin: {Margin.ToString()}; {Style}") class=@Class>@ChildContent</h5>
 
 @code
 {

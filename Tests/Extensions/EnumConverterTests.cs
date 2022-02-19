@@ -23,7 +23,7 @@ namespace Common.Tests.Extensions
             var list = EnumExtensions.GetAttributeList<TestEnum>();
             Assert.Equal(3, list.Count);
             Assert.Equal("Apple", list[0]);
-            Assert.Null(list[1]);
+            Assert.Equal("B", list[1]);
             Assert.Equal("Coconut", list[2]);
         }
 
@@ -38,7 +38,7 @@ namespace Common.Tests.Extensions
         public void GetAttributeValueEmptyTest()
         {
             var type = TestEnum.B;
-            Assert.Equal("", type.GetAttributeValue());
+            Assert.Equal("B", type.GetAttributeValue());
         }
 
         [Fact]
@@ -59,12 +59,6 @@ namespace Common.Tests.Extensions
         public void ParseInvalidEnumTest()
         {
             Assert.Throws<System.ArgumentException>(() => EnumExtensions.GetValueFromAttribute<TestEnum>("Banana"));
-        }
-
-        [Fact]
-        public void ParseNotEnumTest()
-        {
-            Assert.Throws<System.InvalidOperationException>(() => EnumExtensions.GetValueFromAttribute<string>("Banana"));
         }
     }
 }

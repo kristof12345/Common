@@ -11,6 +11,9 @@ namespace Common.Web
         public string Align { get; set; } = TextAlignment.Center;
 
         [Parameter]
+        public string Width { get; set; } = "auto";
+
+        [Parameter]
         public string Color { get; set; } = "unset";
 
         [Parameter]
