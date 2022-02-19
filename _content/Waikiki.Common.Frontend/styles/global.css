@@ -23,9 +23,14 @@
     -webkit-font-smoothing: antialiased;
 }
 
-html, body {
-    margin: 0;
+html {
     overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, table, text, label {

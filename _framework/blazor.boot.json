@@ -9,9 +9,9 @@
     "assembly": {
       "Blazored.LocalStorage.dll": "sha256-6RRoYeDP3d0xabXmcCMF66wXeJlXVPem28Trs8sQiis=",
       "Blazored.SessionStorage.dll": "sha256-XkZNIC6OGMeHZDbBGnhfc9yXdLIvGa8LlKDd4ZPWkS8=",
-      "Common.Application.dll": "sha256-p+cNtU\/ttcEwNJkv8kjTRwBuP5xQhG2PdlXCIG+O8Rc=",
-      "Common.Frontend.dll": "sha256-QjBdNtSFzzErJp71tRm5G6jGvt\/c+4p5rF1M1kUA\/oo=",
-      "Demo.Client.dll": "sha256-sDKynnqsRs0yGvoeCw6arZrOctRvXkxlRe9Qtm6fpwA=",
+      "Common.Application.dll": "sha256-VtqIpjkakmK9T+y6fcwDkO1RxMXcdkubM9s\/7RKnIEE=",
+      "Common.Frontend.dll": "sha256-KtU7tOsNserKKfCeHQyZajbwd9Zj0VG2wNPXyn+sAtg=",
+      "Demo.Client.dll": "sha256-m0tpLq4dyeX87BohJRTDejhl0MF2Ph3pYMGHKgAcJPs=",
       "Microsoft.AspNetCore.Components.dll": "sha256-eH2POA62C\/9NlKUXq3CqZeoMrgnPCI\/QdNKixfVNxgc=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-VG47ZtQwy5d\/Tb0sbOwl+iuHHxRuUjlzxS0BDb8URrA=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-TY48P7vHNlE36SlhzKcdRYdCVIOk1TS\/DmSZCHwkzhE=",
