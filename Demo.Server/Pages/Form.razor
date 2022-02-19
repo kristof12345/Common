@@ -8,7 +8,7 @@
             <TextField @bind-Value=@Model.String Label="TextField" ValidationExpression=@(() => Model.String) />
             <TextArea @bind-Value=@Model.Text Label="TextArea" ValidationExpression=@(() => Model.Text) />
             <Autocomplete @bind-Value=@Model.Autocomplete Items=@List Label="Autocomplete" ValidationExpression=@(() => Model.Autocomplete) />
-            <SelectValue @bind-Value=@Model.Select Items=@List Label="SelectValue" ValidationExpression=@(() => Model.Select) />
+            <DropdownList @bind-Value=@Model.Select Items=@List Label="SelectValue" ValidationExpression=@(() => Model.Select) />
             <DatePicker @bind-Value=@Model.DateTime Label="DateTime" ValidationExpression=@(() => Model.DateTime) />
             <DatePicker @bind-Value=@Model.NullableDateTime Label="Nullable DateTime" ValidationExpression=@(() => Model.NullableDateTime) />
             <DatePicker @bind-Value=@Model.DateRange.Start Label="DateRange Start" ValidationExpression=@(() => Model.DateRange.Start) />
@@ -17,7 +17,7 @@
             <NumericField @bind-Value=@Model.OptionalInteger Label="OptionalInteger" ValidationExpression=@(() => Model.OptionalInteger) Min="0" Max="10" Step="1" />
             <NumericField @bind-Value=@Model.Double Label="Double" ValidationExpression=@(() => Model.Double) />
             <NumericField @bind-Value=@Model.Decimal Label="Decimal" ValidationExpression=@(() => Model.Decimal) />
-            <SelectEnum @bind-Value=@Model.Enum Label="Enum" ValidationExpression=@(() => Model.Enum) TEnum="DemoEnum" />
+            <EnumField @bind-Value=@Model.Enum Label="Enum" ValidationExpression=@(() => Model.Enum) TEnum="DemoEnum" />
             <ColorPicker @bind-Value=@Model.Color Label="ColorPicker" />
             <CheckBox @bind-Value=@Model.Checked Label="CheckBox" />
             <SegmentedControl @bind-Tab=@SelectedTab Tabs=@(new List<string>{ "Apple", "Banana", "Orange", "Blackberry", "Peach", "Cherry", "Melon", "Strawberry" }) Id="fruits" />
@@ -38,9 +38,9 @@
         </EditForm>
 
         <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
-            <SelectEnum @bind-Value=@Series Label="Series" TEnum="ChartSeriesType" />
-            <EnumField @bind-Value=@Trendline Label="Trendline" TEnum="TrendlineTypes" />
-            <EnumField @bind-Value=@Indicator Label="Indicator" TEnum="TechnicalIndicators" />
+            <EnumField @bind-Value=@Series Label="Series" />
+            <EnumField @bind-Value=@Trendline Label="Trendline" />
+            <EnumField @bind-Value=@Indicator Label="Indicator" />
         </Horizontal>
 
     </Paper>
@@ -49,7 +49,7 @@
         <TextField @bind-Value=@Model.String Label="TextField" />
         <TextArea @bind-Value=@Model.Text Label="TextArea" />
         <Autocomplete @bind-Value=@Model.Autocomplete Items=@List Label="Autocomplete" />
-        <SelectValue @bind-Value=@Model.Select Items=@List Label="SelectValue" />
+        <DropdownList @bind-Value=@Model.Select Items=@List Label="SelectValue" />
         <DatePicker @bind-Value=@Model.DateTime Label="DateTime" />
         <DatePicker @bind-Value=@Model.NullableDateTime Label="Nullable DateTime" />
         <DatePicker @bind-Value=@Model.DateRange.Start Label="DateRange Start" />
@@ -58,7 +58,7 @@
         <NumericField @bind-Value=@Model.OptionalInteger Label="OptionalInteger" Min="0" Max="10" Step="1" />
         <NumericField @bind-Value=@Model.Double Label="Double" />
         <NumericField @bind-Value=@Model.Decimal Label="Decimal" />
-        <SelectEnum @bind-Value=@Model.Enum Label="Enum" TEnum="DemoEnum" />
+        <EnumField @bind-Value=@Model.Enum Label="Enum" TEnum="DemoEnum" />
         <ColorPicker @bind-Value=@Model.Color Label="ColorPicker" />
         <CheckBox @bind-Value=@Model.Checked Label="CheckBox" />
         <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween>

@@ -7,20 +7,20 @@ namespace Common.Application
 {
     public static class EnumExtensions
     {
-        public static string GetAttributeValue<TEnum>(this TEnum enumVal) where TEnum : struct, Enum
+        public static List<string> GetAttributeList<TEnum>()
+        {
+            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().Select(val => val.GetAttributeValue()).ToList();
+        }
+
+        public static string GetAttributeValue<TEnum>(this TEnum enumVal)
         {
             var enumType = typeof(TEnum);
             var memInfo = enumType.GetMember(enumVal.ToString());
             var attr = memInfo.First().GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
-            return attr != null ? attr.Value : Enum.GetName(enumVal);
+            return attr != null ? attr.Value : Enum.GetName(typeof(TEnum), enumVal);
         }
 
-        public static string GetAttributeValue<TEnum>(this TEnum? enumVal) where TEnum : struct, Enum
-        {
-            return enumVal.HasValue ? enumVal.Value.GetAttributeValue() : string.Empty;
-        }
-
-        public static TEnum GetValueFromAttribute<TEnum>(string description) where TEnum : struct, Enum
+        public static TEnum GetValueFromAttribute<TEnum>(string description)
         {
             foreach (var field in typeof(TEnum).GetFields())
             {
@@ -30,12 +30,7 @@ namespace Common.Application
                 }
             }
 
-            return Enum.Parse<TEnum>(description);
-        }
-
-        public static List<string> GetAttributeList<TEnum>() where TEnum : struct, Enum
-        {
-            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().Select(val => val.GetAttributeValue()).ToList();
+            return (TEnum)Enum.Parse(typeof(TEnum), description);
         }
     }
 }
