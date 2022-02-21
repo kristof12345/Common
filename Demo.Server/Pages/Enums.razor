@@ -1,0 +1,20 @@
+﻿@page "/enum"
+
+<Container Margin=@(new Border("0px", "70px"))>
+    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" ))>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
+            <EnumField @bind-Value=@Series Label="Series" />
+            <EnumField @bind-Value=@Trendline Label="Trendline" />
+            <EnumField @bind-Value=@Indicator Label="Indicator" />
+        </Horizontal>
+    </Paper>
+</Container>
+
+@code
+{
+    private ChartSeriesType Series { get; set; } = ChartSeriesType.Candle;
+
+    private TrendlineTypes? Trendline { get; set; }
+
+    private TechnicalIndicators? Indicator { get; set; }
+}

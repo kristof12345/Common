@@ -1,14 +1,15 @@
 ﻿@namespace Common.Web
 @inherits AppInput<TEnum>
-@typeparam TEnum
 
 @using Syncfusion.Blazor.Inputs
 @using Common.Application
 @using Syncfusion.Blazor.DropDowns
 @using Microsoft.AspNetCore.Components.Forms
 
+@typeparam TEnum
+
 <p style=@($"width: {Width}")>
-    <SfDropDownList Value=@(EnumExtensions.GetAttributeValue(Value)) ValueChanged=@HandleValueChange DataSource=@(EnumExtensions.GetAttributeList<TEnum>().Except(Except)) FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger" Enabled=@(!Disabled) TValue=string TItem=string />
+    <SfDropDownList Value=@EnumExtensions.GetAttributeValue(Value) ValueChanged=@HandleValueChange DataSource=@Values FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue=string TItem=string />
     @if (ValidationExpression != null)
     {
         <ValidationMessage For=@ValidationExpression />
@@ -19,6 +20,8 @@
 {
     [Parameter]
     public List<string> Except { get; set; } = new List<string>();
+
+    private List<string> Values { get => EnumExtensions.GetAttributeList<TEnum>().Except(Except).ToList(); }
 
     private async Task HandleValueChange(string value)
     {

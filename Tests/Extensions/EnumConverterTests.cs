@@ -21,10 +21,10 @@ namespace Common.Tests.Extensions
         public void GetAttributeListTest()
         {
             var list = EnumExtensions.GetAttributeList<TestEnum>();
-            Assert.Equal(3, list.Count);
-            Assert.Equal("Apple", list[0]);
-            Assert.Equal("B", list[1]);
-            Assert.Equal("Coconut", list[2]);
+            Assert.Equal(3, list.Count());
+            Assert.Equal("Apple", list.First());
+            Assert.Equal("B", list.ToList()[1]);
+            Assert.Equal("Coconut", list.Last());
         }
 
         [Fact]
