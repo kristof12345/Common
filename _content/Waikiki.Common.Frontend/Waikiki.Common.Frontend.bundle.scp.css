@@ -84,7 +84,6 @@
         }
 /* _content/Waikiki.Common.Frontend/Charts/MultiSeriesChart.razor.rz.scp.css */
 .series-chart[b-2cb5s6gie6] {
-    height: 450px;
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
@@ -117,7 +116,6 @@
 }
 /* _content/Waikiki.Common.Frontend/Charts/RealtimeSeriesChart.razor.rz.scp.css */
 .series-chart[b-bzm5uizeeq] {
-    height: 350px;
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
@@ -131,7 +129,6 @@
 }
 /* _content/Waikiki.Common.Frontend/Charts/SingleSeriesChart.razor.rz.scp.css */
 .series-chart[b-iwlyhgztz0] {
-    height: 450px;
     width: 100%;
     padding: 20px;
     border: 1px solid lightgrey;
