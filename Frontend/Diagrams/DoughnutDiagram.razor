@@ -3,12 +3,12 @@
 
 @using Syncfusion.Blazor.Charts;
 
-<div class="diagram large-chart" style=@($"height: {Height}; width: {Width};")>
+<div class="diagram" style=@($"height: {Height}; width: {Width};")>
     <SfAccumulationChart Height="1400px" Background=@Colors.Transparent EnableAnimation="false" EnableSmartLabels="false">
         <AccumulationChartCenter X="50%" Y="25%" />
         <AccumulationChartLegendSettings Visible="false" />
         <AccumulationChartSeriesCollection>
-            <AccumulationChartSeries DataSource=@Data XName="Id" YName="Data" PointColorMapping="Color" StartAngle="270" EndAngle="90" InnerRadius="50%" Radius="100%">
+            <AccumulationChartSeries DataSource=@Data XName="Label" YName="Value" PointColorMapping="Color" StartAngle="270" EndAngle="90" InnerRadius="50%" Radius="100%">
                 <AccumulationDataLabelSettings Visible="true" Name="Label" Position=@AccumulationLabelPosition.Inside />
             </AccumulationChartSeries>
         </AccumulationChartSeriesCollection>

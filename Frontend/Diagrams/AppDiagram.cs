@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Common.Application;
 using Microsoft.AspNetCore.Components;
 
 namespace Common.Web
@@ -7,7 +8,7 @@ namespace Common.Web
     {
         [Parameter]
         [EditorRequired]
-        public IEnumerable<ChartData> Data { get; set; }
+        public IEnumerable<ILabeledValue> Data { get; set; }
 
         [Parameter]
         public string Width { get; set; } = "100%";
@@ -17,8 +18,5 @@ namespace Common.Web
 
         [Parameter]
         public bool ShowLegend { get; set; } = true;
-
-        [Parameter]
-        public Border Margin { get; set; } = new Border();
     }
 }

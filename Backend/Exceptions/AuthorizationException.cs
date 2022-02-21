@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Common.Backend
+namespace Common.Backend;
+
+public class AuthorizationException : Exception
 {
-    public class AuthorizationException : Exception
-    {
-        public AuthorizationException(string message = "Unauthorized.") : base(message) { }
-    }
+    public AuthorizationException(string message = "Unauthorized.") : base(message) { }
 }

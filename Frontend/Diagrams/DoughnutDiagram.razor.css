@@ -1,0 +1,6 @@
+﻿@media (max-width: 1500px) {
+    .diagram {
+        margin-top: calc(20vw - 300px);
+        margin-bottom: calc(20vw - 300px);
+    }
+}

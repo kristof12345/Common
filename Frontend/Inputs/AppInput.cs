@@ -39,12 +39,9 @@ namespace Common.Web
 
         protected async Task OnValueEntered(InputEventArgs args)
         {
-            if (OnInput.HasDelegate)
-            {
-                Value = args.Value;
-                await ValueChanged.InvokeAsync(args.Value);
-                await OnInput.InvokeAsync();
-            }
+            Value = args.Value;
+            await ValueChanged.InvokeAsync(args.Value);
+            await OnInput.InvokeAsync();
         }
     }
 
@@ -57,10 +54,7 @@ namespace Common.Web
         {
             Value = args.ItemData;
             await ValueChanged.InvokeAsync(args.ItemData);
-            if (OnInput.HasDelegate)
-            {
-                await OnInput.InvokeAsync();
-            }
+            await OnInput.InvokeAsync();
         }
     }
 }

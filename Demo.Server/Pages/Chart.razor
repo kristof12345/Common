@@ -5,11 +5,11 @@
 @using System.Collections.ObjectModel
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <DoughnutDiagram Data=@List Height="700px" />
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" IntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true"/>
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" ShowSelector="false" Type="ChartSeriesType.StackingColumn" />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
@@ -24,8 +24,6 @@
 {
     [Inject]
     private DataService StockService { get; set; }
-
-    private List<ChartData> List = new List<ChartData>();
 
     private List<StockPrice> Series;
 
@@ -54,34 +52,16 @@
 
         await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
 
-        List = new List<ChartData>
-{
-            new ChartData
-            {
-                Id="1",
-                Data= 5,
-                Label="Label1",
-                Color="red"
-            },
-            new ChartData
-            {
-                Id="2",
-                Data= 10,
-                Label="Label2",
-                Color="blue"
-            }
-        };
-
         Series = await StockService.LoadFromJson<List<StockPrice>>("exchange.json");
 
         MultiSeriesList = new List<ChartDataSeries>
-{
+    {
             new ChartDataSeries
             {
                 Id = "Series 1",
                 Color = Colors.Get(1),
                 Data = new List<Price>
-{
+            {
                     new Price
                     {
                         Date= new DateTime(2020,1,1),
@@ -104,7 +84,7 @@
                 Id = "Series 2",
                 Color = Colors.Get(2),
                 Data = new List<Price>
-{
+            {
                     new Price
                     {
                         Date= new DateTime(2020,1,1),
@@ -127,7 +107,7 @@
                 Id = "Series 3",
                 Color = Colors.Get(3),
                 Data = new List<Price>
-{
+            {
                     new Price
                     {
                         Date= new DateTime(2020,1,1),

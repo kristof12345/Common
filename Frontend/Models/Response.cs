@@ -1,27 +1,26 @@
-﻿namespace Common.Web
+﻿namespace Common.Web;
+
+public class Response
 {
-    public class Response
+    public static readonly Response Success = new Response(true);
+
+    public string Content { get; init; }
+
+    public bool IsSuccess { get; init; }
+
+    public Response()
     {
-        public static readonly Response Success = new Response(true);
+        IsSuccess = false;
+    }
 
-        public string Content { get; init; }
+    public Response(string content)
+    {
+        Content = content;
+        IsSuccess = false;
+    }
 
-        public bool IsSuccess { get; init; }
-
-        public Response()
-        {
-            IsSuccess = false;
-        }
-
-        public Response(string content)
-        {
-            Content = content;
-            IsSuccess = false;
-        }
-
-        public Response(bool isSuccess)
-        {
-            IsSuccess = isSuccess;
-        }
+    public Response(bool isSuccess)
+    {
+        IsSuccess = isSuccess;
     }
 }

@@ -27,7 +27,7 @@
              @ondragleave="()=>OnDragLeave()"
              class="@GetClassesForDraggable(item) @CheckIfItemIsInTransit(item) @CheckIfItemIsDragTarget(item) @CheckIfDragOperationIsInProgess() @CheckIfDraggable(item)">
 
-            <p onclick=@(async() => await HandleClick(item))>@item.Content</p>
+            <p onclick=@(async() => await HandleClick(item))>@item.Label</p>
 
         </div>
 

@@ -1,19 +1,18 @@
-﻿namespace Common.Application
+﻿namespace Common.Application;
+
+public interface IUser : IEntity<string>
 {
-    public interface IUser : IEntity<string>
-    {
-        public string Firstname { get; set; }
+    public string Firstname { get; set; }
 
-        public string Surname { get; set; }
+    public string Surname { get; set; }
 
-        public string Password { get; set; }
+    public string Password { get; set; }
 
-        public string Email { get; set; }
+    public string Email { get; set; }
 
-        public UserType Type { get; set; }
+    public UserType Type { get; set; }
 
-        public string Image { get; }
+    public string Image { get; }
 
-        public string Name { get; }
-    }
+    public string Name { get; }
 }

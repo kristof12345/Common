@@ -1,56 +1,55 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Application
+namespace Common.Application;
+
+public class PagedResult<T>
 {
-    public class PagedResult<T>
+    public int PageCount { get; set; }
+
+    public List<T> Results { get; set; }
+
+    public PagedResult()
     {
-        public int PageCount { get; set; }
-
-        public List<T> Results { get; set; }
-
-        public PagedResult()
-        {
-            Results = new List<T>();
-        }
-
-        public PagedResult(List<T> results, int count)
-        {
-            PageCount = (count + Span.PageSize - 1) / Span.PageSize;
-            Results = results;
-        }
-
-        public PagedResult(List<T> results, int count, int pageSize)
-        {
-            PageCount = (count + pageSize - 1) / pageSize;
-            Results = results;
-        }
+        Results = new List<T>();
     }
 
-    public class Span
+    public PagedResult(List<T> results, int count)
     {
-        public static int PageSize { get; set; } = 9;
+        PageCount = (count + Span.PageSize - 1) / Span.PageSize;
+        Results = results;
+    }
 
-        public static readonly Span Default = new Span();
+    public PagedResult(List<T> results, int count, int pageSize)
+    {
+        PageCount = (count + pageSize - 1) / pageSize;
+        Results = results;
+    }
+}
 
-        public int Start { get; set; }
+public class Span
+{
+    public static int PageSize { get; set; } = 9;
 
-        public int Size { get; set; }
+    public static readonly Span Default = new Span();
 
-        public Span()
-        {
-            Start = 0;
-            Size = PageSize;
-        }
+    public int Start { get; set; }
 
-        public Span(int start, int size)
-        {
-            Start = start;
-            Size = size;
-        }
+    public int Size { get; set; }
 
-        public override string ToString()
-        {
-            return "?Start=" + Start + "&Size=" + Size;
-        }
+    public Span()
+    {
+        Start = 0;
+        Size = PageSize;
+    }
+
+    public Span(int start, int size)
+    {
+        Start = start;
+        Size = size;
+    }
+
+    public override string ToString()
+    {
+        return "?Start=" + Start + "&Size=" + Size;
     }
 }

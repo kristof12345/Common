@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using Common.Application;
 
-namespace Common.Web
+namespace Common.Web;
+
+public class ChartDataSeries : IEntity<string>
 {
-    public class ChartDataSeries : IEntity<string>
-    {
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        public IEnumerable<ITemporalValue> Data { get; set; }
+    public IEnumerable<ITemporalValue> Data { get; set; }
 
-        public string Color { get; set; }
-    }
+    public string Color { get; set; }
 }

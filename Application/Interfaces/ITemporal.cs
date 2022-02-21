@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Common.Application
+namespace Common.Application;
+
+public interface ITemporal
 {
-    public interface ITemporal
-    {
-        public DateTime Date { get; set; }
-    }
+    public DateTime Date { get; set; }
 }

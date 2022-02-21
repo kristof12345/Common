@@ -6,17 +6,12 @@
 @using Syncfusion.Blazor.Charts
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <DoughnutDiagram Data=@List Height="700px" />
-</Paper>
-
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
     <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
     <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary IntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
 </Paper>
-
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
     <SingleSeriesChart Data=@ZeroList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) Type=@ChartSeriesType.Area IntervalType=@RangeIntervalType.Months Color=@Colors.Secondary Opacity="0.75" />
@@ -30,8 +25,6 @@
 {
     [Inject]
     private DataService StockService { get; set; }
-
-    private List<ChartData> List;
 
     private List<Price> ZeroList;
 
@@ -61,24 +54,6 @@
         timer.AutoReset = true;
 
         await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
-
-        List = new List<ChartData>
-{
-            new ChartData
-            {
-                Id="1",
-                Data= 5,
-                Label="Label1",
-                Color="red"
-            },
-            new ChartData
-            {
-                Id="2",
-                Data= 10,
-                Label="Label2",
-                Color="blue"
-            }
-        };
 
         ZeroList = new List<Price>
 {

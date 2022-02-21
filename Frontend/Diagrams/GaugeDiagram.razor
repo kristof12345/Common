@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.CircularGauge;
 
 <div class="diagram" style=@($"height: {Height}; width: {Width}")>
-    <SfCircularGauge Theme=@Theme.Material Background="transparent">
+    <SfCircularGauge Theme=@Theme.Material Background=@Colors.Transparent>
         <CircularGaugeAxes>
             <CircularGaugeAxis StartAngle="230" EndAngle="130" Radius="90%" Minimum=@Min Maximum=@Max>
                 <CircularGaugeAxisLineStyle Width="0" />
@@ -11,11 +11,11 @@
                 <CircularGaugeAxisMinorTicks Width="0" />
                 <CircularGaugeAxisLabelStyle Position="Position.Inside" AutoAngle="true" Offset=@LabelOffset />
                 <CircularGaugeRanges>
-                    <CircularGaugeRange Start=@Min End=@Low StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Worst />
-                    <CircularGaugeRange Start=@Low End=@TargetLow StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Bad />
+                    <CircularGaugeRange Start=@Min End=@Low StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Best />
+                    <CircularGaugeRange Start=@Low End=@TargetLow StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Good />
                     <CircularGaugeRange Start=@TargetLow End=@TargetHigh StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Normal />
-                    <CircularGaugeRange Start=@TargetHigh End=@High StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Good />
-                    <CircularGaugeRange Start=@High End=@Max StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Best />
+                    <CircularGaugeRange Start=@TargetHigh End=@High StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Bad />
+                    <CircularGaugeRange Start=@High End=@Max StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Worst />
                 </CircularGaugeRanges>
                 <CircularGaugePointers>
                     <CircularGaugePointer Value=@Actual Radius="45%" PointerWidth="7" Color=@Colors.Primary>

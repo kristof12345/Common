@@ -121,7 +121,7 @@ namespace Common.Tests.Extensions
         {
             public int Id { get; set; }
 
-            public string Content { get; set; }
+            public string Label { get; set; }
         }
 
         public class Entity : IEntity<string>
@@ -150,12 +150,12 @@ namespace Common.Tests.Extensions
         {
             var list = new List<Unique>
             {
-                new Unique { Id = 1, Content = "a" },
-                new Unique { Id = 2, Content = "b" }
+                new Unique { Id = 1, Label = "a" },
+                new Unique { Id = 2, Label = "b" }
             };
 
-            Assert.Equal("a", list.GetById(1).Content);
-            Assert.Equal("b", list.GetById(2).Content);
+            Assert.Equal("a", list.GetById(1).Label);
+            Assert.Equal("b", list.GetById(2).Label);
             Assert.Null(list.GetById(3));
             Assert.Equal(1, list.GetByContent("a").Id);
             Assert.Equal(2, list.GetByContent("b").Id);

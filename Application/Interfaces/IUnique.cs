@@ -1,7 +1,6 @@
-﻿namespace Common.Application
+﻿namespace Common.Application;
+
+public interface IUnique : IEntity<int>
 {
-    public interface IUnique : IEntity<int>
-    {
-        string Content { get; }
-    }
+    public string Label { get; }
 }

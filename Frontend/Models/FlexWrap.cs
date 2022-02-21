@@ -1,8 +1,7 @@
-﻿namespace Common.Web
+﻿namespace Common.Web;
+
+public static class FlexWrap
 {
-    public static class FlexWrap
-    {
-        public static readonly string Unset = "unset";
-        public static readonly string Wrap = "wrap";
-    }
+    public const string Unset = "unset";
+    public const string Wrap = "wrap";
 }

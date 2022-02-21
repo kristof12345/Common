@@ -5,58 +5,57 @@ using System.Threading.Tasks;
 using Hangfire;
 using Common.Application;
 
-namespace Common.Backend
+namespace Common.Backend;
+
+public class SchedulerService : ISchedulerService
 {
-    public class SchedulerService : ISchedulerService
+    private readonly HttpClient Client = new HttpClient();
+
+    public SchedulerService(ITokenService tokenService)
     {
-        private readonly HttpClient Client = new HttpClient();
+        var user = tokenService.GenerateToken("admin", new Name(), UserType.Admin);
+        Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Token);
+    }
 
-        public SchedulerService(ITokenService tokenService)
+    public void AddSingleApiCall(string url, HttpMethod method, TimeSpan interval)
+    {
+        try
         {
-            var user = tokenService.GenerateToken("admin", new Name(), UserType.Admin);
-            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Token);
+            BackgroundJob.Schedule(() => SendApiCall(url + "externalData", method), interval);
+        }
+        catch (Exception e)
+        {
+            System.Diagnostics.Debug.WriteLine("Error while scheduling single api call.");
+            System.Diagnostics.Debug.WriteLine(e.Message);
+        }
+    }
+
+    public void AddRecurringApiCall(string url, HttpMethod method, string interval)
+    {
+        try
+        {
+            RecurringJob.AddOrUpdate(() => SendApiCall(url + "externalData", method), interval);
+        }
+        catch (Exception e)
+        {
+            System.Diagnostics.Debug.WriteLine("Error while scheduling recurring api call.");
+            System.Diagnostics.Debug.WriteLine(e.Message);
+        }
+    }
+
+    public async Task<bool> SendApiCall(string url, HttpMethod method)
+    {
+        try
+        {
+            await Client.SendAsync(new HttpRequestMessage(method, url));
+        }
+        catch (Exception e)
+        {
+            System.Diagnostics.Debug.WriteLine("Error while executing scheduler call.");
+            System.Diagnostics.Debug.WriteLine(e.Message);
+            return false;
         }
 
-        public void AddSingleApiCall(string url, HttpMethod method, TimeSpan interval)
-        {
-            try
-            {
-                BackgroundJob.Schedule(() => SendApiCall(url + "externalData", method), interval);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Error while scheduling single api call.");
-                System.Diagnostics.Debug.WriteLine(e.Message);
-            }
-        }
-
-        public void AddRecurringApiCall(string url, HttpMethod method, string interval)
-        {
-            try
-            {
-                RecurringJob.AddOrUpdate(() => SendApiCall(url + "externalData", method), interval);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Error while scheduling recurring api call.");
-                System.Diagnostics.Debug.WriteLine(e.Message);
-            }
-        }
-
-        public async Task<bool> SendApiCall(string url, HttpMethod method)
-        {
-            try
-            {
-                await Client.SendAsync(new HttpRequestMessage(method, url));
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Error while executing scheduler call.");
-                System.Diagnostics.Debug.WriteLine(e.Message);
-                return false;
-            }
-
-            return true;
-        }
+        return true;
     }
 }

@@ -5,7 +5,7 @@
 @using Syncfusion.Blazor.Charts
 @using System.Collections.ObjectModel;
 
-<div class="series-chart">
+<div class="series-chart" style=@($"height: 350px;")>
     @if (Visibility == "hidden")
     {
         <LoadingIndicator />
@@ -18,7 +18,7 @@
 
                 <ChartEvents Loaded=@OnChartLoaded />
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat="  hh.mm.ss  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat=@LabelFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -49,6 +49,9 @@
 
     [Parameter]
     public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    [Parameter]
+    public string LabelFormat { get; set; } = "  hh.mm.ss  ";
 
     [Parameter]
     public string Color { get; set; } = Colors.Primary;

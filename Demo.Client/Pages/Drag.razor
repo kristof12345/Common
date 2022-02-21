@@ -22,8 +22,8 @@
 
     protected override void OnInitialized()
     {
-        Available = new List<IUnique>{ new Unique { Id=1, Content="Content 1" }, new Unique { Id = 2, Content = "Content 2" }, new Unique { Id = 3, Content = "Content 3" } };
-        Preferences = new List<IUnique>{ };
+        Available = new List<IUnique> { new Unique { Id = 1, Label = "Content 1" }, new Unique { Id = 2, Label = "Content 2" }, new Unique { Id = 3, Label = "Content 3" } };
+        Preferences = new List<IUnique> { };
     }
 
     private void HandleChange()
@@ -41,6 +41,6 @@
     {
         public int Id { get; set; }
 
-        public string Content { get; set; }
+        public string Label { get; set; }
     }
 }

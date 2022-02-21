@@ -1,26 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Common.Application
+namespace Common.Application;
+
+public class Name
 {
-    public class Name
+    [Required]
+    public string Firstname { get; set; }
+
+    [Required]
+    public string Surname { get; set; }
+
+    public Name() { }
+
+    public Name(string firstname, string surname)
     {
-        [Required]
-        public string Firstname { get; set; }
+        Firstname = firstname;
+        Surname = surname;
+    }
 
-        [Required]
-        public string Surname { get; set; }
-
-        public Name() { }
-
-        public Name(string firstname, string surname)
-        {
-            Firstname = firstname;
-            Surname = surname;
-        }
-
-        public override string ToString()
-        {
-            return Firstname + " " + Surname;
-        }
+    public override string ToString()
+    {
+        return Firstname + " " + Surname;
     }
 }

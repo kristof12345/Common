@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Charts
 
-<div class="series-chart">
+<div class="series-chart" style=@($"height: {Height}")>
     @if (Visibility == "hidden")
     {
         <LoadingIndicator />
@@ -15,7 +15,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat=@LabelFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -35,14 +35,17 @@
             </SfChart>
         </div>
 
-        <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
-                <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
-                <RangeNavigatorSeriesCollection>
-                    <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
-                </RangeNavigatorSeriesCollection>
-            </SfRangeNavigator>
-        </div>
+        @if (ShowSelector)
+        {
+            <div class=@("range " + Visibility)>
+                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
+                    <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
+                    <RangeNavigatorSeriesCollection>
+                        <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
+                    </RangeNavigatorSeriesCollection>
+                </SfRangeNavigator>
+            </div>
+        }
     }
 </div>
 
@@ -73,6 +76,12 @@
     public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
 
     [Parameter]
+    public string LabelFormat { get; set; } = "  yyyy.MM.dd  ";
+
+    [Parameter]
+    public bool ShowSelector { get; set; } = true;
+
+    [Parameter]
     public string Color { get; set; } = Colors.Primary;
 
     [Parameter]
@@ -84,6 +93,8 @@
     private string Visibility { get; set; } = "hidden";
 
     private DateTime[] Range { get; set; }
+
+    private string Height { get => ShowSelector ? "450px" : "350px"; }
 
     private IEnumerable<ITemporalValue> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 

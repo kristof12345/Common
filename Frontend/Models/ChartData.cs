@@ -1,15 +1,12 @@
 ﻿using Common.Application;
 
-namespace Common.Web
+namespace Common.Web;
+
+public class ChartData : ILabeledValue
 {
-    public class ChartData : IEntity<string>
-    {
-        public string Id { get; set; }
+    public string Label { get; set; }
 
-        public decimal Data { get; set; }
+    public decimal Value { get; set; }
 
-        public string Color { get; set; }
-
-        public string Label { get; set; }
-    }
+    public string Color { get; set; }
 }

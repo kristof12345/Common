@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Common.Backend
+namespace Common.Backend;
+
+public class DuplicateException : Exception
 {
-    public class DuplicateException : Exception
-    {
-        public DuplicateException(string message = "An entity already exists with the given ID.") : base(message) { }
-    }
+    public DuplicateException(string message = "An entity already exists with the given ID.") : base(message) { }
 }

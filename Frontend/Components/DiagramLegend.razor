@@ -1,20 +1,25 @@
 ﻿@namespace Common.Web
 
-<Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@Margin Wrap=@FlexWrap.Wrap>
-    @foreach (var item in Data)
-    {
-        <Horizontal Width="auto" Margin=@(new Border("10px", "0px"))>
-            <Icon IconType="pie_chart" Color=@item.Color Margin=@Border.Right("10px") />
-            <Paragraph Class="center-text">@item.Id</Paragraph>
-        </Horizontal>
-    }
-</Horizontal>
+@using Common.Application
+
+@if (Data != null)
+{
+    <Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@Margin Wrap=@FlexWrap.Wrap>
+        @foreach (var item in Data)
+        {
+            <Horizontal Width="auto" Margin=@(new Border("10px", "0px"))>
+                <Icon IconType="pie_chart" Color=@item.Color Margin=@Border.Right("10px") />
+                <Paragraph Class="center-text">@item.Label</Paragraph>
+            </Horizontal>
+        }
+    </Horizontal>
+}
 
 @code
 {
     [Parameter]
     [EditorRequired]
-    public IEnumerable<ChartData> Data { get; set; }
+    public IEnumerable<ILabeledValue> Data { get; set; }
 
     [Parameter]
     public Border Margin { get; set; } = Border.Top("10px");

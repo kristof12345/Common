@@ -8,7 +8,7 @@
         <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Visible="false" />
         <ChartPrimaryYAxis LabelFormat=@("{value}%") />
         <ChartSeriesCollection>
-            <ChartSeries DataSource=@Data XName="Id" YName="Data" PointColorMapping="Color" Type=@ChartSeriesType.Column>
+            <ChartSeries DataSource=@Data XName="Label" YName="Value" PointColorMapping="Color" Type=@ChartSeriesType.Column>
                 <ChartMarker><ChartDataLabel Visible="true" Position=@LabelPosition.Middle Name="Label" /></ChartMarker>
             </ChartSeries>
         </ChartSeriesCollection>

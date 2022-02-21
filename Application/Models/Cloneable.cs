@@ -1,10 +1,9 @@
-﻿namespace Common.Application
+﻿namespace Common.Application;
+
+public class Cloneable<T>
 {
-    public class Cloneable<T>
+    public T ShallowCopy()
     {
-        public T ShallowCopy()
-        {
-            return (T)MemberwiseClone();
-        }
+        return (T)MemberwiseClone();
     }
 }
