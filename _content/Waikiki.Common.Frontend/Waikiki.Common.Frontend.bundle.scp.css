@@ -492,6 +492,13 @@ div[b-nnhta3we9u] {
     flex-direction: column;
     box-sizing: border-box;
 }
+/* _content/Waikiki.Common.Frontend/Diagrams/DoughnutDiagram.razor.rz.scp.css */
+@media (max-width: 1500px) {
+    .diagram[b-4irsq8plym] {
+        margin-top: calc(20vw - 300px);
+        margin-bottom: calc(20vw - 300px);
+    }
+}
 /* _content/Waikiki.Common.Frontend/Pagination/PageIcon.razor.rz.scp.css */
 .active[b-5c6y4bo8ri] {
     fill: currentColor;

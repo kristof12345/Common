@@ -174,23 +174,12 @@ text {
     fill: white !important;
 }
 
-.diagram .e-chart text {
-    fill: white !important;
-}
-
 .e-accumulationchart svg, .e-accumulationchart svg rect, .e-accumulationchart svg g {
     max-height: 100% !important;
 }
 
 .e-accumulationchart text {
     fill: white !important;
-}
-
-@media (max-width: 1500px) {
-    .large-chart {
-        margin-top: calc(20vw - 300px);
-        margin-bottom: calc(20vw - 300px);
-    }
 }
 
 .range rect {
