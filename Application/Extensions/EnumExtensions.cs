@@ -14,6 +14,7 @@ public static class EnumExtensions
 
     public static string GetAttributeValue<TEnum>(this TEnum enumVal)
     {
+        if (enumVal == null) return string.Empty;
         var enumType = typeof(TEnum);
         var memInfo = enumType.GetMember(enumVal.ToString());
         var attr = memInfo.First().GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();

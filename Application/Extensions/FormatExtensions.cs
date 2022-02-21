@@ -9,6 +9,7 @@ public static class Format
     public const string DateFormat = "yyyy.MM.dd";
     public const string TimeFormat = "HH:mm";
     public const string DateTimeFormat = "yyyy.MM.dd. HH:mm:ss";
+    public const string DateTimeFormatUtc = "yyyy.MM.ddTHH:mm:ss";
     public const string YearFormat = "yyyy";
 
     private static readonly NumberFormatInfo FormatProvider;

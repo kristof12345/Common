@@ -29,6 +29,6 @@ public class TimeRange
 
     public override string ToString()
     {
-        return "?From=" + Start.ToString(Format.DateTimeFormat) + "&To=" + End.ToString(Format.DateTimeFormat);
+        return "?From=" + Start.ToString(Format.DateTimeFormatUtc) + "&To=" + End.ToString(Format.DateTimeFormatUtc);
     }
 }
