@@ -15,7 +15,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat=@LabelFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -75,6 +75,9 @@
 
     [Parameter]
     public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    [Parameter]
+    public string LabelFormat { get; set; } = "  yyyy.MM.dd  ";
 
     [Parameter]
     public bool ShowLegend { get; set; } = false;

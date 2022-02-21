@@ -2,33 +2,33 @@
 {
     public static class HorizontalAlignment
     {
-        public static readonly string Center = "center";
-        public static readonly string Left = "left";
-        public static readonly string Right = "right";
-        public static readonly string SpaceBetween = "space-between";
-        public static readonly string SpaceAround = "space-around";
-        public static readonly string SpaceEvenly = "space-evenly";
-        public static readonly string Unset = "unset";
+        public const string Center = "center";
+        public const string Left = "left";
+        public const string Right = "right";
+        public const string SpaceBetween = "space-between";
+        public const string SpaceAround = "space-around";
+        public const string SpaceEvenly = "space-evenly";
+        public const string Unset = "unset";
     }
 
     public static class VerticalAlignment
     {
-        public static readonly string Center = "center";
-        public static readonly string Top = "top";
-        public static readonly string Bottom = "bottom";
-        public static readonly string SpaceBetween = "space-between";
-        public static readonly string SpaceAround = "space-around";
-        public static readonly string SpaceEvenly = "space-evenly";
-        public static readonly string Unset = "unset";
-        public static readonly string Start = "start";
-        public static readonly string End = "end";
+        public const string Center = "center";
+        public const string Top = "top";
+        public const string Bottom = "bottom";
+        public const string SpaceBetween = "space-between";
+        public const string SpaceAround = "space-around";
+        public const string SpaceEvenly = "space-evenly";
+        public const string Unset = "unset";
+        public const string Start = "start";
+        public const string End = "end";
     }
 
     public static class TextAlignment
     {
-        public static readonly string Center = "center";
-        public static readonly string Left = "left";
-        public static readonly string Right = "right";
-        public static readonly string Justify = "justify";
+        public const string Center = "center";
+        public const string Left = "left";
+        public const string Right = "right";
+        public const string Justify = "justify";
     }
 }
