@@ -129,7 +129,7 @@ namespace Common.Web
 
         private bool IsItemAccepted(IUnique dragTargetItem)
         {
-            return Accepts == null ? true : Accepts(DragDropService.ActiveItem, dragTargetItem);
+            return Accepts == null || Accepts(DragDropService.ActiveItem, dragTargetItem);
         }
 
         private bool IsValidItem()

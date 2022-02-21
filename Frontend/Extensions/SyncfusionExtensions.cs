@@ -5,11 +5,26 @@ namespace Common.Web
 {
     public static class SyncfusionExtensions
     {
+        public static string ToFormat(this IntervalType intervalType)
+        {
+            return intervalType switch
+            {
+                IntervalType.Auto => "yyyy.MM.dd",
+                IntervalType.Years => "yyyy",
+                IntervalType.Months => "MMMM",
+                IntervalType.Days => "MM.dd",
+                IntervalType.Hours => "hh",
+                IntervalType.Minutes => "hh.mm",
+                IntervalType.Seconds => "mm.ss",
+                _ => throw new NotImplementedException(),
+            };
+        }
+
         public static string ToFormat(this RangeIntervalType intervalType)
         {
             return intervalType switch
             {
-                RangeIntervalType.Auto => null,
+                RangeIntervalType.Auto => "MMMM",
                 RangeIntervalType.Years => "yyyy",
                 RangeIntervalType.Quarter => "yyyy.MMMM",
                 RangeIntervalType.Months => "MMMM",

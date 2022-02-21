@@ -5,15 +5,15 @@
 @using System.Collections.ObjectModel
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" />
+    <MultiSeriesChart Data=@MultiSeriesList ShowLegend="false" ChartIntervalType=@Syncfusion.Blazor.Charts.IntervalType.Days RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Days />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" ShowSelector="false" Type="ChartSeriesType.StackingColumn" />
+    <MultiSeriesChart Data=@MultiSeriesList ChartIntervalType=@Syncfusion.Blazor.Charts.IntervalType.Days ShowSelector="false" Type="ChartSeriesType.StackingColumn" />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>

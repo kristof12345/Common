@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Charts
 
-<div class="series-chart" style="height: 450px;">
+<div class="series-chart" style=@($"height: {Height}")>
     @if (Visibility == "hidden")
     {
         <LoadingIndicator />
@@ -15,11 +15,11 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory IntervalType=@ChartIntervalType LabelFormat=@DateFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" LabelFormat=@ValueFormat OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" LabelFormat=@LabelFormat OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -35,7 +35,7 @@
         @if (ShowSelector)
         {
             <div class=@("range " + Visibility)>
-                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@RangeIntervalType Interval="1" LabelFormat=@RangeIntervalType.ToFormat()>
+                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
                     <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
                     <RangeNavigatorSeriesCollection>
                         @foreach (var serie in Data)
@@ -63,7 +63,7 @@
     public IEnumerable<ChartDataSeries> Data { get; set; }
 
     [Parameter]
-    public bool ShowLegend { get; set; } = false;
+    public bool ShowLegend { get; set; } = true;
 
     [Parameter]
     public bool ShowSelector { get; set; } = true;
@@ -78,16 +78,13 @@
     public RangeIntervalType RangeIntervalType { get; set; } = RangeIntervalType.Auto;
 
     [Parameter]
-    public string DateFormat { get; set; } = "  yyyy.MM.dd  ";
+    public string LabelFormat { get; set; } = "{value}";
 
     [Parameter]
-    public string ValueFormat { get; set; } = "{value}";
+    public DateTime StartDate { get; set; } = DateTime.MinValue;
 
     [Parameter]
-    public DateTime? StartDate { get; set; } = null;
-
-    [Parameter]
-    public DateTime? EndDate { get; set; } = null;
+    public DateTime EndDate { get; set; } = DateTime.MaxValue;
 
     [Parameter]
     public decimal? Minimum { get; set; } = null;
@@ -110,9 +107,7 @@
         if (Data != null)
         {
             if (!ShowSelector) Visibility = "visible";
-            if (!StartDate.HasValue) StartDate = DateTime.MinValue;
-            if (!EndDate.HasValue) EndDate = DateTime.MaxValue;
-            Range = new DateTime[] { StartDate.Value, EndDate.Value };
+            Range = new DateTime[] { StartDate, EndDate };
         }
     }
 

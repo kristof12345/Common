@@ -18,11 +18,11 @@
 
                 <ChartEvents Loaded=@OnChartLoaded />
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat=@DateFormat IntervalType=@ChartIntervalType LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" LabelFormat=@ValueFormat OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" LabelFormat=@LabelFormat OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -48,10 +48,7 @@
     public IntervalType ChartIntervalType { get; set; } = IntervalType.Auto;
 
     [Parameter]
-    public string DateFormat { get; set; } = "  hh.mm.ss  ";
-
-    [Parameter]
-    public string ValueFormat { get; set; } = "{value}";
+    public string LabelFormat { get; set; } = "{value}";
 
     [Parameter]
     public decimal? Minimum { get; set; } = null;
