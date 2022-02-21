@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Charts
 
-<div class="series-chart" style=@($"height: {Height}")>
+<div class="series-chart" style="height: 450px;">
     @if (Visibility == "hidden")
     {
         <LoadingIndicator />
@@ -15,7 +15,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat=@LabelFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat=@DateFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Hide>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -38,7 +38,7 @@
         @if (ShowSelector)
         {
             <div class=@("range " + Visibility)>
-                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
+                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@RangeIntervalType Interval="1" LabelFormat=@RangeIntervalType.ToFormat()>
                     <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
                     <RangeNavigatorSeriesCollection>
                         <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
@@ -56,30 +56,34 @@
     public IEnumerable<ITemporalValue> Data { get; set; }
 
     [Parameter]
-    [EditorRequired]
-    public DateTime StartDate { get; set; }
+    public bool ShowSelector { get; set; } = true;
 
     [Parameter]
-    [EditorRequired]
-    public DateTime EndDate { get; set; }
+    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    [Parameter]
+    public IntervalType ChartIntervalType { get; set; } = IntervalType.Auto;
+
+    [Parameter]
+    public RangeIntervalType RangeIntervalType { get; set; } = RangeIntervalType.Auto;
+
+    [Parameter]
+    public string DateFormat { get; set; } = "  yyyy.MM.dd  ";
+
+    [Parameter]
+    public string ValueFormat { get; set; } = "{value}";
+
+    [Parameter]
+    public DateTime? StartDate { get; set; } = null;
+
+    [Parameter]
+    public DateTime? EndDate { get; set; } = null;
 
     [Parameter]
     public decimal? Minimum { get; set; } = null;
 
     [Parameter]
     public decimal? Maximum { get; set; } = null;
-
-    [Parameter]
-    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
-
-    [Parameter]
-    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
-
-    [Parameter]
-    public string LabelFormat { get; set; } = "  yyyy.MM.dd  ";
-
-    [Parameter]
-    public bool ShowSelector { get; set; } = true;
 
     [Parameter]
     public string Color { get; set; } = Colors.Primary;
@@ -100,7 +104,13 @@
 
     protected override void OnParametersSet()
     {
-        Range = new DateTime[] { StartDate, EndDate };
+        if (Data != null)
+        {
+            if (!ShowSelector) Visibility = "visible";
+            if (!StartDate.HasValue) StartDate = DateTime.MinValue;
+            if (!EndDate.HasValue) EndDate = DateTime.MaxValue;
+            Range = new DateTime[] { StartDate.Value, EndDate.Value };
+        }
     }
 
     private void RangeChanged(object args)

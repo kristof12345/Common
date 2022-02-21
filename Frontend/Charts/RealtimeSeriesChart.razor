@@ -18,11 +18,11 @@
 
                 <ChartEvents Loaded=@OnChartLoaded />
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat=@LabelFormat LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime LabelFormat=@DateFormat IntervalType=@ChartIntervalType LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" LabelFormat=@ValueFormat OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
@@ -42,16 +42,22 @@
     public ObservableCollection<ITemporalValue> Data { get; set; }
 
     [Parameter]
+    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
+
+    [Parameter]
+    public IntervalType ChartIntervalType { get; set; } = IntervalType.Auto;
+
+    [Parameter]
+    public string DateFormat { get; set; } = "  hh.mm.ss  ";
+
+    [Parameter]
+    public string ValueFormat { get; set; } = "{value}";
+
+    [Parameter]
     public decimal? Minimum { get; set; } = null;
 
     [Parameter]
     public decimal? Maximum { get; set; } = null;
-
-    [Parameter]
-    public ChartSeriesType Type { get; set; } = ChartSeriesType.Line;
-
-    [Parameter]
-    public string LabelFormat { get; set; } = "  hh.mm.ss  ";
 
     [Parameter]
     public string Color { get; set; } = Colors.Primary;
