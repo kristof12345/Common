@@ -17,8 +17,5 @@ namespace Common.Web
 
         [Parameter]
         public bool ShowLegend { get; set; } = true;
-
-        [Parameter]
-        public Border Margin { get; set; } = new Border();
     }
 }

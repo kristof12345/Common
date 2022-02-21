@@ -1,38 +1,37 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Common.Application
+namespace Common.Application;
+
+public class CacheService
 {
-    public class CacheService
+    private readonly Dictionary<string, (object, int)> cache = new Dictionary<string, (object, int)>();
+
+    public T Get<T>(string key)
     {
-        private readonly Dictionary<string, (object, int)> cache = new Dictionary<string, (object, int)>();
+        return (T)cache.GetValueOrDefault(key).Item1;
+    }
 
-        public T Get<T>(string key)
-        {
-            return (T)cache.GetValueOrDefault(key).Item1;
-        }
+    public void Set<T>(string key, T value, int category)
+    {
+        cache[key] = (value, category);
+    }
 
-        public void Set<T>(string key, T value, int category)
-        {
-            cache[key] = (value, category);
-        }
+    public void Remove(string key)
+    {
+        cache.Remove(key);
+    }
 
-        public void Remove(string key)
+    public void ClearCategory(int category)
+    {
+        foreach (var item in cache.Where(kvp => kvp.Value.Item2 == category).ToList())
         {
-            cache.Remove(key);
+            cache.Remove(item.Key);
         }
+    }
 
-        public void ClearCategory(int category)
-        {
-            foreach (var item in cache.Where(kvp => kvp.Value.Item2 == category).ToList())
-            {
-                cache.Remove(item.Key);
-            }
-        }
-
-        public void ClearAll()
-        {
-            cache.Clear();
-        }
+    public void ClearAll()
+    {
+        cache.Clear();
     }
 }

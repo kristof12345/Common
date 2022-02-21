@@ -1,7 +1,6 @@
-﻿namespace Common.Application
+﻿namespace Common.Application;
+
+public interface IEntity<T>
 {
-    public interface IEntity<T>
-    {
-        public T Id { get; set; }
-    }
+    public T Id { get; set; }
 }

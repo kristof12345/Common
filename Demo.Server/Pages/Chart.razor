@@ -8,8 +8,19 @@
     <DoughnutDiagram Data=@List Height="700px" />
 </Paper>
 
+@if (List.Any())
+{
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <PolarDiagram Data=@List Height="700px" />
+    </Paper>
+}
+
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true"/>
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) ShowLegend="true" ShowSelector="false" Type="ChartSeriesType.StackingColumn" />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
@@ -69,6 +80,13 @@
                 Data= 10,
                 Label="Label2",
                 Color="blue"
+            },
+            new ChartData
+            {
+                Id="2",
+                Data= 10,
+                Label="Label3",
+                Color="green"
             }
         };
 

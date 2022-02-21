@@ -1,7 +1,6 @@
-﻿namespace Common.Application
+﻿namespace Common.Application;
+
+public interface ITemporalValue : ITemporal
 {
-    public interface ITemporalValue : ITemporal
-    {
-        public decimal Value { get; }
-    }
+    public decimal Value { get; }
 }

@@ -1,0 +1,13 @@
+﻿@namespace Common.Web
+@inherits AppDiagram
+
+@using Syncfusion.Blazor.Charts;
+
+<div class="diagram" style=@($"height: {Height}; width: {Width};")>
+    <SfChart Background=@Colors.Transparent EnableAnimation="false">
+        <ChartPrimaryXAxis Interval="1" Coefficient="100" LabelPlacement="LabelPlacement.OnTicks" ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+        <ChartSeriesCollection>
+            <ChartSeries DataSource=@Data XName="Label" YName="Data" Type="ChartSeriesType.Radar" DrawType="ChartDrawType.Area" Opacity="0.8" Fill=@Colors.Primary />
+        </ChartSeriesCollection>
+    </SfChart>
+</div>

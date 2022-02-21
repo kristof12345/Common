@@ -1,21 +1,20 @@
 ﻿using System;
 
-namespace Common.Backend
+namespace Common.Backend;
+
+public interface ITimeService
 {
-    public interface ITimeService
-    {
-        DateTime Now { get; }
+    DateTime Now { get; }
 
-        DateTime Today { get; }
+    DateTime Today { get; }
 
-        DateTime Tomorrow { get; }
+    DateTime Tomorrow { get; }
 
-        DateTime Yesterday { get; }
+    DateTime Yesterday { get; }
 
-        DateTime Future(TimeSpan timespan);
+    DateTime Future(TimeSpan timespan);
 
-        DateTime Past(TimeSpan timespan);
+    DateTime Past(TimeSpan timespan);
 
-        TimeSpan Until(DateTime time);
-    }
+    TimeSpan Until(DateTime time);
 }
