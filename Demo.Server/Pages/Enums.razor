@@ -5,7 +5,9 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
             <EnumField @bind-Value=@Series Label="Series" />
             <EnumField @bind-Value=@Trendline Label="Trendline" />
-            <EnumField @bind-Value=@Indicator Label="Indicator" />
+            <EnumField @bind-Value=@Indicator AllowEmpty="true" Label="Indicator" />
+            <EnumField @bind-Value=@OptionalFruit AllowEmpty="true" Label="Optional" />
+            <EnumField @bind-Value=@RequiredFruit Label="Required" />
         </Horizontal>
     </Paper>
 </Container>
@@ -17,4 +19,18 @@
     private TrendlineTypes? Trendline { get; set; }
 
     private TechnicalIndicators? Indicator { get; set; }
+
+    private Fruit RequiredFruit { get; set; }
+
+    private Fruit? OptionalFruit { get; set; }
+
+    public enum Fruit
+    {
+        [EnumMember(Value = "Apple")]
+        A,
+        [EnumMember(Value = "Banana")]
+        B,
+        [EnumMember(Value = "Coconut oil")]
+        C
+    }
 }

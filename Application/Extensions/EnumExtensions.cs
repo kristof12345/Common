@@ -24,7 +24,7 @@ public static class EnumExtensions
 
     public static TEnum GetValueFromAttribute<TEnum>(string description)
     {
-        foreach (var field in typeof(TEnum).GetFields())
+        foreach (var field in GetEnumType<TEnum>().GetFields())
         {
             if (Attribute.GetCustomAttribute(field, typeof(EnumMemberAttribute)) is EnumMemberAttribute attribute)
             {

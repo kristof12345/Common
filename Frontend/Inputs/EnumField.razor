@@ -9,7 +9,7 @@
 @typeparam TEnum
 
 <p style=@($"width: {Width}")>
-    <SfDropDownList Value=@EnumExtensions.GetAttributeValue(Value) ValueChanged=@HandleValueChange DataSource=@Values FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue=string TItem=string />
+    <SfDropDownList Value=@EnumExtensions.GetAttributeValue(Value) ValueChanged=@HandleValueChange DataSource=@Values FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger" Enabled=@(!Disabled) TValue=string TItem=string />
     @if (ValidationExpression != null)
     {
         <ValidationMessage For=@ValidationExpression />
@@ -21,17 +21,28 @@
     [Parameter]
     public List<string> Except { get; set; } = new List<string>();
 
-    private List<string> Values { get => EnumExtensions.GetAttributeList<TEnum>().Except(Except).ToList(); }
+    [Parameter]
+    public bool AllowEmpty { get; set; }
+
+    private List<string> Values { get => AllowEmpty ? EnumExtensions.GetAttributeList<TEnum>().Except(Except).Prepend("").ToList() : EnumExtensions.GetAttributeList<TEnum>().Except(Except).ToList(); }
 
     private async Task HandleValueChange(string value)
     {
-        if (!string.IsNullOrEmpty(value))
+        if (value != null)
         {
-            var EnumValue = EnumExtensions.GetValueFromAttribute<TEnum>(value);
-            if (Value.ToString() != EnumValue.ToString())
+            if (value.Empty())
             {
-                await ValueChanged.InvokeAsync(EnumValue);
+                await ValueChanged.InvokeAsync(default(TEnum));
                 await OnInput.InvokeAsync();
+            }
+            else
+            {
+                var EnumValue = EnumExtensions.GetValueFromAttribute<TEnum>(value);
+                if (Value.ToString() != EnumValue.ToString())
+                {
+                    await ValueChanged.InvokeAsync(EnumValue);
+                    await OnInput.InvokeAsync();
+                }
             }
         }
     }

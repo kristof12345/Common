@@ -9,7 +9,7 @@
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <PolarDiagram Data=@List Height="700px" />
+    <PolarDiagram Data=@Ratings Width="550px" Height="400px" Max="10"/>
 </Paper>
 
 @code
@@ -30,9 +30,11 @@
         },
         new ChartData
         {
-            Value= 15,
+            Value= 9,
             Label="Label3",
             Color="green"
         }
     };
+
+    private List<ChartData> Ratings = new List<ChartData> { new ChartData { Value = 9, Label = "Sustainability" }, new ChartData { Value = 10, Label = "Environmental impact " }, new ChartData { Value = 8, Label = "Growth potential" }, new ChartData { Value = 10, Label = "Financial stability" }, new ChartData { Value = 8, Label = "Social responsibility" }, new ChartData { Value = 6, Label = "Profitability" } };
 }
