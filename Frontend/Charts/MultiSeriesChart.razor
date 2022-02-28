@@ -15,7 +15,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@ValueType IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -61,6 +61,9 @@
     [Parameter]
     [EditorRequired]
     public IEnumerable<ChartDataSeries> Data { get; set; }
+
+    [Parameter]
+    public Syncfusion.Blazor.Charts.ValueType ValueType { get; set; } = Syncfusion.Blazor.Charts.ValueType.DateTime;
 
     [Parameter]
     public bool ShowLegend { get; set; } = true;

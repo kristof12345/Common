@@ -1,24 +1,27 @@
 ﻿@namespace Common.Web
+@using Common.Application
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.CircularGauge;
+@inherits AppDiagram
 
-<div class="diagram" style=@($"height: {Height}; width: {Width}")>
+<div class="diagram" style=@($"height: {Height}; width: {Width}; margin: {Margin};")>
     <SfCircularGauge Theme=@Theme.Material Background=@Colors.Transparent>
         <CircularGaugeAxes>
-            <CircularGaugeAxis StartAngle="230" EndAngle="130" Radius="90%" Minimum=@Min Maximum=@Max>
+            <CircularGaugeAxis StartAngle="230" EndAngle="130" Radius="90%" Minimum=@Min.ToDouble() Maximum=@Max.ToDouble()>
                 <CircularGaugeAxisLineStyle Width="0" />
                 <CircularGaugeAxisMajorTicks Width="0" />
                 <CircularGaugeAxisMinorTicks Width="0" />
                 <CircularGaugeAxisLabelStyle Position="Position.Inside" AutoAngle="true" Offset=@LabelOffset />
                 <CircularGaugeRanges>
-                    <CircularGaugeRange Start=@Min End=@Low StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Best />
-                    <CircularGaugeRange Start=@Low End=@TargetLow StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Good />
-                    <CircularGaugeRange Start=@TargetLow End=@TargetHigh StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Normal />
-                    <CircularGaugeRange Start=@TargetHigh End=@High StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Bad />
-                    <CircularGaugeRange Start=@High End=@Max StartWidth="35" EndWidth="35" Radius="90%" Color=@Colors.Worst />
+                    <CircularGaugeRange Start=@Min.ToDouble() End=@Data.First().Value.ToDouble() Color=@Data.First().Color StartWidth="35" EndWidth="35" Radius="90%" />
+                    @for (int i = 0; i < Data.Count() - 1; i++)
+                    {
+                        <CircularGaugeRange Start=@Data.Get(i).Value.ToDouble() End=@Data.Get(i + 1).Value.ToDouble() Color=@Data.Get(i + 1).Color StartWidth="35" EndWidth="35" Radius="90%" />
+                    }
+                    <CircularGaugeRange Start=@Data.Last().Value.ToDouble() End=@Max.ToDouble() Color=@Data.Last().Color StartWidth="35" EndWidth="35" Radius="90%" />
                 </CircularGaugeRanges>
                 <CircularGaugePointers>
-                    <CircularGaugePointer Value=@Actual Radius="45%" PointerWidth="7" Color=@Colors.Primary>
+                    <CircularGaugePointer Value=@Actual.ToDouble() Radius="45%" PointerWidth="7" Color=@Colors.Primary>
                         <CircularGaugePointerAnimation Enable="false" />
                         <CircularGaugeCap Radius="10" Color=@Colors.White>
                             <CircularGaugeCapBorder Width="4" Color=@Colors.Primary />
@@ -42,7 +45,7 @@
 {
     [Parameter]
     [EditorRequired]
-    public double Actual { get; set; }
+    public decimal Actual { get; set; }
 
     [Parameter]
     [EditorRequired]
@@ -50,34 +53,20 @@
 
     [Parameter]
     [EditorRequired]
-    public double Min { get; set; }
+    public decimal Min { get; set; }
 
     [Parameter]
     [EditorRequired]
-    public double Low { get; set; }
+    public decimal Max { get; set; }
 
     [Parameter]
-    [EditorRequired]
-    public double TargetLow { get; set; }
-
-    [Parameter]
-    [EditorRequired]
-    public double TargetHigh { get; set; }
-
-    [Parameter]
-    [EditorRequired]
-    public double High { get; set; }
-
-    [Parameter]
-    [EditorRequired]
-    public double Max { get; set; }
-
-    [Parameter]
-    public string Width { get; set; } = "400px";
-
-    [Parameter]
-    public string Height { get; set; } = "400px";
+    public Border Margin { get; set; } = new Border("0px");
 
     [Parameter]
     public int LabelOffset { get; set; } = 50;
+
+    private ILabeledValue Get(int i)
+    {
+        return Data.ToList()[i];
+    }
 }

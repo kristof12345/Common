@@ -6,11 +6,11 @@ namespace Common.Web
 {
     internal class DragDropService
     {
-        public IUnique ActiveItem { get; set; }
+        public ILabeledValue ActiveItem { get; set; }
 
-        public IUnique DragTargetItem { get; set; }
+        public ILabeledValue DragTargetItem { get; set; }
 
-        public IList<IUnique> Items { get; set; }
+        public IList<ILabeledValue> Items { get; set; }
 
         public int? ActiveSpacerId { get; set; }
 

@@ -6,6 +6,11 @@ namespace Common.Application;
 
 public static class ListExtensions
 {
+    public static T Get<T>(this IEnumerable<T> list, int index)
+    {
+        return list.ToList()[index];
+    }
+
     public static bool IsDistinct<T>(this IEnumerable<T> list)
     {
         return list.Count() == list.Distinct().Count();
@@ -51,7 +56,7 @@ public static class ListExtensions
         return list.FirstOrDefault(item => item.Id == id);
     }
 
-    public static T GetByContent<T>(this IEnumerable<T> list, string content) where T : IUnique
+    public static T GetByContent<T>(this IEnumerable<T> list, string content) where T : ILabeledValue
     {
         return list.FirstOrDefault(item => item.Label == content);
     }

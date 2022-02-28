@@ -117,11 +117,15 @@ namespace Common.Tests.Extensions
             Assert.Equal("orange", list.Last());
         }
 
-        public class Unique : IUnique
+        public class Unique : ILabeledValue, IEntity<int>
         {
             public int Id { get; set; }
 
+            public decimal Value { get; set; }
+
             public string Label { get; set; }
+
+            public string Color { get; set; }
         }
 
         public class Entity : IEntity<string>
@@ -150,8 +154,8 @@ namespace Common.Tests.Extensions
         {
             var list = new List<Unique>
             {
-                new Unique { Id = 1, Label = "a" },
-                new Unique { Id = 2, Label = "b" }
+                new Unique { Value = 1, Label = "a" },
+                new Unique { Value = 2, Label = "b" }
             };
 
             Assert.Equal("a", list.GetById(1).Label);

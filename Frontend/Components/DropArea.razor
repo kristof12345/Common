@@ -44,12 +44,12 @@
 {
     [Parameter]
     [EditorRequired]
-    public List<IUnique> Items { get; set; }
+    public List<ILabeledValue> Items { get; set; }
 
     [Parameter]
     [EditorRequired]
-    public EventCallback<IUnique> OnItemDrop { get; set; }
+    public EventCallback<ILabeledValue> OnItemDrop { get; set; }
 
     [Parameter]
-    public EventCallback<IUnique> OnClick { get; set; }
+    public EventCallback<ILabeledValue> OnClick { get; set; }
 }

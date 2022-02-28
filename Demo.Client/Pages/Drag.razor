@@ -16,14 +16,14 @@
 @code
 {
 
-    private List<IUnique> Available;
+    private List<ILabeledValue> Available;
 
-    private List<IUnique> Preferences;
+    private List<ILabeledValue> Preferences;
 
     protected override void OnInitialized()
     {
-        Available = new List<IUnique> { new Unique { Id = 1, Label = "Content 1" }, new Unique { Id = 2, Label = "Content 2" }, new Unique { Id = 3, Label = "Content 3" } };
-        Preferences = new List<IUnique> { };
+        Available = new List<ILabeledValue> { new Unique { Value = 1, Label = "Content 1" }, new Unique { Id = 2, Label = "Content 2" }, new Unique { Value = 3, Label = "Content 3" } };
+        Preferences = new List<ILabeledValue> { };
     }
 
     private void HandleChange()
@@ -31,16 +31,20 @@
 
     }
 
-    private void HandleClick(IUnique item)
+    private void HandleClick(ILabeledValue item)
     {
         Available.Remove(item);
         Preferences.Add(item);
     }
 
-    class Unique : IUnique
+    public class Unique : ILabeledValue, IEntity<int>
     {
         public int Id { get; set; }
 
+        public decimal Value { get; set; }
+
         public string Label { get; set; }
+
+        public string Color { get; set; }
     }
 }

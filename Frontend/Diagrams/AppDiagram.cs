@@ -15,8 +15,5 @@ namespace Common.Web
 
         [Parameter]
         public string Height { get; set; } = "500px";
-
-        [Parameter]
-        public bool ShowLegend { get; set; } = true;
     }
 }

@@ -14,31 +14,31 @@ namespace Common.Web
         /// Allows to pass a delegate which executes if something is dropped and decides if the item is accepted
         /// </summary>
         [Parameter]
-        public Func<IUnique, IUnique, bool> Accepts { get; set; }
+        public Func<ILabeledValue, ILabeledValue, bool> Accepts { get; set; }
 
         /// <summary>
         /// Allows to pass a delegate which executes if something is dropped and decides if the item is accepted
         /// </summary>
         [Parameter]
-        public Func<IUnique, bool> AllowsDrag { get; set; }
+        public Func<ILabeledValue, bool> AllowsDrag { get; set; }
 
         /// <summary>
         /// Allows to pass a delegate which executes if a drag operation ends
         /// </summary>
         [Parameter]
-        public Action<IUnique> DragEnd { get; set; }
+        public Action<ILabeledValue> DragEnd { get; set; }
 
         /// <summary>
         /// Raises a callback with the dropped item as parameter in case the item can not be dropped due to the given Accept Delegate
         /// </summary>
         [Parameter]
-        public EventCallback<IUnique> OnItemDropRejected { get; set; }
+        public EventCallback<ILabeledValue> OnItemDropRejected { get; set; }
 
         /// <summary>
         /// Raises a callback with the replaced item as parameter
         /// </summary>
         [Parameter]
-        public EventCallback<IUnique> OnReplacedItemDrop { get; set; }
+        public EventCallback<ILabeledValue> OnReplacedItemDrop { get; set; }
 
         /// <summary>
         /// Maximum Number of items which can be dropped in this dropzone. Defaults to null which means unlimited.
@@ -50,7 +50,7 @@ namespace Common.Web
         /// Raises a callback with the dropped item as parameter in case the item can not be dropped due to item limit.
         /// </summary>
         [Parameter]
-        public EventCallback<IUnique> OnItemDropRejectedByMaxItemLimit { get; set; }
+        public EventCallback<ILabeledValue> OnItemDropRejectedByMaxItemLimit { get; set; }
 
         /// <summary>
         /// Specifies the id for the Dropzone element.
@@ -62,13 +62,13 @@ namespace Common.Web
         /// Allows to pass a delegate which specifies one or more classnames for the draggable div that wraps your elements.
         /// </summary>
         [Parameter]
-        public Func<IUnique, string> ItemWrapperClass { get; set; }
+        public Func<ILabeledValue, string> ItemWrapperClass { get; set; }
 
         /// <summary>
         /// If set items dropped are copied to this dropzone and are not removed from their source.
         /// </summary>
         [Parameter]
-        public Func<IUnique, IUnique> CopyItem { get; set; }
+        public Func<ILabeledValue, ILabeledValue> CopyItem { get; set; }
 
         private void OnDropItemOnSpacing(int newIndex)
         {
@@ -118,7 +118,7 @@ namespace Common.Web
             return !Items.Contains(activeItem) && MaxItems.HasValue && MaxItems == Items.Count;
         }
 
-        private string IsItemDragable(IUnique item)
+        private string IsItemDragable(ILabeledValue item)
         {
             if (AllowsDrag == null)
                 return "true";
@@ -127,7 +127,7 @@ namespace Common.Web
             return AllowsDrag(item).ToString();
         }
 
-        private bool IsItemAccepted(IUnique dragTargetItem)
+        private bool IsItemAccepted(ILabeledValue dragTargetItem)
         {
             return Accepts == null || Accepts(DragDropService.ActiveItem, dragTargetItem);
         }
@@ -153,7 +153,7 @@ namespace Common.Web
             base.OnInitialized();
         }
 
-        public string CheckIfDraggable(IUnique item)
+        public string CheckIfDraggable(ILabeledValue item)
         {
             return AllowsDrag == null || item == null || AllowsDrag(item) ? "" : "plk-dd-noselect";
         }
@@ -171,7 +171,7 @@ namespace Common.Web
             DragDropService.Reset();
         }
 
-        public void OnDragEnter(IUnique item)
+        public void OnDragEnter(ILabeledValue item)
         {
             var activeItem = DragDropService.ActiveItem;
             if (item.Equals(activeItem))
@@ -199,7 +199,7 @@ namespace Common.Web
             DragDropService.ShouldRender = false;
         }
 
-        public void OnDragStart(IUnique item)
+        public void OnDragStart(ILabeledValue item)
         {
             DragDropService.ShouldRender = true;
             DragDropService.ActiveItem = item;
@@ -208,12 +208,12 @@ namespace Common.Web
             DragDropService.ShouldRender = false;
         }
 
-        public string CheckIfItemIsInTransit(IUnique item)
+        public string CheckIfItemIsInTransit(ILabeledValue item)
         {
             return item.Equals(DragDropService.ActiveItem) ? "intransit no-pointer-events" : "";
         }
 
-        public string CheckIfItemIsDragTarget(IUnique item)
+        public string CheckIfItemIsDragTarget(ILabeledValue item)
         {
             if (item.Equals(DragDropService.ActiveItem))
                 return "";
@@ -225,7 +225,7 @@ namespace Common.Web
             return "";
         }
 
-        private string GetClassesForDraggable(IUnique item)
+        private string GetClassesForDraggable(ILabeledValue item)
         {
             return ItemWrapperClass != null ? "draggable " + ItemWrapperClass(item) : "draggable";
         }
@@ -235,7 +235,7 @@ namespace Common.Web
             return DragDropService.ActiveSpacerId == spacerId && (Items.IndexOf(DragDropService.ActiveItem) == -1 || (spacerId != Items.IndexOf(DragDropService.ActiveItem) && spacerId != Items.IndexOf(DragDropService.ActiveItem) + 1)) ? "spacing spacing-dragged-over" : "spacing";
         }
 
-        private async Task HandleClick(IUnique item)
+        private async Task HandleClick(ILabeledValue item)
         {
             await OnClick.InvokeAsync(item);
             await OnItemDrop.InvokeAsync(null);
@@ -299,7 +299,7 @@ namespace Common.Web
             OnItemDrop.InvokeAsync(activeItem);
         }
 
-        private void Swap(IUnique draggedOverItem, IUnique activeItem)
+        private void Swap(ILabeledValue draggedOverItem, ILabeledValue activeItem)
         {
             var indexDraggedOverItem = Items.IndexOf(draggedOverItem);
             var indexActiveItem = Items.IndexOf(activeItem);

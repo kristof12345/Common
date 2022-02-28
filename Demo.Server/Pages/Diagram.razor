@@ -9,7 +9,21 @@
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <PolarDiagram Data=@Ratings Width="550px" Height="400px" Max="10"/>
+    <PolarDiagram Data=@Ratings Width="550px" Height="400px" Max="10" />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <GaugeDiagram Data=@Ranges Label=@(300m.FormatCurrency("WUD")) Actual="300" Min="200" Max="600" />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <Vertical Width="400px" Height="500px" Margin=@Border.Top("10px")>
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+    </Vertical>
 </Paper>
 
 @code
@@ -33,6 +47,40 @@
             Value= 9,
             Label="Label3",
             Color="green"
+        }
+    };
+
+    private List<ChartData> Ranges = new List<ChartData>
+    {
+        new ChartData
+        {
+            Value= 250,
+            Label="Low",
+            Color=Colors.Best
+        },
+        new ChartData
+        {
+            Value= 290,
+            Label="Target low",
+            Color=Colors.Good
+        },
+        new ChartData
+        {
+            Value= 310,
+            Label="Target high",
+            Color=Colors.Normal
+        },
+        new ChartData
+        {
+            Value= 350,
+            Label="High",
+            Color=Colors.Bad
+        },
+        new ChartData
+        {
+            Value= 350,
+            Label="High",
+            Color=Colors.Worst
         }
     };
 
