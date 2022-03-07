@@ -15,5 +15,8 @@ namespace Common.Web
 
         [Parameter]
         public string Height { get; set; } = "500px";
+
+        [Parameter]
+        public Border Margin { get; set; } = new Border("0px");
     }
 }

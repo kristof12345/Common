@@ -13,7 +13,7 @@
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <GaugeDiagram Data=@Ranges Label=@(300m.FormatCurrency("WUD")) Actual="300" Min="200" Max="600" />
+    <GaugeDiagram Data=@Ranges Label=@(300m.FormatCurrency("WUD")) Actual="300" />
 </Paper>
 
 <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
@@ -55,32 +55,31 @@
         new ChartData
         {
             Value= 250,
-            Label="Low",
             Color=Colors.Best
         },
         new ChartData
         {
             Value= 290,
-            Label="Target low",
             Color=Colors.Good
         },
         new ChartData
         {
             Value= 310,
-            Label="Target high",
             Color=Colors.Normal
         },
         new ChartData
         {
             Value= 350,
-            Label="High",
             Color=Colors.Bad
         },
         new ChartData
         {
-            Value= 350,
-            Label="High",
+            Value= 400,
             Color=Colors.Worst
+        },
+        new ChartData
+        {
+            Value= 500
         }
     };
 

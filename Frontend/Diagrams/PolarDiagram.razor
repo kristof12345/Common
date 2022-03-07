@@ -3,10 +3,10 @@
 
 @using Syncfusion.Blazor.Charts;
 
-<div class="diagram" style=@($"height: {Height}; width: {Width};")>
+<div class="diagram" style=@($"height: {Height}; width: {Width}; margin: {Margin};")>
     <SfChart Background=@Colors.Transparent EnableAnimation="false">
         <ChartPrimaryXAxis Interval="1" Coefficient=@Size LabelPlacement="LabelPlacement.OnTicks" ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelIntersectAction=@LabelIntersectAction.None />
-        <ChartPrimaryYAxis Maximum=@Max LabelIntersectAction=@LabelIntersectAction.None />
+        <ChartPrimaryYAxis Minimum=@Min Maximum=@Max LabelIntersectAction=@LabelIntersectAction.None />
         <ChartSeriesCollection>
             <ChartSeries DataSource=@Data XName="Label" YName="Value" Type="ChartSeriesType.Radar" DrawType="ChartDrawType.Area" Opacity="0.8" Fill=@Colors.Primary />
         </ChartSeriesCollection>
@@ -17,6 +17,9 @@
 {
     [Parameter]
     public int Size { get; set; } = 100;
+
+    [Parameter]
+    public decimal Min { get; set; } = 0;
 
     [Parameter]
     public decimal Max { get; set; } = 10;

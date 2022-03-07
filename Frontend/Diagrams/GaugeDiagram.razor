@@ -4,21 +4,19 @@
 @using Syncfusion.Blazor.CircularGauge;
 @inherits AppDiagram
 
-<div class="diagram" style=@($"height: {Height}; width: {Width}; margin: {Margin};")>
+<div class="diagram" style=@($"height: {Height}; width: {Width}; margin: {Margin}; margin: {Margin};")>
     <SfCircularGauge Theme=@Theme.Material Background=@Colors.Transparent>
         <CircularGaugeAxes>
-            <CircularGaugeAxis StartAngle="230" EndAngle="130" Radius="90%" Minimum=@Min.ToDouble() Maximum=@Max.ToDouble()>
+            <CircularGaugeAxis StartAngle="230" EndAngle="130" Radius="90%" Minimum=@Data.First().Value.ToDouble() Maximum=@Data.Last().Value.ToDouble()>
                 <CircularGaugeAxisLineStyle Width="0" />
                 <CircularGaugeAxisMajorTicks Width="0" />
                 <CircularGaugeAxisMinorTicks Width="0" />
                 <CircularGaugeAxisLabelStyle Position="Position.Inside" AutoAngle="true" Offset=@LabelOffset />
                 <CircularGaugeRanges>
-                    <CircularGaugeRange Start=@Min.ToDouble() End=@Data.First().Value.ToDouble() Color=@Data.First().Color StartWidth="35" EndWidth="35" Radius="90%" />
                     @for (int i = 0; i < Data.Count() - 1; i++)
                     {
-                        <CircularGaugeRange Start=@Data.Get(i).Value.ToDouble() End=@Data.Get(i + 1).Value.ToDouble() Color=@Data.Get(i + 1).Color StartWidth="35" EndWidth="35" Radius="90%" />
+                        <CircularGaugeRange Start=@Data.Get(i).Value.ToDouble() End=@Data.Get(i + 1).Value.ToDouble() Color=@Data.Get(i).Color StartWidth="35" EndWidth="35" Radius="90%" />
                     }
-                    <CircularGaugeRange Start=@Data.Last().Value.ToDouble() End=@Max.ToDouble() Color=@Data.Last().Color StartWidth="35" EndWidth="35" Radius="90%" />
                 </CircularGaugeRanges>
                 <CircularGaugePointers>
                     <CircularGaugePointer Value=@Actual.ToDouble() Radius="45%" PointerWidth="7" Color=@Colors.Primary>
@@ -52,21 +50,5 @@
     public string Label { get; set; }
 
     [Parameter]
-    [EditorRequired]
-    public decimal Min { get; set; }
-
-    [Parameter]
-    [EditorRequired]
-    public decimal Max { get; set; }
-
-    [Parameter]
-    public Border Margin { get; set; } = new Border("0px");
-
-    [Parameter]
     public int LabelOffset { get; set; } = 50;
-
-    private ILabeledValue Get(int i)
-    {
-        return Data.ToList()[i];
-    }
 }

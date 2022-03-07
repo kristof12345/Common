@@ -4,25 +4,25 @@
 @using Syncfusion.Blazor.LinearGauge;
 @inherits AppDiagram
 
-<div class="diagram" style=@($"height: {Height}; width: {Width};")>
+<div class="diagram" style=@($"height: {Height}; width: {Width}; margin: {Margin};")>
     <SfLinearGauge Theme=@Theme.Material Height=@Height Background=@Colors.Transparent Orientation="Orientation.Horizontal">
         <LinearGaugeAxes>
-            <LinearGaugeAxis Minimum=@Min Maximum=@Max>
+            <LinearGaugeAxis Minimum=@Min.ToDouble() Maximum=@Max.ToDouble()>
                 <LinearGaugeRanges>
                     <LinearGaugeLine Width="0" />
                     <LinearGaugeMajorTicks Height="0" Width="0" Interval=@GetRange(1) />
                     <LinearGaugeMinorTicks Height="7" Width="0" />
                     <LinearGaugeAxisLabelStyle Offset="4" Position="Position.Outside" />
-                    <LinearGaugeRange Start=@Min End=@GetRange(1) StartWidth="10" EndWidth="10" Color=@Colors.Worst />
+                    <LinearGaugeRange Start=@Min.ToDouble() End=@GetRange(1) StartWidth="10" EndWidth="10" Color=@Colors.Worst />
                     <LinearGaugeRange Start=@GetRange(1) End=@GetRange(2) StartWidth="10" EndWidth="10" Color=@Colors.Bad />
                     <LinearGaugeRange Start=@GetRange(2) End=@GetRange(3) StartWidth="10" EndWidth="10" Color=@Colors.Normal />
                     <LinearGaugeRange Start=@GetRange(3) End=@GetRange(4) StartWidth="10" EndWidth="10" Color=@Colors.Good />
-                    <LinearGaugeRange Start=@GetRange(4) End=@Max StartWidth="10" EndWidth="10" Color=@Colors.Best />
+                    <LinearGaugeRange Start=@GetRange(4) End=@Max.ToDouble() StartWidth="10" EndWidth="10" Color=@Colors.Best />
                 </LinearGaugeRanges>
                 <LinearGaugePointers>
                     @foreach (var data in Data)
                     {
-                        <LinearGaugePointer PointerValue=@((double)data.Value) Color=@data.Color Offset="-10" MarkerType="MarkerType.Triangle" />
+                        <LinearGaugePointer PointerValue=@data.Value.ToDouble() Color=@data.Color Offset="-10" MarkerType="MarkerType.Triangle" />
                     }
                 </LinearGaugePointers>
             </LinearGaugeAxis>
@@ -33,14 +33,13 @@
 @code
 {
     [Parameter]
-    public double Min { get; set; } = 0;
+    public decimal Min { get; set; } = 0;
 
     [Parameter]
-    public double Max { get; set; } = 100;
+    public decimal Max { get; set; } = 100;
 
     private double GetRange(int i)
     {
-        return (Max - Min) / 5 * i;
+        return (double)(Max - Min) / 5 * i;
     }
 }
-
