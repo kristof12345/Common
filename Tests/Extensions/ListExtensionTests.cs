@@ -154,8 +154,8 @@ namespace Common.Tests.Extensions
         {
             var list = new List<Unique>
             {
-                new Unique { Value = 1, Label = "a" },
-                new Unique { Value = 2, Label = "b" }
+                new Unique { Id = 1, Label = "a" },
+                new Unique { Id = 2, Label = "b" }
             };
 
             Assert.Equal("a", list.GetById(1).Label);
