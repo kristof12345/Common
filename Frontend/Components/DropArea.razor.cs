@@ -288,10 +288,6 @@ namespace Common.Web
                         Items.Insert(Items.Count, CopyItem(activeItem)); //insert item to new zone
                     }
                 }
-                else
-                {
-                    //what to do here?
-                }
             }
 
             DragDropService.Reset();

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 
 namespace Common.Application;
 
@@ -12,24 +10,9 @@ public static class Format
     public const string DateTimeFormatUtc = "yyyy.MM.ddTHH:mm:ss";
     public const string YearFormat = "yyyy";
 
-    private static readonly NumberFormatInfo FormatProvider;
+    private static readonly NumberFormatInfo FormatProvider = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = " " };
 
-    private static readonly IDictionary<string, string> CurrencySmbols;
-
-    static Format()
-    {
-        FormatProvider = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
-        FormatProvider.NumberDecimalSeparator = ",";
-        FormatProvider.NumberGroupSeparator = " ";
-
-        CurrencySmbols = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(c => !c.IsNeutralCulture).Select(
-            culture =>
-            {
-                try { return new RegionInfo(culture.Name); }
-                catch { return null; }
-            }
-            ).Where(ri => ri != null).GroupBy(ri => ri.ISOCurrencySymbol).ToDictionary(x => x.Key, x => x.First().CurrencySymbol);
-    }
+    private static readonly IDictionary<string, string> CurrencySmbols = new Dictionary<string, string> { { "WUD", "₩" }, { "USD", "$" }, { "EUR", "€" }, { "GBP", "£" }, { "CHF", "₣" }, { "JPY", "¥" }, { "AUD", "A$" }, { "CAD", "C$" } };
 
     private static string GetCurrencySymbol(string ISOCurrencySymbol)
     {
@@ -42,7 +25,6 @@ public static class Format
     {
         if (showSpecialValuesAsString && value == 0) return "Unknown";
         if (showSpecialValuesAsString && value == decimal.MaxValue) return "Infinity";
-        if (ISOCurrencySymbol == "WUD") return "₩" + string.Format(FormatProvider, " {0:N2}", value);
         return GetCurrencySymbol(ISOCurrencySymbol) + string.Format(FormatProvider, " {0:N2}", value);
     }
 

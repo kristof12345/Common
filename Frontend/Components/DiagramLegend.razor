@@ -4,11 +4,11 @@
 
 @if (Data != null)
 {
-    <Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@Margin Wrap=@FlexWrap.Wrap>
+    <Horizontal VerticalAlign=@VerticalAlignment.Start Margin=@Margin Wrap=@FlexWrap.Wrap Class=@(OnClick.HasDelegate ? "clickable" : "")>
         @foreach (var item in Data)
         {
-            <Horizontal Width="auto" Margin=@(new Border("10px", "0px"))>
-                <Icon IconType="pie_chart" Color=@item.Color Margin=@Border.Right("10px") />
+            <Horizontal Width="auto" Margin=@(new Border("10px", "0px")) OnClick=@(async() => await OnClick.InvokeAsync(item.Label))>
+                <Icon IconType="pie_chart" Color=@(item.Visible ? item.Color : Colors.Grey) Margin=@Border.Right("10px") />
                 <Paragraph Class="center-text">@item.Label</Paragraph>
             </Horizontal>
         }
@@ -19,8 +19,11 @@
 {
     [Parameter]
     [EditorRequired]
-    public IEnumerable<ILabeledValue> Data { get; set; }
+    public IEnumerable<IChartData> Data { get; set; }
 
     [Parameter]
     public Border Margin { get; set; } = Border.Top("10px");
+
+    [Parameter]
+    public EventCallback<string> OnClick { get; set; }
 }

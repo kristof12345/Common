@@ -3,11 +3,15 @@ using Common.Application;
 
 namespace Common.Web;
 
-public class ChartDataSeries : IEntity<string>
+public class ChartDataSeries : IChartData
 {
-    public string Id { get; set; }
+    public string Label { get; set; }
 
-    public IEnumerable<ITemporalValue> Data { get; set; }
+    public decimal Value { get; }
 
     public string Color { get; set; }
+
+    public bool Visible { get; set; } = true;
+
+    public IEnumerable<ITemporalValue> Data { get; set; }
 }

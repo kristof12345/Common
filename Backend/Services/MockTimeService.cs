@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Common.Backend;
+﻿namespace Common.Backend;
 
 public class MockTimeService : ITimeService
 {
@@ -8,11 +6,11 @@ public class MockTimeService : ITimeService
 
     public DateTime Now { get; set; }
 
-    public DateTime Today { get { return Now.Date; } }
+    public DateTime Today { get => Now.Date; }
 
-    public DateTime Tomorrow { get { return Today.AddDays(1); } }
+    public DateTime Tomorrow { get => Today.AddDays(1); }
 
-    public DateTime Yesterday { get { return Today.AddDays(-1); } }
+    public DateTime Yesterday { get => Today.AddDays(-1); }
 
     public DateTime Future(TimeSpan timespan) { return Now.Add(timespan); }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Common.Application;
+﻿namespace Common.Application;
 
 public static class ListExtensions
 {
@@ -64,6 +60,23 @@ public static class ListExtensions
     public static IEnumerable<T> DateFilter<T>(this IEnumerable<T> list, DateRange range) where T : ITemporal
     {
         return list.Where(item => item.Date >= range.Start && item.Date <= range.End);
+    }
+
+    public static List<T> Monthly<T>(this List<T> list) where T : ITemporal
+    {
+        var result = new List<T>();
+        var lastMonth = list.First().Date.Month;
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i].Date.Month != lastMonth)
+            {
+                result.Add(list[i]);
+                lastMonth = list[i].Date.Month;
+            }
+        }
+
+        return result;
     }
 
     public static T Latest<T>(this IEnumerable<T> list) where T : ITemporal

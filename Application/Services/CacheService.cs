@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Common.Application;
+﻿namespace Common.Application;
 
 public class CacheService
 {

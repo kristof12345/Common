@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Common.Backend;
+﻿namespace Common.Backend;
 
 public static class App
 {

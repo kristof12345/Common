@@ -26,7 +26,7 @@
                 <ChartSeriesCollection>
                     @foreach (var serie in RangedData)
                     {
-                        <ChartSeries DataSource=@serie.Data Fill=@serie.Color XName="Date" YName="Value" Type=@Type Width="3" />
+                        <ChartSeries DataSource=@serie.Data Fill=@serie.Color XName="Date" YName="Value" Type=@Type Width="3" Visible=@serie.Visible />
                     }
                 </ChartSeriesCollection>
 
@@ -52,7 +52,7 @@
 @if (ShowLegend)
 {
     <div class="legend">
-        <DiagramLegend Data=@DiagramLegend />
+        <DiagramLegend Data=@Data OnClick=@HandleClick />
     </div>
 }
 
@@ -101,9 +101,7 @@
 
     private string Height { get => ShowSelector ? "450px" : "350px"; }
 
-    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select(series => new ChartDataSeries { Id = series.Id, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color }); }
-
-    private IEnumerable<ChartData> DiagramLegend { get => Data?.Select(series => new ChartData { Label = series.Id, Color = series.Color }); }
+    public IEnumerable<ChartDataSeries> RangedData { get => Data.Select(series => new ChartDataSeries { Label = series.Label, Data = series.Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]), Color = series.Color, Visible = series.Visible }); }
 
     protected override void OnParametersSet()
     {
@@ -122,5 +120,11 @@
     private void OnRangeLoaded(object args)
     {
         Visibility = "visible";
+    }
+
+    private void HandleClick(string label)
+    {
+        var serie = Data.First(s => s.Label == label);
+        serie.Visible = !serie.Visible;
     }
 }
