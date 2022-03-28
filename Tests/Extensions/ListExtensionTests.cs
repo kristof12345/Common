@@ -9,6 +9,16 @@ namespace Common.Tests.Extensions
     public class ListExtensionTests
     {
         [Fact]
+        public void GetElementTest()
+        {
+            var list = new List<string> { "apple", "banana", "orange" };
+
+            Assert.Equal("apple", list.Get(0));
+            Assert.Equal("banana", list.Get(1));
+            Assert.Equal("orange", list.Get(2));
+        }
+
+        [Fact]
         public void EmptyListTest()
         {
             var list = new List<string>();
@@ -231,6 +241,31 @@ namespace Common.Tests.Extensions
 
             Assert.Equal(new DateTime(2020, 2, 2), stock.Date);
             Assert.Equal(70, stock.Volume);
+        }
+
+        [Fact]
+        public void MonthlyDateWithParameterTest()
+        {
+            var list = new List<StockPrice>
+            {
+                new StockPrice { Date = new DateTime(2020,1,1), Volume=10 },
+                new StockPrice { Date = new DateTime(2020,1,2), Volume=20 },
+                new StockPrice { Date = new DateTime(2020,1,3), Volume=30 },
+                new StockPrice { Date = new DateTime(2020,5,1), Volume=40 },
+                new StockPrice { Date = new DateTime(2020,5,20), Volume=50 },
+                new StockPrice { Date = new DateTime(2020,6,1), Volume=60 },
+                new StockPrice { Date = new DateTime(2020,6,2), Volume=70 },
+                new StockPrice { Date = new DateTime(2021,6,1), Volume=80 },
+                new StockPrice { Date = new DateTime(2025,12,17), Volume=90 },
+            };
+
+            var monthly = list.Monthly();
+
+            Assert.Equal(4, monthly.Count);
+            Assert.Equal(10, monthly[0].Volume);
+            Assert.Equal(40, monthly[1].Volume);
+            Assert.Equal(60, monthly[2].Volume);
+            Assert.Equal(90, monthly[3].Volume);
         }
 
         [Fact]

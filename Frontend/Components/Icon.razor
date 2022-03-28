@@ -1,7 +1,13 @@
 ﻿@namespace Common.Web
+@if (Icons.Custom.ContainsKey(IconType))
+{
 
-<i class="material-icons" style=@($"padding: 0px; width: {Width}; height: {Height}; color: {Color}; margin: {Margin}; {Style}")>@IconType</i>
-
+    <img src=@Icons.Custom[IconType] class="custom-icons" style=@($"padding: 0px; width: {Width}; height: {Height}; color: {Color}; margin: {Margin}; {Style}")/>
+}
+else
+{
+    <i class="material-icons" style=@($"padding: 0px; width: {Width}; height: {Height}; color: {Color}; margin: {Margin}; {Style}")>@IconType</i>
+}
 @code
 {
     [Parameter]

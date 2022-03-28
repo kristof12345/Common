@@ -64,7 +64,7 @@ public static class ListExtensions
 
     public static List<T> Monthly<T>(this List<T> list) where T : ITemporal
     {
-        var result = new List<T>();
+        var result = new List<T> { list.First() };
         var lastMonth = list.First().Date.Month;
 
         for (int i = 0; i < list.Count; i++)
