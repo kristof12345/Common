@@ -1,10 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using Common.Application;
 using Common.Backend;
-using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace Common.Tests.Parsers

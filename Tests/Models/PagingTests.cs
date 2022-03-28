@@ -38,7 +38,7 @@ namespace Common.Tests.Models
         [Fact]
         public void DateRangeToStringTest()
         {
-            var range = new DateRange(new DateTime(2021,12,7), new DateTime(2021, 12, 13));
+            var range = new DateRange(new DateTime(2021, 12, 7), new DateTime(2021, 12, 13));
             Assert.Equal("?From=2021.12.07&To=2021.12.13", range.ToString());
         }
 
@@ -75,6 +75,15 @@ namespace Common.Tests.Models
             var page = new PagedResult<int>(numbers, 40);
             Assert.Equal(4, page.Results.Count);
             Assert.Equal(10, page.PageCount);
+        }
+
+        [Fact]
+        public void PagedResultTest3()
+        {
+            var numbers = new List<int> { 1, 2, 3, 4 };
+            var page = new PagedResult<int>(numbers, 10, 2);
+            Assert.Equal(4, page.Results.Count);
+            Assert.Equal(5, page.PageCount);
         }
     }
 }
