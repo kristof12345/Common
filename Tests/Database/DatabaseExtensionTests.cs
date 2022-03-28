@@ -61,6 +61,12 @@ namespace Common.Tests.Database
         }
 
         [Fact]
+        public async Task DuplicateExceptionTest()
+        {
+            await Assert.ThrowsAsync<DuplicateException>(() => throw new DuplicateException("Duplicate"));
+        }
+
+        [Fact]
         public async Task InsertListTest()
         {
             // Arrange
