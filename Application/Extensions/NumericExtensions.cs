@@ -1,10 +1,9 @@
-﻿namespace Common.Application
+﻿namespace Common.Application;
+
+public static class NumericExtensions
 {
-    public static class NumericExtensions
+    public static double ToDouble(this decimal original)
     {
-        public static double ToDouble(this decimal original)
-        {
-            return decimal.ToDouble(original);
-        }
+        return decimal.ToDouble(original);
     }
 }

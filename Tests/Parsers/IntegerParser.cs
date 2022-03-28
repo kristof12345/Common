@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using Common.Backend;
 using Xunit;
@@ -12,7 +11,7 @@ namespace Common.Tests.Parsers
         public void ParseIntegerTests()
         {
             // Arrange
-            var reader = new Utf8JsonReader(Encoding.UTF8.GetBytes("\"123\""));
+            var reader = new Utf8JsonReader(Encoding.UTF8.GetBytes("123"));
             reader.Read();
 
             // Act
