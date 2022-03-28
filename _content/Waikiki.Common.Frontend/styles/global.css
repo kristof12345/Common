@@ -131,9 +131,13 @@ form, button, img {
         background-color: #424242;
     }
 
+    .body-dark .custom-icons {
+        filter: invert(99%) sepia(11%) saturate(3%) hue-rotate(304deg) brightness(114%) contrast(100%);
+    }
+
 /* Autocomplete */
 
-input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+input: -webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
@@ -382,10 +386,18 @@ td {
     color: unset !important;
 }
 
+.e-emptyrow {
+    text-align: center;
+}
+
 .body-dark .sf-grid .e-table, .body-dark .sf-grid .e-headercell {
     background-color: rgb(48,48,48) !important;
 }
 
 .body-dark .sf-grid .e-headercell {
     border-color: rgb(219, 219, 219) !important;
+}
+
+.body-dark .e-emptyrow {
+    color: white !important;
 }
