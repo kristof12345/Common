@@ -1,7 +1,7 @@
 ﻿@namespace Common.Web
 @inherits AppContainer
 
-<div class=@Visible onclick=@OnClick>@ChildContent</div>
+<div class=@Visible style=@($"justify-content: {HorizontalAlign}; align-items: {VerticalAlign}; width: {Width}; min-width: {MinWidth}; max-width: {MaxWidth}; height: {Height}; flex-wrap: {Wrap}; padding: {Padding}; margin: {Margin}; {Style}") onclick=@OnClick>@ChildContent</div>
 
 @code
 {
