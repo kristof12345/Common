@@ -12,6 +12,5 @@ namespace Common.Tests.Extensions
             Assert.Equal(5.0, 5.0m.ToDouble());
             Assert.Equal(159.753, 159.753m.ToDouble());
         }
-
     }
 }

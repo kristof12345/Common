@@ -78,5 +78,14 @@ namespace Common.Tests.Models
             Assert.Equal("User Name", user.Name.ToString());
             Assert.Equal("image", user.Image);
         }
+
+        [Fact]
+        public void TemporalValueTest()
+        {
+            var temp = new TemporalValue { Value = 40, Date = DateTime.Today };
+
+            Assert.Equal(40, temp.Value);
+            Assert.Equal(DateTime.Today, temp.Date);
+        }
     }
 }

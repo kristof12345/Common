@@ -1,6 +1,6 @@
 ﻿namespace Common.Backend;
 
-public class DuplicateException : Exception
+public class NotFoundException : Exception
 {
-    public DuplicateException(string message = "An entity already exists with the given ID.") : base(message) { }
+    public NotFoundException(string message = "An entity was not found with the given ID.") : base(message) { }
 }

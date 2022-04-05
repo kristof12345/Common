@@ -67,6 +67,12 @@ namespace Common.Tests.Database
         }
 
         [Fact]
+        public async Task NotFoundExceptionTest()
+        {
+            await Assert.ThrowsAsync<NotFoundException>(() => throw new NotFoundException("Not found"));
+        }
+
+        [Fact]
         public async Task InsertListTest()
         {
             // Arrange
@@ -214,7 +220,7 @@ namespace Common.Tests.Database
             await context.Entities.InsertAsync(new List<Entity> { new Entity { Id = "1", Content = "a" }, new Entity { Id = "2", Content = "b" }, new Entity { Id = "3", Content = "a" }, new Entity { Id = "4", Content = "c" } });
 
             // Act
-            await context.Entities.DeleteAsync(e => e.Content== "a");
+            await context.Entities.DeleteAsync(e => e.Content == "a");
 
             // Assert
             Assert.Equal(2, context.Entities.Count());
