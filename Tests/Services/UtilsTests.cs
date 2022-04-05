@@ -22,4 +22,3 @@ namespace Common.Tests.Services
         }
     }
 }
-

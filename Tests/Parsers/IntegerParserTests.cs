@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Common.Tests.Parsers
 {
-    public class IntegerParser
+    public class IntegerParserTests
     {
         [Fact]
         public void ParseIntegerTests()
@@ -22,4 +22,3 @@ namespace Common.Tests.Parsers
         }
     }
 }
-
