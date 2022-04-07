@@ -9,7 +9,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>2.7.23</PackageVersion>
+		<PackageVersion>2.7.24</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
@@ -23,19 +23,19 @@
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.3" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
-		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Charts" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Popups" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.Grid" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="19.4.0.56" />
-		<PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="19.4.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Charts" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Popups" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.Grid" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="20.1.0.47" />
+		<PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="20.1.0.47" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Remove="wwwroot\.DS_Store" />
