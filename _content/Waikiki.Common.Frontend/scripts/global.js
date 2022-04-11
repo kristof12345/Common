@@ -85,7 +85,6 @@ async function subscribe(worker) {
 }
 
 function arrayBufferToBase64(buffer) {
-    // https://stackoverflow.com/a/9458996
     var binary = '';
     var bytes = new Uint8Array(buffer);
     var len = bytes.byteLength;
@@ -94,6 +93,3 @@ function arrayBufferToBase64(buffer) {
     }
     return window.btoa(binary);
 }
-
-// Syncfusion
-window.sfBlazor = { getCharCollectionSize: function (t) { for (var e = [], i = this.getAllCharacters(), n = i.length, l = t.length, o = 0; o < l; o++) { for (var r = t[o].split("_"), s = r[0], h = r[1], a = r[2], f = {}, g = 0; g < n; g++)f[i[g]] = this.measureText(i[g], s, h, a); e.push(f) } return JSON.stringify(e) }, getCharSizeByFontKeys: function (t) { for (var e = {}, i = [], n = t.length, l = 0; l < n; l++)i = t[l].split("_"), e[t[l]] = this.measureText(i[0], i[1], i[2], i[3]); return JSON.stringify(e) }, getElementBoundsById: function (t) { var e, i, n = document.getElementById(t), l = document.getElementById(t + "_svg"); if (n) { l && (l.style.display = "none"), n.style.width = "100%", n.style.height = "100%"; var o = n.getBoundingClientRect(); return e = n.clientWidth || n.offsetWidth, i = n.clientHeight || n.offsetHeight, l && (l.style.display = ""), { width: e, height: i, left: o.left, top: o.top, right: o.right, bottom: o.bottom } } return { width: 0, height: 0, left: 0, top: 0, right: 0, bottom: 0 } }, charCollection: [], getAllCharacters: function () { if (!this.charCollection.length) { for (var t = [], e = 33; e < 591; e++)t.push(String.fromCharCode(e)); this.charCollection = t } return this.charCollection }, measureText: function (t, e, i, n) { var l = document.getElementById("sfblazor_measuretext"); return null === l && ((l = document.createElement("text")).id = "sfblazor_measuretext", document.body.appendChild(l)), " " === t && (t = "&nbsp;"), l.innerHTML = t, l.style.position = "fixed", l.style.fontSize = "100px", l.style.fontWeight = e, l.style.fontStyle = i, l.style.fontFamily = n, l.style.visibility = "hidden", l.style.top = "-100", l.style.left = "0", l.style.whiteSpace = "nowrap", l.style.lineHeight = "normal", { X: l.clientWidth, Y: l.clientHeight } }, setSvgDimensions: function (t, e, i) { t.setAttribute("width", e), t.setAttribute("height", i) } };
