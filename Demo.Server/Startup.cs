@@ -2,15 +2,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Blazored.LocalStorage;
-using Syncfusion.Blazor;
 using Microsoft.Extensions.Hosting;
 using Common.Web;
-using Common.Application;
 using System.Net.Http;
 using System;
-using Blazored.SessionStorage;
-using System.Collections.Generic;
 
 namespace Demo.Server
 {
