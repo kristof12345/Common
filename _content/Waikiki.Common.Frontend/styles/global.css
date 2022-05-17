@@ -262,12 +262,8 @@ text {
 
 /* Inputs */
 
-.e-outline.e-error:not([role="listbox"]) .e-label-bottom {
-    margin-top: 10px !important;
-}
-
-.e-outline.e-error.e-multi-line-input .e-label-bottom {
-    margin-top: 25px !important;
+.e-bigger .e-float-text.e-label-bottom {
+    line-height: 70px !important;
 }
 
 .e-float-input {
