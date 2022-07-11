@@ -19,7 +19,7 @@ namespace Common.Web
                 ToastType.Info => "e-toast-info",
                 _ => throw new InvalidOperationException("Unexpected value: " + type),
             };
-            await Toaster.Show(model);
+            await Toaster.ShowAsync(model);
         }
     }
 
