@@ -6,8 +6,8 @@
 
     @if (Data != null)
     {
-        <div class="chart">
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
+        <div class=@("chart " + Visibility)>
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>

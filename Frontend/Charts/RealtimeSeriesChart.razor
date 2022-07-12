@@ -13,8 +13,8 @@
 
     @if (Data != null)
     {
-        <div class="chart">
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
+        <div class=@("chart " + Visibility)>
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
                 <ChartEvents Loaded=@OnChartLoaded />
 
