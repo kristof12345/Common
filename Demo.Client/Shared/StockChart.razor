@@ -1,13 +1,12 @@
 ﻿<div class="finance-chart" style="height: 450px;">
-    @if (Visibility == "hidden")
+    @if (Data == null)
     {
         <LoadingIndicator />
     }
-
-    @if (Data != null)
+    else
     {
         <div class="chart">
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
+            <SfChart Theme=@ChartTheme.Material Background=@Colors.Transparent Height="350">
 
                 <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -36,11 +35,11 @@
             </SfChart>
         </div>
 
-        <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
-                <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
+        <div class="range">
+            <SfRangeNavigator ValueType=@RangeValueType.DateTime Theme=@ChartTheme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
+                <RangeNavigatorEvents Changed=@RangeChanged></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
-                    <RangeNavigatorSeries DataSource=@Data.Sparse(50) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
+                    <RangeNavigatorSeries DataSource=@Data Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
                 </RangeNavigatorSeriesCollection>
             </SfRangeNavigator>
         </div>
@@ -70,28 +69,15 @@
     [Parameter]
     public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
 
-    private DateTime[] Range { get; set; }
-
-    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
-
-    private string Visibility { get; set; } = "hidden";
+    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= StartDate && d.Date <= EndDate); }
 
     private decimal VolumeMin { get => RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
 
     private decimal VolumeMax { get => RangedData.Any() ? RangedData.Max(s => s.Volume) * 4 : 0; }
 
-    protected override void OnParametersSet()
+    private void RangeChanged(IChangedEventArgs args)
     {
-        Range = new DateTime[] { StartDate, EndDate };
-    }
-
-    private void RangeChanged(object args)
-    {
-        Range = (DateTime[])args;
-    }
-
-    private void OnRangeLoaded(object args)
-    {
-        Visibility = "visible";
+        StartDate = (DateTime)args.Start;
+        EndDate = (DateTime)args.End;
     }
 }

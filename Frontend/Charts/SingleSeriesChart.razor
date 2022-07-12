@@ -13,7 +13,7 @@
     @if (Data != null)
     {
         <div class="chart">
-            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
+            <SfChart Theme=@ChartTheme.Material Background=@Colors.Transparent Height="350" CustomClass=@Visibility>
 
                 <ChartPrimaryXAxis ValueType=@ValueType IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -38,8 +38,8 @@
         @if (ShowSelector)
         {
             <div class=@("range " + Visibility)>
-                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
-                    <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
+                <SfRangeNavigator Theme=@ChartTheme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+                    <RangeNavigatorEvents Loaded=@OnRangeLoaded Changed=@RangeChanged></RangeNavigatorEvents>
                     <RangeNavigatorSeriesCollection>
                         <RangeNavigatorSeries DataSource=Data Fill=@Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
                     </RangeNavigatorSeriesCollection>
