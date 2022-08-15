@@ -9,7 +9,7 @@
         <div class=@("chart " + Visibility)>
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -37,10 +37,10 @@
         </div>
 
         <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" Theme=@Theme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
                 <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
-                    <RangeNavigatorSeries DataSource=@Data.Sparse(50) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
+                    <RangeNavigatorSeries DataSource=@Data.Sparse(100) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
                 </RangeNavigatorSeriesCollection>
             </SfRangeNavigator>
         </div>
@@ -68,7 +68,10 @@
     public decimal? Maximum { get; set; } = null;
 
     [Parameter]
-    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
+    public IntervalType ChartIntervalType { get; set; } = IntervalType.Days;
+
+    [Parameter]
+    public RangeIntervalType RangeIntervalType { get; set; } = RangeIntervalType.Years;
 
     private DateTime[] Range { get; set; }
 
@@ -85,13 +88,13 @@
         Range = new DateTime[] { StartDate, EndDate };
     }
 
-    private void RangeChanged(object args)
-    {
-        Range = (DateTime[])args;
-    }
-
     private void OnRangeLoaded(object args)
     {
         Visibility = "visible";
+    }
+
+    private void RangeChanged(object args)
+    {
+        Range = (DateTime[])args;
     }
 }
