@@ -19,6 +19,6 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.8" />
 		<PackageReference Include="JWT" Version="9.0.3" />
-		<PackageReference Include="Hangfire" Version="1.7.30" />
+		<PackageReference Include="Hangfire" Version="1.7.31" />
 	</ItemGroup>
 </Project>

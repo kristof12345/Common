@@ -1,0 +1,87 @@
+﻿@page "/diagram"
+
+@using Common.Application
+@using System.Timers
+@using System.Collections.ObjectModel
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <DoughnutDiagram Data=@List Height="700px" />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <PolarDiagram Data=@Ratings Width="550px" Height="400px" Max="10" />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <GaugeDiagram Data=@Ranges Label=@(300m.FormatCurrency("WUD")) Actual="300" />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <Vertical Width="400px" Height="500px" Margin=@Border.Top("10px")>
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+        <LinearDiagram Data=@List Height="70px" />
+    </Vertical>
+</Paper>
+
+@code
+{
+    private List<ChartData> List = new List<ChartData>
+    {
+        new ChartData
+        {
+            Value= 5,
+            Label="Label1",
+            Color="red"
+        },
+        new ChartData
+        {
+            Value= 10,
+            Label="Label2",
+            Color="blue"
+        },
+        new ChartData
+        {
+            Value= 9,
+            Label="Label3",
+            Color="green"
+        }
+    };
+
+    private List<ChartData> Ranges = new List<ChartData>
+    {
+        new ChartData
+        {
+            Value= 250,
+            Color=Colors.Best
+        },
+        new ChartData
+        {
+            Value= 290,
+            Color=Colors.Good
+        },
+        new ChartData
+        {
+            Value= 310,
+            Color=Colors.Normal
+        },
+        new ChartData
+        {
+            Value= 350,
+            Color=Colors.Bad
+        },
+        new ChartData
+        {
+            Value= 400,
+            Color=Colors.Worst
+        },
+        new ChartData
+        {
+            Value= 500
+        }
+    };
+
+    private List<ChartData> Ratings = new List<ChartData> { new ChartData { Value = 9, Label = "Sustainability" }, new ChartData { Value = 10, Label = "Environmental impact " }, new ChartData { Value = 8, Label = "Growth potential" }, new ChartData { Value = 10, Label = "Financial stability" }, new ChartData { Value = 8, Label = "Social responsibility" }, new ChartData { Value = 6, Label = "Profitability" } };
+}
