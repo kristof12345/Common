@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackOnBuild>true</PackOnBuild>
 		<PackageId>Waikiki.Common.Application</PackageId>
-		<PackageVersion>2.9.3</PackageVersion>
+		<PackageVersion>2.9.4</PackageVersion>
 		<Authors>Papp Kristóf</Authors>
 		<Copyright>All rights reserved.</Copyright>
 		<Owners>Papp Kristof</Owners>
