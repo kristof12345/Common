@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<PackOnBuild>true</PackOnBuild>
 		<PackageId>Waikiki.Common.Frontend</PackageId>
 		<Authors>Papp Kristóf</Authors>
@@ -9,7 +9,7 @@
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
 		<Owners>Papp Kristóf</Owners>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
-		<PackageVersion>2.9.4</PackageVersion>
+		<PackageVersion>3.0.0</PackageVersion>
 		<Description>Common components for building Blazor frontend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
@@ -19,23 +19,23 @@
 		<ProjectReference Include="..\..\Common\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.10" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.10" />
-		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.0" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.2.0" />
-		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Charts" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Popups" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.Grid" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="20.3.0.52" />
-		<PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="20.3.0.52" />
+		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Charts" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Popups" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.Grid" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="20.3.0.56" />
+		<PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="20.3.0.56" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Remove="wwwroot\.DS_Store" />

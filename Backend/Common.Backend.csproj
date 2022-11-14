@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackOnBuild>true</PackOnBuild>
 		<PackageId>Waikiki.Common.Backend</PackageId>
@@ -10,14 +10,14 @@
 		<Copyright>All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
-		<PackageVersion>2.9.4</PackageVersion>
+		<PackageVersion>3.0.0</PackageVersion>
 		<Description>Common components for building ASP.NET backend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.0" />
 		<PackageReference Include="JWT" Version="9.0.3" />
 		<PackageReference Include="Hangfire" Version="1.7.31" />
 	</ItemGroup>
