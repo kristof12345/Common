@@ -9,16 +9,16 @@
         <div class=@("chart " + Visibility)>
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                <ChartPrimaryYAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.Double Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
                 <ChartAxes>
-                    <ChartAxis Name="Volume" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
+                    <ChartAxis Name="Volume" ValueType=@Syncfusion.Blazor.Charts.ValueType.Double RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
                         <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                     </ChartAxis>
                 </ChartAxes>
@@ -37,7 +37,7 @@
         </div>
 
         <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType=@Syncfusion.Blazor.Charts.RangeValueType.DateTime IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
                 <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
                 <RangeNavigatorSeriesCollection>
                     <RangeNavigatorSeries DataSource=@Data.Sparse(100) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
