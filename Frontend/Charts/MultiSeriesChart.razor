@@ -5,14 +5,14 @@
 @using Syncfusion.Blazor.Charts
 
 <div class="series-chart" style=@($"height: {Height}")>
-    @if (Visibility == "hidden")
+    @if (Data == null)
     {
         <LoadingIndicator />
     }
 
     @if (Data != null)
     {
-        <div class=@("chart " + Visibility)>
+        <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
                 <ChartPrimaryXAxis ValueType=@ValueType IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
@@ -34,15 +34,9 @@
         </div>
         @if (ShowSelector)
         {
-            <div class=@("range " + Visibility)>
-                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
-                    <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
-                    <RangeNavigatorSeriesCollection>
-                        @foreach (var serie in Data)
-                        {
-                            <RangeNavigatorSeries DataSource=@serie.Data Fill=@serie.Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
-                        }
-                    </RangeNavigatorSeriesCollection>
+            <div class="range">
+                <SfRangeNavigator DataSource=Data.First() Value=@Range ValueChanged=@RangeChanged XName="Date" YName="Value" Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+                    <RangeNavigatorStyleSettings SelectedRegionColor=@Colors.Primary></RangeNavigatorStyleSettings>
                 </SfRangeNavigator>
             </div>
         }
@@ -95,8 +89,6 @@
     [Parameter]
     public decimal? Maximum { get; set; } = null;
 
-    private string Visibility { get; set; } = "hidden";
-
     private DateTime[] Range { get; set; }
 
     private string Height { get => ShowSelector ? "450px" : "350px"; }
@@ -107,7 +99,6 @@
     {
         if (Data != null)
         {
-            if (!ShowSelector) Visibility = "visible";
             Range = new DateTime[] { StartDate, EndDate };
         }
     }
@@ -115,11 +106,6 @@
     private void RangeChanged(object args)
     {
         Range = (DateTime[])args;
-    }
-
-    private void OnRangeLoaded(object args)
-    {
-        Visibility = "visible";
     }
 
     private void HandleClick(string label)

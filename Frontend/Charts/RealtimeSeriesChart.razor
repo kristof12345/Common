@@ -5,18 +5,16 @@
 @using Syncfusion.Blazor.Charts
 @using System.Collections.ObjectModel;
 
-<div class="series-chart" style=@($"height: 350px;")>
-    @if (Visibility == "hidden")
+<div class="series-chart" style="height: 350px;">
+    @if (Data == null)
     {
         <LoadingIndicator />
     }
 
     @if (Data != null)
     {
-        <div class=@("chart " + Visibility)>
+        <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
-
-                <ChartEvents Loaded=@OnChartLoaded />
 
                 <ChartPrimaryXAxis ValueType=@ValueType IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
@@ -67,12 +65,4 @@
 
     [Parameter]
     public double Opacity { get; set; } = 3;
-
-    private string Visibility { get; set; } = "hidden";
-
-    private void OnChartLoaded(object args)
-    {
-        Visibility = "visible";
-        this.StateHasChanged();
-    }
 }

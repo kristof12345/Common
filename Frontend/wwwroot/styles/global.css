@@ -186,7 +186,7 @@ text {
     fill: white !important;
 }
 
-.range rect {
+.range > div > svg > rect {
     fill: transparent !important;
 }
 

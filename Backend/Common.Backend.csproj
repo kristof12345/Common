@@ -10,15 +10,15 @@
 		<Copyright>All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/kristof12345/Common</PackageProjectUrl>
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
-		<PackageVersion>3.0.7</PackageVersion>
+		<PackageVersion>3.0.9</PackageVersion>
 		<Description>Common components for building ASP.NET backend applications.</Description>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.1" />
-		<PackageReference Include="JWT" Version="9.0.3" />
-		<PackageReference Include="Hangfire" Version="1.7.32" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.2" />
+		<PackageReference Include="JWT" Version="10.0.2" />
+		<PackageReference Include="Hangfire" Version="1.7.33" />
 	</ItemGroup>
 </Project>

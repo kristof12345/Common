@@ -1,24 +1,24 @@
-﻿<div class="finance-chart" style="height: 450px;">
-    @if (Visibility == "hidden")
+﻿<div class="finance-chart" style=@($"height: {Height}")>
+    @if (Data == null)
     {
         <LoadingIndicator />
     }
 
     @if (Data != null)
     {
-        <div class=@("chart " + Visibility)>
+        <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                <ChartPrimaryYAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.Double Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
                 <ChartAxes>
-                    <ChartAxis Name="Volume" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
+                    <ChartAxis Name="Volume" ValueType=@Syncfusion.Blazor.Charts.ValueType.Double RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
                         <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                     </ChartAxis>
                 </ChartAxes>
@@ -36,14 +36,25 @@
             </SfChart>
         </div>
 
-        <div class=@("range " + Visibility)>
-            <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
-                <RangeNavigatorEvents Loaded=@OnRangeLoaded></RangeNavigatorEvents>
-                <RangeNavigatorSeriesCollection>
-                    <RangeNavigatorSeries DataSource=@Data.Sparse(100) Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
-                </RangeNavigatorSeriesCollection>
-            </SfRangeNavigator>
-        </div>
+        @if (SelectorType == SelectorType.Small)
+        {
+            <div class="range">
+                <SfRangeNavigator DataSource=Data Value=@Range ValueChanged=@RangeChanged XName="Date" YName="Value" Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+                    <RangeNavigatorStyleSettings SelectedRegionColor=@Colors.Primary></RangeNavigatorStyleSettings>
+                </SfRangeNavigator>
+            </div>
+        }
+
+        @if (SelectorType == SelectorType.Large)
+        {
+            <div class="range">
+                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+                    <RangeNavigatorSeriesCollection>
+                        <RangeNavigatorSeries DataSource=Data Fill=@Colors.Warning Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
+                    </RangeNavigatorSeriesCollection>
+                </SfRangeNavigator>
+            </div>
+        }
     }
 </div>
 
@@ -62,6 +73,9 @@
     public DateTime EndDate { get; set; }
 
     [Parameter]
+    public SelectorType SelectorType { get; set; } = SelectorType.Small;
+
+    [Parameter]
     public decimal? Minimum { get; set; } = null;
 
     [Parameter]
@@ -75,9 +89,9 @@
 
     private DateTime[] Range { get; set; }
 
-    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
+    private string Height { get => SelectorType == SelectorType.Large ? "450px" : SelectorType == SelectorType.Small ? "400px" : "350px"; }
 
-    private string Visibility { get; set; } = "hidden";
+    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     private decimal VolumeMin { get => RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
 
@@ -86,11 +100,6 @@
     protected override void OnParametersSet()
     {
         Range = new DateTime[] { StartDate, EndDate };
-    }
-
-    private void OnRangeLoaded(object args)
-    {
-        Visibility = "visible";
     }
 
     private void RangeChanged(object args)
