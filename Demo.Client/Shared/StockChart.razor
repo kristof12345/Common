@@ -9,7 +9,7 @@
         <div class="chart">
             <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTime IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
@@ -49,9 +49,7 @@
         {
             <div class="range">
                 <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
-                    <RangeNavigatorSeriesCollection>
-                        <RangeNavigatorSeries DataSource=Data Fill=@Colors.Warning Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
-                    </RangeNavigatorSeriesCollection>
+                    <RangeNavigatorSeries DataSource=Data Fill=@Colors.Warning Type=@RangeNavigatorType.Area Width="2" XName="Date" YName="Value" />
                 </SfRangeNavigator>
             </div>
         }

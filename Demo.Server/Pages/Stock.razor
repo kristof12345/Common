@@ -5,7 +5,29 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.Center Height="40px">
             <Heading>@Model.Name</Heading>
         </Horizontal>
-        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) />
+        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) SelectorType=@SelectorType.None/>
+        <Paragraph> Company description </Paragraph>
+        <Paragraph Align="justify"> @Model.Description</Paragraph>
+    </Paper>
+</Container>
+
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" )) VerticalAlign=@VerticalAlignment.Start>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.Center Height="40px">
+            <Heading>@Model.Name</Heading>
+        </Horizontal>
+        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) SelectorType=@SelectorType.Small />
+        <Paragraph> Company description </Paragraph>
+        <Paragraph Align="justify"> @Model.Description</Paragraph>
+    </Paper>
+</Container>
+
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" )) VerticalAlign=@VerticalAlignment.Start>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.Center Height="40px">
+            <Heading>@Model.Name</Heading>
+        </Horizontal>
+        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) SelectorType=@SelectorType.Large />
         <Paragraph> Company description </Paragraph>
         <Paragraph Align="justify"> @Model.Description</Paragraph>
     </Paper>
