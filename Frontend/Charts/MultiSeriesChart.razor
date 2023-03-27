@@ -46,7 +46,10 @@
         {
             <div class="range">
                 <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
-                    <RangeNavigatorSeries DataSource=RangedData.First().Data Fill=@Colors.Primary Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
+                    @foreach (var serie in Data)
+                    {
+                        <RangeNavigatorSeries DataSource=serie.Data Fill=@serie.Color Type=@RangeNavigatorType.Line Width="2" XName="Date" YName="Value" />
+                    }
                 </SfRangeNavigator>
             </div>
         }

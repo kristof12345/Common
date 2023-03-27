@@ -1,0 +1,55 @@
+﻿@page "/multi-chart"
+
+@using Common.Application
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
+</Paper>
+
+<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
+</Paper>
+
+@code
+{
+    [Inject]
+    private DataService StockService { get; set; }
+
+    private List<ChartDataSeries> MultiSeriesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        MultiSeriesList = new List<ChartDataSeries>
+        {
+            new ChartDataSeries
+            {
+                Label = "Series 1",
+                Color = Colors.Get(1),
+                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.json")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.1m })
+            },
+            new ChartDataSeries
+            {
+                Label = "Series 2",
+                Color = Colors.Get(2),
+                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.json")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.2m })
+            },
+            new ChartDataSeries
+            {
+                Label = "Series 3",
+                Color = Colors.Get(3),
+                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.json")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.3m })
+            }
+        };
+    }
+
+    public class Price : ITemporalValue
+    {
+        public DateTime Date { get; set; }
+
+        public decimal Value { get; set; }
+    }
+}
