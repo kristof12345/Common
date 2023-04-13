@@ -5,7 +5,6 @@
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Notifications
 
-<style>:root {--primary-color: @Colors.Primary;--secondary-color: @Colors.Secondary; --frame-color: @Colors.Frame; } </style>
 <style>
     .sf-license-warning {
         display: none;
@@ -16,10 +15,10 @@
     }
 </style>
 
+<MenuBar Title="Demo App" OnMenuClick=@OpenMenu />
 
-<MenuBar Title="Demo App" OnMenuClick=@ToggleMenu />
+<SfSidebar IsOpen=Opened IsOpenChanged=@ToggleMenu Changed=@Changed Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Over Animate="true">
 
-<SfSidebar IsOpen=Opened IsOpenChanged=@ToggleMenu Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Over Animate="true">
     <NavLink class="nav-link" ActiveClass="nav-link-active"><Icon IconType="apps" />Main menu</NavLink>
     <div class="sidebar">
         <ul class="nav flex-column">
@@ -116,23 +115,28 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        Manual = true;
-
         if (firstRender)
         {
             Toaster.Toaster = ToastObj;
         }
     }
 
-    private void ToggleMenu()
+    private void OpenMenu()
     {
-        Opened = !Opened;
-
         if (Manual)
         {
             Opened = true;
         }
+    }
 
+    private void ToggleMenu()
+    {
+        Opened = !Opened;
         Manual = false;
+    }
+
+    private void Changed()
+    {
+        Manual = true;
     }
 }
