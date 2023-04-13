@@ -112,7 +112,7 @@ form, button, img {
 /* Dark themes */
 
 .body-dark {
-    background-color: #212121;
+    background-color: var(--darkgrey-color);
 }
 
     .body-dark h1, .body-dark h2, .body-dark h3, .body-dark h4, .body-dark h5, .body-dark h6, .body-dark p, .body-dark label, .body-dark div, .body-dark a, .body-dark li {
@@ -128,7 +128,7 @@ form, button, img {
     }
 
     .body-dark .logo-button {
-        background-color: #424242;
+        background-color: var(--lightgrey-color);
     }
 
     .body-dark .custom-icons {
@@ -142,7 +142,7 @@ input: -webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:fo
 }
 
 .body-dark input:-webkit-autofill, .body-dark input:-webkit-autofill:hover, .body-dark input:-webkit-autofill:focus, .body-dark input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #424242 inset !important;
+    -webkit-box-shadow: 0 0 0 30px var(--lightgrey-color) inset !important;
 }
 
 /* Color picker */
@@ -152,7 +152,7 @@ input: -webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:fo
 }
 
 .body-dark .sf-colorpicker {
-    background-color: #424242;
+    background-color: var(--lightgrey-color);
 }
 
 /* Charts */
@@ -196,7 +196,7 @@ text {
 }
 
 .body-dark .e-dlg-header-content, .body-dark .e-dlg-content {
-    background-color: #424242 !important;
+    background-color: var(--lightgrey-color) !important;
 }
 
 .e-dialog {
@@ -206,7 +206,7 @@ text {
 /* Dropdown */
 
 .body-dark .e-dropdownbase .e-list-item {
-    background-color: #212121 !important;
+    background-color: var(--darkgrey-color) !important;
     color: white;
 }
 
@@ -228,7 +228,7 @@ text {
 /* Sidebar */
 
 .body-dark .e-sidebar {
-    background-color: #424242 !important;
+    background-color: var(--lightgrey-color) !important;
 }
 
 .e-sidebar, .e-sidebar-overlay {
@@ -261,28 +261,19 @@ text {
 
 /* Inputs */
 
-.e-bigger .e-float-text.e-label-bottom {
-    line-height: 70px !important;
+.e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) {
+    border-bottom-color: var(--frame-color) !important;
+    border-left-color: var(--frame-color) !important;
+    border-right-color: var(--frame-color) !important;
 }
 
-.e-float-input {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
-}
-
-    .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) {
-        border-bottom-color: var(--frame-color) !important;
-        border-left-color: var(--frame-color) !important;
-        border-right-color: var(--frame-color) !important;
+    .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover):not(.e-valid-input) {
+        border-top-color: var(--frame-color) !important;
     }
 
-        .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover):not(.e-valid-input) {
-            border-top-color: var(--frame-color) !important;
-        }
-
-        .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::before, .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::after {
-            border-top-color: var(--frame-color) !important;
-        }
+    .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::before, .e-float-input:not(.e-input-focus):not(.e-success):not(.e-error):not(:hover) .e-label-top::after {
+        border-top-color: var(--frame-color) !important;
+    }
 
 .body-dark .e-label-bottom, .body-dark .e-label-top {
     color: rgba(255, 255, 255, 0.7) !important;
@@ -295,7 +286,7 @@ text {
 /* Accordion */
 
 .body-dark .e-accordion, .body-dark .e-acrdn-header, .body-dark .e-acrdn-panel {
-    background-color: #424242 !important;
+    background-color: var(--lightgrey-color) !important;
 }
 
 .e-acrdn-root {
@@ -322,7 +313,7 @@ text {
 /* Date picker */
 
 .body-dark .e-datepicker .e-calendar, .body-dark .e-datepicker .e-calendar .e-footer-container {
-    background-color: #424242 !important;
+    background-color: var(--lightgrey-color) !important;
 }
 
 .body-dark .e-datepicker .e-title, .body-dark .e-datepicker .e-week-header th {
