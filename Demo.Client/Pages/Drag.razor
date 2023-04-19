@@ -1,50 +1,51 @@
 ﻿@page "/drag"
 @using Common.Application
 
-<Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween VerticalAlign=@VerticalAlignment.Start>
-    <Vertical Width="45%">
-        <Paragraph Class="center-text">Available options</Paragraph>
-        <DropArea Items=@Available OnItemDrop=@HandleChange OnClick=@HandleClick />
-    </Vertical>
-    <Vertical Width="45%">
-        <Paragraph Class="center-text">Your preferences</Paragraph>
-        <DropArea Items=@Preferences OnItemDrop=@HandleChange />
-    </Vertical>
-</Horizontal>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween VerticalAlign=@VerticalAlignment.Start>
+        <Vertical Width="45%">
+            <Paragraph Class="center-text">Available options</Paragraph>
+            <DropArea Items=@Available OnItemDrop=@HandleChange OnClick=@HandleClick />
+        </Vertical>
+        <Vertical Width="45%">
+            <Paragraph Class="center-text">Your preferences</Paragraph>
+            <DropArea Items=@Preferences OnItemDrop=@HandleChange />
+        </Vertical>
+    </Horizontal>
 
 
-@code
+    @code
 {
 
-    private List<ILabeledValue> Available;
+        private List<ILabeledValue> Available;
 
-    private List<ILabeledValue> Preferences;
+        private List<ILabeledValue> Preferences;
 
-    protected override void OnInitialized()
-    {
-        Available = new List<ILabeledValue> { new Unique { Value = 1, Label = "Content 1" }, new Unique { Id = 2, Label = "Content 2" }, new Unique { Value = 3, Label = "Content 3" } };
-        Preferences = new List<ILabeledValue> { };
+        protected override void OnInitialized()
+        {
+            Available = new List<ILabeledValue> { new Unique { Value = 1, Label = "Content 1" }, new Unique { Id = 2, Label = "Content 2" }, new Unique { Value = 3, Label = "Content 3" } };
+            Preferences = new List<ILabeledValue> { };
+        }
+
+        private void HandleChange()
+        {
+
+        }
+
+        private void HandleClick(ILabeledValue item)
+        {
+            Available.Remove(item);
+            Preferences.Add(item);
+        }
+
+        public class Unique : ILabeledValue, IEntity<int>
+        {
+            public int Id { get; set; }
+
+            public decimal Value { get; set; }
+
+            public string Label { get; set; }
+
+            public string Color { get; set; }
+        }
     }
-
-    private void HandleChange()
-    {
-
-    }
-
-    private void HandleClick(ILabeledValue item)
-    {
-        Available.Remove(item);
-        Preferences.Add(item);
-    }
-
-    public class Unique : ILabeledValue, IEntity<int>
-    {
-        public int Id { get; set; }
-
-        public decimal Value { get; set; }
-
-        public string Label { get; set; }
-
-        public string Color { get; set; }
-    }
-}

@@ -65,6 +65,10 @@ form, button, img {
     max-width: 90vw;
 }
 
+form .input {
+    margin-top: 15px;
+}
+
 .hidden {
     visibility: hidden;
 }

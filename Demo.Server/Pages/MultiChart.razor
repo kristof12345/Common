@@ -2,17 +2,19 @@
 
 @using Common.Application
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
-</Paper>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
+    </Paper>
+</Container>
 
 @code
 {
@@ -24,7 +26,7 @@
     protected override async Task OnInitializedAsync()
     {
         MultiSeriesList = new List<ChartDataSeries>
-        {
+    {
             new ChartDataSeries
             {
                 Label = "Series 1",

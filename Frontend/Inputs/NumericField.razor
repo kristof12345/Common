@@ -6,13 +6,13 @@
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Web
 
-<p style=@($"width: {Width}")>
+<div class="input" style=@($"width: {Width}")>
     <SfNumericTextBox @oninput=@HandleInput Value=@Value ValueChanged=@ValueChanged Min=@Min Max=@Max Step=@Step FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger form-input" Enabled=@(!Disabled) TValue="T" Format=@Format ValueExpression=@ValidationExpression autofocus />
     @if (ValidationExpression != null)
     {
         <ValidationMessage For=@ValidationExpression />
     }
-</p>
+</div>
 
 @code
 {

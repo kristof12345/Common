@@ -4,21 +4,23 @@
 @using System.Timers
 @using System.Collections.ObjectModel
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
-</Paper>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <RealtimeSeriesChart Data=@RealTimeData Color=@Colors.Primary />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <RealtimeSeriesChart Data=@RealTimeData Color=@Colors.Primary />
+    </Paper>
+</Container>
 
 @code
 {

@@ -1,6 +1,9 @@
 ﻿@page "/cache"
 
-<p>@Json?.Title</p>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <h3>@Text</h3>
+    <p>@Json?.Title</p>
+</Container>
 
 @code
 {
