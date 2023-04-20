@@ -1,0 +1,37 @@
+﻿@page "/inputs"
+
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" ))>
+        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap Class="input-line">
+            <NumericField @bind-Value=@Amount Label="Amount" Min="0" Max="long.MaxValue" Step="1" Width="calc(24% - 50px)" />
+            <TextField Value=@MarketValue.FormatDecimal() Disabled="true" Label="Market value" Width="calc(24% - 50px)" />
+            <TextField Value=@SellValue.FormatDecimal() Disabled="true" Label="Sell value" Width="calc(24% - 50px)" />
+            <TextField Value=@BuyValue.FormatDecimal() Disabled="true" Label="Buy value" Width="calc(24% - 50px)" />
+            <Tooltip Content=@(BuyValue > Balance ? "Not enough money to buy" : "Specify amount") Enabled=@BuyDisabled DisableClick="true">
+                <Button Color=@Colors.Success Height="54px" Width="100px" Disabled=@BuyDisabled>Buy</Button>
+            </Tooltip>
+            <Tooltip Content=@(Amount > OwnedAmount ? "Not enough assets to sell" : "Specify amount") Enabled=@SellDisabled DisableClick="true">
+                <Button Color=@Colors.Error Height="54px" Width="100px" Disabled=@SellDisabled>Sell</Button>
+            </Tooltip>
+        </Horizontal>
+    </Paper>
+</Container>
+
+@code
+{
+    public decimal Balance { get; set; } = 20;
+
+    public int OwnedAmount { get; set; } = 4;
+
+    public long Amount { get; set; }
+
+    private decimal MarketValue { get => 5 * Amount; }
+
+    private decimal SellValue { get => 4 * Amount; }
+
+    private decimal BuyValue { get => 6 * Amount; }
+
+    private bool BuyDisabled { get => BuyValue > Balance || Amount == 0; }
+
+    private bool SellDisabled { get => Amount > OwnedAmount || Amount == 0; }
+}

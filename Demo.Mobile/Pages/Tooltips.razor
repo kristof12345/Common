@@ -1,0 +1,30 @@
+﻿@page "/tooltips"
+
+<h1>Hello tooltips</h1>
+<h1>Click count: @Count</h1>
+
+<Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround Wrap=@FlexWrap.Wrap>
+    <Button OnClick="Clicked">No tooltip</Button>
+
+    <Tooltip Content="Hello world!">
+        <Button OnClick="Clicked">Enabled</Button>
+    </Tooltip>
+
+    <Tooltip Content="Hello world!" Enabled="false">
+        <Button OnClick="Clicked">Hidden tooltip</Button>
+    </Tooltip>
+
+    <Tooltip Content="Hello world!" DisableClick="true">
+        <Button OnClick="Clicked" Disabled="true">Disabled</Button>
+    </Tooltip>
+</Horizontal>
+
+@code
+{
+    private int Count { get; set; }
+
+    private void Clicked()
+    {
+        Count++;
+    }
+}

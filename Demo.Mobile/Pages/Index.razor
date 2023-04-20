@@ -1,0 +1,35 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+<ThemeToggle />
+
+<Tooltip Content="Hello world!">
+    <LogoButton Text="Currencies" IconType="local_atm" />
+</Tooltip>
+
+<Layout Visible="mobile">
+    Only mobile
+</Layout>
+
+<Layout Visible="laptop desktop">
+    Only laptop and desktop
+</Layout>
+
+<Layout Visible="desktop ultrawide">
+    Only desktop and ultrawide
+</Layout>
+
+<Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+</Horizontal>
+
+<Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround Wrap=@FlexWrap.Wrap>
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+    <CircleImage Src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg" Margin=@Border.From("0px") />
+</Horizontal>

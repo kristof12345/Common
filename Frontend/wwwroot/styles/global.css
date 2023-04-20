@@ -65,9 +65,9 @@ form, button, img {
     max-width: 90vw;
 }
 
-form .input {
-    margin-top: 15px;
-}
+    form .input {
+        margin-top: 15px;
+    }
 
 .hidden {
     visibility: hidden;
@@ -394,4 +394,34 @@ td {
 
 .body-dark .e-emptyrow {
     color: white !important;
+}
+
+/* Mobile login */
+
+@media (max-width: 500px) {
+    .page {
+        margin-top: 0px !important;
+    }
+
+    .paper {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .toggle-body {
+        margin-top: -35px;
+        margin-bottom: -35px;
+    }
+
+    .login {
+        justify-content: start !important;
+    }
+
+        .login .paper {
+            height: 100% !important;
+        }
+
+        .login img {
+            height: unset !important;
+        }
 }

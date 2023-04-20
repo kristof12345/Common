@@ -1,0 +1,131 @@
+﻿@inherits LayoutComponentBase
+
+@namespace Demo.Mobile
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Notifications
+
+<MenuBar Title="Demo App" OnMenuClick=@OpenMenu />
+
+<SfSidebar IsOpen=Opened IsOpenChanged=@ToggleMenu Changed=@Changed Width="380px" Position=@SidebarPosition.Right CloseOnDocumentClick="true" ShowBackdrop="true" Type=@SidebarType.Over Animate="true">
+
+    <div class="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="form">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Form
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="diagram">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Diagram
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="stock">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Stock
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="drag">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Drag and drop
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="chart">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Single chart
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="multi-chart">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Multi chart
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="file">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Image upload
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="login">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Login
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="cache">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Cache
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="inputs">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Inputs
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="tooltips">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Tooltips
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+    <ThemeToggle />
+</SfSidebar>
+
+<div class="page">
+    <div class="main">
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>
+
+<SfToast @ref="ToastObj">
+    <ToastPosition X="Right" Y="Bottom"></ToastPosition>
+</SfToast>
+
+@code
+{
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    [Inject]
+    protected ToastService Toaster { get; set; }
+
+    private SfToast ToastObj;
+
+    private bool Opened { get; set; } = false;
+
+    private bool Manual { get; set; } = true;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Toaster.Toaster = ToastObj;
+        }
+    }
+
+    private void OpenMenu()
+    {
+        if (Manual)
+        {
+            Opened = true;
+        }
+    }
+
+    private void ToggleMenu()
+    {
+        Opened = !Opened;
+        Manual = false;
+    }
+
+    private void Changed()
+    {
+        Manual = true;
+    }
+}

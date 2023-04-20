@@ -1,0 +1,74 @@
+﻿@page "/chart"
+
+@using Common.Application
+@using System.Timers
+@using System.Collections.ObjectModel
+
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
+    </Paper>
+
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
+    </Paper>
+
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
+    </Paper>
+
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <RealtimeSeriesChart Data=@RealTimeData Color=@Colors.Primary />
+    </Paper>
+</Container>
+
+@code
+{
+    [Inject]
+    private DataService StockService { get; set; }
+
+    private List<StockPrice> Series;
+
+    private static Timer timer;
+    private Random randomNum = new Random();
+    public ObservableCollection<ITemporalValue> RealTimeData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        RealTimeData = new ObservableCollection<ITemporalValue>();
+
+        for (int i = 0; i < 360; i++)
+        {
+            RealTimeData.Add(new Price
+            {
+                Date = DateTime.Now.AddSeconds(i - 360),
+                Value = randomNum.Next(30, 80)
+            });
+        }
+
+        timer = new Timer(1000);
+        timer.Elapsed += AddData;
+        timer.AutoReset = true;
+
+        await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
+
+        Series = await StockService.LoadFromJson<List<StockPrice>>("exchange.json");
+    }
+
+    private void AddData(Object source, ElapsedEventArgs e)
+    {
+        RealTimeData.RemoveAt(0);
+        RealTimeData.Add(new Price
+        {
+            Date = DateTime.Now,
+            Value = randomNum.Next(30, 80)
+        });
+    }
+
+    public class Price : ITemporalValue
+    {
+        public DateTime Date { get; set; }
+
+        public decimal Value { get; set; }
+    }
+}
