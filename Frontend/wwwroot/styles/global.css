@@ -413,6 +413,14 @@ td {
         margin-bottom: -35px;
     }
 
+    .input-line {
+        flex-direction: column !important;
+    }
+
+        .input-line .input {
+            width: 100% !important;
+        }
+
     .login {
         justify-content: start !important;
     }
