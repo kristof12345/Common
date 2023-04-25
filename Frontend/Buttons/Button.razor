@@ -1,52 +1,11 @@
 ﻿@namespace Common.Web
-
 @using Syncfusion.Blazor.Buttons
+@inherits AppButton
 
-<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{ButtonClass} {Class}") style=@($"width: {Width}; min-width: {MinWidth}; height: {Height}; margin: {Margin.ToString()}; {GetColorStyle()} {Style}")>@ChildContent</SfButton>
+<SfButton OnClick=@OnClick Type=@Type Disabled=@Disabled class=@($"{ButtonClass} {Class}") style=@($"{ColorStyle} {Css}")>@ChildContent</SfButton>
 
 @code
 {
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-    [Parameter]
     public EventCallback OnClick { get; set; }
-
-    [Parameter]
-    public string Color { get; set; } = Colors.Primary;
-
-    [Parameter]
-    public string Type { get; set; } = "button";
-
-    [Parameter]
-    public bool Disabled { get; set; } = false;
-
-    [Parameter]
-    public bool Outlined { get; set; } = false;
-
-    [Parameter]
-    public string Width { get; set; } = "auto";
-
-    [Parameter]
-    public string MinWidth { get; set; } = "unset";
-
-    [Parameter]
-    public string Height { get; set; } = "36px";
-
-    [Parameter]
-    public Border Margin { get; set; } = new Border("0px");
-
-    [Parameter]
-    public string Class { get; set; }
-
-    [Parameter]
-    public string Style { get; set; }
-
-    private string ButtonClass { get => Outlined ? "e-outline" : "e-fill"; }
-
-    private string GetColorStyle()
-    {
-        var color = Disabled ? Colors.Grey : Color;
-        return Outlined ? $"color: {color}; border-color: {color};" : $"background-color: {color};";
-    }
 }
