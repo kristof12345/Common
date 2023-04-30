@@ -32,5 +32,10 @@ public class AppComponent : ComponentBase
     [Parameter]
     public virtual Border Margin { get; set; } = new Border("0px");
 
-    protected string Css { get => $"width: {Width}; min-width: {MinWidth}; max-width: {MaxWidth}; height: {Height}; padding: {Padding}; margin: {Margin}; {Style}"; }
+    [Parameter]
+    public virtual bool Visible { get; set; } = true;
+
+    protected virtual string Visibility { get => Visible ? "visible" : "hidden"; }
+
+    protected string Css { get => $"width: {Width}; min-width: {MinWidth}; max-width: {MaxWidth}; height: {Height}; padding: {Padding}; margin: {Margin}; visibility: {Visibility}; {Style}"; }
 }

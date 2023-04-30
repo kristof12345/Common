@@ -1,0 +1,13 @@
+﻿@namespace Common.Web
+@inherits AppTypography
+
+<h3 onclick=@OnClick style=@($"font-size: {Size}px; font-weight: {Weight}; width: {Width}; letter-spacing: 0.25px; text-align: {Align}; color: {Color}; margin: {Margin.ToString()}; {Style}") class=@Class>@ChildContent</h3>
+
+@code
+{
+    [Parameter]
+    public int Size { get; set; } = 28;
+
+    [Parameter]
+    public int Weight { get; set; } = 400;
+}

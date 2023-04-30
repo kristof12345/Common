@@ -396,21 +396,20 @@ td {
     color: white !important;
 }
 
-/* Mobile login */
+.mobile .e-grid {
+    border-style: solid;
+}
 
+/* Mobile login */
 @media (max-width: 500px) {
     .page {
         margin-top: 0px !important;
     }
 
+    Tab == "National" ? "National" : User.District
     .paper {
         margin-top: 10px !important;
         margin-bottom: 10px !important;
-    }
-
-    .toggle-body {
-        margin-top: -35px;
-        margin-bottom: -35px;
     }
 
     .input-line {

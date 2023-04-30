@@ -26,9 +26,11 @@
     public string RightLabel { get; set; }
 
     [Parameter]
+    [EditorRequired]
     public string Tab { get; set; }
 
     [Parameter]
+    [EditorRequired]
     public EventCallback<string> TabChanged { get; set; }
 
     private async Task HandleLeftClick()
