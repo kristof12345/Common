@@ -16,7 +16,7 @@ jobs:
           dotnet-version: "7.0.x"
 
       - name: Publish .NET Core Project
-        run: dotnet publish ./Frontend/Common.Frontend.csproj -c Release -o release --nologo /nowarn:CS1591
+        run: dotnet publish ./Demo.Client/Demo.Client.csproj -c Release -o release --nologo /nowarn:CS1591
 
       - name: Change base-tag in index.html
         run: sed -i 's/<base href="\/" \/>/<base href="\/Common\/" \/>/g' release/wwwroot/index.html
