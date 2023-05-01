@@ -6,9 +6,11 @@
     --border-radius: 55px;
     --font-size: 30px;
     --accent: var(--primary-color);
-    transform: scale(0.3) translate(0, 0);
+    transform: scale(0.35) translate(0, 0);
     -webkit-font-smoothing: antialiased;
     font-family: sans-serif;
+    margin-top: -30px;
+    margin-bottom: -30px;
 }
 
 .toggle-container[b-x43ib33iwl] {
@@ -243,6 +245,10 @@ a[b-7bk747ardv] {
     width: 100%;
     margin-bottom: 10px;
 }
+
+form p[b-s9khf4yn7a] {
+    margin-top: 10px;
+}
 /* _content/Waikiki.Common.Frontend/Components/MenuBar.razor.rz.scp.css */
 
 .menu-background[b-u6r8eo3bhe] {
@@ -281,9 +287,8 @@ a[b-7bk747ardv] {
 .menu-dropdown[b-u6r8eo3bhe] {
     position: fixed;
     right: 0;
-    top: 28px;
-    width: 71px;
-    height: 22px;
+    top: 8px;
+    width: 76px;
     cursor: pointer;
 }
 /* _content/Waikiki.Common.Frontend/Components/SegmentedControl.razor.rz.scp.css */
@@ -433,6 +438,16 @@ div[b-nnhta3we9u] {
     display: none;
 }
 
+.horizontal[b-nnhta3we9u] {
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.vertical[b-nnhta3we9u] {
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
 @media (max-width: 600px) {
     .mobile[b-nnhta3we9u] {
         display: flex;
@@ -492,8 +507,8 @@ div[b-nnhta3we9u] {
 /* _content/Waikiki.Common.Frontend/Diagrams/DoughnutDiagram.razor.rz.scp.css */
 @media (max-width: 1500px) {
     .diagram[b-4irsq8plym] {
-        margin-top: calc(20vw - 300px);
-        margin-bottom: calc(20vw - 300px);
+        margin-top: calc(20vw - 300px) !important;
+        margin-bottom: calc(20vw - 300px) !important;
     }
 }
 /* _content/Waikiki.Common.Frontend/Pagination/PageIcon.razor.rz.scp.css */
