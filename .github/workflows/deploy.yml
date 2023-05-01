@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Git checkout
@@ -14,6 +14,9 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "7.0.x"
+
+      - name: Install workload
+        run: dotnet workload install android ios maccatalyst maui wasm-tools
 
       - name: Publish .NET Core Project
         run: dotnet publish ./Waikiki.Common.sln -c Release -o release --nologo /nowarn:CS1591
