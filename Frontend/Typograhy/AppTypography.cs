@@ -14,7 +14,7 @@ namespace Common.Web
         public string Width { get; set; } = "auto";
 
         [Parameter]
-        public string Color { get; set; } = "unset";
+        public string Color { get; set; } = "default";
 
         [Parameter]
         public Border Margin { get; set; } = new Border("0px");

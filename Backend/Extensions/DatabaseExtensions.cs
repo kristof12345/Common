@@ -42,6 +42,19 @@ public static class DatabaseExtensions
         return (T)entity;
     }
 
+    public static async Task<T> UpdateAsync<T, R>(this DbSet<T> database, R id, IEntity<R> entity) where T : class, IEntity<R>
+    {
+        entity.Id = id;
+        var original = await database.AsTracking().FindAsync(id);
+        if (original != null)
+        {
+            database.Remove(original);
+            database.Add((T)entity);
+            await database.SaveAsync();
+        }
+        return (T)entity;
+    }
+
     public static async Task<T> DeleteAsync<T, R>(this DbSet<T> database, R id) where T : class, IEntity<R>
     {
         var entity = await database.AsTracking().FindAsync(id);

@@ -1,4 +1,4 @@
-﻿<div class="finance-chart" style="height: 450px;">
+﻿<div class="finance-chart" style=@($"height: {Height}")>
     @if (Data == null)
     {
         <LoadingIndicator />
@@ -6,18 +6,18 @@
     else
     {
         <div class="chart">
-            <SfChart Theme=@ChartTheme.Material Background=@Colors.Transparent Height="350">
+            <SfChart Theme=@Theme.Material Background=@Colors.Transparent Height="350">
 
-                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory LabelFormat="  yyyy.MM.dd  " LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
+                <ChartPrimaryXAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.DateTimeCategory IntervalType=@ChartIntervalType LabelFormat=@ChartIntervalType.ToFormat() LabelIntersectAction=@LabelIntersectAction.Hide EdgeLabelPlacement=@EdgeLabelPlacement.Shift>
                     <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                 </ChartPrimaryXAxis>
 
-                <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Double" Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
+                <ChartPrimaryYAxis ValueType=@Syncfusion.Blazor.Charts.ValueType.Double Span="1" OpposedPosition="true" LabelIntersectAction=@LabelIntersectAction.Hide RowIndex="1" RangePadding=@ChartRangePadding.Additional Minimum=@Minimum Maximum=@Maximum>
                     <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                 </ChartPrimaryYAxis>
 
                 <ChartAxes>
-                    <ChartAxis Name="Volume" ValueType="Syncfusion.Blazor.Charts.ValueType.Double" RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
+                    <ChartAxis Name="Volume" ValueType=@Syncfusion.Blazor.Charts.ValueType.Double RowIndex="1" Visible="false" Maximum=@VolumeMax Minimum=@VolumeMin>
                         <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
                     </ChartAxis>
                 </ChartAxes>
@@ -35,14 +35,23 @@
             </SfChart>
         </div>
 
-        <div class="range">
-            <SfRangeNavigator ValueType=@RangeValueType.DateTime Theme=@ChartTheme.Material Height="100" IntervalType=@IntervalType Interval="1" LabelFormat=@IntervalType.ToFormat()>
-                <RangeNavigatorEvents Changed=@RangeChanged></RangeNavigatorEvents>
-                <RangeNavigatorSeriesCollection>
-                    <RangeNavigatorSeries DataSource=@Data Type=@RangeNavigatorType.Line Fill=@Colors.Warning Width="2" XName="Date" YName="Close" />
-                </RangeNavigatorSeriesCollection>
-            </SfRangeNavigator>
-        </div>
+        @if (SelectorType == SelectorType.Small)
+        {
+            <div class="range">
+                <SfRangeNavigator DataSource=Data Value=@Range ValueChanged=@RangeChanged XName="Date" YName="Value" Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+                    <RangeNavigatorStyleSettings SelectedRegionColor=@Colors.Primary></RangeNavigatorStyleSettings>
+                </SfRangeNavigator>
+            </div>
+        }
+
+        @if (SelectorType == SelectorType.Large)
+        {
+            <div class="range">
+                <SfRangeNavigator Value=@Range ValueChanged=@RangeChanged Theme=@Theme.Material Height="100" ValueType="Syncfusion.Blazor.Charts.RangeValueType.DateTime" IntervalType=@RangeIntervalType LabelFormat=@RangeIntervalType.ToFormat()>
+                    <RangeNavigatorSeries DataSource=Data Fill=@Colors.Warning Type=@RangeNavigatorType.Area Width="2" XName="Date" YName="Value" />
+                </SfRangeNavigator>
+            </div>
+        }
     }
 </div>
 
@@ -61,23 +70,37 @@
     public DateTime EndDate { get; set; }
 
     [Parameter]
+    public SelectorType SelectorType { get; set; } = SelectorType.Small;
+
+    [Parameter]
     public decimal? Minimum { get; set; } = null;
 
     [Parameter]
     public decimal? Maximum { get; set; } = null;
 
     [Parameter]
-    public RangeIntervalType IntervalType { get; set; } = RangeIntervalType.Auto;
+    public IntervalType ChartIntervalType { get; set; } = IntervalType.Days;
 
-    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= StartDate && d.Date <= EndDate); }
+    [Parameter]
+    public RangeIntervalType RangeIntervalType { get; set; } = RangeIntervalType.Years;
+
+    private DateTime[] Range { get; set; }
+
+    private string Height { get => SelectorType == SelectorType.Large ? "450px" : SelectorType == SelectorType.Small ? "400px" : "350px"; }
+
+    private IEnumerable<StockPrice> RangedData { get => Data.Where(d => d.Date >= Range[0] && d.Date <= Range[1]); }
 
     private decimal VolumeMin { get => RangedData.Any() ? RangedData.Min(s => s.Volume) * 1 : 0; }
 
     private decimal VolumeMax { get => RangedData.Any() ? RangedData.Max(s => s.Volume) * 4 : 0; }
 
-    private void RangeChanged(IChangedEventArgs args)
+    protected override void OnParametersSet()
     {
-        StartDate = (DateTime)args.Start;
-        EndDate = (DateTime)args.End;
+        Range = new DateTime[] { StartDate, EndDate };
+    }
+
+    private void RangeChanged(object args)
+    {
+        Range = (DateTime[])args;
     }
 }

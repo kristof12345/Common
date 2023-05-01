@@ -8,13 +8,13 @@
 
 @typeparam TEnum
 
-<p style=@($"width: {Width}")>
+<div class="input" style=@($"width: {Width}")>
     <SfDropDownList Value=@EnumExtensions.GetAttributeValue(Value) ValueChanged=@HandleValueChange DataSource=@Values FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger" Enabled=@(!Disabled) TValue=string TItem=string />
     @if (ValidationExpression != null)
     {
         <ValidationMessage For=@ValidationExpression />
     }
-</p>
+</div>
 
 @code
 {

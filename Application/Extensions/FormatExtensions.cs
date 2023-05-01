@@ -54,4 +54,26 @@ public static class Format
     {
         return string.Format(FormatProvider, "{0:F0}", value);
     }
+
+    public static string FormatDate(this DateTime? value)
+    {
+        if (value == null) return "Unknown";
+        return value.Value.ToString(DateFormat);
+    }
+
+    public static string FormatTime(this DateTime? value)
+    {
+        if (value == null) return "Unknown";
+        return value.Value.ToString(TimeFormat);
+    }
+
+    public static string FormatDate(this DateTime value)
+    {
+        return value.ToString(DateFormat);
+    }
+
+    public static string FormatTime(this DateTime value)
+    {
+        return value.ToString(TimeFormat);
+    }
 }

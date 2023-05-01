@@ -5,7 +5,7 @@
 @using Syncfusion.Blazor.DropDowns
 @using Microsoft.AspNetCore.Components.Forms
 
-<p style=@($"width: {Width}")>
+<div class="input" style=@($"width: {Width}")>
     <SfDropDownList Value=@Value ValueChanged=@ValueChanged DataSource=@Items FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger" Enabled=@(!Disabled) ValueExpression=@ValidationExpression TValue=string TItem=string>
         <DropDownListEvents TItem="string" TValue="string" OnValueSelect=@OnValueSelected />
     </SfDropDownList>
@@ -13,4 +13,4 @@
     {
         <ValidationMessage For=@ValidationExpression />
     }
-</p>
+</div>

@@ -10,7 +10,7 @@ namespace Common.Web
     {
         public static IServiceCollection AddCommonServices(this IServiceCollection services)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjEyODU2QDMyMzAyZTMxMmUzMERCMVR0anR5aVFBQWJnQ2JaZ1FvYk5QUTRCUHo2a09pSjhDdGsvOGpNKzA9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTQ3NDkwNkAzMjMxMmUzMTJlMzMzNVRvWjloZzZZZ0EwcGxhOWNTRDJiaXMwMlkzMWFYK1M3WURJYWovRlFkNlE9");
 
             services.AddBlazoredLocalStorage();
             services.AddBlazoredSessionStorage();

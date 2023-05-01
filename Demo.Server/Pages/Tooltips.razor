@@ -1,30 +1,32 @@
 ﻿@page "/tooltips"
 
-<h1>Hello tooltips</h1>
-<h1>Click count: @Count</h1>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <h1>Hello tooltips</h1>
+    <h1>Click count: @Count</h1>
 
-<Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround Wrap=@FlexWrap.Wrap>
-    <Button OnClick="Clicked">No tooltip</Button>
+    <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround Wrap=@FlexWrap.Wrap>
+        <Button OnClick="Clicked">No tooltip</Button>
 
-    <Tooltip Content="Hello world!">
-        <Button OnClick="Clicked">Enabled</Button>
-    </Tooltip>
+        <Tooltip Content="Hello world!">
+            <Button OnClick="Clicked">Enabled</Button>
+        </Tooltip>
 
-    <Tooltip Content="Hello world!" Enabled="false">
-        <Button OnClick="Clicked">Hidden tooltip</Button>
-    </Tooltip>
+        <Tooltip Content="Hello world!" Enabled="false">
+            <Button OnClick="Clicked">Hidden tooltip</Button>
+        </Tooltip>
 
-    <Tooltip Content="Hello world!" DisableClick="true">
-        <Button OnClick="Clicked" Disabled="true">Disabled</Button>
-    </Tooltip>
-</Horizontal>
+        <Tooltip Content="Hello world!" DisableClick="true">
+            <Button OnClick="Clicked" Disabled="true">Disabled</Button>
+        </Tooltip>
+    </Horizontal>
 
-<Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround Wrap=@FlexWrap.Wrap>
-    <Icon IconType="monetization_on" />
-    <Icon IconType="gold" />
-    <LogoButton Text="Money" IconType="monetization_on" />
-    <LogoButton Text="Gold" IconType="gold" />
-</Horizontal>
+    <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround Wrap=@FlexWrap.Wrap>
+        <Icon IconType="monetization_on" />
+        <Icon IconType="gold" />
+        <LogoButton Text="Money" IconType="monetization_on" />
+        <LogoButton Text="Gold" IconType="gold" />
+    </Horizontal>
+</Container>
 
 @code
 {

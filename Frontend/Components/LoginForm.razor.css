@@ -2,3 +2,7 @@
     width: 100%;
     margin-bottom: 10px;
 }
+
+form p {
+    margin-top: 10px;
+}

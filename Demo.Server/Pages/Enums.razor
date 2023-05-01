@@ -1,15 +1,17 @@
 ﻿@page "/enum"
 
-<Container Margin=@(new Border("0px", "70px"))>
-    <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" ))>
-        <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
-            <EnumField @bind-Value=@Series Label="Series" />
-            <EnumField @bind-Value=@Trendline Label="Trendline" />
-            <EnumField @bind-Value=@Indicator AllowEmpty="true" Label="Indicator" />
-            <EnumField @bind-Value=@OptionalFruit AllowEmpty="true" Label="Optional" />
-            <EnumField @bind-Value=@RequiredFruit Label="Required" />
-        </Horizontal>
-    </Paper>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Container Margin=@(new Border("0px", "70px"))>
+        <Paper Width="1920px" Margin=@(new Border("0px", "30px")) Padding=@(new Border("120px", "20px" ))>
+            <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceAround>
+                <EnumField @bind-Value=@Series Label="Series" />
+                <EnumField @bind-Value=@Trendline Label="Trendline" />
+                <EnumField @bind-Value=@Indicator AllowEmpty="true" Label="Indicator" />
+                <EnumField @bind-Value=@OptionalFruit AllowEmpty="true" Label="Optional" />
+                <EnumField @bind-Value=@RequiredFruit Label="Required" />
+            </Horizontal>
+        </Paper>
+    </Container>
 </Container>
 
 @code

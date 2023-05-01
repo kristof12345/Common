@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Blazor Demo App</title>
+    <base href="/" />
+
+    <link href="_content/Waikiki.Common.Frontend/Waikiki.Common.Frontend.bundle.scp.css" rel="stylesheet">
+    <link href="_content/Waikiki.Common.Frontend/styles/material.css" rel="stylesheet">
+    <link href="_content/Waikiki.Common.Frontend/styles/global.css" rel="stylesheet">
+
+    <style>
+        .sf-license-warning {
+            display: none;
+        }
+
+        .page {
+            margin-top: 80px;
+        }
+
+        .finance-chart {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid lightgrey;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .body-dark .finance-chart {
+            background-color: rgb(48,48,48);
+            border: 1px solid #424242;
+        }
+    </style>
+
+    <script type="text/javascript">(function (l) {
+            if (l.search[1] === '/') {
+                var decoded = l.search.slice(1).split('&').map(function (s) {
+                    return s.replace(/~and~/g, '&')
+                }).join('?');
+                window.history.replaceState(null, null,
+                    l.pathname.slice(0, -1) + decoded + l.hash
+                );
+            }
+        }(window.location))</script>
+
+</head>
+
+<body>
+
+    <div class="status-bar-safe-area"></div>
+
+    <div id="app">Loading...</div>
+
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+    <script src="_content/Waikiki.Common.Frontend/scripts/global.js"></script>
+    <script src="_content/Syncfusion.Blazor.Core/scripts/syncfusion-blazor.min.js"></script>
+
+</body>
+
+</html>

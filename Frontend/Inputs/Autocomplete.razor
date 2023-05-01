@@ -5,7 +5,7 @@
 @using Syncfusion.Blazor.DropDowns
 @using Microsoft.AspNetCore.Components.Forms
 
-<p style=@($"width: {Width}")>
+<div class="input" style=@($"width: {Width}")>
     <SfAutoComplete Value=@Value ValueChanged=@HandleValueChange DataSource=@Items FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger" Enabled=@(!Disabled) ValueExpression=@ValidationExpression TValue="string" TItem="string">
         <AutoCompleteEvents TItem="string" TValue="string" OnValueSelect=@OnValueSelected />
     </SfAutoComplete>
@@ -13,7 +13,7 @@
     {
         <ValidationMessage For=@ValidationExpression />
     }
-</p>
+</div>
 
 @code
 {

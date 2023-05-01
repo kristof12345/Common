@@ -8,7 +8,7 @@
         @foreach (var item in Data)
         {
             <Horizontal Width="auto" Margin=@(new Border("10px", "0px")) OnClick=@(async() => await OnClick.InvokeAsync(item.Label))>
-                <Icon IconType="pie_chart" Color=@(item.Visible ? item.Color : Colors.Grey) Margin=@Border.Right("10px") />
+                <Icon IconType="pie_chart" Color=@(item.Visible ? item.Color : Colors.Grey) Margin=@Border.Right("5px") />
                 <Paragraph Class="center-text">@item.Label</Paragraph>
             </Horizontal>
         }

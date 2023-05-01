@@ -7,6 +7,13 @@
 
 Common components and classes for ASP.NET client-server projects.
 
+Typography
+- Title H1
+- Heading H2
+- Caption H3
+- Label H4
+- Subtitle H5
+
 All Rights Reserved
 
 Copyright (c) 

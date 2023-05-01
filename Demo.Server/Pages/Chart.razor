@@ -4,25 +4,23 @@
 @using System.Timers
 @using System.Collections.ObjectModel
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
-</Paper>
+<Container Margin=@(new Border("70px", "0px", "0px", "0px")) Padding=@(new Border("10px")) Width="auto">
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.None />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList ShowLegend="false" ChartIntervalType=@Syncfusion.Blazor.Charts.IntervalType.Days RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Days />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Small />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <MultiSeriesChart Data=@MultiSeriesList ChartIntervalType=@Syncfusion.Blazor.Charts.IntervalType.Days ShowSelector="false" Type="ChartSeriesType.StackingColumn" />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2019,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months SelectorType=@SelectorType.Large />
+    </Paper>
 
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <SingleSeriesChart Data=@Series StartDate=@(new DateTime(2020,1,1)) EndDate=@(new DateTime(2020,1,2)) Color=@Colors.Primary RangeIntervalType=@Syncfusion.Blazor.Charts.RangeIntervalType.Months />
-</Paper>
-
-<Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
-    <RealtimeSeriesChart Data=@RealTimeData Color=@Colors.Primary />
-</Paper>
+    <Paper Width="1920px" Margin=@Border.Top("30px") Padding=@(new Border("120px", "20px" ))>
+        <RealtimeSeriesChart Data=@RealTimeData Color=@Colors.Primary />
+    </Paper>
+</Container>
 
 @code
 {
@@ -30,8 +28,6 @@
     private DataService StockService { get; set; }
 
     private List<StockPrice> Series;
-
-    private List<ChartDataSeries> MultiSeriesList;
 
     private static Timer timer;
     private Random randomNum = new Random();
@@ -57,79 +53,6 @@
         await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
 
         Series = await StockService.LoadFromJson<List<StockPrice>>("exchange.json");
-
-        MultiSeriesList = new List<ChartDataSeries>
-    {
-            new ChartDataSeries
-            {
-                Label = "Series 1",
-                Color = Colors.Get(1),
-                Data = new List<Price>
-            {
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,1),
-                        Value=1
-                    },
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,2),
-                        Value=2
-                    },
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,3),
-                        Value=3
-                    }
-                }
-            },
-            new ChartDataSeries
-            {
-                Label = "Series 2",
-                Color = Colors.Get(2),
-                Data = new List<Price>
-            {
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,1),
-                        Value=11
-                    },
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,2),
-                        Value=12
-                    },
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,3),
-                        Value=13
-                    }
-                }
-            },
-            new ChartDataSeries
-            {
-                Label = "Series 3",
-                Color = Colors.Get(3),
-                Data = new List<Price>
-            {
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,1),
-                        Value=10
-                    },
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,2),
-                        Value=20
-                    },
-                    new Price
-                    {
-                        Date= new DateTime(2020,1,3),
-                        Value=30
-                    }
-                }
-            }
-        };
     }
 
     private void AddData(Object source, ElapsedEventArgs e)

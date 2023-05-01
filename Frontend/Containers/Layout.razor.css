@@ -2,6 +2,16 @@
     display: none;
 }
 
+.horizontal {
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.vertical {
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
 @media (max-width: 600px) {
     .mobile {
         display: flex;
