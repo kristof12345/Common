@@ -16,6 +16,12 @@ namespace Common.Web
             Client = client;
         }
 
+        public async Task<IUser> Find(string id)
+        {
+            var response = await Client.GetAsync(url + id);
+            return await response.Content.ReadAsAsync<IUser>();
+        }
+
         public async Task<PagedResult<IUser>> Search(string username, int page)
         {
             var range = new Span((page - 1) * Span.PageSize, Span.PageSize);
@@ -49,11 +55,6 @@ namespace Common.Web
             if (file == null) return new Response("File was empty.");
             var response = await Client.PostAsync(url + username + "/profile", file);
             return await response.Content.ReadAsAsync<Response>();
-        }
-
-        public Task<Name> GetNameForId(string id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

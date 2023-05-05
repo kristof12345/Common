@@ -1,0 +1,38 @@
+﻿@page "/dialog"
+@using Common.Application;
+
+<Button OnClick=@Open Color=@Colors.Success Margin=@Border.Top("10px")>Open</Button>
+<Button OnClick=@OpenModal Color=@Colors.Success Margin=@Border.Top("10px")>Open modal</Button>
+
+<Dialog Title="Modal dialog" @bind-IsOpen=@Dialog1Open Width="1500px" IsModal="true">
+    <h1>Hello, modal dialog!</h1>
+    <Button OnClick=@Cancel Color=@Colors.Error Margin=@Border.Top("10px")>Cancel</Button>
+</Dialog>
+
+<Dialog Title="Dialog" @bind-IsOpen=@Dialog2Open Width="1500px" IsModal="false">
+    <h1>Hello, dialog!</h1>
+    <Button OnClick=@Cancel Color=@Colors.Error Margin=@Border.Top("10px")>Cancel</Button>
+</Dialog>
+
+@code
+{
+    private bool Dialog1Open { get; set; }
+
+    private bool Dialog2Open { get; set; }
+
+    private void Open()
+    {
+        Dialog2Open = true;
+    }
+
+    private void OpenModal()
+    {
+        Dialog1Open = true;
+    }
+
+    private void Cancel()
+    {
+        Dialog1Open = false;
+        Dialog2Open = false;
+    }
+}

@@ -3,15 +3,15 @@
 
 @using Syncfusion.Blazor.Popups
 
-<SfDialog Visible=@IsOpen VisibleChanged=@IsOpenChanged Width=@Width IsModal="true" >
+<SfDialog Visible=@IsOpen VisibleChanged=@IsOpenChanged Width=@Width IsModal="true">
     <DialogEvents OnOverlayModalClick=@OnOverlayclick />
-    <DialogAnimationSettings Effect=@DialogEffect.Zoom Duration=400 Delay=0/>
+    <DialogAnimationSettings Effect=@DialogEffect.Zoom Duration=400 Delay=0 />
     <DialogTemplates>
         <Header>
             <Heading Class="center-text">@Title</Heading>
         </Header>
         <Content>
-            @if(IsOpen)
+            @if (IsOpen)
             {
                 @ChildContent
             }
@@ -32,8 +32,14 @@
     [Parameter]
     public string Title { get; set; }
 
+    [Parameter]
+    public bool IsModal { get; set; }
+
     private async Task OnOverlayclick()
     {
-        await IsOpenChanged.InvokeAsync(false);
+        if (IsModal)
+        {
+            await IsOpenChanged.InvokeAsync(false);
+        }
     }
 }

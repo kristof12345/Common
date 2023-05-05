@@ -197,6 +197,13 @@ text {
 
 .e-dlg-header {
     width: 100% !important;
+    overflow: visible !important;
+}
+
+.e-dlg-content {
+    padding-left: 80px !important;
+    padding-right: 80px !important;
+    padding-bottom: 40px !important;
 }
 
 .body-dark .e-dlg-header-content, .body-dark .e-dlg-content {
