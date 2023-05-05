@@ -30,6 +30,9 @@ namespace Common.Web
 
         [Parameter]
         public bool Disabled { get; set; }
+
+        [Parameter]
+        public bool ValidateOnInput { get; set; } = true;
     }
 
     public class StringInput : AppInput<string>
