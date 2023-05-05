@@ -141,6 +141,10 @@ form, button, img {
 
 /* Autocomplete */
 
+.e-float-text.e-label-bottom {
+    line-height: 70px !important;
+}
+
 input: -webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
@@ -197,6 +201,13 @@ text {
 
 .e-dlg-header {
     width: 100% !important;
+    overflow: visible !important;
+}
+
+.e-dlg-content {
+    padding-left: 80px !important;
+    padding-right: 80px !important;
+    padding-bottom: 40px !important;
 }
 
 .body-dark .e-dlg-header-content, .body-dark .e-dlg-content {
