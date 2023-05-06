@@ -9,6 +9,7 @@ using Syncfusion.Blazor;
 using Blazored.LocalStorage;
 using Blazored.SessionStorage;
 using System.Collections.Generic;
+using Common.Application;
 
 namespace Demo.Client
 {
@@ -27,6 +28,7 @@ namespace Demo.Client
 
             services.AddScoped<LoginService>();
             services.AddScoped<DataService>();
+            services.AddScoped<UserService<IUser>>();
 
             await builder.Build().RunAsync();
         }

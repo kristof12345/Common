@@ -9,17 +9,12 @@ public class TokenService : ITokenService
 {
     private static readonly JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-    public AppUser GenerateToken(string username, Name name, UserType type)
+    public AppUser GenerateToken(string username, string name, UserType type)
     {
-        return GenerateToken(username, name, type, "Image", "National");
+        return GenerateToken(username, name, type, "National");
     }
 
-    public AppUser GenerateToken(string username, Name name, UserType type, string image)
-    {
-        return GenerateToken(username, name, type, image, "National");
-    }
-
-    public AppUser GenerateToken(string username, Name name, UserType type, string image, string district)
+    public AppUser GenerateToken(string username, string name, UserType type, string district)
     {
         var token = new JwtBuilder()
             .WithAlgorithm(new HMACSHA256Algorithm())
@@ -30,7 +25,8 @@ public class TokenService : ITokenService
             .AddClaim("type", type)
             .AddClaim("district", district)
             .Encode();
-        return new AppUser { Id = username, Name = name, Type = type, Token = token, District = district, Image = image };
+
+        return new AppUser { Id = username, Name = name, Type = type, Token = token, District = district };
     }
 
     public AppUser DecodeToken(string token)

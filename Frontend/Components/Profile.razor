@@ -2,20 +2,26 @@
 
 @using Common.Application
 
-@if (User != null)
-{
-    <CircleImage Src=@(Settings.BaseUrl + User.Image) />
-    <Heading Class="center-text">@User.Name</Heading>
-    <Paragraph Class="center-text" Color=@Colors.Primary>@User.Type</Paragraph>
-    <Subtitle Class="center-text">@User.District</Subtitle>
-}
+<CircleImage Src=@Image />
+<Heading Class="center-text">@Name</Heading>
+<Paragraph Class="center-text" Color=@Colors.Primary>@Type</Paragraph>
+<Subtitle Class="center-text">@District</Subtitle>
 
 @code
 {
     [Parameter]
     [EditorRequired]
-    public AppUser User { get; set; }
+    public string Name { get; set; }
 
-    [Inject]
-    public ServerSettings Settings { get; set; }
+    [Parameter]
+    [EditorRequired]
+    public string Image { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public UserType Type { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public string District { get; set; }
 }

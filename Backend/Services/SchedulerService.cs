@@ -10,7 +10,7 @@ public class SchedulerService : ISchedulerService
 
     public SchedulerService(ITokenService tokenService)
     {
-        var user = tokenService.GenerateToken("admin", new Name(), UserType.Admin);
+        var user = tokenService.GenerateToken("server", "server", UserType.Server);
         Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Token);
     }
 

@@ -6,15 +6,13 @@ public class AppUser
 {
     public string Id { get; set; }
 
-    public Name Name { get; set; }
+    public string Name { get; set; }
 
     public string District { get; set; }
 
     public UserType Type { get; set; }
 
     public string Token { get; set; }
-
-    public string Image { get; set; }
 }
 
 public enum UserType

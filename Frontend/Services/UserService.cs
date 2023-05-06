@@ -5,7 +5,7 @@ using Common.Application;
 
 namespace Common.Web
 {
-    public class UserService
+    public class UserService<IUser>
     {
         private readonly HttpClient Client;
 

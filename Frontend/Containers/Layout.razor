@@ -1,11 +1,14 @@
 ﻿@namespace Common.Web
 @inherits AppContainer
 
-<div class=@($"{Layouts} {Class}") style=@($"justify-content: {HorizontalAlign}; align-items: {VerticalAlign}; flex-wrap: {Wrap}; gap: {Gap}; {Css}") onclick=@OnClick>@ChildContent</div>
+<div class=@($"{Layouts} {Display} {Class}") style=@($"justify-content: {HorizontalAlign}; align-items: {VerticalAlign}; flex-wrap: {Wrap}; gap: {Gap}; {Css}") onclick=@OnClick>@ChildContent</div>
 
 @code
 {
     [Parameter]
     [EditorRequired]
     public string Layouts { get; set; }
+
+    [Parameter]
+    public string Display { get; set; } = "flex";
 }

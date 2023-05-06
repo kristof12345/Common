@@ -4,11 +4,9 @@ namespace Common.Backend;
 
 public interface ITokenService
 {
-    public AppUser GenerateToken(string username, Name name, UserType type);
+    public AppUser GenerateToken(string username, string name, UserType type);
 
-    public AppUser GenerateToken(string username, Name name, UserType type, string image);
-
-    public AppUser GenerateToken(string username, Name name, UserType type, string image, string district);
+    public AppUser GenerateToken(string username, string name, UserType type, string district);
 
     public AppUser DecodeToken(string token);
 }
