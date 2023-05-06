@@ -1,6 +1,6 @@
 ﻿namespace Common.Application;
 
-public class IUser : IEntity<string>
+public class DbUser : IUser
 {
     public virtual string Id { get; set; }
 
