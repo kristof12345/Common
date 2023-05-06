@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor.Inputs
 @using Microsoft.AspNetCore.Components.Forms
 
-<div class="input" style=@($"width: {Width};")>
+<div class=@($"input {Class}") style=@($"{Css}")>
     <SfTextBox Value=@Value ValueChanged=@ValueChanged FloatLabelType=@FloatLabelType.Auto Placeholder=@Label CssClass="e-outline e-bigger" Enabled=@(!Disabled) Type=@Type Input=@OnValueEntered ValueExpression=@ValidationExpression ValidateOnInput=@ValidateOnInput />
     @if (ValidationExpression != null)
     {

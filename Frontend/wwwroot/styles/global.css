@@ -66,7 +66,7 @@ form, button, img {
 }
 
     form .input {
-        margin-top: 15px;
+        margin-top: 15px !important;
     }
 
 .hidden {
@@ -412,6 +412,7 @@ td {
 }
 
 /* Mobile login */
+
 @media (max-width: 500px) {
     .page {
         margin-top: 0px !important;
@@ -441,5 +442,15 @@ td {
 
         .login img {
             height: unset !important;
+        }
+}
+
+@media (max-width: 800px) {
+    .input-line-2-with-button {
+        flex-direction: column !important;
+    }
+
+        .input-line-2-with-button .input {
+            width: 100% !important;
         }
 }
