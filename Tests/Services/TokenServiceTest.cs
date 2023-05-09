@@ -40,7 +40,7 @@ namespace Common.Tests.Services
             App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
 
             // Act
-            var token = new TokenService().GenerateToken("Username", "Tom Sawyer", UserType.User, "Image").Token;
+            var token = new TokenService().GenerateToken("Username", "Tom Sawyer", UserType.User, "National").Token;
             var user = new TokenService().DecodeToken(token);
 
             // Assert
