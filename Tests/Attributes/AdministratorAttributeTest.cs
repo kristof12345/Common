@@ -16,7 +16,7 @@ namespace Common.Tests.Attributes
         {
             // Arrange
             App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var token = new TokenService().GenerateToken("Username", new Name("Tom", "Sawyer"), UserType.Admin, "District").Token;
+            var token = new TokenService().GenerateToken("Username", "Tom Sawyer", UserType.Admin, "District").Token;
 
             var http = new Mock<HttpContext>(); http.Setup(a => a.Request.Headers["Authorization"]).Returns("Bearer " + token);
             var action = new ActionContext(http.Object, new Microsoft.AspNetCore.Routing.RouteData(), new Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor());
@@ -36,7 +36,7 @@ namespace Common.Tests.Attributes
         {
             // Arrange
             App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var token = new TokenService().GenerateToken("Username", new Name("Tom", "Sawyer"), UserType.User, "District").Token;
+            var token = new TokenService().GenerateToken("Username", "Tom Sawyer", UserType.User, "District").Token;
 
             var http = new Mock<HttpContext>(); http.Setup(a => a.Request.Headers["Authorization"]).Returns("Bearer " + token);
             var action = new ActionContext(http.Object, new Microsoft.AspNetCore.Routing.RouteData(), new Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor());

@@ -9,22 +9,6 @@ namespace Common.Tests.Models
     public class CommonModelTests
     {
         [Fact]
-        public void NameTest()
-        {
-            var name = new Name { Surname = "Denem", Firstname = "Tom" };
-
-            Assert.Equal("Tom Denem", name.ToString());
-        }
-
-        [Fact]
-        public void EmptyNameToStringTest()
-        {
-            var name = new Name();
-
-            Assert.Equal(" ", name.ToString());
-        }
-
-        [Fact]
         public void ServerSettingsTest()
         {
             var settings = new ServerSettings { BaseUrl = "url", Version = "1.0", RenderMode = "Server" };
@@ -72,11 +56,10 @@ namespace Common.Tests.Models
         [Fact]
         public void AppUserTest()
         {
-            var user = new AppUser { Id = "username", Name = new Name("User", "Name"), Image = "image" };
+            var user = new AppUser { Id = "username", Name = "User Name" };
 
             Assert.Equal("username", user.Id);
             Assert.Equal("User Name", user.Name.ToString());
-            Assert.Equal("image", user.Image);
         }
 
         [Fact]

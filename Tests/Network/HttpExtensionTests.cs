@@ -26,8 +26,8 @@ namespace Common.Tests.Network
             var client = new HttpClient { BaseAddress = new Uri(url) };
 
             // Act
-            var response = await client.GetAsJsonAsync("get", new Name("Firstname", "Surname"));
-            var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
+            var response = await client.GetAsJsonAsync("get", new DbUser { Firstname = "A", Surname = "B" });
+            var result = await response.Content.ReadAsAsync<PostmanResponse<DbUser>>();
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -41,8 +41,8 @@ namespace Common.Tests.Network
             var client = new HttpClient { BaseAddress = new Uri(url) };
 
             // Act
-            var response = await client.PostAsJsonAsync("post", new Name("Firstname", "Surname"));
-            var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
+            var response = await client.PostAsJsonAsync("post", new DbUser { Firstname = "A", Surname = "B" });
+            var result = await response.Content.ReadAsAsync<PostmanResponse<DbUser>>();
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -56,8 +56,8 @@ namespace Common.Tests.Network
             var client = new HttpClient { BaseAddress = new Uri(url) };
 
             // Act
-            var response = await client.PutAsJsonAsync("put", new Name("Firstname", "Surname"));
-            var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
+            var response = await client.PutAsJsonAsync("put", new DbUser { Firstname = "A", Surname = "B" });
+            var result = await response.Content.ReadAsAsync<PostmanResponse<DbUser>>();
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -71,8 +71,8 @@ namespace Common.Tests.Network
             var client = new HttpClient { BaseAddress = new Uri(url) };
 
             // Act
-            var response = await client.PatchAsJsonAsync("patch", new Name("Firstname", "Surname"));
-            var result = await response.Content.ReadAsAsync<PostmanResponse<Name>>();
+            var response = await client.PatchAsJsonAsync("patch", new DbUser { Firstname = "A", Surname = "B" });
+            var result = await response.Content.ReadAsAsync<PostmanResponse<DbUser>>();
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);

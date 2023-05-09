@@ -12,43 +12,47 @@ namespace Common.Tests.Models
         {
             public int Id { get; set; }
 
-            public Name Name { get; set; }
+            public DbUser User { get; set; }
         }
 
         [Fact]
         public void SimpleCopyTest()
         {
             // Arrange
-            var a = new CloneableEntity { Id = 1, Name = new Name("A", "B") };
+            var a = new CloneableEntity { Id = 1, User = new DbUser { Firstname = "A", Surname = "B" } };
 
             // Act
             var b = a;
             b.Id = 2;
-            b.Name.Firstname = "C";
+            b.User.Firstname = "C";
 
             // Assert
             Assert.Equal(2, a.Id);
             Assert.Equal(2, b.Id);
-            Assert.Equal("C B", a.Name.ToString());
-            Assert.Equal("C B", b.Name.ToString());
+            Assert.Equal("C", a.User.Firstname);
+            Assert.Equal("B", a.User.Surname);
+            Assert.Equal("C", b.User.Firstname);
+            Assert.Equal("B", b.User.Surname);
         }
 
         [Fact]
         public void ShallowCopyTest()
         {
             // Arrange
-            var a = new CloneableEntity { Id = 1, Name = new Name("A", "B") };
+            var a = new CloneableEntity { Id = 1, User = new DbUser { Firstname = "A", Surname = "B" } };
 
             // Act
             var b = a.ShallowCopy();
             b.Id = 2;
-            b.Name.Firstname = "C";
+            b.User.Firstname = "C";
 
             // Assert
             Assert.Equal(1, a.Id);
             Assert.Equal(2, b.Id);
-            Assert.Equal("C B", a.Name.ToString());
-            Assert.Equal("C B", b.Name.ToString());
+            Assert.Equal("C", a.User.Firstname);
+            Assert.Equal("B", a.User.Surname);
+            Assert.Equal("C", b.User.Firstname);
+            Assert.Equal("B", b.User.Surname);
         }
     }
 }
