@@ -25,4 +25,3 @@ public class AppContainer : AppComponent
     [Parameter]
     public EventCallback OnClick { get; set; }
 }
-
