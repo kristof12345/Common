@@ -1,0 +1,26 @@
+﻿@namespace Common.Web
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Routing
+
+<NavLink @onclick=@OnClick Href=@Href class="nav-link" ActiveClass="nav-link-active" Match=@Match><Icon IconType=@Icon Margin=@Border.X("5px") />@Label</NavLink>
+
+@code
+{
+    [Parameter]
+    [EditorRequired]
+    public string Label { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public string Icon { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnClick { get; set; }
+
+    [Parameter]
+    public string Href { get; set; }
+
+    private NavLinkMatch Match { get => Href == "./" ? NavLinkMatch.All : NavLinkMatch.Prefix; }
+}
+

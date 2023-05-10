@@ -47,9 +47,24 @@ public class Border
         return new Border(border);
     }
 
+    public static Border From(string x, string y)
+    {
+        return new Border(x, y);
+    }
+
     public static Border From(string top, string right, string bottom, string left)
     {
         return new Border(top, right, bottom, left);
+    }
+
+    public static Border X(string border)
+    {
+        return new Border("0px", border, "0px", border);
+    }
+
+    public static Border Y(string border)
+    {
+        return new Border(border, "0px", border, "0px");
     }
 
     public static Border Top(string border)

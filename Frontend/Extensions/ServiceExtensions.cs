@@ -16,6 +16,7 @@ namespace Common.Web
             services.AddBlazoredSessionStorage();
             services.AddSyncfusionBlazor();
 
+            services.AddScoped<UserService<IUser>>();
             services.AddScoped<CacheService>();
             services.AddScoped<ToastService>();
             services.AddScoped<ThemeService>();
