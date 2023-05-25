@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.Routing
 
-<NavLink @onclick=@OnClick Href=@Href class="nav-link" ActiveClass="nav-link-active" Match=@Match><Icon IconType=@Icon Margin=@Border.X("5px") />@Label</NavLink>
+<NavLink @onclick=@OnClick Href=@Href class="nav-link" ActiveClass=@(Href == null ? "nav-link" : "nav-link-active") Match=@Match><Icon IconType=@Icon Margin=@Border.X("5px") />@Label</NavLink>
 
 @code
 {

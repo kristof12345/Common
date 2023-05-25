@@ -11,17 +11,10 @@
 
     <div class="sidebar">
         <ul class="nav flex-column">
-            <MenuLink OnClick=@ToggleMenu Href="" Icon="home" Label="Home" />
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                    <span class="oi oi-home" aria-hidden="true"></span> Home
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="form">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Form
-                </NavLink>
-            </li>
+            <MenuLink OnClick=@ToggleMenu Href="./" Icon="home" Label="Home" />
+            <MenuLink OnClick=@ToggleMenu Href="./form" Icon="home" Label="Form" />
+            <MenuLink OnClick=@ToggleMenu Icon="home" Label="Logout" />
+
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="diagram">
                     <span class="oi oi-plus" aria-hidden="true"></span> Diagram

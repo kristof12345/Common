@@ -13,8 +13,7 @@ namespace Common.Tests.Services
         public void SingleApiCallTest()
         {
             // Arrange
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var scheduler = new SchedulerService(new TokenService());
+            var scheduler = new SchedulerService(new TokenService(TokenHelper.Settings));
 
             // Act
             scheduler.AddSingleApiCall("url", HttpMethod.Get, TimeSpan.FromSeconds(5));
@@ -24,8 +23,7 @@ namespace Common.Tests.Services
         public void RecurringApiCallTest()
         {
             // Arrange
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var scheduler = new SchedulerService(new TokenService());
+            var scheduler = new SchedulerService(new TokenService(TokenHelper.Settings));
 
             // Act
             scheduler.AddRecurringApiCall("url", HttpMethod.Get, Cron.Daily());
@@ -35,8 +33,7 @@ namespace Common.Tests.Services
         public async Task SendApiCallToInvalidUrlTest()
         {
             // Arrange
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var scheduler = new SchedulerService(new TokenService());
+            var scheduler = new SchedulerService(new TokenService(TokenHelper.Settings));
 
             // Act
             var result = await scheduler.SendApiCall("url", HttpMethod.Get);
@@ -49,8 +46,7 @@ namespace Common.Tests.Services
         public async Task SendApiCallToValidUrlTest()
         {
             // Arrange
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var scheduler = new SchedulerService(new TokenService());
+            var scheduler = new SchedulerService(new TokenService(TokenHelper.Settings));
 
             // Act
             var result = await scheduler.SendApiCall("https://www.google.hu/", HttpMethod.Get);

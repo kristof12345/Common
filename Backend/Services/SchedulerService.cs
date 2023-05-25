@@ -18,7 +18,7 @@ public class SchedulerService : ISchedulerService
     {
         try
         {
-            BackgroundJob.Schedule(() => SendApiCall(url + "externalData", method), interval);
+            BackgroundJob.Schedule(() => SendApiCall(url, method), interval);
         }
         catch (Exception e)
         {
@@ -31,7 +31,7 @@ public class SchedulerService : ISchedulerService
     {
         try
         {
-            RecurringJob.AddOrUpdate(() => SendApiCall(url + "externalData", method), interval);
+            RecurringJob.AddOrUpdate(method.ToString() + url, () => SendApiCall(url + "externalData", method), interval);
         }
         catch (Exception e)
         {

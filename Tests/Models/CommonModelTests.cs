@@ -42,14 +42,11 @@ namespace Common.Tests.Models
         {
             App.Environment = "UnitTest";
             App.Url = "localhost";
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
             var serviceCollection = new ServiceCollection();
             App.Services = serviceCollection.BuildServiceProvider();
 
             Assert.Equal("UnitTest", App.Environment);
             Assert.Equal("localhost", App.Url);
-            Assert.Equal("db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", App.TokenSettings.Secret);
-            Assert.Equal(3000, App.TokenSettings.ExpireMinutes);
             Assert.Null(App.Services.GetService<TimeService>());
         }
 

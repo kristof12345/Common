@@ -7,12 +7,19 @@ namespace Common.Backend;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class AuthorizeAttribute : Attribute, IAuthorizationFilter
 {
+    private readonly ITokenService TokenService;
+
+    public AuthorizeAttribute(ITokenService tokenService)
+    {
+        TokenService = tokenService;
+    }
+
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         try
         {
             string token = context.HttpContext.Request.Headers["Authorization"];
-            new TokenService().DecodeToken(token?[7..]);
+            TokenService.DecodeToken(token?[7..]);
         }
         catch (Exception)
         {

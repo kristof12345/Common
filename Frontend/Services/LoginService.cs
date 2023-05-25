@@ -43,7 +43,7 @@ namespace Common.Web
             }
             catch (Exception)
             {
-                return new Response("Unable to connect to server.");
+                return new Response("Unable to connect to server: " + Client.BaseAddress);
             }
         }
 

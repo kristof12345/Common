@@ -15,15 +15,14 @@ namespace Common.Tests.Attributes
         public void ValidAdminAuthorizationTest()
         {
             // Arrange
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var token = new TokenService().GenerateToken("Username", "Tom Sawyer", UserType.Admin, "District").Token;
+            var token = new TokenService(TokenHelper.Settings).GenerateToken("Username", "Tom Sawyer", UserType.Admin, "District").Token;
 
             var http = new Mock<HttpContext>(); http.Setup(a => a.Request.Headers["Authorization"]).Returns("Bearer " + token);
             var action = new ActionContext(http.Object, new Microsoft.AspNetCore.Routing.RouteData(), new Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor());
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AdministratorAttribute().OnAuthorization(context);
+            new AdministratorAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
@@ -35,15 +34,14 @@ namespace Common.Tests.Attributes
         public void ValidUserAuthorizationTest()
         {
             // Arrange
-            App.TokenSettings = new TokenSettings { Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==", ExpireMinutes = 3000 };
-            var token = new TokenService().GenerateToken("Username", "Tom Sawyer", UserType.User, "District").Token;
+            var token = new TokenService(TokenHelper.Settings).GenerateToken("Username", "Tom Sawyer", UserType.User, "District").Token;
 
             var http = new Mock<HttpContext>(); http.Setup(a => a.Request.Headers["Authorization"]).Returns("Bearer " + token);
             var action = new ActionContext(http.Object, new Microsoft.AspNetCore.Routing.RouteData(), new Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor());
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AdministratorAttribute().OnAuthorization(context);
+            new AdministratorAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
@@ -61,7 +59,7 @@ namespace Common.Tests.Attributes
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AdministratorAttribute().OnAuthorization(context);
+            new AdministratorAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
@@ -79,7 +77,7 @@ namespace Common.Tests.Attributes
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AuthorizeAttribute().OnAuthorization(context);
+            new AuthorizeAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
