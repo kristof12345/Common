@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Common.Backend;
 
@@ -9,9 +10,9 @@ public sealed class AuthorizeAttribute : Attribute, IAuthorizationFilter
 {
     private readonly ITokenService TokenService;
 
-    public AuthorizeAttribute(ITokenService tokenService)
+    public AuthorizeAttribute()
     {
-        TokenService = tokenService;
+        TokenService = App.Services.GetRequiredService<ITokenService>();
     }
 
     public void OnAuthorization(AuthorizationFilterContext context)

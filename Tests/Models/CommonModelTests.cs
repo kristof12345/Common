@@ -43,10 +43,13 @@ namespace Common.Tests.Models
             App.Environment = "UnitTest";
             App.Url = "localhost";
             var serviceCollection = new ServiceCollection();
+            serviceCollection.AddScoped<TokenSettings>(s => TokenHelper.Settings);
+            serviceCollection.AddScoped<ITokenService, TokenService>();
             App.Services = serviceCollection.BuildServiceProvider();
 
             Assert.Equal("UnitTest", App.Environment);
             Assert.Equal("localhost", App.Url);
+            Assert.NotNull(App.Services.GetService<ITokenService>());
             Assert.Null(App.Services.GetService<TimeService>());
         }
 

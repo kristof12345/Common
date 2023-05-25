@@ -22,7 +22,7 @@ namespace Common.Tests.Attributes
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AdministratorAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
+            new AdministratorAttribute().OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
@@ -41,7 +41,7 @@ namespace Common.Tests.Attributes
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AdministratorAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
+            new AdministratorAttribute().OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
@@ -59,7 +59,7 @@ namespace Common.Tests.Attributes
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AdministratorAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
+            new AdministratorAttribute().OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
@@ -77,7 +77,7 @@ namespace Common.Tests.Attributes
             var context = new AuthorizationFilterContext(action, new List<IFilterMetadata>());
 
             // Act
-            new AuthorizeAttribute(new TokenService(TokenHelper.Settings)).OnAuthorization(context);
+            new AuthorizeAttribute().OnAuthorization(context);
 
             var result = context.Result as JsonResult;
 
