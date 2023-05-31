@@ -11,7 +11,7 @@
 		<!-- Display name -->
 		<ApplicationTitle>Demo.Mobile</ApplicationTitle>
 		<!-- App Identifier -->
-		<ApplicationId>e.demo</ApplicationId>
+		<ApplicationId>waikiki.Demo</ApplicationId>
 		<ApplicationIdGuid>EBF9F76E-40D9-4304-A77C-BA9DB98BD8C1</ApplicationIdGuid>
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
