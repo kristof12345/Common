@@ -22,6 +22,7 @@
             <CheckBox @bind-Value=@Model.Checked Label="CheckBox" />
             <SegmentedControl @bind-Tab=@SelectedTab Tabs=@(new List<string>{ "Apple", "Banana", "Orange", "Blackberry", "Peach", "Cherry", "Melon", "Strawberry" }) Id="fruits" />
             @SelectedTab
+            <ImagePicker @bind-File=@Model.File ValidationExpression=@(() => Model.File) />
             <Horizontal HorizontalAlign=@HorizontalAlignment.SpaceBetween Wrap=@FlexWrap.Wrap>
                 <Button Type="reset" OnClick=@Reset>Reset</Button>
                 <Button Outlined="true">Outlined</Button>
@@ -35,6 +36,7 @@
                 <LinkButton Link="./" Color="red">Red LinkButton</LinkButton>
                 <LinkButton Link="./" Color="red" Outlined="true">RedOutlined LinkButton</LinkButton>
             </Horizontal>
+
         </EditForm>
 
     </Paper>

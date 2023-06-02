@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Http;
 using Common.Application;
 
 namespace Demo.Server
@@ -50,6 +51,9 @@ namespace Demo.Server
 
         [Required]
         public string Color { get; set; }
+
+        [Required]
+        public MultipartFormDataContent File { get; set; }
 
         public bool Checked { get; set; }
     }

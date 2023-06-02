@@ -385,6 +385,10 @@ text {
     }
 }
 
+.input .upload-zone:has(+ .validation-message) {
+    border-color: #f44336 !important;
+}
+
 /* Data grid */
 
 td {
