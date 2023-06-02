@@ -18,7 +18,7 @@
             <NumericField @bind-Value=@Model.Double Label="Double" ValidationExpression=@(() => Model.Double) />
             <NumericField @bind-Value=@Model.Decimal Label="Decimal" ValidationExpression=@(() => Model.Decimal) />
             <EnumField @bind-Value=@Model.Enum Label="User type" ValidationExpression=@(() => Model.Enum) />
-            <ColorPicker @bind-Value=@Model.Color Label="ColorPicker" />
+            <ColorPicker @bind-Value=@Model.Color Label="ColorPicker" ValidationExpression=@(() => Model.Color) />
             <CheckBox @bind-Value=@Model.Checked Label="CheckBox" />
             <SegmentedControl @bind-Tab=@SelectedTab Tabs=@(new List<string>{ "Apple", "Banana", "Orange", "Blackberry", "Peach", "Cherry", "Melon", "Strawberry" }) Id="fruits" />
             @SelectedTab

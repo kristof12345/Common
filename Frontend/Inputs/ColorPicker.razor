@@ -2,8 +2,20 @@
 @inherits AppInput<string>
 
 @using Syncfusion.Blazor.Inputs
+@using Microsoft.AspNetCore.Components.Forms
 
-<Horizontal Height="56px" HorizontalAlign=@HorizontalAlignment.SpaceBetween Width="auto" Margin=@(new Border("0px", "10px")) Padding=@(new Border("0px", "0px", "0px", "10px")) Class="framed">
-    <Paragraph Class="subtitle" Style="margin-top: auto; margin-bottom: auto;"> @Label </Paragraph>
-    <SfColorPicker Value=@Value ValueChanged=@ValueChanged Mode=@ColorPickerMode.Palette NoColor="true" ShowButtons="false" />
-</Horizontal>
+<div class=@($"input {Class}") style=@($"{Css}")>
+    <Horizontal Height="56px" HorizontalAlign=@HorizontalAlignment.SpaceBetween Width="auto" Margin=@(new Border("0px", "10px")) Padding=@(new Border("0px", "0px", "0px", "10px")) Class="framed" Style=@ValidCss>
+        <Paragraph Class="subtitle" Style="margin-top: auto; margin-bottom: auto;"> @Label </Paragraph>
+        <SfColorPicker Value=@Value ValueChanged=@ValueChanged Mode=@ColorPickerMode.Palette NoColor="true" ShowButtons="false" />
+    </Horizontal>
+    @if (ValidationExpression != null && string.IsNullOrWhiteSpace(Value))
+    {
+        <ValidationMessage For=@ValidationExpression />
+    }
+</div>
+
+@code
+{
+    protected string ValidCss { get => ValidationExpression != null && Value != null ? $"border-color: {Colors.Success};" : ""; }
+}
