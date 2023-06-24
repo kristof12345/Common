@@ -163,6 +163,10 @@ input: -webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:fo
     background-color: var(--lightgrey-color);
 }
 
+.input .framed:has(+ .validation-message) {
+    border-color: #f44336;
+}
+
 /* Charts */
 
 .chart {
@@ -379,6 +383,10 @@ text {
     .upload-zone input[type=file] {
         width: 80%;
     }
+}
+
+.input .upload-zone:has(+ .validation-message) {
+    border-color: #f44336 !important;
 }
 
 /* Data grid */
