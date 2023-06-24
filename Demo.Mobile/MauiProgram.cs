@@ -25,7 +25,6 @@ public static class MauiProgram
         services.AddScoped<DataService>();
 
         builder.Services.AddBlazorWebViewDeveloperTools();
-        builder.Logging.AddDebug();
 
         return builder.Build();
     }
