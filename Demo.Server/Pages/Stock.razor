@@ -5,7 +5,7 @@
         <Horizontal HorizontalAlign=@HorizontalAlignment.Center Height="40px">
             <Heading>@Model.Name</Heading>
         </Horizontal>
-        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) SelectorType=@SelectorType.None/>
+        <StockChart Data=@Model.Prices StartDate=@(new DateTime(2016,1,1)) EndDate=@(new DateTime(2017,1,1)) SelectorType=@SelectorType.None />
         <Paragraph> Company description </Paragraph>
         <Paragraph Align="justify"> @Model.Description</Paragraph>
     </Paper>
@@ -40,21 +40,10 @@
     [Inject]
     private DataService StockService { get; set; }
 
-    [Inject]
-    private CacheService CacheService { get; set; }
-
     private DemoStock Model { get; set; } = new DemoStock();
 
     protected override async Task OnInitializedAsync()
     {
-        var model = CacheService.Get<DemoStock>("AAPL");
-
-        if (model == null)
-        {
-            model = await StockService.LoadFromJson<DemoStock>("aapl.json");
-            CacheService.Set("AAPL", model, 0);
-        }
-
-        Model = model;
+        Model = await StockService.LoadFromJson<DemoStock>("aapl.json");
     }
 }
