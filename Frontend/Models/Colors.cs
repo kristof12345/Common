@@ -17,6 +17,7 @@ public static class Colors
     public const string DarkGrey = "#212121";
     public const string Transparent = "transparent";
     public const string Frame = "#888888";
+    public const string Quote = "#FFFF00";
 
     public const string Worst = "#EA501A";
     public const string Bad = "#F79C02";
