@@ -6,7 +6,7 @@ public static class Colors
 {
     public const string Primary = "#0071BC";
     public const string Secondary = "#0E308E";
-    public const string Tertiary = "#479798";
+    public const string Tertiary = "#00B0C3";
     public const string Error = "#AD1A24";
     public const string Warning = "#FF9800";
     public const string Success = "#008000";
