@@ -4,15 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Configurations>Release;Debug</Configurations>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>
-		</DebugType>
-		<WarningLevel>4</WarningLevel>
-		<PlatformTarget>anycpu</PlatformTarget>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(RunConfiguration)' == 'Demo' ">
-		<ExternalConsole>true</ExternalConsole>
-	</PropertyGroup>
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'Demo' " />
 	<ItemGroup>
 		<ProjectReference Include="..\Frontend\Common.Frontend.csproj" />
 	</ItemGroup>
