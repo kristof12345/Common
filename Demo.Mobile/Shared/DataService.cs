@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Common.Application;
 
 namespace Common.Web
@@ -11,12 +9,13 @@ namespace Common.Web
 
         public async Task<T> LoadFromJson<T>(string file)
         {
-            return await Client.GetFromJsonAsync<T>(file);
+            var stream = await FileSystem.OpenAppPackageFileAsync(file);
+            return await JsonSerializer.DeserializeAsync<T>(stream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<T> GetDemoJson<T>() where T : new()
         {
-            return await this.GetWithCache<T>("https://jsonplaceholder.typicode.com/posts/1", "Demo");
+            return await GetWithCache<T>("https://jsonplaceholder.typicode.com/posts/1", "Demo");
         }
     }
 }

@@ -44,6 +44,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Model = await StockService.LoadFromJson<DemoStock>("aapl.json");
+        Model = await StockService.LoadFromJson<DemoStock>("aapl.txt");
     }
 }

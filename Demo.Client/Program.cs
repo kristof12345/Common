@@ -3,12 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Demo;
 using Common.Web;
-using Syncfusion.Blazor;
-using Blazored.LocalStorage;
-using Blazored.SessionStorage;
-using System.Collections.Generic;
 using Common.Application;
 
 namespace Demo.Client

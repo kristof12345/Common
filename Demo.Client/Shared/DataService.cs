@@ -16,7 +16,7 @@ namespace Common.Web
 
         public async Task<T> GetDemoJson<T>() where T : new()
         {
-            return await this.GetWithCache<T>("https://jsonplaceholder.typicode.com/posts/1", "Demo");
+            return await GetWithCache<T>("https://jsonplaceholder.typicode.com/posts/1", "Demo");
         }
     }
 }
