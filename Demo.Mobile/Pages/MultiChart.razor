@@ -31,19 +31,19 @@
             {
                 Label = "Series 1",
                 Color = Colors.Get(1),
-                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.json")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.1m })
+                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.txt")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.1m })
             },
             new ChartDataSeries
             {
                 Label = "Series 2",
                 Color = Colors.Get(2),
-                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.json")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.2m })
+                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.txt")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.2m })
             },
             new ChartDataSeries
             {
                 Label = "Series 3",
                 Color = Colors.Get(3),
-                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.json")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.3m })
+                Data = (await StockService.LoadFromJson<List<StockPrice>>("exchange.txt")).Select(x => new Price { Date=x.Date, Value=x.Value + 0.3m })
             }
         };
     }

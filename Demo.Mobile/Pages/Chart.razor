@@ -52,7 +52,7 @@
 
         await Task.Delay(new TimeSpan(0, 0, 5)).ContinueWith(o => { timer.Start(); });
 
-        Series = await StockService.LoadFromJson<List<StockPrice>>("exchange.json");
+        Series = await StockService.LoadFromJson<List<StockPrice>>("exchange.txt");
     }
 
     private void AddData(Object source, ElapsedEventArgs e)
