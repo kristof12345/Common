@@ -21,21 +21,21 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
-		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
 		<PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
-		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Charts" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Popups" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.Grid" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="24.1.45" />
-		<PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="24.1.45" />
+		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Calendars" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Charts" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Inputs" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Popups" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.RangeNavigator" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.Grid" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="25.1.41" />
+		<PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="25.1.41" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Remove="wwwroot\.DS_Store" />
