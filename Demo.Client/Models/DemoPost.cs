@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Demo.Client
+﻿namespace Demo.Client
 {
     public class DemoPost
     {

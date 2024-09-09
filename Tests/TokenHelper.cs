@@ -1,5 +1,4 @@
-﻿using System;
-using Common.Backend;
+﻿using Common.Backend;
 
 namespace Common.Tests;
 

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Common.Application;
 using Microsoft.AspNetCore.Components;
-using Common.Application;
+using System;
+using System.Threading.Tasks;
 
 namespace Common.Web
 {

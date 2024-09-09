@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Common.Web;
+﻿using Common.Web;
 
 namespace Demo.Mobile;
 

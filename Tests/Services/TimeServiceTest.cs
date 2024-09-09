@@ -1,6 +1,5 @@
-﻿using System;
-using Common.Application;
-using Common.Backend;
+﻿using Common.Backend;
+using System;
 using Xunit;
 
 namespace Common.Tests.Services
@@ -104,7 +103,7 @@ namespace Common.Tests.Services
             var time = timeService.Until(DateTime.UtcNow.AddHours(30));
 
             // Assert
-            Assert.InRange(time.TotalMinutes, 1750,1850);
+            Assert.InRange(time.TotalMinutes, 1750, 1850);
             Assert.InRange(time.TotalHours, 29, 31);
         }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Common.Application;
+﻿using Common.Application;
 
 namespace Demo.Mobile
 {

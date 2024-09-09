@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Common.Application;
+using Common.Backend;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Common.Application;
-using Common.Backend;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace Common.Tests.Database
