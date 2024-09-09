@@ -201,8 +201,11 @@ text {
     fill: transparent !important;
 }
 
-/* Dialog */
+.e-rangenavigator {
+    cursor: pointer !important;
+}
 
+/* Dialog */
 .e-dlg-header {
     width: 100% !important;
     overflow: visible !important;
