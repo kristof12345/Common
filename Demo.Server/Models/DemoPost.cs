@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Demo.Server
+﻿namespace Demo.Server
 {
     public class DemoPost
     {

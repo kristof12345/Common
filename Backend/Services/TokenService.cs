@@ -1,9 +1,8 @@
-﻿using System.Security.Cryptography;
-using System.Text.Json;
-using System.Xml.Linq;
-using Common.Application;
+﻿using Common.Application;
 using JWT.Algorithms;
 using JWT.Builder;
+using System.Security.Cryptography;
+using System.Text.Json;
 
 namespace Common.Backend;
 

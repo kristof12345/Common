@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Common.Application;
+using System;
 using System.Collections.Generic;
-using Common.Application;
 
 namespace Common.Web
 {

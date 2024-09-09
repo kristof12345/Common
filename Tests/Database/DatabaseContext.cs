@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Common.Application;
+﻿using Common.Application;
 using Microsoft.EntityFrameworkCore;
 
 namespace Common.Tests.Database

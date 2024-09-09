@@ -1,7 +1,7 @@
-﻿using System;
-using Common.Application;
+﻿using Common.Application;
 using Common.Backend;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using Xunit;
 
 namespace Common.Tests.Models

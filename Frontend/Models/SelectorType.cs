@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Common.Web;
+﻿namespace Common.Web;
 
 public enum SelectorType
 {

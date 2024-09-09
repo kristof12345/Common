@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Common.Application;
+using System;
 using System.Collections.Generic;
-using Common.Application;
 using Xunit;
 
 namespace Common.Tests.Models

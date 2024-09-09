@@ -1,5 +1,5 @@
-﻿using System;
-using Common.Application;
+﻿using Common.Application;
+using System;
 using Xunit;
 
 namespace Common.Tests.Extensions

@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
-using Common.Application;
+﻿using Common.Application;
+using System.Text.Json;
 
 namespace Common.Web
 {

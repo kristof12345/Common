@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Syncfusion.Blazor.Notifications;
+using System;
 using System.Threading.Tasks;
-using Syncfusion.Blazor.Notifications;
 
 namespace Common.Web
 {

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Common.Application;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
-using Common.Application;
 
 namespace Demo.Server
 {
