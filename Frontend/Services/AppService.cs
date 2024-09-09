@@ -1,6 +1,6 @@
-﻿using System.Net.Http;
+﻿using Common.Application;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Common.Application;
 
 namespace Common.Web;
 

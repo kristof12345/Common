@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Common.Application;
+using System;
 using System.ComponentModel.DataAnnotations;
-using Common.Application;
 
 namespace Demo.Client
 {

@@ -5,7 +5,7 @@ namespace Common.Application;
 
 public static class HttpExtensions
 {
-    private static readonly JsonSerializerOptions options = new JsonSerializerOptions {  PropertyNameCaseInsensitive = true };
+    private static readonly JsonSerializerOptions options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
     public static Task<HttpResponseMessage> GetAsJsonAsync<T>(this HttpClient client, string requestUri, T value)
     {

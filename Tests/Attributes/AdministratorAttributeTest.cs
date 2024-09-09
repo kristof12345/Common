@@ -1,11 +1,11 @@
-﻿using Xunit;
+﻿using Common.Application;
 using Common.Backend;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Moq;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
-using Common.Application;
+using Xunit;
 
 namespace Common.Tests.Attributes
 {

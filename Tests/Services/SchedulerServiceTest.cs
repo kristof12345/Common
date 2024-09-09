@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Common.Backend;
+using Hangfire;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Common.Backend;
-using Hangfire;
 using Xunit;
 
 namespace Common.Tests.Services

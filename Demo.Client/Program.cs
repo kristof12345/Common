@@ -1,10 +1,10 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using Common.Application;
+using Common.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Common.Web;
-using Common.Application;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Demo.Client
 {

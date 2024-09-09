@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Demo.Mobile
+﻿namespace Demo.Mobile
 {
     public class DemoPost
     {

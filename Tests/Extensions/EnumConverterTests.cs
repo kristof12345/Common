@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using Common.Application;
+using System.Linq;
 using System.Runtime.Serialization;
-using Common.Application;
 using Xunit;
 
 namespace Common.Tests.Extensions

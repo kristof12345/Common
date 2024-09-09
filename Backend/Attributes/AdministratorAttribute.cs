@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Headers;
-using Common.Application;
+﻿using Common.Application;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

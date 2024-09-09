@@ -1,5 +1,5 @@
-﻿using System;
-using Syncfusion.Blazor.Charts;
+﻿using Syncfusion.Blazor.Charts;
+using System;
 
 namespace Common.Web
 {

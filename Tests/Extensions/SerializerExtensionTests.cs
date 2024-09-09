@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Common.Backend;
+using System;
 using System.Text.Json;
-using Common.Backend;
 using Xunit;
 
 namespace Common.Tests.Extensions

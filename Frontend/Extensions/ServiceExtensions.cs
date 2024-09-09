@@ -1,6 +1,6 @@
-﻿using Common.Application;
-using Blazored.LocalStorage;
+﻿using Blazored.LocalStorage;
 using Blazored.SessionStorage;
+using Common.Application;
 using Microsoft.Extensions.DependencyInjection;
 using Syncfusion.Blazor;
 
