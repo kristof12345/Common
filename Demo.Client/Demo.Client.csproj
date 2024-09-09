@@ -4,9 +4,6 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Configurations>Release;Debug</Configurations>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(RunConfiguration)' == 'Demo' ">
-	  <ExternalConsole>true</ExternalConsole>
-	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Frontend\Common.Frontend.csproj" />
 	</ItemGroup>

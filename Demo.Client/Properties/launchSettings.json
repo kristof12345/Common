@@ -1,16 +1,8 @@
 {
   "profiles": {
     "Demo": {
-      "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5100/",
-      "environmentVariables": {
-        "DOTNET_ENVIRONMENT": "Development"
-      }
-    },
-    "Demo.Client": {
-      "commandName": "Project",
-      "launchBrowser": true,
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
       }
