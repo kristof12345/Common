@@ -3,7 +3,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackOnBuild>true</PackOnBuild>
-		<PackageId>Waikiki.Common.Backend</PackageId>
+		<PackageId>Waikiki.Core.Backend</PackageId>
 		<Authors>Papp Kristóf</Authors>
 		<Owners>Papp Kristóf</Owners>
 		<Copyright>All rights reserved.</Copyright>

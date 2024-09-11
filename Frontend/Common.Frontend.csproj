@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<PackOnBuild>true</PackOnBuild>
-		<PackageId>Waikiki.Common.Frontend</PackageId>
+		<PackageId>Waikiki.Core.Frontend</PackageId>
 		<Authors>Papp Kristóf</Authors>
 		<Copyright>All rights reserved.</Copyright>
 		<PackageLicense>https://github.com/kristof12345/Common/blob/master/LEGAL.md</PackageLicense>
