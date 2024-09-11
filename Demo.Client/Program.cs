@@ -1,31 +1,22 @@
 ﻿using Common.Application;
 using Common.Web;
+using Demo.Client;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 
-namespace Demo.Client
-{
-    public static class Program
-    {
-        public static async Task Main(string[] args)
-        {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("#app");
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            var services = builder.Services;
+var services = builder.Services;
 
-            services.AddCommonServices();
+services.AddCommonServices();
 
-            services.AddScoped<LoginService>();
-            services.AddScoped<DataService>();
-            services.AddScoped<UserService<IUser>>();
+services.AddScoped<LoginService>();
+services.AddScoped<DataService>();
+services.AddScoped<UserService<IUser>>();
 
-            await builder.Build().RunAsync();
-        }
-    }
-}
+await builder.Build().RunAsync();

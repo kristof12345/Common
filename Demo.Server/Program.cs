@@ -1,15 +1,31 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+﻿using System;
+using System.Net.Http;
+using Common.Web;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Server
-{
-    public static class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
-        public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-    }
-}
+services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5101/") });
+
+services.AddSignalR(e => { e.MaximumReceiveMessageSize = 102400000; });
+services.AddRazorPages();
+services.AddServerSideBlazor();
+
+services.AddHttpClient();
+
+services.AddCommonServices();
+
+services.AddScoped<LoginService>();
+services.AddScoped<DataService>();
+
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapBlazorHub();
+app.MapFallbackToPage("/Host");
+
+app.Run();
