@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackOnBuild>true</PackOnBuild>
 		<PackageId>Waikiki.Core.Backend</PackageId>
@@ -16,8 +16,8 @@
 		<ProjectReference Include="..\Application\Common.Application.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10" />
-		<PackageReference Include="JWT" Version="10.1.1" />
-		<PackageReference Include="Hangfire" Version="1.8.15" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
+		<PackageReference Include="JWT" Version="11.0.0" />
+		<PackageReference Include="Hangfire" Version="1.8.17" />
 	</ItemGroup>
 </Project>
