@@ -16,8 +16,8 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">18.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">16.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<CreatePackage>false</CreatePackage>
@@ -36,9 +36,9 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.21" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.40" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Frontend\Common.Frontend.csproj" />

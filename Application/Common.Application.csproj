@@ -4,7 +4,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackOnBuild>true</PackOnBuild>
 		<PackageId>Waikiki.Core.Application</PackageId>
-		<PackageVersion>5.1.0</PackageVersion>
+		<PackageVersion>5.1.1</PackageVersion>
 		<Authors>Papp Kristóf</Authors>
 		<Copyright>All rights reserved.</Copyright>
 		<Owners>Papp Kristof</Owners>
