@@ -10,7 +10,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddCommonServices(this IServiceCollection services)
     {
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NMaF5cXmBCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH1fc3VUQ2ReUk1xXEI=");
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDAwNTAzNkAzMzMwMmUzMDJlMzAzYjMzMzAzYlJZRTN4RjI4cG5YR2wyQ1F4TEdLdnVVcGpnMVZLMVVqSjNrOWQxRlNFc0E9");
 
         services.AddBlazoredLocalStorage();
         services.AddBlazoredSessionStorage();
